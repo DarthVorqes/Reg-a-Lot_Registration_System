@@ -10,7 +10,7 @@ namespace RegSystem
     {
         static void Main(string[] args)
         {
-            //Ever journey begins with a single step.
+            //Every journey begins with a single step.
         }
     }
 }
