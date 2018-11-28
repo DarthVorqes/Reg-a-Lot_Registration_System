@@ -11,7 +11,7 @@ namespace RegSystem
         static void Main(string[] args)
         {
             //Every journey begins with a single step.
-            //Its dangerous to go alone! Take this: =||=======>
+            // Its dangerous to go alone! Take this: =||=======>
         }
     }
 }
