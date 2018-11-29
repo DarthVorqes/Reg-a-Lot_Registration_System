@@ -1,7 +1,7 @@
 # Reg-a-Lot_Registration_System
 Registration system for class project of D.Higgs for the class of 2018. 
 
-CHANGLOG
+CHANGELOG
 
 • 11/27/2018: Creation of repo and mock solution. / Creation of README.
 
