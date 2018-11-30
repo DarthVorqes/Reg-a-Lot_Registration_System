@@ -8,5 +8,7 @@ namespace RegistrationSystem
 {
     class Section
     {
+        List<Person> Students { get; set; }
+        Person Instructor { get; set; }
     }
 }
