@@ -12,6 +12,7 @@ namespace RegistrationSystem
         /// The main entry point for the application.
         /// </summary>
         /// Was downgraded for lab computers
+        /// test
         [STAThread]
         static void Main()
         {
