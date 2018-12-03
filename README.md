@@ -10,3 +10,5 @@ CHANGELOG
 • 11/29/2018: DarthVorqes deleted mock solution "RegSystem" to clean up. / The solution "Registration System" was downgraded from 4.7.1 to 4.6.1 because of the lack of ability to download the newest edition on the lab's computers.
 
 • 11/30/2018: Branch "Front End" and "BackEnd" have been created. Master branch is now protected and can only be edited by a branch pull request. Tested the pull request system and it is ready to be used.
+
+•12/1/2018: Backend was updated with more database connections.
