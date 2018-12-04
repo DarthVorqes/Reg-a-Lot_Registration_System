@@ -6,27 +6,19 @@ using System.Threading.Tasks;
 
 namespace RegistrationSystem
 {
-    class User : Person
+    class User
     {
+        public virtual int EnterpriseID { get; private set; }
+        public virtual string Name { get; set; }
+        public virtual bool HasPaid { get; private set; }
+        public virtual bool IsProffessor { get; private set; }
+        public virtual bool IsStudent { get; private set; }
+        public virtual bool IsRegistrar { get; private set; }
+        public virtual string Password { get; private set; }
+        public virtual Schedule UserSchedule { get; private set; }
         public DatabaseConnection Connection { get; private set; }
-        public Person Focus{ get; private set; }
+        public User Focus{ get; private set; }
         public void InitializeConnection() =>
             Connection = new DatabaseConnection(EnterpriseID,Password);
-        public void ApplyChanges(Person updated)
-        {
-            var type = typeof(Person);
-            foreach(var property in type.GetProperties())
-            {
-                if (property.PropertyType.GetInterface("IEnumerable") != null)
-                {
-                    //find the sub table this stuff is in
-                }
-                else
-                {
-                    //
-
-                }
-            }
-        }
     }
 }

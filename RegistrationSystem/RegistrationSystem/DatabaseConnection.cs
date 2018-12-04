@@ -57,6 +57,5 @@ namespace RegistrationSystem
         /// </summary>
         public int UserID { get; set; }
         byte[] HashedPassword { get; set; }
-
     }
 }
