@@ -40,7 +40,7 @@ namespace RegistrationSystem
         /// if the record already exists, it will update it
         /// </summary>
         /// <returns>Whether or not the operation was successful</returns>
-        public bool SetRecord()
+        public bool SetRecord(Tables table, SqlParameter[] perams)
         {
             throw new NotImplementedException();
         }

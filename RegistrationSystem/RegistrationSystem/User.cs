@@ -8,7 +8,10 @@ namespace RegistrationSystem
 {
     class User : Person
     {
-        public DatabaseConnection Connection { get; set; }
+        public DatabaseConnection Connection { get; private set; }
+        public Person Focus{ get; private set; }
+        public void InitializeConnection() =>
+            Connection = new DatabaseConnection(EnterpriseID,Password);
         public void ApplyChanges(Person updated)
         {
             var type = typeof(Person);
