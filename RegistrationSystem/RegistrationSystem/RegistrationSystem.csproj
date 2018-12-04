@@ -54,6 +54,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="studentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studentView.Designer.cs">
+      <DependentUpon>studentView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Proffesor.cs">
       <SubType>Form</SubType>
@@ -66,8 +72,7 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="Proffesor.resx">
-      <DependentUpon>Proffesor.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
