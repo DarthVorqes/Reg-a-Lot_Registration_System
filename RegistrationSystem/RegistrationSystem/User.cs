@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace RegistrationSystem
 {
-    class User
+    class User : Person
     {
-        public bool HasPaid { get; private set; }
-        public bool IsProffessor { get; private set; }
-        public bool IsStudent { get; private set; }
-        public bool IsRegistrar { get; private set; }
-        public string Name { get; set; }
-        public int StudentID { get; private set; }
         public DatabaseConnection Connection { get; set; }
-        Schedule Calender { get; set; }
-        public void ApplyChanges()
+        public void ApplyChanges(Person updated)
         {
-            throw new NotImplementedException();
+            var type = typeof(Person);
+            foreach(var property in type.GetProperties())
+            {
+                if (property.PropertyType.GetInterface("IEnumerable") != null)
+                {
+                    //find the sub table this stuff is in
+                }
+                else
+                {
+                    //
+
+                }
+            }
         }
     }
 }
