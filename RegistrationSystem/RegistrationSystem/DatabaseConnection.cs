@@ -21,36 +21,18 @@ namespace RegistrationSystem
             };
         }
         SqlConnection Connection { get; }
-        public enum Tables
-        {
-            Person,
-
-        }
+        public bool IsProfessor { get; private set; }
+        public bool IsStudent { get; private set; }
+        public bool IsRegistrar { get; private set; }
         public DatabaseConnection(int userID, string password)
         {
             UserID = userID;
             HashedPassword = new byte[0];//placeholder
+
         }
-        public string[] GetRecord(Tables table)
+        public void AddRow(string[] s)
         {
-            Connection.Open();
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// if the record already exists, it will update it
-        /// </summary>
-        /// <returns>Whether or not the operation was successful</returns>
-        public bool SetRecord(Tables table, SqlParameter[] perams)
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Whether or not the operation was successful</returns>
-        public bool RemoveRecord()
-        {
-            throw new NotImplementedException();
+            
         }
         /// <summary>
         /// this will generally be the student's ID
