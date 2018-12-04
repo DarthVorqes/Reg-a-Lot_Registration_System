@@ -34,7 +34,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,9 +54,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -129,12 +129,39 @@
             this.tabPage2.Text = "Add/Drop";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(363, 38);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(97, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Search for Courses";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 38);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Courses";
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(366, 54);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(278, 20);
             this.textBox1.TabIndex = 6;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(431, 402);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(130, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Drop";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -165,6 +192,8 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Courses"});
             this.comboBox2.Location = new System.Drawing.Point(19, 54);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(315, 21);
@@ -289,34 +318,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(431, 402);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 38);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 13);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Courses";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(363, 38);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(97, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Search for Courses";
-            // 
-            // Proffesor
+            // ProffessorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -324,7 +326,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Proffesor";
+            this.Name = "ProffessorView";
             this.Text = "Proffessor";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
