@@ -21,21 +21,23 @@ namespace RegistrationSystem
         {
             if (textBox1.Text == "Trey" && radioButton1.Checked)
             {
-                studentView SView = new studentView();
-                SView.Show();
+               // studentView SView = new studentView();
+               // SView.Show();
                 Hide();
             }
 
-            if (textBox1.Text == "Trey" && radioButton2.Checked)
+            if (textBox1.Text == "Max" && radioButton2.Checked)
             {
-                string message = "You are not a professor.";
-                string caption = "Authentification Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result;
+                ProffessorView PView = new ProffessorView();
+                PView.Show();
+                //string message = "You are not a professor.";
+                //string caption = "Authentification Error";
+                //MessageBoxButtons buttons = MessageBoxButtons.OK;
+                //DialogResult result;
 
                 // Displays the MessageBox.
 
-                result = MessageBox.Show(message, caption, buttons);
+               // result = MessageBox.Show(message, caption, buttons);
             }
 
             if (textBox1.Text == "Trey" && radioButton3.Checked)

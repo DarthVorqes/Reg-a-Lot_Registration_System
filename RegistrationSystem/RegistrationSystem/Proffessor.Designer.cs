@@ -1,6 +1,6 @@
 ﻿namespace RegistrationSystem
 {
-    partial class Proffesor
+    partial class ProffessorView
     {
         /// <summary>
         /// Required designer variable.
