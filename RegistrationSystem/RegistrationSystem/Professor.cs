@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RegistrationSystem
 {
-    public partial class ProffessorView : Form
+    public partial class ProfessorView : Form
     {
         public ProffessorView()
         {

@@ -1,6 +1,6 @@
 ﻿namespace RegistrationSystem
 {
-    partial class ProffessorView
+    partial class ProfessorView
     {
         /// <summary>
         /// Required designer variable.
@@ -304,9 +304,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(187, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(408, 54);
+            this.label1.Size = new System.Drawing.Size(395, 54);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Proffessor\'s Name";
+            this.label1.Text = "Professor\'s Name";
             // 
             // button1
             // 
@@ -327,7 +327,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Name = "ProffessorView";
-            this.Text = "Proffessor";
+            this.Text = "Professor";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
