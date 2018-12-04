@@ -141,7 +141,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 38);
+            this.label10.Location = new System.Drawing.Point(6, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(45, 13);
             this.label10.TabIndex = 7;
@@ -194,7 +194,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Courses"});
-            this.comboBox2.Location = new System.Drawing.Point(19, 54);
+            this.comboBox2.Location = new System.Drawing.Point(6, 54);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(315, 21);
             this.comboBox2.TabIndex = 0;
