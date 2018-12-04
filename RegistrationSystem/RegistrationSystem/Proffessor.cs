@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace RegistrationSystem
 {
-    public partial class Proffesor : Form
+    public partial class ProfessorView : Form
     {
-        public Proffesor()
+        public ProfessorView()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Logout_Click(object sender, EventArgs e)
         {
-
+            Environment.Exit(1);
         }
-
- 
     }
 }
