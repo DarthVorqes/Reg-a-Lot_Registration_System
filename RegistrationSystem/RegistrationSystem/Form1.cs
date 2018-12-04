@@ -12,6 +12,7 @@ namespace RegistrationSystem
 {
     public partial class Form1 : Form
     {
+       
         public Form1()
         {
             InitializeComponent();
@@ -32,16 +33,10 @@ namespace RegistrationSystem
 
             if (textBox1.Text == "Max" && radioButton2.Checked)
             {
+                Form1 LogOn = new Form1();
                 ProffessorView PView = new ProffessorView();
                 PView.Show();
-                //string message = "You are not a professor.";
-                //string caption = "Authentification Error";
-                //MessageBoxButtons buttons = MessageBoxButtons.OK;
-                //DialogResult result;
-
-                // Displays the MessageBox.
-
-               // result = MessageBox.Show(message, caption, buttons);
+                Hide();
             }
 
             if (textBox1.Text == "Max" && radioButton3.Checked)

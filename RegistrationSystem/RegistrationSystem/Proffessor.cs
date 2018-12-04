@@ -19,7 +19,10 @@ namespace RegistrationSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Form1 LogOn = new Form1();
+            ProffessorView logout = new ProffessorView();
+            Hide();
+            LogOn.Show();
         }
 
 
