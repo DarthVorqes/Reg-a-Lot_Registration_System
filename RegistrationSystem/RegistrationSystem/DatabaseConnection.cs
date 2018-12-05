@@ -10,6 +10,10 @@ namespace RegistrationSystem
 {
     class DatabaseConnection
     {
+        /*
+         * Database Connection Values
+         * "user id=db1;password=db10;server=cis1.actx.edu;Trusted_Connection=yes;database=Project1;");
+         */
         //this value is just an example,
         //be sure to update it later with an accurate value
         const string BASE_DATABASE_LOCATION = "db_owner.";
