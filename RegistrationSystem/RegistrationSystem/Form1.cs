@@ -33,7 +33,6 @@ namespace RegistrationSystem
 
             if (textBox1.Text == "Max" && radioButton2.Checked)
             {
-                Form1 LogOn = new Form1();
                 ProfessorView PView = new ProfessorView();
                 PView.Show();
                 Hide();
