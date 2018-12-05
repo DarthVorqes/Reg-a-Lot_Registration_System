@@ -21,5 +21,25 @@ namespace RegistrationSystem
         {
             Environment.Exit(1);
         }
+
+        private void ScheduleComboBox_Load()
+        {
+            List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
+            List<string> studentIndex = new List<string>() { "Jim","gary","mary"};
+            int sectionIndexCount = 0;
+            foreach (string x in sectionIndex)
+            {
+                sectionIndexCount++;
+                ScheduleComboBox.Items.Add(x);
+                //Meh
+                if (ScheduleComboBox.SelectedIndex == sectionIndexCount)
+                {
+                    foreach(string student in studentIndex)
+                    ScheduleList.Items.Add(student);
+                }
+            }
+    
+        }
+
     }
 }

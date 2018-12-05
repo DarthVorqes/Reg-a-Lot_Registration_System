@@ -97,12 +97,11 @@
             // ScheduleComboBox
             // 
             this.ScheduleComboBox.FormattingEnabled = true;
-            this.ScheduleComboBox.Items.AddRange(new object[] {
-            "Sections"});
             this.ScheduleComboBox.Location = new System.Drawing.Point(27, 183);
             this.ScheduleComboBox.Name = "ScheduleComboBox";
             this.ScheduleComboBox.Size = new System.Drawing.Size(347, 21);
             this.ScheduleComboBox.TabIndex = 1;
+            this.ScheduleComboBox_Load();
             // 
             // ScheduleCalander
             // 
