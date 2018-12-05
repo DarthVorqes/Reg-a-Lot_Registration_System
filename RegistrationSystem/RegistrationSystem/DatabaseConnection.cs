@@ -10,6 +10,10 @@ namespace RegistrationSystem
 {
     class DatabaseConnection
     {
+        /*
+         * Database Connection Values
+         * "user id=db1;password=db10;server=cis1.actx.edu;Trusted_Connection=yes;database=Project1;");
+         */
         //this value is just an example,
         //be sure to update it later with an accurate value
         const string BASE_DATABASE_LOCATION = "db_owner.";
@@ -21,42 +25,23 @@ namespace RegistrationSystem
             };
         }
         SqlConnection Connection { get; }
-        public enum Tables
-        {
-            Person,
-
-        }
+        public bool IsProfessor { get; private set; }
+        public bool IsStudent { get; private set; }
+        public bool IsRegistrar { get; private set; }
         public DatabaseConnection(int userID, string password)
         {
             UserID = userID;
             HashedPassword = new byte[0];//placeholder
+
         }
-        public string[] GetRecord(Tables table)
+        public void AddRow(string[] s)
         {
-            Connection.Open();
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// if the record already exists, it will update it
-        /// </summary>
-        /// <returns>Whether or not the operation was successful</returns>
-        public bool SetRecord()
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Whether or not the operation was successful</returns>
-        public bool RemoveRecord()
-        {
-            throw new NotImplementedException();
+            
         }
         /// <summary>
         /// this will generally be the student's ID
         /// </summary>
         public int UserID { get; set; }
         byte[] HashedPassword { get; set; }
-
     }
 }
