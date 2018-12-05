@@ -101,7 +101,8 @@
             this.ScheduleComboBox.Name = "ScheduleComboBox";
             this.ScheduleComboBox.Size = new System.Drawing.Size(347, 21);
             this.ScheduleComboBox.TabIndex = 1;
-            this.ScheduleComboBox_Load();
+            this.ScheduleComboBox.Enter += new System.EventHandler(this.ScheduleComboBox_Enter);
+            this.ScheduleComboBox.SelectedIndexChanged += new System.EventHandler(this.ScheduleComboBox_SelectedIndexChanged);
             // 
             // ScheduleCalander
             // 
