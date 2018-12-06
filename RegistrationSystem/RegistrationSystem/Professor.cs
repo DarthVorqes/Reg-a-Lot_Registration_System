@@ -20,6 +20,7 @@ namespace RegistrationSystem
         public ProfessorView()
         {
             InitializeComponent();
+            ScheduleComboBox_Load();
         }
         /// <summary>
         /// Logout button, exits application for now.
@@ -52,15 +53,7 @@ namespace RegistrationSystem
 
             }
         }
-        /// <summary>
-        /// Loads in the combo box values to the gui
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ScheduleComboBox_Enter(object sender, EventArgs e)
-        {
-            ScheduleComboBox_Load();
-        }
+
         /// <summary>
         /// Loads in the list box values to the gui, depending on what section you choose.
         /// </summary>
@@ -68,15 +61,7 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void ScheduleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < sectionIndexCount; i++)
-            {
-                ScheduleList.Items.Clear();
-                if (ScheduleComboBox.SelectedIndex == i)
-                {
-                    ScheduleListBox_Load();
-                }
-                
-            }
+ 
 
         }
 
