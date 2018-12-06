@@ -27,6 +27,7 @@ namespace RegistrationSystem
                 RView.Show();
                 Hide();
             }*/
+            
             //check to see if professor:
             if (UserNameTextBox.Text == "Max" || UserNameTextBox.Text == "Al")
             {
@@ -36,6 +37,7 @@ namespace RegistrationSystem
                 PView.Show();
                 Hide();
             }
+            //
           if(UserNameTextBox.Text == "Trey")
             {
                 ID = UserNameTextBox.Text;
