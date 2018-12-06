@@ -16,6 +16,30 @@ namespace RegistrationSystem
         [STAThread]
         static void Main()
         {
+            DatabaseConnection db = new DatabaseConnection(1,"000"); 
+            var collection = db.GetOccurrences(Tables.Person, new System.Data.SqlClient.SqlParameter[] { }, new string[] { "*" });
+            System.Diagnostics.Debug.WriteLine("IsStudent = " + db.IsStudent);
+            System.Diagnostics.Debug.WriteLine("IsProfessor = " + db.IsProfessor);
+            System.Diagnostics.Debug.WriteLine("IsRegistrar = " + db.IsRegistrar);
+
+            db.Insert(Tables.Person,new System.Data.SqlClient.SqlParameter[] 
+            {
+                new System.Data.SqlClient.SqlParameter("FirstName","John"),
+                new System.Data.SqlClient.SqlParameter("LastName","Smith"),
+                new System.Data.SqlClient.SqlParameter("IsProfessor",1),
+                new System.Data.SqlClient.SqlParameter("IsStudent",1),
+                new System.Data.SqlClient.SqlParameter("IsRegistrar",0),
+                new System.Data.SqlClient.SqlParameter("Social",45),
+                new System.Data.SqlClient.SqlParameter("StreetAddress","Memory Ln."),
+                new System.Data.SqlClient.SqlParameter("City","Small Texas"),
+                new System.Data.SqlClient.SqlParameter("State","Saddness"),
+                new System.Data.SqlClient.SqlParameter("ZipCode",1234567),
+                new System.Data.SqlClient.SqlParameter("PhoneNumber",800000006),
+                new System.Data.SqlClient.SqlParameter("CanRegistrar",0),
+                new System.Data.SqlClient.SqlParameter("Password",db.Hash("Test")),
+                new System.Data.SqlClient.SqlParameter("Email","josh@cs.actx.edu"),
+            });
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

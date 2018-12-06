@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Security.Cryptography;
+using System.Data;
 
 namespace RegistrationSystem
 {
     enum Tables
     {
-        People = 0,
+        Person = 0,
         Semester,
         Sections,
         Courses,
@@ -46,7 +47,12 @@ namespace RegistrationSystem
         };
         string HashedPassword { get; set; }
         int UserID { get; set; }
-        public DatabaseConnection(string connectionString)
+        public DatabaseConnection()
+            : this("User Id=db1;Password=db10;Server=cis1.actx.edu;Database=Project1;")
+        {
+
+        }
+        DatabaseConnection(string connectionString)
         {
             Connection = new SqlConnection()
             {
@@ -57,42 +63,42 @@ namespace RegistrationSystem
         public bool IsProfessor { get; private set; }
         public bool IsStudent { get; private set; }
         public bool IsRegistrar { get; private set; }
+        HMACSHA512 Hashing { get; set; }
+        public string Hash(string n) => Encoding.UTF8.GetString(
+                Hashing.ComputeHash(Encoding.UTF8.GetBytes(n)));
         public DatabaseConnection(int userID, string password)
+            : this()
         {
             UserID = userID;
 
             //you know, there is this concept called: "Logical Naming" 
-            HMACSHA512 hasher = new HMACSHA512(Key);
-            HashedPassword = Encoding.Unicode.GetString(
-                hasher.ComputeHash(Encoding.Unicode.GetBytes(password)));
+
+            Hashing = new HMACSHA512(Key);
+            HashedPassword = Hash(password);
+
+            //HashedPassword = "000";
+
             Authenticate();
 
         }
-        public void AddValue(Tables table, SqlParameter[] perams)
-        {
-            /*
-             PERSON:
-             
-             
-             
-             */
-        }
         void Authenticate()
         {
-            var permissions = GetFirstOccurrence(
-                Tables.People,
+            var permissions = GetOccurrences(
+                Tables.Person,
                 new SqlParameter[] {
-                    new SqlParameter("userID",UserID),
-                    new SqlParameter("HashedPassword",HashedPassword),
+                    new SqlParameter("ID",UserID),
+                    new SqlParameter("Password",HashedPassword),
                 },
                 new string[] {
                     "IsProfessor",
                     "IsStudent",
                     "IsRegistrar",
                 });
-            IsProfessor = permissions[0] == "TRUE";
-            IsStudent = permissions[1] == "TRUE";
-            IsRegistrar = permissions[2] == "TRUE";
+            if (permissions.Count == 0)
+                return;
+            IsProfessor = permissions[0][0] == "True";
+            IsStudent = permissions[0][1] == "True";
+            IsRegistrar = permissions[0][2] == "True";
 
         }
         void ExecuteQuery(string commandText, SqlParameter[] perams, SqlCommandExecuter action)
@@ -110,7 +116,7 @@ namespace RegistrationSystem
                     {
                         var row = new string[reader.FieldCount];
                         for (int i = 0; i < row.Length; i++)
-                            row[i] = reader.GetString(i);
+                            row[i] = reader.GetValue(i) as string;
                         query.Add(row);
                     }
 
@@ -118,35 +124,16 @@ namespace RegistrationSystem
             }
             Connection.Close();
         }
-        //public search commands
-        //NOTE: an unsuccessful query should not throw an exception because
-        //the delegate passed in the 'GetFirstOccurrence' method call will initialize 'result'.
-        //  SELECT
-        public string GetFirstOccurrence(Tables table, SqlParameter[] perams, string desiredField) =>
-            GetFirstOccurrence(table, perams, new string[] { desiredField })[0];
-        public string[] GetFirstOccurrence(Tables table,SqlParameter[] perams, string[] desiredFields)
-        {
-            string[] result = null;
-            ExecuteQuery(
-                "SELECT TOP " + EnumerateArray(desiredFields) + " FROM " + table + " WHERE " + BuildStringList(perams),
-                perams,
-                (SqlCommand cmd) => 
-                {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        reader.Read();
-                        result = new string[reader.FieldCount];
-                        for (int i = 0; i < result.Length; i++)
-                            result[i] = reader.GetString(i);
-                    }
-                });
-            return result;
-        }
-        public List<string[]> GetAllOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields)
+        public List<string[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) => GetOccurrences(table.ToString(), perams, desiredFields);
+        List<string[]> GetOccurrences(string table, SqlParameter[] perams, string[] desiredFields)
         {
             List<string[]> query = new List<string[]>();
+            string sql = "SELECT " + EnumerateArray(desiredFields) + " FROM " + table;
+            string perameters = BuildStringList(perams);
+            if (perameters.Length > 0)
+                sql += " WHERE " + perameters;
             ExecuteQuery(
-                "SELECT " + EnumerateArray(desiredFields) + " FROM " + table + " WHERE " + BuildStringList(perams),
+                sql,
                 perams,
                 (SqlCommand cmd) =>
                 {
@@ -156,12 +143,68 @@ namespace RegistrationSystem
                         {
                             var result = new string[reader.FieldCount];
                             for (int i = 0; i < result.Length; i++)
-                                result[i] = reader.GetString(i);
+                            {
+                                var n = reader.GetValue(i);
+                                result[i] = Convert.ToString(n);
+                            }
                             query.Add(result);
                         }
                     }
                 });
             return query;
+        }
+        //Insert
+        public bool Insert(Tables table, SqlParameter[] elements)
+        {
+            var headers = GetHeaders(table);
+            string sql = "INSERT INTO " + table;
+            string columns = null, values = null;
+            foreach (string header in headers)
+            {
+                foreach(var element in elements)
+                {
+                    if(header == element.ParameterName)
+                    {
+                        if (values == null)
+                        {
+                            values = "@" + element.ParameterName;
+                            columns = element.ParameterName;
+                        }
+                        else
+                        {
+                            values += ", @" + element.ParameterName;
+                            columns += ", " + element.ParameterName;
+                        }
+                    }
+                }
+            }
+            sql += "(" + columns + ") VALUES (" + values + ");";
+            
+            List<string[]> query = new List<string[]>();
+            bool successful = false;
+            //try
+            //{
+                ExecuteQuery(
+                    sql,
+                    elements,
+                    (SqlCommand cmd) =>
+                    {
+                        cmd.StatementCompleted += (object sender,
+                            System.Data.StatementCompletedEventArgs e) =>
+                        {
+                            successful = true;
+                        };
+                        cmd.ExecuteNonQuery();
+                    });
+            //}
+            //catch (SqlException e)
+            //{
+                //if (Connection.State == ConnectionState.Open)
+                //    Connection.Close();
+                //System.Diagnostics.Debug.WriteLine("The following error occured: " + e.Message);
+                //return false;
+            //}
+            return successful;
         }
         //Update
         /// <summary>
@@ -171,7 +214,7 @@ namespace RegistrationSystem
         /// <param name="searchPerams"></param>
         /// <param name="updatePerams"></param>
         /// <returns>Whether or not the operation was successful.</returns>
-        public bool UpdateAllOccurrences(Tables table, SqlParameter[] searchPerams, SqlParameter[] updatePerams)
+        public bool Update(Tables table, SqlParameter[] searchPerams, SqlParameter[] updatePerams)
         {
             bool successful = false;
             string set = updatePerams[0].ParameterName + " = @" + updatePerams[0].ParameterName;
@@ -194,7 +237,7 @@ namespace RegistrationSystem
             return successful;
         }
         //Delete
-        public bool DeleteAllOccurrences(Tables table, SqlParameter[] perams)
+        public bool Delete(Tables table, SqlParameter[] perams)
         {
             
             bool successful = false;
@@ -213,11 +256,35 @@ namespace RegistrationSystem
             return successful;
         }
         //helper methods
-        string BuildStringList(SqlParameter[] perams, string delimiter = "AND")
+        string[] GetHeaders(Tables table)
         {
-            string combined = '@' + perams[0].ParameterName;
+            //var columns = GetOccurrences("information_schema.columns", new SqlParameter[] { new SqlParameter("table_name", table) }, new string[] { "column_name", "*" });
+            //return columns[0];
+            List<string> query = new List<string>();
+            //string sql = "SELECT " + EnumerateArray(desiredFields) + " FROM " + table;
+            //string perameters = BuildStringList(perams);
+            //if (perameters.Length > 0)
+            //    sql += " WHERE " + perameters;
+            ExecuteQuery(
+                "SELECT * FROM " + table,
+                new SqlParameter[0],
+                (SqlCommand cmd) =>
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        for(int i = 0; i < reader.FieldCount; i++)
+                            query.Add(reader.GetName(i));
+                    }
+                });
+            return query.ToArray();
+        }
+        string BuildStringList(SqlParameter[] perams, string delimiter = " AND ")
+        {
+            if (perams.Length == 0)
+                return "";
+            string combined = perams[0].ParameterName + " = " + '@' + perams[0].ParameterName;
             for (int i = 1; i < perams.Length; i++)
-                combined +=  delimiter + " @ " + perams[i].ParameterName;
+                combined += delimiter + perams[i].ParameterName +  " = " +  " @" + perams[i].ParameterName;
             return combined;
         }
         string EnumerateArray(string[] elements, string delimiter = ",")
