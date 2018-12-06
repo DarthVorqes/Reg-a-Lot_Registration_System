@@ -64,8 +64,14 @@ namespace RegistrationSystem
         public bool IsStudent { get; private set; }
         public bool IsRegistrar { get; private set; }
         HMACSHA512 Hashing { get; set; }
-        public string Hash(string n) => Encoding.UTF8.GetString(
+        public string Hash(string n)
+        {
+            var hash = Encoding.UTF8.GetString(
                 Hashing.ComputeHash(Encoding.UTF8.GetBytes(n)));
+            if (hash.Length > 50)
+                hash = hash.Substring(0, 50);
+            return hash;
+        }
         public DatabaseConnection(int userID, string password)
             : this()
         {
@@ -190,7 +196,7 @@ namespace RegistrationSystem
                     (SqlCommand cmd) =>
                     {
                         cmd.StatementCompleted += (object sender,
-                            System.Data.StatementCompletedEventArgs e) =>
+                            StatementCompletedEventArgs e) =>
                         {
                             successful = true;
                         };
