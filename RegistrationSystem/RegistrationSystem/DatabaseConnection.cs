@@ -16,7 +16,7 @@ namespace RegistrationSystem
         Sections,
         Courses,
     }
-    enum QueryTypes
+    enum QueryTypes // Comment
     {
         Select,
         Update,
