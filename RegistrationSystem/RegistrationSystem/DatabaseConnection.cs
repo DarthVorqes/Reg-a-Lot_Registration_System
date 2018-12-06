@@ -16,8 +16,15 @@ namespace RegistrationSystem
         Sections,
         Courses,
     }
+    enum QueryTypes
+    {
+        Select,
+        Update,
+        Delete,
+    }
     class DatabaseConnection
     {
+        delegate void SqlCommandExecuter(SqlCommand cmd);
         /*
          * Database Connection Values
          * "user id=db1;password=db10;server=cis1.actx.edu;Trusted_Connection=yes;database=Project1;");
@@ -25,6 +32,7 @@ namespace RegistrationSystem
         //this value is just an example,
         //be sure to update it later with an accurate value
         const string BASE_DATABASE_LOCATION = "db_owner.";
+
         static byte[] Key => new byte[]
         {
             63, 23, 42, 68, 60, 172, 127, 64, 173, 61, 20, 98, 143, 92, 153, 145,
@@ -36,6 +44,8 @@ namespace RegistrationSystem
             135, 72, 125, 56, 227, 174, 239, 246, 77, 192, 18, 146, 32, 48, 237, 20,
             234, 191, 96, 95, 230, 83, 122, 66, 163, 118, 199, 20, 113, 240, 119, 100
         };
+        string HashedPassword { get; set; }
+        int UserID { get; set; }
         public DatabaseConnection(string connectionString)
         {
             Connection = new SqlConnection()
@@ -69,25 +79,23 @@ namespace RegistrationSystem
         }
         void Authenticate()
         {
-            var permissions = GetValue(
+            var permissions = GetFirstOccurrence(
                 Tables.People,
-                "SELECT IsProfessor, IsStudent, IsRegistrar WHERE UserID = @userID AND Password = @password",
                 new SqlParameter[] {
                     new SqlParameter("userID",UserID),
                     new SqlParameter("HashedPassword",HashedPassword),
+                },
+                new string[] {
+                    "IsProfessor",
+                    "IsStudent",
+                    "IsRegistrar",
                 });
+            IsProfessor = permissions[0] == "TRUE";
+            IsStudent = permissions[1] == "TRUE";
+            IsRegistrar = permissions[2] == "TRUE";
 
         }
-        public List<string[]> GetValue(Tables table, SqlParameter[] perams)
-        {
-            string commandText = "SELECT @CollectingElement FROM @table WHERE " +
-    "UserID = @userID AND" +
-    "Password == @password";
-            foreach (var peram in perams)
-                commandText += "AND @" + peram.ParameterName;
-            return GetValue(table, commandText, perams);
-        }
-        List<string[]> GetValue(Tables table, string commandText, SqlParameter[] perams)
+        void ExecuteQuery(string commandText, SqlParameter[] perams, SqlCommandExecuter action)
         {
             Connection.Open();
             List<string[]> query = new List<string[]>();
@@ -95,6 +103,7 @@ namespace RegistrationSystem
             {
                 command.CommandText = commandText;
                 command.Parameters.AddRange(perams);
+                action(command);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -108,12 +117,115 @@ namespace RegistrationSystem
                 }
             }
             Connection.Close();
+        }
+        //public search commands
+        //NOTE: an unsuccessful query should not throw an exception because
+        //the delegate passed in the 'GetFirstOccurrence' method call will initialize 'result'.
+        //  SELECT
+        public string GetFirstOccurrence(Tables table, SqlParameter[] perams, string desiredField) =>
+            GetFirstOccurrence(table, perams, new string[] { desiredField })[0];
+        public string[] GetFirstOccurrence(Tables table,SqlParameter[] perams, string[] desiredFields)
+        {
+            string[] result = null;
+            ExecuteQuery(
+                "SELECT TOP " + EnumerateArray(desiredFields) + " FROM " + table + " WHERE " + BuildStringList(perams),
+                perams,
+                (SqlCommand cmd) => 
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        result = new string[reader.FieldCount];
+                        for (int i = 0; i < result.Length; i++)
+                            result[i] = reader.GetString(i);
+                    }
+                });
+            return result;
+        }
+        public List<string[]> GetAllOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields)
+        {
+            List<string[]> query = new List<string[]>();
+            ExecuteQuery(
+                "SELECT " + EnumerateArray(desiredFields) + " FROM " + table + " WHERE " + BuildStringList(perams),
+                perams,
+                (SqlCommand cmd) =>
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var result = new string[reader.FieldCount];
+                            for (int i = 0; i < result.Length; i++)
+                                result[i] = reader.GetString(i);
+                            query.Add(result);
+                        }
+                    }
+                });
             return query;
         }
+        //Update
         /// <summary>
-        /// The user's enterprise key
+        /// 
         /// </summary>
-        public int UserID { get; set; }
-        string HashedPassword { get; set; }
+        /// <param name="table"></param>
+        /// <param name="searchPerams"></param>
+        /// <param name="updatePerams"></param>
+        /// <returns>Whether or not the operation was successful.</returns>
+        public bool UpdateAllOccurrences(Tables table, SqlParameter[] searchPerams, SqlParameter[] updatePerams)
+        {
+            bool successful = false;
+            string set = updatePerams[0].ParameterName + " = @" + updatePerams[0].ParameterName;
+            for (int i = 1; i < set.Length; i++)
+                set += ", " + updatePerams[i].ParameterName + " = @" + updatePerams[i].ParameterName;
+            var allPerams = new List<SqlParameter>();
+            allPerams.AddRange(searchPerams);
+            allPerams.AddRange(updatePerams);
+            ExecuteQuery(
+                "UPDATE " + table + " SET " + set + " WHERE " + BuildStringList(searchPerams),
+                allPerams.ToArray(),
+                (SqlCommand cmd) => {
+                    cmd.StatementCompleted += (object sender, 
+                        System.Data.StatementCompletedEventArgs e) =>
+                    {
+                        successful = true;
+                    };
+                    cmd.ExecuteNonQuery();
+                });
+            return successful;
+        }
+        //Delete
+        public bool DeleteAllOccurrences(Tables table, SqlParameter[] perams)
+        {
+            
+            bool successful = false;
+            List<string[]> query = new List<string[]>();
+            ExecuteQuery(
+                "DELETE FROM " + table + " WHERE " + BuildStringList(perams),
+                perams,
+                (SqlCommand cmd) => {
+                    cmd.StatementCompleted += (object sender,
+                        System.Data.StatementCompletedEventArgs e) =>
+                    {
+                        successful = true;
+                    };
+                    cmd.ExecuteNonQuery();
+                });
+            return successful;
+        }
+        //helper methods
+        string BuildStringList(SqlParameter[] perams, string delimiter = "AND")
+        {
+            string combined = '@' + perams[0].ParameterName;
+            for (int i = 1; i < perams.Length; i++)
+                combined +=  delimiter + " @ " + perams[i].ParameterName;
+            return combined;
+        }
+        string EnumerateArray(string[] elements, string delimiter = ",")
+        {
+            string combined = elements[0];
+            for (int i = 1; i < elements.Length; i++)
+                combined += delimiter + elements[i];
+            return combined;
+        }
     }
 }
