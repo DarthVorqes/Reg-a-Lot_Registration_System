@@ -21,6 +21,5 @@ namespace RegistrationSystem
         {
             Application.Exit();
         }
-
     }
 }
