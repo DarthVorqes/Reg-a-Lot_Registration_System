@@ -55,6 +55,12 @@
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
+    <Compile Include="PersonalInfoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonalInfoView.Designer.cs">
+      <DependentUpon>PersonalInfoView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Professor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonalInfoView.resx">
+      <DependentUpon>PersonalInfoView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Professor.resx">
       <DependentUpon>Professor.cs</DependentUpon>
