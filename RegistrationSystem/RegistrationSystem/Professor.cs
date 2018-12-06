@@ -13,8 +13,8 @@ namespace RegistrationSystem
     public partial class ProfessorView : Form
     {
         public char grade { get; private set; }
-        private List<string> studentIndex = new List<string>() { "Jim", "gary", "mary" };
-        private List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
+        private List<string> studentIndex     = new List<string>() { "Jim", "gary", "mary" };
+        private List<string> sectionIndex     = new List<string>() { "section1", "section2", "section3" }; 
         private int sectionIndexCount = 0;
 
         public ProfessorView()
