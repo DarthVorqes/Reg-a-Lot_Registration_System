@@ -20,15 +20,11 @@ namespace RegistrationSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Max" && radioButton1.Checked)
+            if (textBox1.Text == "Trey" && radioButton1.Checked)
             {
-                string message = "You are not a Student.";
-                string caption = "Authentification Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result;
-                // Displays the MessageBox.
-
-                result = MessageBox.Show(message, caption, buttons);
+                studentView Sview = new studentView();
+                Sview.Show();
+                Hide();
             }
 
             if (textBox1.Text == "Max" && radioButton2.Checked)
@@ -51,9 +47,5 @@ namespace RegistrationSystem
             }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
