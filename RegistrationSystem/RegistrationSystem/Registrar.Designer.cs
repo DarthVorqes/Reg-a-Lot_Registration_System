@@ -94,14 +94,14 @@
             this.label75 = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.userPicture = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.idLbl2 = new System.Windows.Forms.Label();
+            this.sexLbl2 = new System.Windows.Forms.Label();
+            this.ageLbl2 = new System.Windows.Forms.Label();
+            this.lastNameLbl2 = new System.Windows.Forms.Label();
+            this.middleNameLbl2 = new System.Windows.Forms.Label();
+            this.firstNameLbl2 = new System.Windows.Forms.Label();
+            this.userSearchBtn = new System.Windows.Forms.Button();
+            this.userSearchBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -116,9 +116,9 @@
             this.address = new System.Windows.Forms.Label();
             this.age = new System.Windows.Forms.Label();
             this.lastName = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label84 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.changePasswordBtn = new System.Windows.Forms.Button();
+            this.changePasswordLbl = new System.Windows.Forms.Label();
+            this.userPicture2 = new System.Windows.Forms.Panel();
             this.label83 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.firstName = new System.Windows.Forms.Label();
@@ -135,8 +135,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.eventFilter = new System.Windows.Forms.RadioButton();
             this.regFilter = new System.Windows.Forms.RadioButton();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
@@ -149,14 +147,18 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
             this.date1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
+            this.id2 = new System.Windows.Forms.Label();
+            this.lastName2 = new System.Windows.Forms.Label();
+            this.firstName2 = new System.Windows.Forms.Label();
+            this.middleName2 = new System.Windows.Forms.Label();
+            this.age2 = new System.Windows.Forms.Label();
+            this.sex2 = new System.Windows.Forms.Label();
+            this.address2 = new System.Windows.Forms.Label();
+            this.addressLbl2 = new System.Windows.Forms.Label();
+            this.idLbl = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.Label();
+            this.acceptClass = new System.Windows.Forms.LinkLabel();
+            this.denyClass = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -164,7 +166,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.personalInfoPage.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.userPicture2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -296,8 +298,8 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.userSearchBtn);
+            this.panel2.Controls.Add(this.userSearchBox);
             this.panel2.Location = new System.Drawing.Point(0, -6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(702, 585);
@@ -306,23 +308,23 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.label78);
-            this.panel3.Controls.Add(this.label79);
-            this.panel3.Controls.Add(this.label77);
-            this.panel3.Controls.Add(this.label69);
-            this.panel3.Controls.Add(this.label63);
-            this.panel3.Controls.Add(this.label59);
-            this.panel3.Controls.Add(this.label29);
-            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.address2);
+            this.panel3.Controls.Add(this.addressLbl2);
+            this.panel3.Controls.Add(this.sex2);
+            this.panel3.Controls.Add(this.age2);
+            this.panel3.Controls.Add(this.middleName2);
+            this.panel3.Controls.Add(this.firstName2);
+            this.panel3.Controls.Add(this.lastName2);
+            this.panel3.Controls.Add(this.id2);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label76);
             this.panel3.Controls.Add(this.userPicture);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.idLbl2);
+            this.panel3.Controls.Add(this.sexLbl2);
+            this.panel3.Controls.Add(this.ageLbl2);
+            this.panel3.Controls.Add(this.lastNameLbl2);
+            this.panel3.Controls.Add(this.middleNameLbl2);
+            this.panel3.Controls.Add(this.firstNameLbl2);
             this.panel3.Location = new System.Drawing.Point(27, 90);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(660, 484);
@@ -854,78 +856,78 @@
             this.userPicture.TabIndex = 6;
             this.userPicture.Text = "Imagine a stick figure here";
             // 
-            // label9
+            // idLbl2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(455, 57);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(21, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "ID:";
+            this.idLbl2.AutoSize = true;
+            this.idLbl2.Location = new System.Drawing.Point(455, 57);
+            this.idLbl2.Name = "idLbl2";
+            this.idLbl2.Size = new System.Drawing.Size(21, 13);
+            this.idLbl2.TabIndex = 5;
+            this.idLbl2.Text = "ID:";
             // 
-            // label10
+            // sexLbl2
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(448, 120);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Sex: ";
+            this.sexLbl2.AutoSize = true;
+            this.sexLbl2.Location = new System.Drawing.Point(448, 120);
+            this.sexLbl2.Name = "sexLbl2";
+            this.sexLbl2.Size = new System.Drawing.Size(31, 13);
+            this.sexLbl2.TabIndex = 4;
+            this.sexLbl2.Text = "Sex: ";
             // 
-            // label11
+            // ageLbl2
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(447, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 13);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Age: ";
+            this.ageLbl2.AutoSize = true;
+            this.ageLbl2.Location = new System.Drawing.Point(447, 107);
+            this.ageLbl2.Name = "ageLbl2";
+            this.ageLbl2.Size = new System.Drawing.Size(32, 13);
+            this.ageLbl2.TabIndex = 3;
+            this.ageLbl2.Text = "Age: ";
             // 
-            // label12
+            // lastNameLbl2
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(415, 94);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Last Name:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+            this.lastNameLbl2.AutoSize = true;
+            this.lastNameLbl2.Location = new System.Drawing.Point(415, 94);
+            this.lastNameLbl2.Name = "lastNameLbl2";
+            this.lastNameLbl2.Size = new System.Drawing.Size(61, 13);
+            this.lastNameLbl2.TabIndex = 2;
+            this.lastNameLbl2.Text = "Last Name:";
+            this.lastNameLbl2.Click += new System.EventHandler(this.label12_Click);
             // 
-            // label13
+            // middleNameLbl2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(404, 83);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Middle Name:";
+            this.middleNameLbl2.AutoSize = true;
+            this.middleNameLbl2.Location = new System.Drawing.Point(404, 83);
+            this.middleNameLbl2.Name = "middleNameLbl2";
+            this.middleNameLbl2.Size = new System.Drawing.Size(72, 13);
+            this.middleNameLbl2.TabIndex = 1;
+            this.middleNameLbl2.Text = "Middle Name:";
             // 
-            // label14
+            // firstNameLbl2
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(416, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 13);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "First Name:";
+            this.firstNameLbl2.AutoSize = true;
+            this.firstNameLbl2.Location = new System.Drawing.Point(416, 70);
+            this.firstNameLbl2.Name = "firstNameLbl2";
+            this.firstNameLbl2.Size = new System.Drawing.Size(60, 13);
+            this.firstNameLbl2.TabIndex = 0;
+            this.firstNameLbl2.Text = "First Name:";
             // 
-            // button3
+            // userSearchBtn
             // 
-            this.button3.Location = new System.Drawing.Point(239, 47);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 20);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.userSearchBtn.Location = new System.Drawing.Point(239, 47);
+            this.userSearchBtn.Name = "userSearchBtn";
+            this.userSearchBtn.Size = new System.Drawing.Size(72, 20);
+            this.userSearchBtn.TabIndex = 1;
+            this.userSearchBtn.Text = "Search";
+            this.userSearchBtn.UseVisualStyleBackColor = true;
+            this.userSearchBtn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox1
+            // userSearchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(42, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.userSearchBox.Location = new System.Drawing.Point(42, 48);
+            this.userSearchBox.Name = "userSearchBox";
+            this.userSearchBox.Size = new System.Drawing.Size(170, 20);
+            this.userSearchBox.TabIndex = 0;
+            this.userSearchBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label7
             // 
@@ -992,15 +994,17 @@
             // 
             // personalInfoPage
             // 
+            this.personalInfoPage.Controls.Add(this.id);
+            this.personalInfoPage.Controls.Add(this.idLbl);
             this.personalInfoPage.Controls.Add(this.middleName);
             this.personalInfoPage.Controls.Add(this.middleNamelbl);
             this.personalInfoPage.Controls.Add(this.sex);
             this.personalInfoPage.Controls.Add(this.address);
             this.personalInfoPage.Controls.Add(this.age);
             this.personalInfoPage.Controls.Add(this.lastName);
-            this.personalInfoPage.Controls.Add(this.button2);
-            this.personalInfoPage.Controls.Add(this.label84);
-            this.personalInfoPage.Controls.Add(this.panel6);
+            this.personalInfoPage.Controls.Add(this.changePasswordBtn);
+            this.personalInfoPage.Controls.Add(this.changePasswordLbl);
+            this.personalInfoPage.Controls.Add(this.userPicture2);
             this.personalInfoPage.Controls.Add(this.firstName);
             this.personalInfoPage.Controls.Add(this.sexlbl);
             this.personalInfoPage.Controls.Add(this.addresslbl);
@@ -1017,7 +1021,7 @@
             // middleName
             // 
             this.middleName.AutoSize = true;
-            this.middleName.Location = new System.Drawing.Point(358, 56);
+            this.middleName.Location = new System.Drawing.Point(418, 69);
             this.middleName.Name = "middleName";
             this.middleName.Size = new System.Drawing.Size(44, 13);
             this.middleName.TabIndex = 14;
@@ -1026,7 +1030,7 @@
             // middleNamelbl
             // 
             this.middleNamelbl.AutoSize = true;
-            this.middleNamelbl.Location = new System.Drawing.Point(279, 56);
+            this.middleNamelbl.Location = new System.Drawing.Point(346, 69);
             this.middleNamelbl.Name = "middleNamelbl";
             this.middleNamelbl.Size = new System.Drawing.Size(75, 13);
             this.middleNamelbl.TabIndex = 13;
@@ -1035,7 +1039,7 @@
             // sex
             // 
             this.sex.AutoSize = true;
-            this.sex.Location = new System.Drawing.Point(358, 108);
+            this.sex.Location = new System.Drawing.Point(418, 121);
             this.sex.Name = "sex";
             this.sex.Size = new System.Drawing.Size(16, 13);
             this.sex.TabIndex = 12;
@@ -1044,7 +1048,7 @@
             // address
             // 
             this.address.AutoSize = true;
-            this.address.Location = new System.Drawing.Point(358, 95);
+            this.address.Location = new System.Drawing.Point(418, 108);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(96, 13);
             this.address.TabIndex = 11;
@@ -1053,7 +1057,7 @@
             // age
             // 
             this.age.AutoSize = true;
-            this.age.Location = new System.Drawing.Point(358, 82);
+            this.age.Location = new System.Drawing.Point(418, 95);
             this.age.Name = "age";
             this.age.Size = new System.Drawing.Size(19, 13);
             this.age.TabIndex = 10;
@@ -1062,39 +1066,39 @@
             // lastName
             // 
             this.lastName.AutoSize = true;
-            this.lastName.Location = new System.Drawing.Point(358, 69);
+            this.lastName.Location = new System.Drawing.Point(418, 82);
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(57, 13);
             this.lastName.TabIndex = 9;
             this.lastName.Text = "Williamson";
             // 
-            // button2
+            // changePasswordBtn
             // 
-            this.button2.Location = new System.Drawing.Point(193, 396);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 20);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Change Password";
-            this.button2.UseVisualStyleBackColor = true;
+            this.changePasswordBtn.Location = new System.Drawing.Point(193, 396);
+            this.changePasswordBtn.Name = "changePasswordBtn";
+            this.changePasswordBtn.Size = new System.Drawing.Size(112, 20);
+            this.changePasswordBtn.TabIndex = 8;
+            this.changePasswordBtn.Text = "Change Password";
+            this.changePasswordBtn.UseVisualStyleBackColor = true;
             // 
-            // label84
+            // changePasswordLbl
             // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(58, 400);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(129, 13);
-            this.label84.TabIndex = 7;
-            this.label84.Text = "Click to change password";
+            this.changePasswordLbl.AutoSize = true;
+            this.changePasswordLbl.Location = new System.Drawing.Point(58, 400);
+            this.changePasswordLbl.Name = "changePasswordLbl";
+            this.changePasswordLbl.Size = new System.Drawing.Size(129, 13);
+            this.changePasswordLbl.TabIndex = 7;
+            this.changePasswordLbl.Text = "Click to change password";
             // 
-            // panel6
+            // userPicture2
             // 
-            this.panel6.BackColor = System.Drawing.Color.Gray;
-            this.panel6.Controls.Add(this.label83);
-            this.panel6.Controls.Add(this.label82);
-            this.panel6.Location = new System.Drawing.Point(44, 29);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(154, 167);
-            this.panel6.TabIndex = 6;
+            this.userPicture2.BackColor = System.Drawing.Color.Gray;
+            this.userPicture2.Controls.Add(this.label83);
+            this.userPicture2.Controls.Add(this.label82);
+            this.userPicture2.Location = new System.Drawing.Point(44, 29);
+            this.userPicture2.Name = "userPicture2";
+            this.userPicture2.Size = new System.Drawing.Size(154, 167);
+            this.userPicture2.TabIndex = 6;
             // 
             // label83
             // 
@@ -1117,7 +1121,7 @@
             // firstName
             // 
             this.firstName.AutoSize = true;
-            this.firstName.Location = new System.Drawing.Point(357, 45);
+            this.firstName.Location = new System.Drawing.Point(417, 58);
             this.firstName.Name = "firstName";
             this.firstName.Size = new System.Drawing.Size(45, 13);
             this.firstName.TabIndex = 5;
@@ -1126,7 +1130,7 @@
             // sexlbl
             // 
             this.sexlbl.AutoSize = true;
-            this.sexlbl.Location = new System.Drawing.Point(322, 108);
+            this.sexlbl.Location = new System.Drawing.Point(389, 121);
             this.sexlbl.Name = "sexlbl";
             this.sexlbl.Size = new System.Drawing.Size(28, 13);
             this.sexlbl.TabIndex = 4;
@@ -1135,7 +1139,7 @@
             // addresslbl
             // 
             this.addresslbl.AutoSize = true;
-            this.addresslbl.Location = new System.Drawing.Point(302, 95);
+            this.addresslbl.Location = new System.Drawing.Point(369, 108);
             this.addresslbl.Name = "addresslbl";
             this.addresslbl.Size = new System.Drawing.Size(48, 13);
             this.addresslbl.TabIndex = 3;
@@ -1144,7 +1148,7 @@
             // agelbl
             // 
             this.agelbl.AutoSize = true;
-            this.agelbl.Location = new System.Drawing.Point(322, 82);
+            this.agelbl.Location = new System.Drawing.Point(389, 95);
             this.agelbl.Name = "agelbl";
             this.agelbl.Size = new System.Drawing.Size(29, 13);
             this.agelbl.TabIndex = 2;
@@ -1153,7 +1157,7 @@
             // lastNamelbl
             // 
             this.lastNamelbl.AutoSize = true;
-            this.lastNamelbl.Location = new System.Drawing.Point(290, 69);
+            this.lastNamelbl.Location = new System.Drawing.Point(357, 82);
             this.lastNamelbl.Name = "lastNamelbl";
             this.lastNamelbl.Size = new System.Drawing.Size(61, 13);
             this.lastNamelbl.TabIndex = 1;
@@ -1162,7 +1166,7 @@
             // firstNamelbl
             // 
             this.firstNamelbl.AutoSize = true;
-            this.firstNamelbl.Location = new System.Drawing.Point(291, 43);
+            this.firstNamelbl.Location = new System.Drawing.Point(358, 56);
             this.firstNamelbl.Name = "firstNamelbl";
             this.firstNamelbl.Size = new System.Drawing.Size(60, 13);
             this.firstNamelbl.TabIndex = 0;
@@ -1181,14 +1185,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.denyClass);
+            this.panel1.Controls.Add(this.acceptClass);
             this.panel1.Controls.Add(this.linkLabel2);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.label30);
             this.panel1.Controls.Add(this.label31);
             this.panel1.Controls.Add(this.eventFilter);
             this.panel1.Controls.Add(this.regFilter);
-            this.panel1.Controls.Add(this.label32);
-            this.panel1.Controls.Add(this.label38);
             this.panel1.Controls.Add(this.label60);
             this.panel1.Controls.Add(this.label61);
             this.panel1.Controls.Add(this.label62);
@@ -1198,9 +1202,9 @@
             this.panel1.Controls.Add(this.tableType1);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.generateTableBtn);
-            this.panel1.Location = new System.Drawing.Point(3, -6);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(703, 582);
+            this.panel1.Size = new System.Drawing.Size(706, 583);
             this.panel1.TabIndex = 18;
             // 
             // linkLabel2
@@ -1262,26 +1266,6 @@
             this.regFilter.TabStop = true;
             this.regFilter.Text = "Only Registration";
             this.regFilter.UseVisualStyleBackColor = true;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.Color.Red;
-            this.label32.Location = new System.Drawing.Point(84, 367);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(32, 13);
-            this.label32.TabIndex = 11;
-            this.label32.Text = "Deny";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.ForeColor = System.Drawing.Color.Lime;
-            this.label38.Location = new System.Drawing.Point(47, 367);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(32, 13);
-            this.label38.TabIndex = 10;
-            this.label38.Text = "Allow";
             // 
             // label60
             // 
@@ -1404,77 +1388,121 @@
             this.date1.TabIndex = 8;
             this.date1.Text = "Start Date - End Date";
             // 
-            // label8
+            // id2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(482, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "123456";
+            this.id2.AutoSize = true;
+            this.id2.Location = new System.Drawing.Point(473, 55);
+            this.id2.Name = "id2";
+            this.id2.Size = new System.Drawing.Size(43, 13);
+            this.id2.TabIndex = 9;
+            this.id2.Text = "123456";
             // 
-            // label29
+            // lastName2
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(482, 96);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(26, 13);
-            this.label29.TabIndex = 10;
-            this.label29.Text = "Bob";
+            this.lastName2.AutoSize = true;
+            this.lastName2.Location = new System.Drawing.Point(473, 96);
+            this.lastName2.Name = "lastName2";
+            this.lastName2.Size = new System.Drawing.Size(26, 13);
+            this.lastName2.TabIndex = 10;
+            this.lastName2.Text = "Bob";
             // 
-            // label59
+            // firstName2
             // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(482, 68);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(22, 13);
-            this.label59.TabIndex = 11;
-            this.label59.Text = "Jim";
+            this.firstName2.AutoSize = true;
+            this.firstName2.Location = new System.Drawing.Point(473, 68);
+            this.firstName2.Name = "firstName2";
+            this.firstName2.Size = new System.Drawing.Size(22, 13);
+            this.firstName2.TabIndex = 11;
+            this.firstName2.Text = "Jim";
             // 
-            // label63
+            // middleName2
             // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(482, 81);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(49, 13);
-            this.label63.TabIndex = 12;
-            this.label63.Text = "Reginald";
+            this.middleName2.AutoSize = true;
+            this.middleName2.Location = new System.Drawing.Point(473, 81);
+            this.middleName2.Name = "middleName2";
+            this.middleName2.Size = new System.Drawing.Size(49, 13);
+            this.middleName2.TabIndex = 12;
+            this.middleName2.Text = "Reginald";
             // 
-            // label69
+            // age2
             // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(482, 109);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(19, 13);
-            this.label69.TabIndex = 13;
-            this.label69.Text = "22";
+            this.age2.AutoSize = true;
+            this.age2.Location = new System.Drawing.Point(473, 109);
+            this.age2.Name = "age2";
+            this.age2.Size = new System.Drawing.Size(19, 13);
+            this.age2.TabIndex = 13;
+            this.age2.Text = "22";
             // 
-            // label77
+            // sex2
             // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(482, 122);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(16, 13);
-            this.label77.TabIndex = 14;
-            this.label77.Text = "M";
+            this.sex2.AutoSize = true;
+            this.sex2.Location = new System.Drawing.Point(476, 122);
+            this.sex2.Name = "sex2";
+            this.sex2.Size = new System.Drawing.Size(16, 13);
+            this.sex2.TabIndex = 14;
+            this.sex2.Text = "M";
             // 
-            // label78
+            // address2
             // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(482, 134);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(96, 13);
-            this.label78.TabIndex = 16;
-            this.label78.Text = "8235 Westbury Dr.";
+            this.address2.AutoSize = true;
+            this.address2.Location = new System.Drawing.Point(473, 134);
+            this.address2.Name = "address2";
+            this.address2.Size = new System.Drawing.Size(96, 13);
+            this.address2.TabIndex = 16;
+            this.address2.Text = "8235 Westbury Dr.";
             // 
-            // label79
+            // addressLbl2
             // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(428, 133);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(48, 13);
-            this.label79.TabIndex = 15;
-            this.label79.Text = "Address:";
+            this.addressLbl2.AutoSize = true;
+            this.addressLbl2.Location = new System.Drawing.Point(428, 133);
+            this.addressLbl2.Name = "addressLbl2";
+            this.addressLbl2.Size = new System.Drawing.Size(48, 13);
+            this.addressLbl2.TabIndex = 15;
+            this.addressLbl2.Text = "Address:";
+            // 
+            // idLbl
+            // 
+            this.idLbl.AutoSize = true;
+            this.idLbl.Location = new System.Drawing.Point(397, 45);
+            this.idLbl.Name = "idLbl";
+            this.idLbl.Size = new System.Drawing.Size(21, 13);
+            this.idLbl.TabIndex = 15;
+            this.idLbl.Text = "ID:";
+            // 
+            // id
+            // 
+            this.id.AutoSize = true;
+            this.id.Location = new System.Drawing.Point(418, 45);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(43, 13);
+            this.id.TabIndex = 16;
+            this.id.Text = "246810";
+            this.id.Click += new System.EventHandler(this.label81_Click);
+            // 
+            // acceptClass
+            // 
+            this.acceptClass.AutoSize = true;
+            this.acceptClass.ForeColor = System.Drawing.Color.Lime;
+            this.acceptClass.LinkColor = System.Drawing.Color.Lime;
+            this.acceptClass.Location = new System.Drawing.Point(46, 363);
+            this.acceptClass.Name = "acceptClass";
+            this.acceptClass.Size = new System.Drawing.Size(32, 13);
+            this.acceptClass.TabIndex = 18;
+            this.acceptClass.TabStop = true;
+            this.acceptClass.Text = "Allow";
+            this.acceptClass.VisitedLinkColor = System.Drawing.Color.Lime;
+            // 
+            // denyClass
+            // 
+            this.denyClass.AutoSize = true;
+            this.denyClass.LinkColor = System.Drawing.Color.Red;
+            this.denyClass.Location = new System.Drawing.Point(84, 363);
+            this.denyClass.Name = "denyClass";
+            this.denyClass.Size = new System.Drawing.Size(32, 13);
+            this.denyClass.TabIndex = 19;
+            this.denyClass.TabStop = true;
+            this.denyClass.Text = "Deny";
+            this.denyClass.VisitedLinkColor = System.Drawing.Color.Red;
             // 
             // Registrar
             // 
@@ -1500,8 +1528,8 @@
             this.panel4.PerformLayout();
             this.personalInfoPage.ResumeLayout(false);
             this.personalInfoPage.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.userPicture2.ResumeLayout(false);
+            this.userPicture2.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1577,14 +1605,14 @@
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Label userPicture;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label idLbl2;
+        private System.Windows.Forms.Label sexLbl2;
+        private System.Windows.Forms.Label ageLbl2;
+        private System.Windows.Forms.Label lastNameLbl2;
+        private System.Windows.Forms.Label middleNameLbl2;
+        private System.Windows.Forms.Label firstNameLbl2;
+        private System.Windows.Forms.Button userSearchBtn;
+        private System.Windows.Forms.TextBox userSearchBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -1599,9 +1627,9 @@
         private System.Windows.Forms.Label address;
         private System.Windows.Forms.Label age;
         private System.Windows.Forms.Label lastName;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button changePasswordBtn;
+        private System.Windows.Forms.Label changePasswordLbl;
+        private System.Windows.Forms.Panel userPicture2;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.Label firstName;
@@ -1618,8 +1646,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.RadioButton eventFilter;
         private System.Windows.Forms.RadioButton regFilter;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label62;
@@ -1632,13 +1658,17 @@
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.Label date1;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label sex2;
+        private System.Windows.Forms.Label age2;
+        private System.Windows.Forms.Label middleName2;
+        private System.Windows.Forms.Label firstName2;
+        private System.Windows.Forms.Label lastName2;
+        private System.Windows.Forms.Label id2;
+        private System.Windows.Forms.Label address2;
+        private System.Windows.Forms.Label addressLbl2;
+        private System.Windows.Forms.Label id;
+        private System.Windows.Forms.Label idLbl;
+        private System.Windows.Forms.LinkLabel denyClass;
+        private System.Windows.Forms.LinkLabel acceptClass;
     }
 }

@@ -101,5 +101,10 @@ namespace RegistrationSystem
         {
 
         }
+
+        private void label81_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
