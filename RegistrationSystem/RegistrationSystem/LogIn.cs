@@ -36,12 +36,12 @@ namespace RegistrationSystem
                 PView.Show();
                 Hide();
             }
-          /*if(check to see if student)
+          if(UserNameTextBox.Text == "Trey")
             {
                 StudentView SView = new StudentView();
                 SView.Show();
                 Hide();
-            }*/
+            }
             else
             {
                 MessageBox.Show("Invaild Credentials!!");
