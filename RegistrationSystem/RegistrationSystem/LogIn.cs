@@ -21,6 +21,7 @@ namespace RegistrationSystem
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
          /*   if (check to see if registar)
             {
                 RegistarView RView = new RegistarView(ID);
@@ -50,8 +51,42 @@ namespace RegistrationSystem
                 MessageBox.Show("Invaild Credentials!!");
             }
 
+=======
+            bool login = false;  
+                /*   if (check to see if registar)
+                   {
+                       //if personID as username this will be fine if not then just search data base for the id linked to the username
+                       ID = UserNameTextBox.Text;
+                       login = true;
+                       RegistarView RView = new RegistarView(ID);
+                       RView.Show();
+                       Hide();
+                   }*/
+                //check to see if professor:
+                if (UserNameTextBox.Text == "Max")
+                {
+                    //if personID as username this will be fine if not then just search data base for the id linked to the username
+                    ID = UserNameTextBox.Text;
+                    login = true;
+                    ProfessorView PView = new ProfessorView(ID);
+                    PView.Show();
+                    Hide();
+                }
+                if (UserNameTextBox.Text == "Trey")
+                {
+                    //if personID as username this will be fine if not then just search data base for the id linked to the username
+                    ID = UserNameTextBox.Text;
+                    login = true;
+                    studentView SView = new studentView();
+                    SView.Show();
+                    Hide();
+                }
+                if (login == false)
+                {
+                    MessageBox.Show("Invaild Credintials!!");
+                }           
+>>>>>>> origin/Proffessor
         }
-
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);

@@ -30,9 +30,10 @@
         {
             this.ProfessorTabControl = new System.Windows.Forms.TabControl();
             this.ProfessorScheduleTab = new System.Windows.Forms.TabPage();
+            this.ViewStudentButton = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.ScheduleListBox = new System.Windows.Forms.ListBox();
             this.ScheduleComboBox = new System.Windows.Forms.ComboBox();
-            this.ScheduleCalander = new System.Windows.Forms.MonthCalendar();
             this.ProfessorAddDropTab = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.DropButton = new System.Windows.Forms.Button();
@@ -40,7 +41,10 @@
             this.AddDropListBox = new System.Windows.Forms.ListBox();
             this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorPersonalInfoTab = new System.Windows.Forms.TabPage();
-            this.UpdatePersonalInfoButton = new System.Windows.Forms.Button();
+            this.NewPass = new System.Windows.Forms.Label();
+            this.ChangePassCheck = new System.Windows.Forms.TextBox();
+            this.ChangePass = new System.Windows.Forms.TextBox();
+            this.ChangePassButton = new System.Windows.Forms.Button();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -64,32 +68,52 @@
             this.ProfessorTabControl.Controls.Add(this.ProfessorScheduleTab);
             this.ProfessorTabControl.Controls.Add(this.ProfessorAddDropTab);
             this.ProfessorTabControl.Controls.Add(this.ProfessorPersonalInfoTab);
+            this.ProfessorTabControl.HotTrack = true;
             this.ProfessorTabControl.Location = new System.Drawing.Point(12, 59);
             this.ProfessorTabControl.Multiline = true;
             this.ProfessorTabControl.Name = "ProfessorTabControl";
             this.ProfessorTabControl.SelectedIndex = 0;
-            this.ProfessorTabControl.Size = new System.Drawing.Size(758, 465);
+            this.ProfessorTabControl.Size = new System.Drawing.Size(758, 475);
             this.ProfessorTabControl.TabIndex = 0;
             // 
             // ProfessorScheduleTab
             // 
+            this.ProfessorScheduleTab.Controls.Add(this.ViewStudentButton);
+            this.ProfessorScheduleTab.Controls.Add(this.webBrowser1);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleListBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleComboBox);
-            this.ProfessorScheduleTab.Controls.Add(this.ScheduleCalander);
             this.ProfessorScheduleTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorScheduleTab.Name = "ProfessorScheduleTab";
             this.ProfessorScheduleTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ProfessorScheduleTab.Size = new System.Drawing.Size(731, 457);
+            this.ProfessorScheduleTab.Size = new System.Drawing.Size(731, 467);
             this.ProfessorScheduleTab.TabIndex = 0;
             this.ProfessorScheduleTab.Text = "Schedule";
             this.ProfessorScheduleTab.UseVisualStyleBackColor = true;
+            // 
+            // ViewStudentButton
+            // 
+            this.ViewStudentButton.Location = new System.Drawing.Point(584, 428);
+            this.ViewStudentButton.Name = "ViewStudentButton";
+            this.ViewStudentButton.Size = new System.Drawing.Size(109, 23);
+            this.ViewStudentButton.TabIndex = 4;
+            this.ViewStudentButton.Text = "View Student";
+            this.ViewStudentButton.UseVisualStyleBackColor = true;
+            this.ViewStudentButton.Click += new System.EventHandler(this.ViewStudentButton_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(15, 3);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(710, 174);
+            this.webBrowser1.TabIndex = 3;
             // 
             // ScheduleListBox
             // 
             this.ScheduleListBox.FormattingEnabled = true;
             this.ScheduleListBox.Location = new System.Drawing.Point(27, 210);
             this.ScheduleListBox.Name = "ScheduleListBox";
-            this.ScheduleListBox.Size = new System.Drawing.Size(666, 225);
+            this.ScheduleListBox.Size = new System.Drawing.Size(666, 212);
             this.ScheduleListBox.TabIndex = 2;
             // 
             // ScheduleComboBox
@@ -101,13 +125,6 @@
             this.ScheduleComboBox.TabIndex = 1;
             this.ScheduleComboBox.SelectedIndexChanged += new System.EventHandler(this.ScheduleComboBox_SelectedIndexChanged);
             // 
-            // ScheduleCalander
-            // 
-            this.ScheduleCalander.CalendarDimensions = new System.Drawing.Size(3, 1);
-            this.ScheduleCalander.Location = new System.Drawing.Point(17, 9);
-            this.ScheduleCalander.Name = "ScheduleCalander";
-            this.ScheduleCalander.TabIndex = 0;
-            // 
             // ProfessorAddDropTab
             // 
             this.ProfessorAddDropTab.Controls.Add(this.label10);
@@ -118,7 +135,7 @@
             this.ProfessorAddDropTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorAddDropTab.Name = "ProfessorAddDropTab";
             this.ProfessorAddDropTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ProfessorAddDropTab.Size = new System.Drawing.Size(731, 457);
+            this.ProfessorAddDropTab.Size = new System.Drawing.Size(731, 467);
             this.ProfessorAddDropTab.TabIndex = 1;
             this.ProfessorAddDropTab.Text = "Add/Drop";
             this.ProfessorAddDropTab.UseVisualStyleBackColor = true;
@@ -171,7 +188,10 @@
             // 
             // ProfessorPersonalInfoTab
             // 
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UpdatePersonalInfoButton);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.NewPass);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.ChangePassCheck);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.ChangePass);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.ChangePassButton);
             this.ProfessorPersonalInfoTab.Controls.Add(this.PasswordLabel);
             this.ProfessorPersonalInfoTab.Controls.Add(this.PhoneNumberLabel);
             this.ProfessorPersonalInfoTab.Controls.Add(this.EmailLabel);
@@ -182,24 +202,50 @@
             this.ProfessorPersonalInfoTab.Controls.Add(this.FirstNameLabel);
             this.ProfessorPersonalInfoTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorPersonalInfoTab.Name = "ProfessorPersonalInfoTab";
-            this.ProfessorPersonalInfoTab.Size = new System.Drawing.Size(731, 457);
+            this.ProfessorPersonalInfoTab.Size = new System.Drawing.Size(731, 467);
             this.ProfessorPersonalInfoTab.TabIndex = 2;
             this.ProfessorPersonalInfoTab.Text = "Personal Info";
             this.ProfessorPersonalInfoTab.UseVisualStyleBackColor = true;
             // 
-            // UpdatePersonalInfoButton
+            // NewPass
             // 
-            this.UpdatePersonalInfoButton.Location = new System.Drawing.Point(181, 319);
-            this.UpdatePersonalInfoButton.Name = "UpdatePersonalInfoButton";
-            this.UpdatePersonalInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.UpdatePersonalInfoButton.TabIndex = 8;
-            this.UpdatePersonalInfoButton.Text = "Change";
-            this.UpdatePersonalInfoButton.UseVisualStyleBackColor = true;
+            this.NewPass.AutoSize = true;
+            this.NewPass.Location = new System.Drawing.Point(34, 376);
+            this.NewPass.Name = "NewPass";
+            this.NewPass.Size = new System.Drawing.Size(78, 13);
+            this.NewPass.TabIndex = 10;
+            this.NewPass.Text = "New Password";
+            // 
+            // ChangePassCheck
+            // 
+            this.ChangePassCheck.Location = new System.Drawing.Point(314, 374);
+            this.ChangePassCheck.Name = "ChangePassCheck";
+            this.ChangePassCheck.Size = new System.Drawing.Size(152, 20);
+            this.ChangePassCheck.TabIndex = 9;
+            this.ChangePassCheck.UseSystemPasswordChar = true;
+            // 
+            // ChangePass
+            // 
+            this.ChangePass.Location = new System.Drawing.Point(123, 373);
+            this.ChangePass.Name = "ChangePass";
+            this.ChangePass.Size = new System.Drawing.Size(152, 20);
+            this.ChangePass.TabIndex = 9;
+            this.ChangePass.UseSystemPasswordChar = true;
+            // 
+            // ChangePassButton
+            // 
+            this.ChangePassButton.Location = new System.Drawing.Point(472, 371);
+            this.ChangePassButton.Name = "ChangePassButton";
+            this.ChangePassButton.Size = new System.Drawing.Size(75, 23);
+            this.ChangePassButton.TabIndex = 8;
+            this.ChangePassButton.Text = "Change";
+            this.ChangePassButton.UseVisualStyleBackColor = true;
+            this.ChangePassButton.Click += new System.EventHandler(this.ChangePassButton_Click);
             // 
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(58, 324);
+            this.PasswordLabel.Location = new System.Drawing.Point(37, 326);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(99, 13);
             this.PasswordLabel.TabIndex = 7;
@@ -277,10 +323,11 @@
             this.ProfessorTitle.Size = new System.Drawing.Size(395, 54);
             this.ProfessorTitle.TabIndex = 1;
             this.ProfessorTitle.Text = "Professor\'s Name";
+            this.ProfessorTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Logout
             // 
-            this.Logout.Location = new System.Drawing.Point(628, 530);
+            this.Logout.Location = new System.Drawing.Point(632, 540);
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(138, 23);
             this.Logout.TabIndex = 2;
@@ -327,12 +374,11 @@
         private System.Windows.Forms.Label ProfessorTitle;
         private System.Windows.Forms.ListBox ScheduleListBox;
         private System.Windows.Forms.ComboBox ScheduleComboBox;
-        private System.Windows.Forms.MonthCalendar ScheduleCalander;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ListBox AddDropListBox;
         private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
         private System.Windows.Forms.TabPage ProfessorPersonalInfoTab;
-        private System.Windows.Forms.Button UpdatePersonalInfoButton;
+        private System.Windows.Forms.Button ChangePassButton;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.Label EmailLabel;
@@ -345,5 +391,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button DropButton;
         private System.Windows.Forms.ComboBox UserViewComboBox;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.TextBox ChangePass;
+        private System.Windows.Forms.Label NewPass;
+        private System.Windows.Forms.TextBox ChangePassCheck;
+        private System.Windows.Forms.Button ViewStudentButton;
     }
 }

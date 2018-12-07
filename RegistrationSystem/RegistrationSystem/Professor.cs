@@ -12,7 +12,7 @@ namespace RegistrationSystem
 {
     public partial class ProfessorView : Form
     {
-        public char grade { get; private set; }
+        public char Grade { get; private set; }
     
         private List<string> studentIndex     = new List<string>() { "Jim", "gary", "mary" };
         private List<string> sectionIndex     = new List<string>() { "section1", "section2", "section3" };
@@ -26,10 +26,22 @@ namespace RegistrationSystem
         {
             userID = ID;
             InitializeComponent();
+            SetLabels(ID);
             UserViewComboBox_Load(ID);
             ScheduleComboBox_Load(ID);
             AddDropCoursesComboBox_Load(ID);
            
+
+        }
+        private void SetLabels(string ID)
+        {
+            ProfessorTitle.Text = ID; // or query database to find name
+            FirstNameLabel.Text = ID; //query for ids firstname in database
+            LastNameLabel.Text = "clem"; //query for ids lastname in database
+            IDNumberLabel.Text = ID; //we have the id
+            AddressLabel.Text = "758 collingsworth st"; //query for address in database
+            EmailLabel.Text = "clemmax@gmail.com"; //query for email in database
+
 
         }
         /// <summary>
@@ -58,12 +70,12 @@ namespace RegistrationSystem
         private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProfessorView Professor = new ProfessorView(userID);
-            //StudentView Student = new StudentView();
+            studentView Student = new studentView();
             //RegistarView Registar = new RegistarView();
             if ((string)UserViewComboBox.SelectedItem == "Student")
             {
-                //Student.show();
-                //Close();
+                Student.Show();
+                Close();
             }
             if ((string)UserViewComboBox.SelectedItem == "Professor")
             {
@@ -146,6 +158,7 @@ namespace RegistrationSystem
         {
             AddDropCoursesListBox_Load();
         }
+        
         /// <summary>
         /// Request to add a section to professors schedule
         /// </summary>
@@ -153,7 +166,26 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void AddButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string selectedItem = AddDropListBox.SelectedItem.ToString();
 
+                //check database if professor can registar for a class
+                //ex. if(canAddSection == true)
+                if (selectedItem == "section2")
+                {
+                    MessageBox.Show("You have been added as the instructor for the section " + selectedItem);
+                    //canAddSection = false;
+                }
+                else
+                {
+                    MessageBox.Show("You are not approved to add sections, ask registar for approval!");
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("You do not have a section selected!");
+            }
         }
         /// <summary>
         /// Request to drop a section from professors schedule
@@ -162,7 +194,62 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void DropButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string selectedItem = AddDropListBox.SelectedItem.ToString();
 
+                //check database if professor can drop a class
+                //ex. if(canDropSection == true)
+                if (selectedItem == "section2")
+                {
+                    MessageBox.Show("You have dropped the section " + selectedItem);
+                    //canDropSection = false;
+                }
+                else
+                {
+                    MessageBox.Show("You are not approved to drop sections, ask registar for approval!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("You do not have a section selected!");
+            }
+        }
+
+
+        private void ChangePassButton_Click(object sender, EventArgs e)
+        {
+            if (ChangePass.Text.Length < 6)
+            {
+                MessageBox.Show("Your password is too short!");
+            }
+            if (ChangePass.Text.Equals(ChangePassCheck.Text))
+            {
+                if (ChangePass.Text.Length > 5)
+                 {
+                   MessageBox.Show("Your password has been changed!");
+
+                 }
+            }
+            else
+            {
+                MessageBox.Show("Passwords DO NOT match!");
+            }
+        }
+
+        private void ViewStudentButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedItem = ScheduleListBox.SelectedItem.ToString();
+                //query database for student id using selected item
+                PersonalInfoView PersonalV = new PersonalInfoView(userID);
+                PersonalV.Show();
+            }
+            catch
+            {
+                MessageBox.Show("You do not have a section selected!");
+            }
         }
     }
 }
