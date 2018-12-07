@@ -12,3 +12,5 @@ CHANGELOG
 • 11/30/2018: Branch "Front End" and "BackEnd" have been created. Master branch is now protected and can only be edited by a branch pull request. Tested the pull request system and it is ready to be used.
 
 •12/1/2018: Backend was updated with more database connections.
+
+•12/7/2018: All GUI branches were merged into frontend and was then combined with the backend for a massive merge into the master. Then all branches were updated to match the new master.
