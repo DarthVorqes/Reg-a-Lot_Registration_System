@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Security.Cryptography;
-<<<<<<< HEAD
-=======
+
+
 using System.Data;
->>>>>>> BackEnd
+
 
 namespace RegistrationSystem
 {
     enum Tables
     {
-<<<<<<< HEAD
+
         People = 0,
-=======
+
         Person = 0,
->>>>>>> BackEnd
+
         Semester,
         Sections,
         Courses,
     }
-<<<<<<< HEAD
+
     enum QueryTypes // Comment
-=======
+
     enum QueryTypes
->>>>>>> BackEnd
+
     {
         Select,
         Update,
@@ -36,14 +36,13 @@ namespace RegistrationSystem
     }
     class DatabaseConnection
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
         delegate void SqlCommandExecuter(SqlCommand cmd);
->>>>>>> origin/Registrar
-=======
+
+
         delegate void SqlCommandExecuter(SqlCommand cmd);
->>>>>>> BackEnd
+
         /*
          * Database Connection Values
          * "user id=db1;password=db10;server=cis1.actx.edu;Trusted_Connection=yes;database=Project1;");
@@ -65,16 +64,16 @@ namespace RegistrationSystem
         };
         string HashedPassword { get; set; }
         int UserID { get; set; }
-<<<<<<< HEAD
+
         public DatabaseConnection(string connectionString)
-=======
+
         public DatabaseConnection()
             : this("User Id=db1;Password=db10;Server=cis1.actx.edu;Database=Project1;")
         {
 
         }
         DatabaseConnection(string connectionString)
->>>>>>> BackEnd
+
         {
             Connection = new SqlConnection()
             {
@@ -95,15 +94,14 @@ namespace RegistrationSystem
             return hash;
         }
         public DatabaseConnection(int userID, string password)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
             : this()
->>>>>>> BackEnd
+
         {
             UserID = userID;
 
-            //you know, there is this concept called: "Logical Naming" 
+            //you know, there is this concept called: "Logical Naming"
 
             Hashing = new HMACSHA512(Key);
             HashedPassword = Hash(password);
@@ -211,7 +209,7 @@ namespace RegistrationSystem
                 }
             }
             sql += "(" + columns + ") VALUES (" + values + ");";
-            
+
             List<string[]> query = new List<string[]>();
             bool successful = false;
             //try
@@ -240,16 +238,16 @@ namespace RegistrationSystem
         }
         //Update
         /// <summary>
-        /// 
+        ///
         /// </summary>
-<<<<<<< HEAD
+
         public int UserID { get; set; }
         byte[] HashedPassword { get; set; }
-=======
+
         {
             UserID = userID;
 
-            //you know, there is this concept called: "Logical Naming" 
+            //you know, there is this concept called: "Logical Naming"
             HMACSHA512 hasher = new HMACSHA512(Key);
             HashedPassword = Encoding.Unicode.GetString(
                 hasher.ComputeHash(Encoding.Unicode.GetBytes(password)));
@@ -260,9 +258,9 @@ namespace RegistrationSystem
         {
             /*
              PERSON:
-             
-             
-             
+
+
+
              */
         }
         void Authenticate()
@@ -353,19 +351,19 @@ namespace RegistrationSystem
         }
         //Update
         /// <summary>
-        /// 
+        ///
         /// </summary>
-=======
->>>>>>> BackEnd
+
+
         /// <param name="table"></param>
         /// <param name="searchPerams"></param>
         /// <param name="updatePerams"></param>
         /// <returns>Whether or not the operation was successful.</returns>
-<<<<<<< HEAD
+
         public bool UpdateAllOccurrences(Tables table, SqlParameter[] searchPerams, SqlParameter[] updatePerams)
-=======
+
         public bool Update(Tables table, SqlParameter[] searchPerams, SqlParameter[] updatePerams)
->>>>>>> BackEnd
+
         {
             bool successful = false;
             string set = updatePerams[0].ParameterName + " = @" + updatePerams[0].ParameterName;
@@ -378,11 +376,11 @@ namespace RegistrationSystem
                 "UPDATE " + table + " SET " + set + " WHERE " + BuildStringList(searchPerams),
                 allPerams.ToArray(),
                 (SqlCommand cmd) => {
-<<<<<<< HEAD
+
                     cmd.StatementCompleted += (object sender,
-=======
-                    cmd.StatementCompleted += (object sender, 
->>>>>>> BackEnd
+
+                    cmd.StatementCompleted += (object sender,
+
                         System.Data.StatementCompletedEventArgs e) =>
                     {
                         successful = true;
@@ -392,15 +390,15 @@ namespace RegistrationSystem
             return successful;
         }
         //Delete
-<<<<<<< HEAD
+
         public bool DeleteAllOccurrences(Tables table, SqlParameter[] perams)
         {
 
-=======
+
         public bool Delete(Tables table, SqlParameter[] perams)
         {
-            
->>>>>>> BackEnd
+
+
             bool successful = false;
             List<string[]> query = new List<string[]>();
             ExecuteQuery(
@@ -417,13 +415,13 @@ namespace RegistrationSystem
             return successful;
         }
         //helper methods
-<<<<<<< HEAD
+
         string BuildStringList(SqlParameter[] perams, string delimiter = "AND")
         {
             string combined = '@' + perams[0].ParameterName;
             for (int i = 1; i < perams.Length; i++)
                 combined += delimiter + " @ " + perams[i].ParameterName;
-=======
+
         string[] GetHeaders(Tables table)
         {
             //var columns = GetOccurrences("information_schema.columns", new SqlParameter[] { new SqlParameter("table_name", table) }, new string[] { "column_name", "*" });
@@ -453,7 +451,7 @@ namespace RegistrationSystem
             string combined = perams[0].ParameterName + " = " + '@' + perams[0].ParameterName;
             for (int i = 1; i < perams.Length; i++)
                 combined += delimiter + perams[i].ParameterName +  " = " +  " @" + perams[i].ParameterName;
->>>>>>> BackEnd
+
             return combined;
         }
         string EnumerateArray(string[] elements, string delimiter = ",")
@@ -463,9 +461,8 @@ namespace RegistrationSystem
                 combined += delimiter + elements[i];
             return combined;
         }
-<<<<<<< HEAD
->>>>>>> origin/Registrar
-=======
->>>>>>> BackEnd
+
+
+
     }
 }
