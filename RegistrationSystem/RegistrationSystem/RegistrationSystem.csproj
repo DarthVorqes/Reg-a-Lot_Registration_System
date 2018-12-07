@@ -106,7 +106,7 @@
 
     <EmbeddedResource Include="studentView.resx">
       <DependentUpon>studentView.cs</DependentUpon>
-
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
 
