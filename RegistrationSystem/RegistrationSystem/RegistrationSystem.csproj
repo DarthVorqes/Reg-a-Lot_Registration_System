@@ -103,13 +103,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-<<<<<<< HEAD
+
     <EmbeddedResource Include="studentView.resx">
       <DependentUpon>studentView.cs</DependentUpon>
-=======
+
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
->>>>>>> origin/Registrar
+
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
