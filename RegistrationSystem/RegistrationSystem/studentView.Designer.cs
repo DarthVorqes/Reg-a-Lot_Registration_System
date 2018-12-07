@@ -33,9 +33,10 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.addDrop1 = new System.Windows.Forms.TabPage();
             this.persInfo1 = new System.Windows.Forms.TabPage();
+            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.finance1 = new System.Windows.Forms.TabPage();
             this.logOut1 = new System.Windows.Forms.Button();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
             this.persInfo1.SuspendLayout();
@@ -48,11 +49,12 @@
             this.tabControl1.Controls.Add(this.addDrop1);
             this.tabControl1.Controls.Add(this.persInfo1);
             this.tabControl1.Controls.Add(this.finance1);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 1);
+            this.tabControl1.HotTrack = true;
+            this.tabControl1.Location = new System.Drawing.Point(-2, 29);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(695, 572);
+            this.tabControl1.Size = new System.Drawing.Size(695, 544);
             this.tabControl1.TabIndex = 0;
             // 
             // sched1
@@ -78,7 +80,8 @@
             this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(662, 558);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("file:///C:/Users/programmer/Desktop/schedule.html", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
+        "m\\RegistrationSystem\\schedule.html", System.UriKind.Absolute);
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
             // 
             // addDrop1
@@ -96,10 +99,26 @@
             this.persInfo1.Controls.Add(this.webBrowser2);
             this.persInfo1.Location = new System.Drawing.Point(23, 4);
             this.persInfo1.Name = "persInfo1";
-            this.persInfo1.Size = new System.Drawing.Size(668, 564);
+            this.persInfo1.Size = new System.Drawing.Size(668, 536);
             this.persInfo1.TabIndex = 2;
             this.persInfo1.Text = "Information";
             this.persInfo1.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser2
+            // 
+            this.webBrowser2.AllowNavigation = false;
+            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser2.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser2.Name = "webBrowser2";
+            this.webBrowser2.ScriptErrorsSuppressed = true;
+            this.webBrowser2.ScrollBarsEnabled = false;
+            this.webBrowser2.Size = new System.Drawing.Size(668, 536);
+            this.webBrowser2.TabIndex = 1;
+            this.webBrowser2.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
+        "m\\RegistrationSystem\\info.html", System.UriKind.Absolute);
+            this.webBrowser2.WebBrowserShortcutsEnabled = false;
             // 
             // finance1
             // 
@@ -120,20 +139,18 @@
             this.logOut1.UseVisualStyleBackColor = true;
             this.logOut1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // webBrowser2
+            // comboBox1
             // 
-            this.webBrowser2.AllowNavigation = false;
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.ScriptErrorsSuppressed = true;
-            this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(668, 564);
-            this.webBrowser2.TabIndex = 1;
-            this.webBrowser2.Url = new System.Uri("file:///C:/Users/programmer/Desktop/info.html", System.UriKind.Absolute);
-            this.webBrowser2.WebBrowserShortcutsEnabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Professor View",
+            "Registrar View"});
+            this.comboBox1.Location = new System.Drawing.Point(21, 6);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.Text = "View";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // studentView
             // 
@@ -142,6 +159,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(699, 607);
             this.ControlBox = false;
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.logOut1);
             this.Controls.Add(this.tabControl1);
             this.Name = "studentView";
@@ -162,5 +180,6 @@
         private System.Windows.Forms.TabPage finance1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

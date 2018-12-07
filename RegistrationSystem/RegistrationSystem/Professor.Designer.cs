@@ -30,17 +30,14 @@
         {
             this.ProfessorTabControl = new System.Windows.Forms.TabControl();
             this.ProfessorScheduleTab = new System.Windows.Forms.TabPage();
-            this.ScheduleList = new System.Windows.Forms.ListBox();
+            this.ScheduleListBox = new System.Windows.Forms.ListBox();
             this.ScheduleComboBox = new System.Windows.Forms.ComboBox();
             this.ScheduleCalander = new System.Windows.Forms.MonthCalendar();
             this.ProfessorAddDropTab = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.AddDropCoursesSearchBox = new System.Windows.Forms.TextBox();
             this.DropButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.AddDropFilterButton = new System.Windows.Forms.Button();
+            this.AddDropListBox = new System.Windows.Forms.ListBox();
             this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorPersonalInfoTab = new System.Windows.Forms.TabPage();
             this.UpdatePersonalInfoButton = new System.Windows.Forms.Button();
@@ -54,6 +51,7 @@
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.ProfessorTitle = new System.Windows.Forms.Label();
             this.Logout = new System.Windows.Forms.Button();
+            this.UserViewComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorTabControl.SuspendLayout();
             this.ProfessorScheduleTab.SuspendLayout();
             this.ProfessorAddDropTab.SuspendLayout();
@@ -75,7 +73,7 @@
             // 
             // ProfessorScheduleTab
             // 
-            this.ProfessorScheduleTab.Controls.Add(this.ScheduleList);
+            this.ProfessorScheduleTab.Controls.Add(this.ScheduleListBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleComboBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleCalander);
             this.ProfessorScheduleTab.Location = new System.Drawing.Point(23, 4);
@@ -86,13 +84,13 @@
             this.ProfessorScheduleTab.Text = "Schedule";
             this.ProfessorScheduleTab.UseVisualStyleBackColor = true;
             // 
-            // ScheduleList
+            // ScheduleListBox
             // 
-            this.ScheduleList.FormattingEnabled = true;
-            this.ScheduleList.Location = new System.Drawing.Point(27, 210);
-            this.ScheduleList.Name = "ScheduleList";
-            this.ScheduleList.Size = new System.Drawing.Size(666, 225);
-            this.ScheduleList.TabIndex = 2;
+            this.ScheduleListBox.FormattingEnabled = true;
+            this.ScheduleListBox.Location = new System.Drawing.Point(27, 210);
+            this.ScheduleListBox.Name = "ScheduleListBox";
+            this.ScheduleListBox.Size = new System.Drawing.Size(666, 225);
+            this.ScheduleListBox.TabIndex = 2;
             // 
             // ScheduleComboBox
             // 
@@ -101,7 +99,7 @@
             this.ScheduleComboBox.Name = "ScheduleComboBox";
             this.ScheduleComboBox.Size = new System.Drawing.Size(347, 21);
             this.ScheduleComboBox.TabIndex = 1;
-            this.ScheduleComboBox_Load();
+            this.ScheduleComboBox.SelectedIndexChanged += new System.EventHandler(this.ScheduleComboBox_SelectedIndexChanged);
             // 
             // ScheduleCalander
             // 
@@ -112,13 +110,10 @@
             // 
             // ProfessorAddDropTab
             // 
-            this.ProfessorAddDropTab.Controls.Add(this.label11);
             this.ProfessorAddDropTab.Controls.Add(this.label10);
-            this.ProfessorAddDropTab.Controls.Add(this.AddDropCoursesSearchBox);
             this.ProfessorAddDropTab.Controls.Add(this.DropButton);
             this.ProfessorAddDropTab.Controls.Add(this.AddButton);
-            this.ProfessorAddDropTab.Controls.Add(this.listBox2);
-            this.ProfessorAddDropTab.Controls.Add(this.AddDropFilterButton);
+            this.ProfessorAddDropTab.Controls.Add(this.AddDropListBox);
             this.ProfessorAddDropTab.Controls.Add(this.AddDropCoursesComboBox);
             this.ProfessorAddDropTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorAddDropTab.Name = "ProfessorAddDropTab";
@@ -127,15 +122,6 @@
             this.ProfessorAddDropTab.TabIndex = 1;
             this.ProfessorAddDropTab.Text = "Add/Drop";
             this.ProfessorAddDropTab.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(363, 38);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(97, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Search for Courses";
             // 
             // label10
             // 
@@ -146,13 +132,6 @@
             this.label10.TabIndex = 7;
             this.label10.Text = "Courses";
             // 
-            // AddDropCoursesSearchBox
-            // 
-            this.AddDropCoursesSearchBox.Location = new System.Drawing.Point(366, 54);
-            this.AddDropCoursesSearchBox.Name = "AddDropCoursesSearchBox";
-            this.AddDropCoursesSearchBox.Size = new System.Drawing.Size(278, 20);
-            this.AddDropCoursesSearchBox.TabIndex = 6;
-            // 
             // DropButton
             // 
             this.DropButton.Location = new System.Drawing.Point(431, 402);
@@ -161,6 +140,7 @@
             this.DropButton.TabIndex = 4;
             this.DropButton.Text = "Drop";
             this.DropButton.UseVisualStyleBackColor = true;
+            this.DropButton.Click += new System.EventHandler(this.DropButton_Click);
             // 
             // AddButton
             // 
@@ -170,33 +150,24 @@
             this.AddButton.TabIndex = 4;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // listBox2
+            // AddDropListBox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(6, 81);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(719, 303);
-            this.listBox2.TabIndex = 3;
-            // 
-            // AddDropFilterButton
-            // 
-            this.AddDropFilterButton.Location = new System.Drawing.Point(650, 51);
-            this.AddDropFilterButton.Name = "AddDropFilterButton";
-            this.AddDropFilterButton.Size = new System.Drawing.Size(75, 23);
-            this.AddDropFilterButton.TabIndex = 2;
-            this.AddDropFilterButton.Text = "Filter";
-            this.AddDropFilterButton.UseVisualStyleBackColor = true;
+            this.AddDropListBox.FormattingEnabled = true;
+            this.AddDropListBox.Location = new System.Drawing.Point(6, 81);
+            this.AddDropListBox.Name = "AddDropListBox";
+            this.AddDropListBox.Size = new System.Drawing.Size(719, 303);
+            this.AddDropListBox.TabIndex = 3;
             // 
             // AddDropCoursesComboBox
             // 
             this.AddDropCoursesComboBox.FormattingEnabled = true;
-            this.AddDropCoursesComboBox.Items.AddRange(new object[] {
-            "Courses"});
             this.AddDropCoursesComboBox.Location = new System.Drawing.Point(6, 54);
             this.AddDropCoursesComboBox.Name = "AddDropCoursesComboBox";
             this.AddDropCoursesComboBox.Size = new System.Drawing.Size(315, 21);
             this.AddDropCoursesComboBox.TabIndex = 0;
+            this.AddDropCoursesComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropCoursesComboBox_SelectedIndexChanged);
             // 
             // ProfessorPersonalInfoTab
             // 
@@ -317,11 +288,21 @@
             this.Logout.UseVisualStyleBackColor = true;
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
+            // UserViewComboBox
+            // 
+            this.UserViewComboBox.FormattingEnabled = true;
+            this.UserViewComboBox.Location = new System.Drawing.Point(12, 36);
+            this.UserViewComboBox.Name = "UserViewComboBox";
+            this.UserViewComboBox.Size = new System.Drawing.Size(106, 21);
+            this.UserViewComboBox.TabIndex = 3;
+            this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.UserViewComboBox_SelectedIndexChanged);
+            // 
             // ProfessorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 565);
+            this.Controls.Add(this.UserViewComboBox);
             this.Controls.Add(this.Logout);
             this.Controls.Add(this.ProfessorTitle);
             this.Controls.Add(this.ProfessorTabControl);
@@ -344,12 +325,11 @@
         private System.Windows.Forms.TabPage ProfessorScheduleTab;
         private System.Windows.Forms.TabPage ProfessorAddDropTab;
         private System.Windows.Forms.Label ProfessorTitle;
-        private System.Windows.Forms.ListBox ScheduleList;
+        private System.Windows.Forms.ListBox ScheduleListBox;
         private System.Windows.Forms.ComboBox ScheduleComboBox;
         private System.Windows.Forms.MonthCalendar ScheduleCalander;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button AddDropFilterButton;
+        private System.Windows.Forms.ListBox AddDropListBox;
         private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
         private System.Windows.Forms.TabPage ProfessorPersonalInfoTab;
         private System.Windows.Forms.Button UpdatePersonalInfoButton;
@@ -362,9 +342,8 @@
         private System.Windows.Forms.Label PersonalInforDescriptionLabel;
         private System.Windows.Forms.Label FirstNameLabel;
         private System.Windows.Forms.Button Logout;
-        private System.Windows.Forms.TextBox AddDropCoursesSearchBox;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button DropButton;
+        private System.Windows.Forms.ComboBox UserViewComboBox;
     }
 }
