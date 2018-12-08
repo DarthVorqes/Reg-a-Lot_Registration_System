@@ -8,12 +8,8 @@ namespace RegistrationSystem
 {
     class Section
     {
-
-        List<int> Students { get; set; }
-        int Instructor { get; set; }
-
-        public List<Person> Students { get; set; }
-        public Person Instructor { get; set; }
-
+        public static byte Capacity => 10;
+        public User Professor { get; set; }
+        public User[] Students { get; set; }
     }
 }

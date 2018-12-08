@@ -16,18 +16,15 @@ namespace RegistrationSystem
         Section,
         Semester,
         Registration,
-        Grade,
-    }
-    enum QueryTypes
-    {
-        Select,
-        Update,
-        Delete,
+        Course,
+        Greenlight,
+        Teach,
+        SemesterYear,
     }
     class DatabaseConnection
     {
         /// <summary>
-        /// A sumple method for using an 'SqlCommand' in a customized way
+        /// A simple method for using an 'SqlCommand' in a customized way
         /// </summary>
         /// <param name="cmd">The perameter input to be used by the delegate</param>
         delegate void SqlCommandExecuter(SqlCommand cmd);

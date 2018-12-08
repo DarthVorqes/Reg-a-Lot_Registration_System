@@ -9,11 +9,12 @@ namespace RegistrationSystem
 {
     class User
     {
+
+        //place constructors here
         public User()
         {
             Connection = new DatabaseConnection();
         }
-        //place constructors here
         //place methods here
         public void SetFocus(int id)
         {
@@ -39,6 +40,10 @@ namespace RegistrationSystem
                     firstName = GetPersonInfo("FirstName").ToString();
                 return firstName;
             }
+            set
+            {
+                firstName = value;
+            }
         }
         public string LastName
         {
@@ -47,6 +52,10 @@ namespace RegistrationSystem
                 if (lastName == null)
                     lastName = GetPersonInfo("LastName").ToString();
                 return lastName;
+            }
+            set
+            {
+                lastName = value;
             }
         }
         public bool HasPaid
@@ -61,25 +70,19 @@ namespace RegistrationSystem
                 }
                 return hasPaid;
             }
+            set
+            {
+                hasPaid = value;
+            }
         }
-        public bool IsProfessor { get; private set; }
-        public bool IsStudent { get; private set; }
-        public bool IsRegistrar { get; private set; }
+        public bool IsProfessor { get; set; }
+        public bool IsStudent { get; set; }
+        public bool IsRegistrar { get; set; }
         public string Password
         {
             set
             {
-                if(EnterpriseID != -1)
-                {
-                    Connection.Update(Tables.Person, new SqlParameter[]
-                    {
-                        new SqlParameter("ID",EnterpriseID),
-                    },
-                    new SqlParameter[]
-                    {
-                        new SqlParameter("Password",Hash(value)),
-                    });
-                }
+                _password = Hash(value);
             }
         }
         public Schedule UserSchedule
@@ -93,9 +96,60 @@ namespace RegistrationSystem
                 return UserSchedule;
             }
         }
+        public int Social
+        {
+            set
+            {
+                social = value;
+            }
+        }
+        public string StreetAddress
+        {
+            set
+            {
+                streetAddress = value;
+            }
+        }
+        public string City
+        {
+            set
+            {
+                city = value;
+            }
+        }
+        public string State
+        {
+            set
+            {
+                state = value;
+            }
+        }
+        public int ZipCode
+        {
+            set
+            {
+                zipCode = value;
+            }
+        }
+        public string Email
+        {
+            set
+            {
+                email = value;
+            }
+        }
+        public long PhoneNumber
+        {
+            set
+            {
+                phoneNumber = value;
+            }
+        }
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
+        bool Authenticate() =>
+            Authenticate(EnterpriseID, _password);
         public bool Authenticate(int userID,string password)
         {
             var permissions = Connection.GetOccurrences(
@@ -115,7 +169,76 @@ namespace RegistrationSystem
             IsStudent = permissions[0][1] == "True";
             IsRegistrar = permissions[0][2] == "True";
             EnterpriseID = userID;
+            this._password = password;
             return true;
+        }
+        public void PushChanges(User authority)
+        {
+            authority.Authenticate();
+            //changes in the person table
+            List<SqlParameter> changes = new List<SqlParameter>();
+            if(authority.IsRegistrar)
+            {
+                if (firstName != null)
+                    changes.Add(new SqlParameter("FirstName", firstName));
+                if (lastName != null)
+                    changes.Add(new SqlParameter("LastName", lastName));
+                changes.AddRange(new SqlParameter[] {
+                    new SqlParameter("IsProfessor",IsProfessor),
+                    new SqlParameter("IsRegistrar",IsRegistrar),
+                    new SqlParameter("IsStudent",IsStudent),
+                });
+                if (social != -1)
+                    changes.Add(new SqlParameter("Social", social));
+            }
+            if (_password != null)
+                changes.Add(new SqlParameter("Password", _password));
+            if (streetAddress != null)
+                changes.Add(new SqlParameter("StreetAddress", streetAddress));
+            if(city != null)
+                changes.Add(new SqlParameter("City", city));
+            if (state != null)
+                changes.Add(new SqlParameter("State", state));
+            if (zipCode != -1)
+                changes.Add(new SqlParameter("ZipCode", zipCode));
+            if (email != null)
+                changes.Add(new SqlParameter("Email", email));
+            if (phoneNumber != -1)
+                changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
+            //
+            //
+
+            //
+            if(EnterpriseID == -1)
+            {
+                Connection.Insert(Tables.Person, changes.ToArray());
+            }
+            else
+            {
+                Connection.Update(Tables.Person, new SqlParameter[] { new SqlParameter("ID", EnterpriseID) }, changes.ToArray());
+            }
+        }
+        public bool RemovePerson(int id)
+        {
+            Authenticate();
+            if (!IsRegistrar)
+                return false;
+            bool success = Connection.Delete(Tables.Person, new SqlParameter[] {
+                new SqlParameter("ID",id),
+            });
+            success = Connection.Delete(Tables.Registration, new SqlParameter[] {
+                new SqlParameter("PersonID",id),
+            }) && success;
+            success = Connection.Delete(Tables.Teach, new SqlParameter[] {
+                new SqlParameter("PersonID",id),
+            }) && success;
+            success = Connection.Delete(Tables.Section, new SqlParameter[] {
+                new SqlParameter("TeachID",id),
+            }) && success;
+            success = Connection.Delete(Tables.Greenlight, new SqlParameter[] {
+                new SqlParameter("PersonID",id),
+            }) && success;
+            return success;
         }
         //private methods
         private string Hash(string raw) => Convert.ToBase64String(
@@ -129,17 +252,18 @@ namespace RegistrationSystem
                     251, 129, 242, 149, 138, 156, 214, 162, 108, 145, 250, 43, 67, 194, 129, 177,
                     135, 72, 125, 56, 227, 174, 239, 246, 77, 192, 18, 146, 32, 48, 237, 20,
                     234, 191, 96, 95, 230, 83, 122, 66, 163, 118, 199, 20, 113, 240, 119, 100
-        }, 101).GetBytes(50));
+        }, 101).GetBytes(25));
         private object GetPersonInfo(string columnName) =>
             Connection.GetValue(columnName, new SqlParameter[]
                 {
                     new SqlParameter("ID",EnterpriseID),
                 },Tables.Person);
         //do not touch these VVV go through the properties!
-        string firstName,lastName;
+        string firstName, lastName, _password, streetAddress, state, email, city;
+        long phoneNumber = -1;
+        int social = -1, zipCode = -1;
         bool hasPaid,
-            checkedIfHasPaid,
-            checkedPermissions;
+            checkedIfHasPaid;
         Schedule userSchedule;
     }
 }
