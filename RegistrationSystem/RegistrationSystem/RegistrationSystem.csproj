@@ -54,7 +54,6 @@
     <Compile Include="LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
     <Compile Include="PersonalInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
