@@ -52,12 +52,11 @@ namespace RegistrationSystem
             //};
 
 
-            User testAdmin = new User();
-            System.Diagnostics.Debug.WriteLine("Auth Success = " + testAdmin.Authenticate(4, "test123"));
-            System.Diagnostics.Debug.WriteLine("IsRegistrar = " + testAdmin.IsRegistrar);
-            System.Diagnostics.Debug.WriteLine("First Name = " + testAdmin.FirstName);
-            testAdmin.RemovePerson(18);
-
+            //User testAdmin = new User();
+            //System.Diagnostics.Debug.WriteLine("Auth Success = " + testAdmin.Authenticate(4, "test123"));
+            //System.Diagnostics.Debug.WriteLine("IsRegistrar = " + testAdmin.IsRegistrar);
+            //System.Diagnostics.Debug.WriteLine("First Name = " + testAdmin.FirstName);
+            //System.Diagnostics.Debug.WriteLine("Remove Person Success = " + testAdmin.RemovePerson(85));
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
