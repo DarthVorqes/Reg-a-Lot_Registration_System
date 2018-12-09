@@ -83,6 +83,12 @@
     <Compile Include="studentView.Designer.cs">
       <DependentUpon>studentView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePersonalInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePersonalInformation.Designer.cs">
+      <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
@@ -103,13 +109,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-
     <EmbeddedResource Include="studentView.resx">
       <DependentUpon>studentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePersonalInformation.resx">
+      <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

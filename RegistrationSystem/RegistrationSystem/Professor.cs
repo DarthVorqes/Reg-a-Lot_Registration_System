@@ -51,7 +51,7 @@ namespace RegistrationSystem
         {
             UserViewComboBox.Items.Add("Student");
             //check login id to see if they have professor rights
-            if (ID == "Max")
+            if (ID == "Max" || ID == "Ian")
             {
                 UserViewComboBox.Items.Add("Professor");
             }
@@ -95,9 +95,8 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void Logout_Click(object sender, EventArgs e)
         {
-            LogIn logout = new LogIn();
-            logout.Show();
-            Close();
+            //LogIn.ShowForm();
+            Environment.Exit(1);
         }
         /// <summary>
         /// sets the values for the Schedule tab's combo box with sections.
@@ -217,25 +216,7 @@ namespace RegistrationSystem
         }
 
 
-        private void ChangePassButton_Click(object sender, EventArgs e)
-        {
-            if (ChangePass.Text.Length < 6)
-            {
-                MessageBox.Show("Your password is too short!");
-            }
-            if (ChangePass.Text.Equals(ChangePassCheck.Text))
-            {
-                if (ChangePass.Text.Length > 5)
-                 {
-                   MessageBox.Show("Your password has been changed!");
-
-                 }
-            }
-            else
-            {
-                MessageBox.Show("Passwords DO NOT match!");
-            }
-        }
+       
 
         private void ViewStudentButton_Click(object sender, EventArgs e)
         {
@@ -250,6 +231,12 @@ namespace RegistrationSystem
             {
                 MessageBox.Show("You do not have a section selected!");
             }
+        }
+
+        private void updateInfoBtn_Click(object sender, EventArgs e)
+        {
+            UpdatePersonalInformation update = new UpdatePersonalInformation(userID);
+            update.Show();
         }
     }
 }

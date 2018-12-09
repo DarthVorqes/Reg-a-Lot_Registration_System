@@ -18,7 +18,15 @@ namespace RegistrationSystem
         {
             InitializeComponent();
         }
+        public void ShowForm()
+        {
+            Show();
+        }
+        public void HideForm()
+        {
+            Hide();
 
+        }
         private void LogInButton_Click(object sender, EventArgs e)
         {
 
@@ -30,7 +38,8 @@ namespace RegistrationSystem
                        login = true;
                        Registrar RView = new Registrar(ID);
                        RView.Show();
-                       Hide();
+             
+                Hide();
                    }
                 //check to see if professor:
                 if (UserNameTextBox.Text == "Max")
@@ -57,9 +66,6 @@ namespace RegistrationSystem
                 }
 
         }
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(1);
-        }
+
     }
 }

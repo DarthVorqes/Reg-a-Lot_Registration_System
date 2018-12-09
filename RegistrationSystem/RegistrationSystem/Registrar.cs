@@ -37,7 +37,7 @@ namespace RegistrationSystem
         {
             UserViewComboBox.Items.Add("Student");
             //check login id to see if they have professor rights
-            if (ID == "Max")
+            if (ID == "Max" || ID == "Ian")
             {
                 UserViewComboBox.Items.Add("Professor");
             }
@@ -81,9 +81,7 @@ namespace RegistrationSystem
 
         private void button7_Click(object sender, EventArgs e)
         {
-            LogIn logout = new LogIn();
-            logout.Show();
-            Close();
+            Environment.Exit(1);
         }
 
         private void Registrar_Load(object sender, EventArgs e)
@@ -155,6 +153,62 @@ namespace RegistrationSystem
 
         private void label81_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            UpdatePersonalInformation update = new UpdatePersonalInformation(userID);
+            update.Show();
+        }
+
+        private void CourseListBox_Load()
+        {
+            foreach (string course in courseIndex)
+            {
+                CourseListBox.Items.Add(course);
+            }
+        }
+        private void courseSearchBtn_Click(object sender, EventArgs e)
+        {
+
+            if (courseSearchBox.Text == "Math")
+            {
+                CourseListBox_Load();
+            }
+            //query database
+            
+        }
+
+    
+        private void CourseListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //query the name from courseSearchBox.text
+            //query for the ID and other shit
+            //
+            if ("course1" == CourseListBox.SelectedItem.ToString())
+            {
+                course1.Text = "name";
+                section1.Text = "ID";
+                professor1.Text = "prof";
+                time1.Text = "time";
+                day1.Text = "day";
+                date1.Text = "date";
+            }
+        }
+
+        private void Deletebtn_Click(object sender, EventArgs e)
+        {
+            
+            MessageBoxButtons confirm = MessageBoxButtons.YesNo;
+           
+            DialogResult result;
+            result = MessageBox.Show("are you sure you want to delete", "Delete", confirm);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                //delete shit
+            }
 
         }
     }

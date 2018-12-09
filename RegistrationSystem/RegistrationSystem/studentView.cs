@@ -26,7 +26,7 @@ namespace RegistrationSystem
         {
             comboBox1.Items.Add("Student");
             //check login id to see if they have professor rights
-            if (ID == "Max")
+            if (ID == "Max" || ID == "Ian")
             {
                 comboBox1.Items.Add("Professor");
             }
@@ -67,8 +67,6 @@ namespace RegistrationSystem
         {
             Application.Exit();
         }
-
-
 
     }
 }

@@ -54,7 +54,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(695, 544);
+            this.tabControl1.Size = new System.Drawing.Size(830, 450);
             this.tabControl1.TabIndex = 0;
             // 
             // sched1
@@ -63,7 +63,7 @@
             this.sched1.Location = new System.Drawing.Point(23, 4);
             this.sched1.Name = "sched1";
             this.sched1.Padding = new System.Windows.Forms.Padding(3);
-            this.sched1.Size = new System.Drawing.Size(668, 536);
+            this.sched1.Size = new System.Drawing.Size(803, 442);
             this.sched1.TabIndex = 0;
             this.sched1.Text = "Schedule";
             this.sched1.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(662, 530);
+            this.webBrowser1.Size = new System.Drawing.Size(797, 436);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
         "m\\RegistrationSystem\\schedule.html", System.UriKind.Absolute);
@@ -131,7 +131,7 @@
             // 
             // logOut1
             // 
-            this.logOut1.Location = new System.Drawing.Point(618, 579);
+            this.logOut1.Location = new System.Drawing.Point(753, 498);
             this.logOut1.Name = "logOut1";
             this.logOut1.Size = new System.Drawing.Size(75, 23);
             this.logOut1.TabIndex = 1;
@@ -154,13 +154,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(699, 607);
+            this.ClientSize = new System.Drawing.Size(840, 533);
             this.ControlBox = false;
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.logOut1);
             this.Controls.Add(this.tabControl1);
             this.Name = "studentView";
             this.Text = "Student View";
+
             this.tabControl1.ResumeLayout(false);
             this.sched1.ResumeLayout(false);
             this.persInfo1.ResumeLayout(false);
