@@ -47,6 +47,12 @@
             this.ChangePassCheck = new System.Windows.Forms.TextBox();
             this.ChangePassCheckLabel = new System.Windows.Forms.Label();
             this.ChangePassLabel = new System.Windows.Forms.Label();
+            this.CanReglbl = new System.Windows.Forms.Label();
+            this.CanDroplbl = new System.Windows.Forms.Label();
+            this.CanAddlbl = new System.Windows.Forms.Label();
+            this.CanAddComboBox = new System.Windows.Forms.ComboBox();
+            this.CanDropComboBox = new System.Windows.Forms.ComboBox();
+            this.canRegComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // firstNameLabel
@@ -60,7 +66,7 @@
             // 
             // updateInfoBtn
             // 
-            this.updateInfoBtn.Location = new System.Drawing.Point(213, 238);
+            this.updateInfoBtn.Location = new System.Drawing.Point(201, 269);
             this.updateInfoBtn.Name = "updateInfoBtn";
             this.updateInfoBtn.Size = new System.Drawing.Size(75, 23);
             this.updateInfoBtn.TabIndex = 1;
@@ -173,14 +179,14 @@
             // 
             // ChangePass
             // 
-            this.ChangePass.Location = new System.Drawing.Point(121, 188);
+            this.ChangePass.Location = new System.Drawing.Point(121, 230);
             this.ChangePass.Name = "ChangePass";
             this.ChangePass.Size = new System.Drawing.Size(100, 20);
             this.ChangePass.TabIndex = 2;
             // 
             // ChangePassCheck
             // 
-            this.ChangePassCheck.Location = new System.Drawing.Point(354, 188);
+            this.ChangePassCheck.Location = new System.Drawing.Point(354, 230);
             this.ChangePassCheck.Name = "ChangePassCheck";
             this.ChangePassCheck.Size = new System.Drawing.Size(100, 20);
             this.ChangePassCheck.TabIndex = 2;
@@ -188,7 +194,7 @@
             // ChangePassCheckLabel
             // 
             this.ChangePassCheckLabel.AutoSize = true;
-            this.ChangePassCheckLabel.Location = new System.Drawing.Point(243, 191);
+            this.ChangePassCheckLabel.Location = new System.Drawing.Point(243, 233);
             this.ChangePassCheckLabel.Name = "ChangePassCheckLabel";
             this.ChangePassCheckLabel.Size = new System.Drawing.Size(94, 13);
             this.ChangePassCheckLabel.TabIndex = 0;
@@ -197,17 +203,71 @@
             // ChangePassLabel
             // 
             this.ChangePassLabel.AutoSize = true;
-            this.ChangePassLabel.Location = new System.Drawing.Point(10, 191);
+            this.ChangePassLabel.Location = new System.Drawing.Point(10, 233);
             this.ChangePassLabel.Name = "ChangePassLabel";
             this.ChangePassLabel.Size = new System.Drawing.Size(81, 13);
             this.ChangePassLabel.TabIndex = 0;
             this.ChangePassLabel.Text = "New Password:";
+            // 
+            // CanReglbl
+            // 
+            this.CanReglbl.AutoSize = true;
+            this.CanReglbl.Location = new System.Drawing.Point(10, 185);
+            this.CanReglbl.Name = "CanReglbl";
+            this.CanReglbl.Size = new System.Drawing.Size(68, 13);
+            this.CanReglbl.TabIndex = 0;
+            this.CanReglbl.Text = "Can Register";
+            // 
+            // CanDroplbl
+            // 
+            this.CanDroplbl.AutoSize = true;
+            this.CanDroplbl.Location = new System.Drawing.Point(162, 185);
+            this.CanDroplbl.Name = "CanDroplbl";
+            this.CanDroplbl.Size = new System.Drawing.Size(52, 13);
+            this.CanDroplbl.TabIndex = 0;
+            this.CanDroplbl.Text = "Can Drop";
+            // 
+            // CanAddlbl
+            // 
+            this.CanAddlbl.AutoSize = true;
+            this.CanAddlbl.Location = new System.Drawing.Point(304, 185);
+            this.CanAddlbl.Name = "CanAddlbl";
+            this.CanAddlbl.Size = new System.Drawing.Size(48, 13);
+            this.CanAddlbl.TabIndex = 0;
+            this.CanAddlbl.Text = "Can Add";
+            // 
+            // CanAddComboBox
+            // 
+            this.CanAddComboBox.FormattingEnabled = true;
+            this.CanAddComboBox.Location = new System.Drawing.Point(354, 182);
+            this.CanAddComboBox.Name = "CanAddComboBox";
+            this.CanAddComboBox.Size = new System.Drawing.Size(60, 21);
+            this.CanAddComboBox.TabIndex = 3;
+            // 
+            // CanDropComboBox
+            // 
+            this.CanDropComboBox.FormattingEnabled = true;
+            this.CanDropComboBox.Location = new System.Drawing.Point(220, 182);
+            this.CanDropComboBox.Name = "CanDropComboBox";
+            this.CanDropComboBox.Size = new System.Drawing.Size(60, 21);
+            this.CanDropComboBox.TabIndex = 3;
+            // 
+            // canRegComboBox
+            // 
+            this.canRegComboBox.FormattingEnabled = true;
+            this.canRegComboBox.Location = new System.Drawing.Point(84, 182);
+            this.canRegComboBox.Name = "canRegComboBox";
+            this.canRegComboBox.Size = new System.Drawing.Size(60, 21);
+            this.canRegComboBox.TabIndex = 3;
             // 
             // UpdatePersonalInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 304);
+            this.Controls.Add(this.canRegComboBox);
+            this.Controls.Add(this.CanDropComboBox);
+            this.Controls.Add(this.CanAddComboBox);
             this.Controls.Add(this.IDComboBox);
             this.Controls.Add(this.ChangePassCheck);
             this.Controls.Add(this.ChangePass);
@@ -218,6 +278,9 @@
             this.Controls.Add(this.addressComboBox);
             this.Controls.Add(this.FirstNameComboBox);
             this.Controls.Add(this.updateInfoBtn);
+            this.Controls.Add(this.CanAddlbl);
+            this.Controls.Add(this.CanDroplbl);
+            this.Controls.Add(this.CanReglbl);
             this.Controls.Add(this.ChangePassLabel);
             this.Controls.Add(this.ChangePassCheckLabel);
             this.Controls.Add(this.iDLabel);
@@ -255,5 +318,11 @@
         private System.Windows.Forms.TextBox ChangePassCheck;
         private System.Windows.Forms.Label ChangePassCheckLabel;
         private System.Windows.Forms.Label ChangePassLabel;
+        private System.Windows.Forms.Label CanReglbl;
+        private System.Windows.Forms.Label CanDroplbl;
+        private System.Windows.Forms.Label CanAddlbl;
+        private System.Windows.Forms.ComboBox CanAddComboBox;
+        private System.Windows.Forms.ComboBox CanDropComboBox;
+        private System.Windows.Forms.ComboBox canRegComboBox;
     }
 }

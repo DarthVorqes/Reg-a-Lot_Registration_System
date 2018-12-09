@@ -37,8 +37,13 @@
             this.finance1 = new System.Windows.Forms.TabPage();
             this.logOut1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.courseAddDropComboBox = new System.Windows.Forms.ComboBox();
+            this.SectionAddDropListBox = new System.Windows.Forms.ListBox();
+            this.AddSection = new System.Windows.Forms.Button();
+            this.DropSection = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
+            this.addDrop1.SuspendLayout();
             this.persInfo1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,10 +92,14 @@
             // addDrop1
             // 
             this.addDrop1.BackColor = System.Drawing.SystemColors.Control;
+            this.addDrop1.Controls.Add(this.DropSection);
+            this.addDrop1.Controls.Add(this.AddSection);
+            this.addDrop1.Controls.Add(this.SectionAddDropListBox);
+            this.addDrop1.Controls.Add(this.courseAddDropComboBox);
             this.addDrop1.Location = new System.Drawing.Point(23, 4);
             this.addDrop1.Name = "addDrop1";
             this.addDrop1.Padding = new System.Windows.Forms.Padding(3);
-            this.addDrop1.Size = new System.Drawing.Size(668, 536);
+            this.addDrop1.Size = new System.Drawing.Size(803, 442);
             this.addDrop1.TabIndex = 1;
             this.addDrop1.Text = "Add/Drop";
             // 
@@ -99,7 +108,7 @@
             this.persInfo1.Controls.Add(this.webBrowser2);
             this.persInfo1.Location = new System.Drawing.Point(23, 4);
             this.persInfo1.Name = "persInfo1";
-            this.persInfo1.Size = new System.Drawing.Size(668, 536);
+            this.persInfo1.Size = new System.Drawing.Size(803, 442);
             this.persInfo1.TabIndex = 2;
             this.persInfo1.Text = "Information";
             this.persInfo1.UseVisualStyleBackColor = true;
@@ -114,7 +123,7 @@
             this.webBrowser2.Name = "webBrowser2";
             this.webBrowser2.ScriptErrorsSuppressed = true;
             this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(668, 536);
+            this.webBrowser2.Size = new System.Drawing.Size(803, 442);
             this.webBrowser2.TabIndex = 1;
             this.webBrowser2.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
         "m\\RegistrationSystem\\info.html", System.UriKind.Absolute);
@@ -124,7 +133,7 @@
             // 
             this.finance1.Location = new System.Drawing.Point(23, 4);
             this.finance1.Name = "finance1";
-            this.finance1.Size = new System.Drawing.Size(668, 536);
+            this.finance1.Size = new System.Drawing.Size(803, 442);
             this.finance1.TabIndex = 3;
             this.finance1.Text = "Finances";
             this.finance1.UseVisualStyleBackColor = true;
@@ -149,6 +158,40 @@
             this.comboBox1.Text = "View";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // courseAddDropComboBox
+            // 
+            this.courseAddDropComboBox.FormattingEnabled = true;
+            this.courseAddDropComboBox.Location = new System.Drawing.Point(22, 61);
+            this.courseAddDropComboBox.Name = "courseAddDropComboBox";
+            this.courseAddDropComboBox.Size = new System.Drawing.Size(280, 21);
+            this.courseAddDropComboBox.TabIndex = 0;
+            // 
+            // SectionAddDropListBox
+            // 
+            this.SectionAddDropListBox.FormattingEnabled = true;
+            this.SectionAddDropListBox.Location = new System.Drawing.Point(22, 88);
+            this.SectionAddDropListBox.Name = "SectionAddDropListBox";
+            this.SectionAddDropListBox.Size = new System.Drawing.Size(762, 238);
+            this.SectionAddDropListBox.TabIndex = 1;
+            // 
+            // AddSection
+            // 
+            this.AddSection.Location = new System.Drawing.Point(254, 358);
+            this.AddSection.Name = "AddSection";
+            this.AddSection.Size = new System.Drawing.Size(75, 23);
+            this.AddSection.TabIndex = 2;
+            this.AddSection.Text = "Add";
+            this.AddSection.UseVisualStyleBackColor = true;
+            // 
+            // DropSection
+            // 
+            this.DropSection.Location = new System.Drawing.Point(468, 358);
+            this.DropSection.Name = "DropSection";
+            this.DropSection.Size = new System.Drawing.Size(75, 23);
+            this.DropSection.TabIndex = 2;
+            this.DropSection.Text = "Drop";
+            this.DropSection.UseVisualStyleBackColor = true;
+            // 
             // studentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,9 +204,9 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "studentView";
             this.Text = "Student View";
-
             this.tabControl1.ResumeLayout(false);
             this.sched1.ResumeLayout(false);
+            this.addDrop1.ResumeLayout(false);
             this.persInfo1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -179,5 +222,9 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ListBox SectionAddDropListBox;
+        private System.Windows.Forms.ComboBox courseAddDropComboBox;
+        private System.Windows.Forms.Button DropSection;
+        private System.Windows.Forms.Button AddSection;
     }
 }

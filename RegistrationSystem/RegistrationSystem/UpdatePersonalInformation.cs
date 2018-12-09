@@ -17,8 +17,32 @@ namespace RegistrationSystem
         {
             userID = ID;
             InitializeComponent();
+            CanComboBoxs_Load(ID);
         }
-
+        private void CanComboBoxs_Load(string ID)
+        {
+            if (ID == "Ian")
+            {
+                canRegComboBox.Items.Add("Yes");
+                canRegComboBox.Items.Add("No");
+                CanDropComboBox.Items.Add("Yes");
+                CanDropComboBox.Items.Add("No");
+                CanAddComboBox.Items.Add("Yes");
+                CanAddComboBox.Items.Add("No");
+            }
+            else
+            {
+                canRegComboBox.IsAccessible = false;
+                CanDropComboBox.IsAccessible = false;
+                CanAddComboBox.IsAccessible = false;
+                canRegComboBox.Hide();
+                CanDropComboBox.Hide();
+                CanAddComboBox.Hide();
+                CanReglbl.Hide();
+                CanDroplbl.Hide();
+                CanAddlbl.Hide();
+            }
+        }
         private void updateInfoBtn_Click(object sender, EventArgs e)
         {
             try
