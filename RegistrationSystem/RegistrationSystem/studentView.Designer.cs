@@ -63,7 +63,7 @@
             this.sched1.Location = new System.Drawing.Point(23, 4);
             this.sched1.Name = "sched1";
             this.sched1.Padding = new System.Windows.Forms.Padding(3);
-            this.sched1.Size = new System.Drawing.Size(668, 564);
+            this.sched1.Size = new System.Drawing.Size(668, 536);
             this.sched1.TabIndex = 0;
             this.sched1.Text = "Schedule";
             this.sched1.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(662, 558);
+            this.webBrowser1.Size = new System.Drawing.Size(662, 530);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
         "m\\RegistrationSystem\\schedule.html", System.UriKind.Absolute);
@@ -90,7 +90,7 @@
             this.addDrop1.Location = new System.Drawing.Point(23, 4);
             this.addDrop1.Name = "addDrop1";
             this.addDrop1.Padding = new System.Windows.Forms.Padding(3);
-            this.addDrop1.Size = new System.Drawing.Size(668, 564);
+            this.addDrop1.Size = new System.Drawing.Size(668, 536);
             this.addDrop1.TabIndex = 1;
             this.addDrop1.Text = "Add/Drop";
             // 
@@ -124,7 +124,7 @@
             // 
             this.finance1.Location = new System.Drawing.Point(23, 4);
             this.finance1.Name = "finance1";
-            this.finance1.Size = new System.Drawing.Size(668, 564);
+            this.finance1.Size = new System.Drawing.Size(668, 536);
             this.finance1.TabIndex = 3;
             this.finance1.Text = "Finances";
             this.finance1.UseVisualStyleBackColor = true;
@@ -142,9 +142,6 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Professor View",
-            "Registrar View"});
             this.comboBox1.Location = new System.Drawing.Point(21, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);

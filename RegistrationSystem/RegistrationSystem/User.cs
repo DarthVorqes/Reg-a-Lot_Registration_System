@@ -8,7 +8,7 @@ namespace RegistrationSystem
 {
     class User
     {
-        //place constructors here
+      /*  //place constructors here
         //place methods here
         public void SetFocus(string name)
         {
@@ -121,6 +121,6 @@ namespace RegistrationSystem
             isStudent,
             isRegistrar;
         Schedule userSchedule;
-        DatabaseConnection connection;
+        DatabaseConnection connection;*/
     }
 }

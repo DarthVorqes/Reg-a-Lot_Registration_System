@@ -56,7 +56,7 @@ namespace RegistrationSystem
                 UserViewComboBox.Items.Add("Professor");
             }
             //check login id to see if they have registar rights
-            if (ID == "Al")
+            if (ID == "Ian")
             {
                 UserViewComboBox.Items.Add("Registar");
             }
@@ -70,8 +70,8 @@ namespace RegistrationSystem
         private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProfessorView Professor = new ProfessorView(userID);
-            studentView Student = new studentView();
-            //RegistarView Registar = new RegistarView();
+            studentView Student = new studentView(userID);
+            Registrar Registar = new Registrar(userID);
             if ((string)UserViewComboBox.SelectedItem == "Student")
             {
                 Student.Show();
@@ -84,8 +84,8 @@ namespace RegistrationSystem
             }
             if ((string)UserViewComboBox.SelectedItem == "Registar")
             {
-                //Registar.Show();
-                //Close();
+                Registar.Show();
+                Close();
             }
         }
         /// <summary>

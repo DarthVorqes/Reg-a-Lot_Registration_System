@@ -22,46 +22,16 @@ namespace RegistrationSystem
         private void LogInButton_Click(object sender, EventArgs e)
         {
 
-         /*   if (check to see if registar)
-            {
-                RegistarView RView = new RegistarView(ID);
-                RView.Show();
-                Hide();
-            }*/
-
-            //check to see if professor:
-            if (UserNameTextBox.Text == "Max" || UserNameTextBox.Text == "Al")
-            {
-                //if personID as username this will be fine if not then just search data base for the id linked to the username
-                ID = UserNameTextBox.Text;
-                ProfessorView PView = new ProfessorView(ID);
-                PView.Show();
-                Hide();
-            }
-            //
-          if(UserNameTextBox.Text == "Trey")
-            {
-                ID = UserNameTextBox.Text;
-                studentView SView = new studentView();
-                SView.Show();
-                Hide();
-            }
-            else
-            {
-                MessageBox.Show("Invaild Credentials!!");
-            }
-
-
             bool login = false;
-                /*   if (check to see if registar)
+                  if (UserNameTextBox.Text == "Ian")
                    {
                        //if personID as username this will be fine if not then just search data base for the id linked to the username
                        ID = UserNameTextBox.Text;
                        login = true;
-                       RegistarView RView = new RegistarView(ID);
+                       Registrar RView = new Registrar(ID);
                        RView.Show();
                        Hide();
-                   }*/
+                   }
                 //check to see if professor:
                 if (UserNameTextBox.Text == "Max")
                 {
@@ -77,7 +47,7 @@ namespace RegistrationSystem
                     //if personID as username this will be fine if not then just search data base for the id linked to the username
                     ID = UserNameTextBox.Text;
                     login = true;
-                    studentView SView = new studentView();
+                    studentView SView = new studentView(ID);
                     SView.Show();
                     Hide();
                 }

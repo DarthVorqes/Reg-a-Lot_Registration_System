@@ -18,11 +18,62 @@ namespace RegistrationSystem
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
         private string userID;
         
-        public Registrar()
+        public Registrar(string ID)
         {
+            userID = ID;
             InitializeComponent();
+            UserViewComboBox_Load(ID);
         }
+        
+        /// <summary>
+        /// A combo box to change user views
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <summary>
+        /// loads values into the UserView combo box
+        /// </summary>
+        private void UserViewComboBox_Load(string ID)
+        {
+            UserViewComboBox.Items.Add("Student");
+            //check login id to see if they have professor rights
+            if (ID == "Max")
+            {
+                UserViewComboBox.Items.Add("Professor");
+            }
+            //check login id to see if they have registar rights
+            if (ID == "Ian")
+            {
+                UserViewComboBox.Items.Add("Registar");
+            }
 
+        }
+        /// <summary>
+        /// A combo box to change user views
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProfessorView Professor = new ProfessorView(userID);
+            studentView Student = new studentView(userID);
+            Registrar Registar = new Registrar(userID);
+            if ((string)UserViewComboBox.SelectedItem == "Student")
+            {
+                Student.Show();
+                Close();
+            }
+            if ((string)UserViewComboBox.SelectedItem == "Professor")
+            {
+                Professor.Show();
+                Close();
+            }
+            if ((string)UserViewComboBox.SelectedItem == "Registar")
+            {
+                Registar.Show();
+                Close();
+            }
+        }
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
@@ -63,12 +114,12 @@ namespace RegistrationSystem
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProfessorView Professor = new ProfessorView(userID);
-            //StudentView Student = new StudentView();
-            //RegistarView Registar = new RegistarView();
+            studentView Student = new studentView(userID);
+            Registrar Registar = new Registrar(userID);
             if ((string)UserViewComboBox.SelectedItem == "Student")
             {
-                //Student.show();
-                //Close();
+                Student.Show();
+                Close();
             }
             if ((string)UserViewComboBox.SelectedItem == "Professor")
             {
@@ -77,8 +128,8 @@ namespace RegistrationSystem
             }
             if ((string)UserViewComboBox.SelectedItem == "Registar")
             {
-                //Registar.Show();
-                //Close();
+                Registar.Show();
+                Close();
             }
         }
 
