@@ -16,6 +16,7 @@ namespace RegistrationSystem
 
         private List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
+        private List <string> people = new List<string> { "jim", "karren", "david"};
         private string userID;
         
         public Registrar(string ID)
@@ -23,8 +24,17 @@ namespace RegistrationSystem
             userID = ID;
             InitializeComponent();
             UserViewComboBox_Load(ID);
+            LoadPersonalLabels(ID);
         }
-        
+        private void LoadPersonalLabels(string ID)
+        {
+            personalidlbl.Text = ID;
+            personalFirstNamelbl.Text = "firstName";
+            personalLastNamelbl.Text = "lastname";
+            personalAgelbl.Text = "age";
+            personalAddresslbl.Text = "address";
+            personalSexlbl.Text = "gender";
+        }
         /// <summary>
         /// A combo box to change user views
         /// </summary>
@@ -74,41 +84,10 @@ namespace RegistrationSystem
                 Close();
             }
         }
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
         }
-
-        private void Registrar_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProfessorView Professor = new ProfessorView(userID);
@@ -131,31 +110,6 @@ namespace RegistrationSystem
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label81_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void updateBtn_Click(object sender, EventArgs e)
         {
             UpdatePersonalInformation update = new UpdatePersonalInformation(userID);
@@ -164,6 +118,7 @@ namespace RegistrationSystem
 
         private void CourseListBox_Load()
         {
+            CourseListBox.Items.Clear();
             foreach (string course in courseIndex)
             {
                 CourseListBox.Items.Add(course);
@@ -186,14 +141,21 @@ namespace RegistrationSystem
             //query the name from courseSearchBox.text
             //query for the ID and other shit
             //
-            if ("course1" == CourseListBox.SelectedItem.ToString())
+            try
             {
-                course1.Text = "name";
-                section1.Text = "ID";
-                professor1.Text = "prof";
-                time1.Text = "time";
-                day1.Text = "day";
-                date1.Text = "date";
+                if ("course1" == CourseListBox.SelectedItem.ToString())
+                {
+                    course1.Text = "name";
+                    section1.Text = "ID";
+                    professor1.Text = "prof";
+                    time1.Text = "time";
+                    day1.Text = "day";
+                    date1.Text = "date";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Item does not exist");
             }
         }
 
@@ -207,9 +169,92 @@ namespace RegistrationSystem
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                //delete shit
+                //delete shit from database
+                string selectedItem = CourseListBox.SelectedItem.ToString();
+                CourseListBox.Items.Remove(selectedItem);
             }
 
+        }
+        private void PersonLookupListBox_Load()
+        {
+            //query database for value in list box
+            PersonLookupListBox.Items.Clear();
+            foreach (string person in people)
+            {
+
+                if (person == userSearchBox.Text)
+                {
+                    PersonLookupListBox.Items.Add(person);
+                }
+            }
+          
+        }
+        private void userSearchBtn_Click(object sender, EventArgs e)
+        {
+            if (userSearchBox.Text == "jim")
+            {
+                PersonLookupListBox_Load();
+            }
+        }
+        private void SectionLookupListBox_Load()
+        {
+            SectionLookupListBox.Items.Clear();
+            foreach (string section in sectionIndex)
+            {
+                SectionLookupListBox.Items.Add(section);
+            }
+        }
+        private void LookupLabels_Load()
+        {
+            if ("jim" == PersonLookupListBox.SelectedItem.ToString())
+            {
+                IdLookuplbl.Text = "id";
+                firstNameLookuplbl.Text = "firstname";
+                lastNameLookuplbl.Text = "lastname";
+                ageLookuplbl.Text = "age";
+                sexLookuplbl.Text = "gender";
+                addressLookuplbl.Text = "address";
+                emailLookuplbl.Text = "email";
+            }
+        }
+        private void PersonListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SectionLookupListBox_Load();
+            LookupLabels_Load();
+        }
+
+        private void updatePersonalInfobtn_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    string selectedItem = PersonLookupListBox.SelectedItem.ToString();
+                    //query database for student id using selected item
+                    //userId = found userid
+                    UpdatePersonalInformation PersonalV = new UpdatePersonalInformation(userID);
+                    PersonalV.Show();
+                }
+                catch
+                {
+                    MessageBox.Show("You do not have a person selected!");
+                }
+            }
+        }
+
+        private void updateCourseInfobtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedItem = SectionLookupListBox.SelectedItem.ToString();
+                //query database for student id using selected item
+                //userId = found userid
+                UpdateSectionInformation SectionV = new UpdateSectionInformation(userID);
+                SectionV.Show();
+            }
+            catch
+            {
+                MessageBox.Show("You do not have a section selected!");
+            }
         }
     }
 }

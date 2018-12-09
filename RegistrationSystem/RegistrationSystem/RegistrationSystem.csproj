@@ -89,6 +89,12 @@
     <Compile Include="UpdatePersonalInformation.Designer.cs">
       <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateSectionInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSectionInformation.Designer.cs">
+      <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePersonalInformation.resx">
       <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSectionInformation.resx">
+      <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

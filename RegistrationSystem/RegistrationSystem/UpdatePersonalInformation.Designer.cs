@@ -52,7 +52,7 @@
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(43, 56);
+            this.firstNameLabel.Location = new System.Drawing.Point(34, 40);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(63, 13);
             this.firstNameLabel.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             // updateInfoBtn
             // 
-            this.updateInfoBtn.Location = new System.Drawing.Point(224, 334);
+            this.updateInfoBtn.Location = new System.Drawing.Point(213, 238);
             this.updateInfoBtn.Name = "updateInfoBtn";
             this.updateInfoBtn.Size = new System.Drawing.Size(75, 23);
             this.updateInfoBtn.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             // FirstNameComboBox
             // 
-            this.FirstNameComboBox.Location = new System.Drawing.Point(159, 53);
+            this.FirstNameComboBox.Location = new System.Drawing.Point(121, 40);
             this.FirstNameComboBox.Name = "FirstNameComboBox";
             this.FirstNameComboBox.Size = new System.Drawing.Size(100, 20);
             this.FirstNameComboBox.TabIndex = 2;
@@ -78,7 +78,7 @@
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Location = new System.Drawing.Point(371, 60);
+            this.lastNameLabel.Location = new System.Drawing.Point(287, 37);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
             this.lastNameLabel.TabIndex = 0;
@@ -87,7 +87,7 @@
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(58, 110);
+            this.addressLabel.Location = new System.Drawing.Point(43, 84);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(48, 13);
             this.addressLabel.TabIndex = 0;
@@ -96,7 +96,7 @@
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(388, 106);
+            this.phoneLabel.Location = new System.Drawing.Point(304, 67);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(44, 13);
             this.phoneLabel.TabIndex = 0;
@@ -105,7 +105,7 @@
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(68, 170);
+            this.emailLabel.Location = new System.Drawing.Point(53, 128);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(38, 13);
             this.emailLabel.TabIndex = 0;
@@ -114,7 +114,7 @@
             // FaxLabel
             // 
             this.FaxLabel.AutoSize = true;
-            this.FaxLabel.Location = new System.Drawing.Point(405, 214);
+            this.FaxLabel.Location = new System.Drawing.Point(310, 132);
             this.FaxLabel.Name = "FaxLabel";
             this.FaxLabel.Size = new System.Drawing.Size(27, 13);
             this.FaxLabel.TabIndex = 0;
@@ -122,42 +122,42 @@
             // 
             // addressComboBox
             // 
-            this.addressComboBox.Location = new System.Drawing.Point(159, 110);
+            this.addressComboBox.Location = new System.Drawing.Point(121, 84);
             this.addressComboBox.Name = "addressComboBox";
             this.addressComboBox.Size = new System.Drawing.Size(100, 20);
             this.addressComboBox.TabIndex = 2;
             // 
             // LastNameComboBox
             // 
-            this.LastNameComboBox.Location = new System.Drawing.Point(471, 56);
+            this.LastNameComboBox.Location = new System.Drawing.Point(354, 33);
             this.LastNameComboBox.Name = "LastNameComboBox";
             this.LastNameComboBox.Size = new System.Drawing.Size(100, 20);
             this.LastNameComboBox.TabIndex = 2;
             // 
             // PhoneComboBox
             // 
-            this.PhoneComboBox.Location = new System.Drawing.Point(471, 103);
+            this.PhoneComboBox.Location = new System.Drawing.Point(354, 64);
             this.PhoneComboBox.Name = "PhoneComboBox";
             this.PhoneComboBox.Size = new System.Drawing.Size(100, 20);
             this.PhoneComboBox.TabIndex = 2;
             // 
             // emailComboBox
             // 
-            this.emailComboBox.Location = new System.Drawing.Point(159, 167);
+            this.emailComboBox.Location = new System.Drawing.Point(121, 125);
             this.emailComboBox.Name = "emailComboBox";
             this.emailComboBox.Size = new System.Drawing.Size(100, 20);
             this.emailComboBox.TabIndex = 2;
             // 
             // FaxComboBox
             // 
-            this.FaxComboBox.Location = new System.Drawing.Point(471, 207);
+            this.FaxComboBox.Location = new System.Drawing.Point(354, 132);
             this.FaxComboBox.Name = "FaxComboBox";
             this.FaxComboBox.Size = new System.Drawing.Size(100, 20);
             this.FaxComboBox.TabIndex = 2;
             // 
             // IDComboBox
             // 
-            this.IDComboBox.Location = new System.Drawing.Point(471, 144);
+            this.IDComboBox.Location = new System.Drawing.Point(354, 101);
             this.IDComboBox.Name = "IDComboBox";
             this.IDComboBox.Size = new System.Drawing.Size(100, 20);
             this.IDComboBox.TabIndex = 2;
@@ -165,7 +165,7 @@
             // iDLabel
             // 
             this.iDLabel.AutoSize = true;
-            this.iDLabel.Location = new System.Drawing.Point(411, 147);
+            this.iDLabel.Location = new System.Drawing.Point(316, 104);
             this.iDLabel.Name = "iDLabel";
             this.iDLabel.Size = new System.Drawing.Size(21, 13);
             this.iDLabel.TabIndex = 0;
@@ -173,14 +173,14 @@
             // 
             // ChangePass
             // 
-            this.ChangePass.Location = new System.Drawing.Point(159, 271);
+            this.ChangePass.Location = new System.Drawing.Point(121, 188);
             this.ChangePass.Name = "ChangePass";
             this.ChangePass.Size = new System.Drawing.Size(100, 20);
             this.ChangePass.TabIndex = 2;
             // 
             // ChangePassCheck
             // 
-            this.ChangePassCheck.Location = new System.Drawing.Point(456, 275);
+            this.ChangePassCheck.Location = new System.Drawing.Point(354, 188);
             this.ChangePassCheck.Name = "ChangePassCheck";
             this.ChangePassCheck.Size = new System.Drawing.Size(100, 20);
             this.ChangePassCheck.TabIndex = 2;
@@ -188,7 +188,7 @@
             // ChangePassCheckLabel
             // 
             this.ChangePassCheckLabel.AutoSize = true;
-            this.ChangePassCheckLabel.Location = new System.Drawing.Point(338, 278);
+            this.ChangePassCheckLabel.Location = new System.Drawing.Point(243, 191);
             this.ChangePassCheckLabel.Name = "ChangePassCheckLabel";
             this.ChangePassCheckLabel.Size = new System.Drawing.Size(94, 13);
             this.ChangePassCheckLabel.TabIndex = 0;
@@ -197,7 +197,7 @@
             // ChangePassLabel
             // 
             this.ChangePassLabel.AutoSize = true;
-            this.ChangePassLabel.Location = new System.Drawing.Point(43, 278);
+            this.ChangePassLabel.Location = new System.Drawing.Point(10, 191);
             this.ChangePassLabel.Name = "ChangePassLabel";
             this.ChangePassLabel.Size = new System.Drawing.Size(81, 13);
             this.ChangePassLabel.TabIndex = 0;
@@ -207,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(482, 304);
             this.Controls.Add(this.IDComboBox);
             this.Controls.Add(this.ChangePassCheck);
             this.Controls.Add(this.ChangePass);
