@@ -39,7 +39,12 @@ namespace RegistrationSystem
                  new System.Data.SqlClient.SqlParameter("Password",db.Hash("Test")),
                   new System.Data.SqlClient.SqlParameter("Email","josh@cs.actx.edu"),
               });*/
-
+          /*  User testAdmin = new User();
+            System.Diagnostics.Debug.WriteLine("Auth Success = " + testAdmin.Authenticate(4, "test123"));
+            System.Diagnostics.Debug.WriteLine("IsRegistrar = " + testAdmin.IsRegistrar);
+            System.Diagnostics.Debug.WriteLine("First Name = " + testAdmin.FirstName);
+            testAdmin.RemovePerson(18);
+            */
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogIn());
