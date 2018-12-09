@@ -145,6 +145,8 @@ namespace RegistrationSystem
                 phoneNumber = value;
             }
         }
+
+
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
@@ -172,10 +174,12 @@ namespace RegistrationSystem
             this._password = password;
             return true;
         }
+
+        // allows changes to person table to be pushed to database
         public void PushChanges(User authority)
         {
+            // Authenticates user before proceeding
             authority.Authenticate();
-            //changes in the person table
             List<SqlParameter> changes = new List<SqlParameter>();
             if(authority.IsRegistrar)
             {
@@ -205,10 +209,8 @@ namespace RegistrationSystem
                 changes.Add(new SqlParameter("Email", email));
             if (phoneNumber != -1)
                 changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
-            //
-            //
 
-            //
+            // 
             if(EnterpriseID == -1)
             {
                 Connection.Insert(Tables.Person, changes.ToArray());
@@ -218,6 +220,8 @@ namespace RegistrationSystem
                 Connection.Update(Tables.Person, new SqlParameter[] { new SqlParameter("ID", EnterpriseID) }, changes.ToArray());
             }
         }
+
+        // Removes all references to person in all tables
         public bool RemovePerson(int id)
         {
             Authenticate();
@@ -241,6 +245,8 @@ namespace RegistrationSystem
             return success;
         }
         //private methods
+
+        // Hashes passwords to length of 25 characters
         private string Hash(string raw) => Convert.ToBase64String(
         new System.Security.Cryptography.Rfc2898DeriveBytes(raw, new byte[]
         {
@@ -253,6 +259,7 @@ namespace RegistrationSystem
                     135, 72, 125, 56, 227, 174, 239, 246, 77, 192, 18, 146, 32, 48, 237, 20,
                     234, 191, 96, 95, 230, 83, 122, 66, 163, 118, 199, 20, 113, 240, 119, 100
         }, 101).GetBytes(25));
+
         private object GetPersonInfo(string columnName) =>
             Connection.GetValue(columnName, new SqlParameter[]
                 {
