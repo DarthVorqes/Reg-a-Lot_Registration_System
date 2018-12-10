@@ -32,15 +32,18 @@
             this.sched1 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.addDrop1 = new System.Windows.Forms.TabPage();
+            this.DropSectionBtn = new System.Windows.Forms.Button();
+            this.AddSectionBtn = new System.Windows.Forms.Button();
+            this.AddDropListBox = new System.Windows.Forms.ListBox();
+            this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.persInfo1 = new System.Windows.Forms.TabPage();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.finance1 = new System.Windows.Forms.TabPage();
             this.logOut1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.courseAddDropComboBox = new System.Windows.Forms.ComboBox();
-            this.SectionAddDropListBox = new System.Windows.Forms.ListBox();
-            this.AddSection = new System.Windows.Forms.Button();
-            this.DropSection = new System.Windows.Forms.Button();
+            this.AddDropCourselbl = new System.Windows.Forms.Label();
+            this.AddDropSemesterlbl = new System.Windows.Forms.Label();
+            this.AddDropSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
             this.addDrop1.SuspendLayout();
@@ -92,16 +95,56 @@
             // addDrop1
             // 
             this.addDrop1.BackColor = System.Drawing.SystemColors.Control;
-            this.addDrop1.Controls.Add(this.DropSection);
-            this.addDrop1.Controls.Add(this.AddSection);
-            this.addDrop1.Controls.Add(this.SectionAddDropListBox);
-            this.addDrop1.Controls.Add(this.courseAddDropComboBox);
+            this.addDrop1.Controls.Add(this.AddDropSemesterComboBox);
+            this.addDrop1.Controls.Add(this.AddDropSemesterlbl);
+            this.addDrop1.Controls.Add(this.AddDropCourselbl);
+            this.addDrop1.Controls.Add(this.DropSectionBtn);
+            this.addDrop1.Controls.Add(this.AddSectionBtn);
+            this.addDrop1.Controls.Add(this.AddDropListBox);
+            this.addDrop1.Controls.Add(this.AddDropCoursesComboBox);
             this.addDrop1.Location = new System.Drawing.Point(23, 4);
             this.addDrop1.Name = "addDrop1";
             this.addDrop1.Padding = new System.Windows.Forms.Padding(3);
             this.addDrop1.Size = new System.Drawing.Size(803, 442);
             this.addDrop1.TabIndex = 1;
             this.addDrop1.Text = "Add/Drop";
+            // 
+            // DropSectionBtn
+            // 
+            this.DropSectionBtn.Location = new System.Drawing.Point(468, 358);
+            this.DropSectionBtn.Name = "DropSectionBtn";
+            this.DropSectionBtn.Size = new System.Drawing.Size(75, 23);
+            this.DropSectionBtn.TabIndex = 2;
+            this.DropSectionBtn.Text = "Drop";
+            this.DropSectionBtn.UseVisualStyleBackColor = true;
+            this.DropSectionBtn.Click += new System.EventHandler(this.DropSectionBtn_Click);
+            // 
+            // AddSectionBtn
+            // 
+            this.AddSectionBtn.Location = new System.Drawing.Point(254, 358);
+            this.AddSectionBtn.Name = "AddSectionBtn";
+            this.AddSectionBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddSectionBtn.TabIndex = 2;
+            this.AddSectionBtn.Text = "Add";
+            this.AddSectionBtn.UseVisualStyleBackColor = true;
+            this.AddSectionBtn.Click += new System.EventHandler(this.AddSectionBtn_Click);
+            // 
+            // AddDropListBox
+            // 
+            this.AddDropListBox.FormattingEnabled = true;
+            this.AddDropListBox.Location = new System.Drawing.Point(22, 88);
+            this.AddDropListBox.Name = "AddDropListBox";
+            this.AddDropListBox.Size = new System.Drawing.Size(762, 238);
+            this.AddDropListBox.TabIndex = 1;
+            // 
+            // AddDropCoursesComboBox
+            // 
+            this.AddDropCoursesComboBox.FormattingEnabled = true;
+            this.AddDropCoursesComboBox.Location = new System.Drawing.Point(317, 61);
+            this.AddDropCoursesComboBox.Name = "AddDropCoursesComboBox";
+            this.AddDropCoursesComboBox.Size = new System.Drawing.Size(280, 21);
+            this.AddDropCoursesComboBox.TabIndex = 0;
+            this.AddDropCoursesComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropCoursesComboBox_SelectedIndexChanged);
             // 
             // persInfo1
             // 
@@ -158,39 +201,32 @@
             this.comboBox1.Text = "View";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // courseAddDropComboBox
+            // AddDropCourselbl
             // 
-            this.courseAddDropComboBox.FormattingEnabled = true;
-            this.courseAddDropComboBox.Location = new System.Drawing.Point(22, 61);
-            this.courseAddDropComboBox.Name = "courseAddDropComboBox";
-            this.courseAddDropComboBox.Size = new System.Drawing.Size(280, 21);
-            this.courseAddDropComboBox.TabIndex = 0;
+            this.AddDropCourselbl.AutoSize = true;
+            this.AddDropCourselbl.Location = new System.Drawing.Point(314, 45);
+            this.AddDropCourselbl.Name = "AddDropCourselbl";
+            this.AddDropCourselbl.Size = new System.Drawing.Size(48, 13);
+            this.AddDropCourselbl.TabIndex = 3;
+            this.AddDropCourselbl.Text = "Courses:";
             // 
-            // SectionAddDropListBox
+            // AddDropSemesterlbl
             // 
-            this.SectionAddDropListBox.FormattingEnabled = true;
-            this.SectionAddDropListBox.Location = new System.Drawing.Point(22, 88);
-            this.SectionAddDropListBox.Name = "SectionAddDropListBox";
-            this.SectionAddDropListBox.Size = new System.Drawing.Size(762, 238);
-            this.SectionAddDropListBox.TabIndex = 1;
+            this.AddDropSemesterlbl.AutoSize = true;
+            this.AddDropSemesterlbl.Location = new System.Drawing.Point(22, 41);
+            this.AddDropSemesterlbl.Name = "AddDropSemesterlbl";
+            this.AddDropSemesterlbl.Size = new System.Drawing.Size(54, 13);
+            this.AddDropSemesterlbl.TabIndex = 4;
+            this.AddDropSemesterlbl.Text = "Semester:";
             // 
-            // AddSection
+            // AddDropSemesterComboBox
             // 
-            this.AddSection.Location = new System.Drawing.Point(254, 358);
-            this.AddSection.Name = "AddSection";
-            this.AddSection.Size = new System.Drawing.Size(75, 23);
-            this.AddSection.TabIndex = 2;
-            this.AddSection.Text = "Add";
-            this.AddSection.UseVisualStyleBackColor = true;
-            // 
-            // DropSection
-            // 
-            this.DropSection.Location = new System.Drawing.Point(468, 358);
-            this.DropSection.Name = "DropSection";
-            this.DropSection.Size = new System.Drawing.Size(75, 23);
-            this.DropSection.TabIndex = 2;
-            this.DropSection.Text = "Drop";
-            this.DropSection.UseVisualStyleBackColor = true;
+            this.AddDropSemesterComboBox.FormattingEnabled = true;
+            this.AddDropSemesterComboBox.Location = new System.Drawing.Point(22, 61);
+            this.AddDropSemesterComboBox.Name = "AddDropSemesterComboBox";
+            this.AddDropSemesterComboBox.Size = new System.Drawing.Size(188, 21);
+            this.AddDropSemesterComboBox.TabIndex = 5;
+            this.AddDropSemesterComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropSemesterComboBox_SelectedIndexChanged);
             // 
             // studentView
             // 
@@ -207,6 +243,7 @@
             this.tabControl1.ResumeLayout(false);
             this.sched1.ResumeLayout(false);
             this.addDrop1.ResumeLayout(false);
+            this.addDrop1.PerformLayout();
             this.persInfo1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -222,9 +259,12 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ListBox SectionAddDropListBox;
-        private System.Windows.Forms.ComboBox courseAddDropComboBox;
-        private System.Windows.Forms.Button DropSection;
-        private System.Windows.Forms.Button AddSection;
+        private System.Windows.Forms.ListBox AddDropListBox;
+        private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
+        private System.Windows.Forms.Button DropSectionBtn;
+        private System.Windows.Forms.Button AddSectionBtn;
+        private System.Windows.Forms.ComboBox AddDropSemesterComboBox;
+        private System.Windows.Forms.Label AddDropSemesterlbl;
+        private System.Windows.Forms.Label AddDropCourselbl;
     }
 }
