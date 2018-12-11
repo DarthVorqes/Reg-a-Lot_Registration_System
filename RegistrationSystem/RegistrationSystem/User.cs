@@ -4,13 +4,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data.Sql;
 
 namespace RegistrationSystem
 {
     class User
     {
 
-        //place constructors here
+  /*      //place constructors here
+
         public User()
         {
             Connection = new DatabaseConnection();
@@ -36,7 +39,7 @@ namespace RegistrationSystem
         {
             get
             {
-                if (firstName == null && ((EnterpriseID == Auth.UserID) || Auth.IsRegistrar || Auth.IsProfessor))
+                if (firstName == null)
                     firstName = GetPersonInfo("FirstName").ToString();
                 return firstName;
             }
@@ -49,7 +52,7 @@ namespace RegistrationSystem
         {
             get
             {
-                if (lastName == null && ((EnterpriseID == Auth.UserID) || Auth.IsRegistrar || Auth.IsProfessor))
+                if (lastName == null)
                     lastName = GetPersonInfo("LastName").ToString();
                 return lastName;
             }
@@ -129,6 +132,7 @@ namespace RegistrationSystem
             set
             {
                 zipCode = value;
+
             }
         }
         public string Email
@@ -147,26 +151,46 @@ namespace RegistrationSystem
         }
 
 
+
         public DatabaseConnection Connection { get; }
-        public Authentication Auth { private get; set; }
         public User Focus { get; private set; }
         //public methods
         bool Authenticate() =>
             Authenticate(EnterpriseID, _password);
-        public bool Authenticate(int userID,string password)
+
+        public bool Authenticate(int userID, string password)
+
         {
-            Auth = new Authentication(userID, password, Connection);
-            return Auth.UserID != -1;
+            var permissions = Connection.GetOccurrences(
+                Tables.Person,
+                new SqlParameter[] {
+                                new SqlParameter("ID",userID),
+                                new SqlParameter("Password",Hash(password)),
+                },
+                new string[] {
+                                "IsProfessor",
+                                "IsStudent",
+                                "IsRegistrar",
+                });
+            if (permissions.Count == 0)
+                return false;
+            IsProfessor = permissions[0][0] == "True";
+            IsStudent = permissions[0][1] == "True";
+            IsRegistrar = permissions[0][2] == "True";
+            EnterpriseID = userID;
+            this._password = password;
+            return true;
         }
 
         // allows changes to person table to be pushed to database
-        public void PushChanges() => PushChanges(this);
         public void PushChanges(User authority)
         {
             // Authenticates user before proceeding
             authority.Authenticate();
             List<SqlParameter> changes = new List<SqlParameter>();
-            if(authority.IsRegistrar)
+
+            if (authority.IsRegistrar)
+
             {
                 if (firstName != null)
                     changes.Add(new SqlParameter("FirstName", firstName));
@@ -184,7 +208,9 @@ namespace RegistrationSystem
                 changes.Add(new SqlParameter("Password", _password));
             if (streetAddress != null)
                 changes.Add(new SqlParameter("StreetAddress", streetAddress));
-            if(city != null)
+
+            if (city != null)
+
                 changes.Add(new SqlParameter("City", city));
             if (state != null)
                 changes.Add(new SqlParameter("State", state));
@@ -196,7 +222,9 @@ namespace RegistrationSystem
                 changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
 
             // 
+
             if (EnterpriseID == -1)
+
             {
                 Connection.Insert(Tables.Person, changes.ToArray());
             }
@@ -249,7 +277,9 @@ namespace RegistrationSystem
             Connection.GetValue(columnName, new SqlParameter[]
                 {
                     new SqlParameter("ID",EnterpriseID),
-                },Tables.Person);
+
+                }, Tables.Person);
+
         //do not touch these VVV go through the properties!
         string firstName, lastName, _password, streetAddress, state, email, city;
         long phoneNumber = -1;
@@ -257,5 +287,7 @@ namespace RegistrationSystem
         bool hasPaid,
             checkedIfHasPaid;
         Schedule userSchedule;
-    }
+
+    */}
 }
+

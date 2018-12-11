@@ -10,7 +10,7 @@ using System.Data;
 
 namespace RegistrationSystem
 {
-    enum Tables
+  /*  enum Tables
     {
         Person = 0,
         Section,
@@ -96,7 +96,9 @@ namespace RegistrationSystem
         /// <param name="perams">A list of perameters which the results must satisfy.</param>
         /// <param name="desiredFields">The actual fields/columns/variables desired.</param>
         /// <returns></returns>
-        public List<string[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) => 
+
+        public List<string[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) =>
+
             GetOccurrences(table.ToString(), perams, desiredFields);
         /// <summary>
         /// Collects all of the occerences which satisfy the specified perameters.
@@ -214,7 +216,10 @@ namespace RegistrationSystem
             ExecuteQuery(
                 "UPDATE " + table + " SET " + set + " WHERE " + BuildEqualityList(searchPerams),
                 allPerams.ToArray(),
-                (SqlCommand cmd) => {
+
+                (SqlCommand cmd) =>
+                {
+
                     cmd.StatementCompleted += (object sender,
                         StatementCompletedEventArgs e) =>
                     {
@@ -239,7 +244,8 @@ namespace RegistrationSystem
             ExecuteQuery(
                 "DELETE FROM " + table + " WHERE " + BuildEqualityList(perams),
                 perams,
-                (SqlCommand cmd) => {
+                (SqlCommand cmd) =>
+                {
                     cmd.StatementCompleted += (object sender,
                         StatementCompletedEventArgs e) =>
                     {
@@ -299,5 +305,7 @@ namespace RegistrationSystem
                 combined += delimiter + elements[i];
             return combined;
         }
-    }
+
+    }*/
+
 }
