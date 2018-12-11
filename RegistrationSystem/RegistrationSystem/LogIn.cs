@@ -61,7 +61,7 @@ namespace RegistrationSystem
                        RegistarView RView = new RegistarView(ID);
                        RView.Show();
                        Hide();
-                   }*/
+                   }
                 //check to see if professor:
                 if (UserNameTextBox.Text == "Max")
                 {
@@ -85,6 +85,7 @@ namespace RegistrationSystem
                 {
                     MessageBox.Show("Invaild Credintials!!");
                 }
+                */
 
         }
         private void ExitButton_Click(object sender, EventArgs e)

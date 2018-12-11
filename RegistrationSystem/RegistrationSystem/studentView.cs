@@ -42,6 +42,8 @@ namespace RegistrationSystem
             string firstCourseSection = "COSC 1320 001"; //the course section of the first section it pulls out of the database.
             string firstCourseHours = "12:30 - 3:15"; //the time (such time  of the first section it pulls out of the database.
 
+            if (firstCourseName != "" && firstCourseSection != "" && firstCourseHours != "")
+            { 
             object[] firstCourseNameHTMLEdit = { "document.getElementById(\"firstCourseName\").innerHTML = $firstCourseName" };
             object[] firstCourseSectionHTMLEdit = { "document.getElementById(\"firstCourseSection\").innerHTML = $firstCourseSection" };
             object[] firstCourseHoursHTMLEdit = { "document.getElementById(\"firstCourseHours\").innerHTML = $firstCourseHours" };
@@ -55,7 +57,7 @@ namespace RegistrationSystem
             object[] firstCourseHoursJScript = { "var $firstCourseHours = \"" + firstCourseHours + "\"" };
             webBrowser1.Document.InvokeScript("eval", firstCourseHoursJScript);
             webBrowser1.Document.InvokeScript("eval", firstCourseHoursHTMLEdit);
-
+            }
             bool scheduleLooping = true;
             //keeps the thing looping when it grabs and puts in the data
             int timesScheduleLooped = 0;
@@ -84,10 +86,14 @@ namespace RegistrationSystem
 
             while (scheduleLooping == true)
             {
-                
-                myCourseName.Add("CourseName" + timesScheduleLooped.ToString()); 
-                myCourseSection.Add("CourseSection" + timesScheduleLooped.ToString());
-                myCourseHours.Add("CourseHours" + timesScheduleLooped.ToString());
+                string pullCourseName = "Pull Course Name"; //Pull the course name from the table.
+                string pullCourseSection = "Pull Course Section"; //pull the course section from the table.
+                string pullCourseHours = "Pull Course Hours"; //pull the course hours from the table
+
+
+                myCourseName.Add(pullCourseName); 
+                myCourseSection.Add(pullCourseSection);
+                myCourseHours.Add(pullCourseHours);
                 if (myCourseName[timesScheduleLooped] != null && myCourseSection[timesScheduleLooped] != null && myCourseHours[timesScheduleLooped] != null)
                 {
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtOne);
@@ -118,6 +124,7 @@ namespace RegistrationSystem
                 else
                 {
                     scheduleLooping = false;
+                    
                 }
 
                 if (timesScheduleLooped == 5)
@@ -126,6 +133,7 @@ namespace RegistrationSystem
                     scheduleLooping = false;
                 }
             }
+            //close connection to database.
         }
     }
 }
