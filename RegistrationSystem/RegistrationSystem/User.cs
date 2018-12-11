@@ -36,7 +36,7 @@ namespace RegistrationSystem
         {
             get
             {
-                if (firstName == null)
+                if (firstName == null && ((EnterpriseID == Auth.UserID) || Auth.IsRegistrar || Auth.IsProfessor))
                     firstName = GetPersonInfo("FirstName").ToString();
                 return firstName;
             }
@@ -49,7 +49,7 @@ namespace RegistrationSystem
         {
             get
             {
-                if (lastName == null)
+                if (lastName == null && ((EnterpriseID == Auth.UserID) || Auth.IsRegistrar || Auth.IsProfessor))
                     lastName = GetPersonInfo("LastName").ToString();
                 return lastName;
             }
@@ -148,34 +148,19 @@ namespace RegistrationSystem
 
 
         public DatabaseConnection Connection { get; }
+        public Authentication Auth { private get; set; }
         public User Focus { get; private set; }
         //public methods
         bool Authenticate() =>
             Authenticate(EnterpriseID, _password);
         public bool Authenticate(int userID,string password)
         {
-            var permissions = Connection.GetOccurrences(
-                Tables.Person,
-                new SqlParameter[] {
-                                new SqlParameter("ID",userID),
-                                new SqlParameter("Password",Hash(password)),
-                },
-                new string[] {
-                                "IsProfessor",
-                                "IsStudent",
-                                "IsRegistrar",
-                });
-            if (permissions.Count == 0)
-                return false;
-            IsProfessor = permissions[0][0] == "True";
-            IsStudent = permissions[0][1] == "True";
-            IsRegistrar = permissions[0][2] == "True";
-            EnterpriseID = userID;
-            this._password = password;
-            return true;
+            Auth = new Authentication(userID, password, Connection);
+            return Auth.UserID != -1;
         }
 
         // allows changes to person table to be pushed to database
+        public void PushChanges() => PushChanges(this);
         public void PushChanges(User authority)
         {
             // Authenticates user before proceeding
@@ -211,7 +196,7 @@ namespace RegistrationSystem
                 changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
 
             // 
-            if(EnterpriseID == -1)
+            if (EnterpriseID == -1)
             {
                 Connection.Insert(Tables.Person, changes.ToArray());
             }

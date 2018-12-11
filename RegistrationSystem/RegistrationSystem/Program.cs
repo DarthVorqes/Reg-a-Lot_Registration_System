@@ -58,6 +58,7 @@ namespace RegistrationSystem
             //System.Diagnostics.Debug.WriteLine("First Name = " + testAdmin.FirstName);
             //System.Diagnostics.Debug.WriteLine("Remove Person Success = " + testAdmin.RemovePerson(85));
 
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogIn());
