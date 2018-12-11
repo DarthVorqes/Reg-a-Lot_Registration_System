@@ -101,6 +101,7 @@ namespace RegistrationSystem
         }
         public int Social
         {
+
             set
             {
                 social = value;
@@ -108,6 +109,10 @@ namespace RegistrationSystem
         }
         public string StreetAddress
         {
+            get
+            {
+                throw new NotImplementedException();
+            }
             set
             {
                 streetAddress = value;
@@ -115,6 +120,10 @@ namespace RegistrationSystem
         }
         public string City
         {
+            get
+            {
+                throw new NotImplementedException();
+            }
             set
             {
                 city = value;
@@ -122,6 +131,10 @@ namespace RegistrationSystem
         }
         public string State
         {
+            get
+            {
+                throw new NotImplementedException();
+            }
             set
             {
                 state = value;
@@ -129,6 +142,10 @@ namespace RegistrationSystem
         }
         public int ZipCode
         {
+            get
+            {
+                throw new NotImplementedException();
+            }
             set
             {
                 zipCode = value;
@@ -137,6 +154,10 @@ namespace RegistrationSystem
         }
         public string Email
         {
+            get
+            {
+                throw new NotImplementedException();
+            }
             set
             {
                 email = value;
@@ -144,6 +165,10 @@ namespace RegistrationSystem
         }
         public long PhoneNumber
         {
+            get
+            {
+                throw new NotImplementedException();
+            }
             set
             {
                 phoneNumber = value;

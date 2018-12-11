@@ -17,6 +17,7 @@ namespace RegistrationSystem
         private List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
         private List <string> people = new List<string> { "jim", "karren", "david"};
+   
         private int userID;
         
         public Registrar(int ID)
@@ -45,14 +46,15 @@ namespace RegistrationSystem
         /// </summary>
         private void UserViewComboBox_Load(int ID)
         {
-            UserViewComboBox.Items.Add("Student");
-            //check login id to see if they have professor rights
-            if (true)
+            if (LogIn.user.IsStudent)
+            {
+                UserViewComboBox.Items.Add("Student");
+            }
+            if (LogIn.user.IsProfessor)
             {
                 UserViewComboBox.Items.Add("Professor");
             }
-            //check login id to see if they have registar rights
-            if (true)
+            if (LogIn.user.IsRegistrar)
             {
                 UserViewComboBox.Items.Add("Registar");
             }
@@ -65,7 +67,7 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProfessorView Professor = new ProfessorView(userID);
+            ProfessorView Professor = new ProfessorView();
             studentView Student = new studentView(userID);
             Registrar Registar = new Registrar(userID);
             if ((string)UserViewComboBox.SelectedItem == "Student")
@@ -90,7 +92,7 @@ namespace RegistrationSystem
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProfessorView Professor = new ProfessorView(userID);
+            ProfessorView Professor = new ProfessorView();
             studentView Student = new studentView(userID);
             Registrar Registar = new Registrar(userID);
             if ((string)UserViewComboBox.SelectedItem == "Student")

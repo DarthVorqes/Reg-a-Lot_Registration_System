@@ -17,30 +17,31 @@ namespace RegistrationSystem
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
         private List<string> semesterIndex = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
         private int userID;
+        
         public studentView(int ID)
         {
             userID = ID;
             InitializeComponent();
-            comboBox1_Load(ID);
+            UserViewComboBox_Load(ID);
             AddDropSemesterComboBox_Load(ID);
         }
         /// <summary>
         /// loads values into the UserView combo box
         /// </summary>
-        private void comboBox1_Load(int ID)
+        private void UserViewComboBox_Load(int ID)
         {
-            comboBox1.Items.Add("Student");
-            //check login id to see if they have professor rights
-            if (true)
+           if (LogIn.user.IsStudent)
             {
-                comboBox1.Items.Add("Professor");
+                UserViewComboBox.Items.Add("Student");
             }
-            //check login id to see if they have registar rights
-            if (true)
+            if (LogIn.user.IsProfessor)
             {
-                comboBox1.Items.Add("Registar");
+                UserViewComboBox.Items.Add("Professor");
             }
-
+            if (LogIn.user.IsRegistrar)
+            {
+                UserViewComboBox.Items.Add("Registar");
+            }
         }
         /// <summary>
         /// A combo box to change user views
@@ -49,20 +50,20 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProfessorView Professor = new ProfessorView(userID);
+            ProfessorView Professor = new ProfessorView();
             studentView Student = new studentView(userID);
             Registrar Registar = new Registrar(userID);
-            if ((string) comboBox1.SelectedItem == "Student")
+            if ((string) UserViewComboBox.SelectedItem == "Student")
             {
                 Student.Show();
                 Close();
             }
-            if ((string)comboBox1.SelectedItem == "Professor")
+            if ((string)UserViewComboBox.SelectedItem == "Professor")
             {
                 Professor.Show();
                 Close();
             }
-            if ((string)comboBox1.SelectedItem == "Registar")
+            if ((string)UserViewComboBox.SelectedItem == "Registar")
             {
                 Registar.Show();
                 Close();

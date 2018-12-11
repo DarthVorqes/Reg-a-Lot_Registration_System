@@ -10,36 +10,40 @@ using System.Windows.Forms;
 
 namespace RegistrationSystem
 {
-    public partial class LogIn : Form
+    partial class LogIn : Form
     {
-        public int ID { get; private set; }
+
+         public static  User user = new User();
 
         public LogIn()
         {
             InitializeComponent();
         }
-        private void LogInButton_Click(object sender, EventArgs e)
+        public void LogInButton_Click(object sender, EventArgs e)
         {
-            User LogIn = new User();
+            
+            
             try
             {
                 int.TryParse(UserNameTextBox.Text, out int UserID);
-                ID = UserID;
-                if (LogIn.Authenticate(UserID, PasswordTextBox.Text))
+                int ID = UserID;
+                if (user.Authenticate(UserID, PasswordTextBox.Text))
                 {
-                    if (LogIn.IsRegistrar)
+                    MessageBox.Show("Authenticated!");
+                    if (user.IsRegistrar)
                     {
                         Registrar RView = new Registrar(ID);
                         RView.Show();
                         Hide();
                     }
-                    else if (LogIn.IsProfessor)
+                    else if (user.IsProfessor)
                     {
-                        ProfessorView PView = new ProfessorView(ID);
-                        PView.Show();
+                        MessageBox.Show("here in prof");
+                        ProfessorView PView = new ProfessorView();                      
+                        PView.Show();                      
                         Hide();
                     }
-                    else if (LogIn.IsStudent)
+                    else if (user.IsStudent)
                     {
                         studentView SView = new studentView(ID);
                         SView.Show();

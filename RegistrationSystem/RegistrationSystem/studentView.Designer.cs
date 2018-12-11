@@ -32,6 +32,9 @@
             this.sched1 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.addDrop1 = new System.Windows.Forms.TabPage();
+            this.AddDropSemesterComboBox = new System.Windows.Forms.ComboBox();
+            this.AddDropSemesterlbl = new System.Windows.Forms.Label();
+            this.AddDropCourselbl = new System.Windows.Forms.Label();
             this.DropSectionBtn = new System.Windows.Forms.Button();
             this.AddSectionBtn = new System.Windows.Forms.Button();
             this.AddDropListBox = new System.Windows.Forms.ListBox();
@@ -40,10 +43,7 @@
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.finance1 = new System.Windows.Forms.TabPage();
             this.logOut1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.AddDropCourselbl = new System.Windows.Forms.Label();
-            this.AddDropSemesterlbl = new System.Windows.Forms.Label();
-            this.AddDropSemesterComboBox = new System.Windows.Forms.ComboBox();
+            this.UserViewComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
             this.addDrop1.SuspendLayout();
@@ -108,6 +108,33 @@
             this.addDrop1.Size = new System.Drawing.Size(803, 442);
             this.addDrop1.TabIndex = 1;
             this.addDrop1.Text = "Add/Drop";
+            // 
+            // AddDropSemesterComboBox
+            // 
+            this.AddDropSemesterComboBox.FormattingEnabled = true;
+            this.AddDropSemesterComboBox.Location = new System.Drawing.Point(22, 61);
+            this.AddDropSemesterComboBox.Name = "AddDropSemesterComboBox";
+            this.AddDropSemesterComboBox.Size = new System.Drawing.Size(188, 21);
+            this.AddDropSemesterComboBox.TabIndex = 5;
+            this.AddDropSemesterComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropSemesterComboBox_SelectedIndexChanged);
+            // 
+            // AddDropSemesterlbl
+            // 
+            this.AddDropSemesterlbl.AutoSize = true;
+            this.AddDropSemesterlbl.Location = new System.Drawing.Point(22, 41);
+            this.AddDropSemesterlbl.Name = "AddDropSemesterlbl";
+            this.AddDropSemesterlbl.Size = new System.Drawing.Size(54, 13);
+            this.AddDropSemesterlbl.TabIndex = 4;
+            this.AddDropSemesterlbl.Text = "Semester:";
+            // 
+            // AddDropCourselbl
+            // 
+            this.AddDropCourselbl.AutoSize = true;
+            this.AddDropCourselbl.Location = new System.Drawing.Point(314, 45);
+            this.AddDropCourselbl.Name = "AddDropCourselbl";
+            this.AddDropCourselbl.Size = new System.Drawing.Size(48, 13);
+            this.AddDropCourselbl.TabIndex = 3;
+            this.AddDropCourselbl.Text = "Courses:";
             // 
             // DropSectionBtn
             // 
@@ -191,42 +218,15 @@
             this.logOut1.UseVisualStyleBackColor = true;
             this.logOut1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // UserViewComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(21, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.Text = "View";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // AddDropCourselbl
-            // 
-            this.AddDropCourselbl.AutoSize = true;
-            this.AddDropCourselbl.Location = new System.Drawing.Point(314, 45);
-            this.AddDropCourselbl.Name = "AddDropCourselbl";
-            this.AddDropCourselbl.Size = new System.Drawing.Size(48, 13);
-            this.AddDropCourselbl.TabIndex = 3;
-            this.AddDropCourselbl.Text = "Courses:";
-            // 
-            // AddDropSemesterlbl
-            // 
-            this.AddDropSemesterlbl.AutoSize = true;
-            this.AddDropSemesterlbl.Location = new System.Drawing.Point(22, 41);
-            this.AddDropSemesterlbl.Name = "AddDropSemesterlbl";
-            this.AddDropSemesterlbl.Size = new System.Drawing.Size(54, 13);
-            this.AddDropSemesterlbl.TabIndex = 4;
-            this.AddDropSemesterlbl.Text = "Semester:";
-            // 
-            // AddDropSemesterComboBox
-            // 
-            this.AddDropSemesterComboBox.FormattingEnabled = true;
-            this.AddDropSemesterComboBox.Location = new System.Drawing.Point(22, 61);
-            this.AddDropSemesterComboBox.Name = "AddDropSemesterComboBox";
-            this.AddDropSemesterComboBox.Size = new System.Drawing.Size(188, 21);
-            this.AddDropSemesterComboBox.TabIndex = 5;
-            this.AddDropSemesterComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropSemesterComboBox_SelectedIndexChanged);
+            this.UserViewComboBox.FormattingEnabled = true;
+            this.UserViewComboBox.Location = new System.Drawing.Point(21, 6);
+            this.UserViewComboBox.Name = "UserViewComboBox";
+            this.UserViewComboBox.Size = new System.Drawing.Size(121, 21);
+            this.UserViewComboBox.TabIndex = 2;
+            this.UserViewComboBox.Text = "View";
+            this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // studentView
             // 
@@ -235,7 +235,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(840, 533);
             this.ControlBox = false;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.UserViewComboBox);
             this.Controls.Add(this.logOut1);
             this.Controls.Add(this.tabControl1);
             this.Name = "studentView";
@@ -258,7 +258,7 @@
         private System.Windows.Forms.TabPage finance1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.ListBox AddDropListBox;
         private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
         private System.Windows.Forms.Button DropSectionBtn;

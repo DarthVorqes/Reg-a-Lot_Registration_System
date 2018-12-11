@@ -19,46 +19,47 @@ namespace RegistrationSystem
         private List<string> courseIndex      = new List<string>() { "course1", "course2", "course3" };
         private List<string> semesterIndex    = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
         private int userID;
+        int ID;
         /// <summary>
         /// Opens Professor View form
         /// </summary>
         /// <param name="ID">the ID used to log in, this will be used to populate lists/comboboxs etc.</param>
-        public ProfessorView(int ID)
+        public ProfessorView()
         {
-            userID = ID;
+            userID = 1;
+            ID = 1;
             InitializeComponent();
-            SetLabels(ID);
-            UserViewComboBox_Load(ID);
+            SetLabels();
+            UserViewComboBox_Load();
             ScheduleSemesterComboBox_Load(ID);
             AddDropSemesterComboBox_Load(ID);
             //AddDropCoursesComboBox_Load(ID);
            
 
         }
-        private void SetLabels(int ID)
+        private void SetLabels()
         {
-            ProfessorTitle.Text = "name"; // or query database to find name
-            FirstNameLabel.Text = "name"; //query for ids firstname in database
-            LastNameLabel.Text = "clem"; //query for ids lastname in database
-            IDNumberLabel.Text = ID.ToString(); //we have the id
-            AddressLabel.Text = "758 collingsworth st"; //query for address in database
-            EmailLabel.Text = "clemmax@gmail.com"; //query for email in database
-
-
+            ProfessorTitle.Text = LogIn.user.FirstName + " " +LogIn.user.LastName; 
+            FirstNameLabel.Text = LogIn.user.FirstName;
+            LastNameLabel.Text = LogIn.user.LastName; 
+            IDNumberLabel.Text = LogIn.user.EnterpriseID.ToString(); 
+            //AddressLabel.Text = LogIn.user.StreetAddress; 
+            //EmailLabel.Text = LogIn.user.Email; 
         }
         /// <summary>
         /// loads values into the UserView combo box
         /// </summary>
-        private void UserViewComboBox_Load(int ID)
+        public void UserViewComboBox_Load()
         {
-            UserViewComboBox.Items.Add("Student");
-            //check login id to see if they have professor rights
-            if (true)
+            if (LogIn.user.IsStudent)
+            {
+                UserViewComboBox.Items.Add("Student");
+            }
+            if (LogIn.user.IsProfessor)
             {
                 UserViewComboBox.Items.Add("Professor");
             }
-            //check login id to see if they have registar rights
-            if (true)
+            if (LogIn.user.IsRegistrar)
             {
                 UserViewComboBox.Items.Add("Registar");
             }
@@ -71,7 +72,7 @@ namespace RegistrationSystem
         /// <param name="e"></param>
         private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProfessorView Professor = new ProfessorView(userID);
+            ProfessorView Professor = new ProfessorView();
             studentView Student = new studentView(userID);
             Registrar Registar = new Registrar(userID);
             if ((string)UserViewComboBox.SelectedItem == "Student")
