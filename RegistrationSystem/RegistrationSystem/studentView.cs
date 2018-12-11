@@ -22,7 +22,7 @@ namespace RegistrationSystem
             Application.Exit();
         }
 
-    
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -43,20 +43,20 @@ namespace RegistrationSystem
             string firstCourseHours = "12:30 - 3:15"; //the time (such time  of the first section it pulls out of the database.
 
             if (firstCourseName != "" && firstCourseSection != "" && firstCourseHours != "")
-            { 
-            object[] firstCourseNameHTMLEdit = { "document.getElementById(\"firstCourseName\").innerHTML = $firstCourseName" };
-            object[] firstCourseSectionHTMLEdit = { "document.getElementById(\"firstCourseSection\").innerHTML = $firstCourseSection" };
-            object[] firstCourseHoursHTMLEdit = { "document.getElementById(\"firstCourseHours\").innerHTML = $firstCourseHours" };
+            {
+                object[] firstCourseNameHTMLEdit = { "document.getElementById(\"firstCourseName\").innerHTML = $firstCourseName" };
+                object[] firstCourseSectionHTMLEdit = { "document.getElementById(\"firstCourseSection\").innerHTML = $firstCourseSection" };
+                object[] firstCourseHoursHTMLEdit = { "document.getElementById(\"firstCourseHours\").innerHTML = $firstCourseHours" };
 
-            object[] firstCourseNameJScript = { "$firstCourseName = \"" + firstCourseName + "\"" };
-            webBrowser1.Document.InvokeScript("eval", firstCourseNameJScript);
-            webBrowser1.Document.InvokeScript("eval", firstCourseNameHTMLEdit);
-            object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" + firstCourseSection + "\"" };
-            webBrowser1.Document.InvokeScript("eval", firstCourseSectionJScript);
-            webBrowser1.Document.InvokeScript("eval", firstCourseSectionHTMLEdit);
-            object[] firstCourseHoursJScript = { "var $firstCourseHours = \"" + firstCourseHours + "\"" };
-            webBrowser1.Document.InvokeScript("eval", firstCourseHoursJScript);
-            webBrowser1.Document.InvokeScript("eval", firstCourseHoursHTMLEdit);
+                object[] firstCourseNameJScript = { "$firstCourseName = \"" + firstCourseName + "\"" };
+                webBrowser1.Document.InvokeScript("eval", firstCourseNameJScript);
+                webBrowser1.Document.InvokeScript("eval", firstCourseNameHTMLEdit);
+                object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" + firstCourseSection + "\"" };
+                webBrowser1.Document.InvokeScript("eval", firstCourseSectionJScript);
+                webBrowser1.Document.InvokeScript("eval", firstCourseSectionHTMLEdit);
+                object[] firstCourseHoursJScript = { "var $firstCourseHours = \"" + firstCourseHours + "\"" };
+                webBrowser1.Document.InvokeScript("eval", firstCourseHoursJScript);
+                webBrowser1.Document.InvokeScript("eval", firstCourseHoursHTMLEdit);
             }
             bool scheduleLooping = true;
             //keeps the thing looping when it grabs and puts in the data
@@ -91,7 +91,7 @@ namespace RegistrationSystem
                 string pullCourseHours = "Pull Course Hours"; //pull the course hours from the table
 
 
-                myCourseName.Add(pullCourseName); 
+                myCourseName.Add(pullCourseName);
                 myCourseSection.Add(pullCourseSection);
                 myCourseHours.Add(pullCourseHours);
                 if (myCourseName[timesScheduleLooped] != null && myCourseSection[timesScheduleLooped] != null && myCourseHours[timesScheduleLooped] != null)
@@ -124,7 +124,7 @@ namespace RegistrationSystem
                 else
                 {
                     scheduleLooping = false;
-                    
+
                 }
 
                 if (timesScheduleLooped == 5)
@@ -134,6 +134,21 @@ namespace RegistrationSystem
                 }
             }
             //close connection to database.
+        }
+
+        private void UserViewComboBox_Load(string ID)
+        {
+            userViewComboBox.Items.Add("Student");
+            //check login id to see if they have professor rights
+            if (ID == "Max")
+            {
+                userViewComboBox.Items.Add("Professor");
+            }
+            //check login id to see if they have registar rights
+            if (ID == "Al")
+            {
+                userViewComboBox.Items.Add("Registar");
+            }
         }
     }
 }

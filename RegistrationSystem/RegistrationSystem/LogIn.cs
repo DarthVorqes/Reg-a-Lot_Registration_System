@@ -52,8 +52,8 @@ namespace RegistrationSystem
             }
 
 
-            bool login = false;
-                /*   if (check to see if registar)
+            /*bool login = false;
+                   if (check to see if registar)
                    {
                        //if personID as username this will be fine if not then just search data base for the id linked to the username
                        ID = UserNameTextBox.Text;

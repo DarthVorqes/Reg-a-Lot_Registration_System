@@ -36,7 +36,7 @@
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.finance1 = new System.Windows.Forms.TabPage();
             this.logOut1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.userViewComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
             this.persInfo1.SuspendLayout();
@@ -146,19 +146,19 @@
             this.logOut1.UseVisualStyleBackColor = true;
             this.logOut1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // userViewComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.userViewComboBox.FormattingEnabled = true;
+            this.userViewComboBox.Items.AddRange(new object[] {
             "Professor View",
             "Registrar View"});
-            this.comboBox1.Location = new System.Drawing.Point(28, 7);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.Text = "View";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.userViewComboBox.Location = new System.Drawing.Point(28, 7);
+            this.userViewComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.userViewComboBox.Name = "userViewComboBox";
+            this.userViewComboBox.Size = new System.Drawing.Size(160, 24);
+            this.userViewComboBox.TabIndex = 2;
+            this.userViewComboBox.Text = "View";
+            this.userViewComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // studentView
             // 
@@ -167,7 +167,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(932, 747);
             this.ControlBox = false;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.userViewComboBox);
             this.Controls.Add(this.logOut1);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -190,6 +190,6 @@
         private System.Windows.Forms.TabPage finance1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.WebBrowser webBrowser2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox userViewComboBox;
     }
 }
