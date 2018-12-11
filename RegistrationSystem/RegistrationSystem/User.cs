@@ -18,6 +18,7 @@ namespace RegistrationSystem
         {
             Connection = new DatabaseConnection();
         }
+
         //place methods here
         public void SetFocus(int id)
         {
@@ -33,6 +34,7 @@ namespace RegistrationSystem
                 //initialize Focus
             }
         }
+
         //place properties
         public int EnterpriseID { get; private set; } = -1;
         public string FirstName

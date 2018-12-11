@@ -16,6 +16,10 @@ namespace RegistrationSystem
         public User Professor { get; set; }
         public User[] Students { get; set; }
         
+        // Add BuildClassArray() here
+
+
+
         // Section Properties
 
         public int ID {get; private set;} = -1;
