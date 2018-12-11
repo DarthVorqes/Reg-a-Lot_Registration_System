@@ -18,12 +18,12 @@ namespace RegistrationSystem
         private List<string> sectionIndex     = new List<string>() { "section1", "section2", "section3" };
         private List<string> courseIndex      = new List<string>() { "course1", "course2", "course3" };
         private List<string> semesterIndex    = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
-        private string userID;
+        private int userID;
         /// <summary>
         /// Opens Professor View form
         /// </summary>
         /// <param name="ID">the ID used to log in, this will be used to populate lists/comboboxs etc.</param>
-        public ProfessorView(string ID)
+        public ProfessorView(int ID)
         {
             userID = ID;
             InitializeComponent();
@@ -35,12 +35,12 @@ namespace RegistrationSystem
            
 
         }
-        private void SetLabels(string ID)
+        private void SetLabels(int ID)
         {
-            ProfessorTitle.Text = ID; // or query database to find name
-            FirstNameLabel.Text = ID; //query for ids firstname in database
+            ProfessorTitle.Text = "name"; // or query database to find name
+            FirstNameLabel.Text = "name"; //query for ids firstname in database
             LastNameLabel.Text = "clem"; //query for ids lastname in database
-            IDNumberLabel.Text = ID; //we have the id
+            IDNumberLabel.Text = ID.ToString(); //we have the id
             AddressLabel.Text = "758 collingsworth st"; //query for address in database
             EmailLabel.Text = "clemmax@gmail.com"; //query for email in database
 
@@ -49,16 +49,16 @@ namespace RegistrationSystem
         /// <summary>
         /// loads values into the UserView combo box
         /// </summary>
-        private void UserViewComboBox_Load(string ID)
+        private void UserViewComboBox_Load(int ID)
         {
             UserViewComboBox.Items.Add("Student");
             //check login id to see if they have professor rights
-            if (ID == "Max" || ID == "Ian")
+            if (true)
             {
                 UserViewComboBox.Items.Add("Professor");
             }
             //check login id to see if they have registar rights
-            if (ID == "Ian")
+            if (true)
             {
                 UserViewComboBox.Items.Add("Registar");
             }
@@ -103,7 +103,7 @@ namespace RegistrationSystem
         /// <summary>
         /// sets the values for the Schedule tab's combo box with sections.
         /// </summary>
-        private void ScheduleCoursesComboBox_Load(string ID)
+        private void ScheduleCoursesComboBox_Load(int ID)
         {
             ScheduleCoursesComboBox.Items.Clear();
             foreach (string section in sectionIndex)
@@ -111,7 +111,7 @@ namespace RegistrationSystem
                 ScheduleCoursesComboBox.Items.Add(section);
             }
         }
-        private void ScheduleSemesterComboBox_Load(string ID)
+        private void ScheduleSemesterComboBox_Load(int ID)
         {
             ScheduleSemesterComboBox.Items.Clear();
             foreach (string semester in semesterIndex)
@@ -119,7 +119,7 @@ namespace RegistrationSystem
                 ScheduleSemesterComboBox.Items.Add(semester);
             }
         }
-        private void AddDropSemesterComboBox_Load(string ID)
+        private void AddDropSemesterComboBox_Load(int ID)
         {
             AddDropSemesterComboBox.Items.Clear();
             foreach (string semester in semesterIndex)
@@ -130,7 +130,7 @@ namespace RegistrationSystem
         /// <summary>
         /// sets valuse for the Add/Drop tab's combo box with courses
         /// </summary>
-        private void AddDropCoursesComboBox_Load(string ID)
+        private void AddDropCoursesComboBox_Load(int ID)
         {
             AddDropCoursesComboBox.Items.Clear();
             foreach (string course in courseIndex)

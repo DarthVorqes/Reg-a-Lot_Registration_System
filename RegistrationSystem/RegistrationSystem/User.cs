@@ -12,7 +12,7 @@ namespace RegistrationSystem
     class User
     {
 
-  /*      //place constructors here
+        //place constructors here
 
         public User()
         {
@@ -288,6 +288,6 @@ namespace RegistrationSystem
             checkedIfHasPaid;
         Schedule userSchedule;
 
-    */}
+    }
 }
 

@@ -12,59 +12,45 @@ namespace RegistrationSystem
 {
     public partial class LogIn : Form
     {
-        public string ID { get; private set; }
+        public int ID { get; private set; }
 
         public LogIn()
         {
             InitializeComponent();
         }
-        public void ShowForm()
-        {
-            Show();
-        }
-        public void HideForm()
-        {
-            Hide();
-
-        }
         private void LogInButton_Click(object sender, EventArgs e)
         {
-
-            bool login = false;
-                  if (UserNameTextBox.Text == "Ian")
-                   {
-                       //if personID as username this will be fine if not then just search data base for the id linked to the username
-                       ID = UserNameTextBox.Text;
-                       login = true;
-                       Registrar RView = new Registrar(ID);
-                       RView.Show();
-             
-                Hide();
-                   }
-                //check to see if professor:
-                if (UserNameTextBox.Text == "Max")
+            User LogIn = new User();
+            try
+            {
+                int.TryParse(UserNameTextBox.Text, out int UserID);
+                ID = UserID;
+                if (LogIn.Authenticate(UserID, PasswordTextBox.Text))
                 {
-                    //if personID as username this will be fine if not then just search data base for the id linked to the username
-                    ID = UserNameTextBox.Text;
-                    login = true;
-                    ProfessorView PView = new ProfessorView(ID);
-                    PView.Show();
-                    Hide();
+                    if (LogIn.IsRegistrar)
+                    {
+                        Registrar RView = new Registrar(ID);
+                        RView.Show();
+                        Hide();
+                    }
+                    else if (LogIn.IsProfessor)
+                    {
+                        ProfessorView PView = new ProfessorView(ID);
+                        PView.Show();
+                        Hide();
+                    }
+                    else if (LogIn.IsStudent)
+                    {
+                        studentView SView = new studentView(ID);
+                        SView.Show();
+                        Hide();
+                    }
                 }
-                if (UserNameTextBox.Text == "Trey")
-                {
-                    //if personID as username this will be fine if not then just search data base for the id linked to the username
-                    ID = UserNameTextBox.Text;
-                    login = true;
-                    studentView SView = new studentView(ID);
-                    SView.Show();
-                    Hide();
-                }
-                if (login == false)
-                {
-                    MessageBox.Show("Invaild Credintials!!");
-                }
-
+            }
+            catch
+            {
+                MessageBox.Show("Not a vaild Username or Password!");
+            }
         }
 
     }

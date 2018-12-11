@@ -17,18 +17,18 @@ namespace RegistrationSystem
         private List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
         private List <string> people = new List<string> { "jim", "karren", "david"};
-        private string userID;
+        private int userID;
         
-        public Registrar(string ID)
+        public Registrar(int ID)
         {
             userID = ID;
             InitializeComponent();
             UserViewComboBox_Load(ID);
             LoadPersonalLabels(ID);
         }
-        private void LoadPersonalLabels(string ID)
+        private void LoadPersonalLabels(int ID)
         {
-            personalidlbl.Text = ID;
+            personalidlbl.Text = ID.ToString();
             personalFirstNamelbl.Text = "firstName";
             personalLastNamelbl.Text = "lastname";
             personalAgelbl.Text = "age";
@@ -43,16 +43,16 @@ namespace RegistrationSystem
         /// <summary>
         /// loads values into the UserView combo box
         /// </summary>
-        private void UserViewComboBox_Load(string ID)
+        private void UserViewComboBox_Load(int ID)
         {
             UserViewComboBox.Items.Add("Student");
             //check login id to see if they have professor rights
-            if (ID == "Max" || ID == "Ian")
+            if (true)
             {
                 UserViewComboBox.Items.Add("Professor");
             }
             //check login id to see if they have registar rights
-            if (ID == "Ian")
+            if (true)
             {
                 UserViewComboBox.Items.Add("Registar");
             }

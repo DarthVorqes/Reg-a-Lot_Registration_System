@@ -16,8 +16,8 @@ namespace RegistrationSystem
         private List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
         private List<string> semesterIndex = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
-        private string userID;
-        public studentView(string ID)
+        private int userID;
+        public studentView(int ID)
         {
             userID = ID;
             InitializeComponent();
@@ -27,16 +27,16 @@ namespace RegistrationSystem
         /// <summary>
         /// loads values into the UserView combo box
         /// </summary>
-        private void comboBox1_Load(string ID)
+        private void comboBox1_Load(int ID)
         {
             comboBox1.Items.Add("Student");
             //check login id to see if they have professor rights
-            if (ID == "Max" || ID == "Ian")
+            if (true)
             {
                 comboBox1.Items.Add("Professor");
             }
             //check login id to see if they have registar rights
-            if (ID == "Ian")
+            if (true)
             {
                 comboBox1.Items.Add("Registar");
             }
@@ -72,7 +72,7 @@ namespace RegistrationSystem
         {
             Application.Exit();
         }
-        private void AddDropSemesterComboBox_Load(string ID)
+        private void AddDropSemesterComboBox_Load(int ID)
         {
             AddDropSemesterComboBox.Items.Clear();
             foreach (string semester in semesterIndex)
@@ -80,7 +80,7 @@ namespace RegistrationSystem
                 AddDropSemesterComboBox.Items.Add(semester);
             }
         }
-        private void AddDropCoursesComboBox_Load(string ID)
+        private void AddDropCoursesComboBox_Load(int ID)
         {
             AddDropCoursesComboBox.Items.Clear();
             foreach (string course in courseIndex)

@@ -12,16 +12,16 @@ namespace RegistrationSystem
 {
     public partial class UpdatePersonalInformation : Form
     {
-        string userID;
-        public UpdatePersonalInformation(string ID)
+        int userID;
+        public UpdatePersonalInformation(int ID)
         {
             userID = ID;
             InitializeComponent();
             CanComboBoxs_Load(ID);
         }
-        private void CanComboBoxs_Load(string ID)
+        private void CanComboBoxs_Load(int ID)
         {
-            if (ID == "Ian")
+            if (true)
             {
                 canRegComboBox.Items.Add("Yes");
                 canRegComboBox.Items.Add("No");

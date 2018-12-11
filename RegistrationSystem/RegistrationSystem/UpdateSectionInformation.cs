@@ -12,7 +12,7 @@ namespace RegistrationSystem
 {
     public partial class UpdateSectionInformation : Form
     {
-        public UpdateSectionInformation(string ID)
+        public UpdateSectionInformation(int ID)
         {
             InitializeComponent();
         }
