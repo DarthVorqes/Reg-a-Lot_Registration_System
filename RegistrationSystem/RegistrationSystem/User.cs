@@ -99,7 +99,7 @@ namespace RegistrationSystem
                 return UserSchedule;
             }
         }
-        public DatabaseConnection Connection
+        /* public DatabaseConnection Connection
         {
             get
             {
@@ -110,6 +110,7 @@ namespace RegistrationSystem
                 return connection;
             }
         }
+        */
         public User Focus { get; private set; }
         //do not touch these VVV go through the properties!
         string name,
@@ -121,6 +122,6 @@ namespace RegistrationSystem
             isStudent,
             isRegistrar;
         Schedule userSchedule;
-        DatabaseConnection connection;
+        //DatabaseConnection connection;
     }
 }

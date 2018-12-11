@@ -12,8 +12,8 @@ namespace RegistrationSystem
         List<int> Students { get; set; }
         int Instructor { get; set; }
 
-        public List<Person> Students { get; set; }
-        public Person Instructor { get; set; }
+        //public List<Person> Students { get; set; }
+        //public Person Instructor { get; set; }
 
     }
 }

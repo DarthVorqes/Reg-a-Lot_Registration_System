@@ -103,13 +103,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-
     <EmbeddedResource Include="studentView.resx">
       <DependentUpon>studentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
-
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -123,14 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="schedule.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="info.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
