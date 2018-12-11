@@ -18,6 +18,7 @@ namespace RegistrationSystem
         {
             Connection = new DatabaseConnection();
         }
+
         //place methods here
         public void SetFocus(int id)
         {
@@ -33,6 +34,7 @@ namespace RegistrationSystem
                 //initialize Focus
             }
         }
+
         //place properties
         public int EnterpriseID { get; private set; } = -1;
         public string FirstName
@@ -101,6 +103,16 @@ namespace RegistrationSystem
         }
         public int Social
         {
+            get
+            {
+                if (!social)
+                {
+                    //get from DB
+                    social = true;
+
+                }
+            return social;
+            }
             set
             {
                 social = value;
@@ -108,6 +120,16 @@ namespace RegistrationSystem
         }
         public string StreetAddress
         {
+            get
+            {
+                if (!streetAddress)
+                {
+                    //get from DB
+                    streetAddress = true;
+
+                }
+            return streetAddress;
+            }
             set
             {
                 streetAddress = value;
@@ -115,6 +137,15 @@ namespace RegistrationSystem
         }
         public string City
         {
+             get
+             {
+                if (!city)
+                {
+                    //get from DB
+                    city = true;
+                }
+             return city;
+             }
             set
             {
                 city = value;
@@ -122,6 +153,15 @@ namespace RegistrationSystem
         }
         public string State
         {
+            get
+            {
+                if (!state)
+                {
+                    // get from DB
+                    state = true;
+                }
+            return state;
+            }
             set
             {
                 state = value;
@@ -129,6 +169,15 @@ namespace RegistrationSystem
         }
         public int ZipCode
         {
+            get
+            {
+                if (!zipCode)
+                {
+                    // get from DB
+                    zipCode = true;
+                }
+            return zipCode;
+            }
             set
             {
                 zipCode = value;
@@ -137,6 +186,15 @@ namespace RegistrationSystem
         }
         public string Email
         {
+            get
+            {
+                if (!email)
+                {
+                    // get from DB
+                    email = true;
+                }
+            return email;
+            }
             set
             {
                 email = value;
@@ -144,13 +202,20 @@ namespace RegistrationSystem
         }
         public long PhoneNumber
         {
+            get
+            {
+                if (!phoneNumber)
+                {
+                    // get from DB
+                    phoneNumber = true;
+                }
+            return phoneNumber;
+            }
             set
             {
                 phoneNumber = value;
             }
         }
-
-
 
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
