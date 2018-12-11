@@ -11,5 +11,6 @@ namespace RegistrationSystem
         public static byte Capacity => 10;
         public User Professor { get; set; }
         public User[] Students { get; set; }
+
     }
 }

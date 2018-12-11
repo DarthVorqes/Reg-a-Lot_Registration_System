@@ -82,6 +82,18 @@
     <Compile Include="studentView.Designer.cs">
       <DependentUpon>studentView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePersonalInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePersonalInformation.Designer.cs">
+      <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSectionInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSectionInformation.Designer.cs">
+      <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="UserFocus.cs" />
     <EmbeddedResource Include="LogIn.resx">
@@ -108,6 +120,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
+
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatePersonalInformation.resx">
+      <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSectionInformation.resx">
+      <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

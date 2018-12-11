@@ -4,13 +4,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data.Sql;
 
 namespace RegistrationSystem
 {
     class User
     {
 
-        //place constructors here
+  /*      //place constructors here
+
         public User()
         {
             Connection = new DatabaseConnection();
@@ -129,6 +132,7 @@ namespace RegistrationSystem
             set
             {
                 zipCode = value;
+
             }
         }
         public string Email
@@ -147,12 +151,15 @@ namespace RegistrationSystem
         }
 
 
+
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
         bool Authenticate() =>
             Authenticate(EnterpriseID, _password);
-        public bool Authenticate(int userID,string password)
+
+        public bool Authenticate(int userID, string password)
+
         {
             var permissions = Connection.GetOccurrences(
                 Tables.Person,
@@ -181,7 +188,9 @@ namespace RegistrationSystem
             // Authenticates user before proceeding
             authority.Authenticate();
             List<SqlParameter> changes = new List<SqlParameter>();
-            if(authority.IsRegistrar)
+
+            if (authority.IsRegistrar)
+
             {
                 if (firstName != null)
                     changes.Add(new SqlParameter("FirstName", firstName));
@@ -199,7 +208,9 @@ namespace RegistrationSystem
                 changes.Add(new SqlParameter("Password", _password));
             if (streetAddress != null)
                 changes.Add(new SqlParameter("StreetAddress", streetAddress));
-            if(city != null)
+
+            if (city != null)
+
                 changes.Add(new SqlParameter("City", city));
             if (state != null)
                 changes.Add(new SqlParameter("State", state));
@@ -211,7 +222,9 @@ namespace RegistrationSystem
                 changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
 
             // 
-            if(EnterpriseID == -1)
+
+            if (EnterpriseID == -1)
+
             {
                 Connection.Insert(Tables.Person, changes.ToArray());
             }
@@ -264,7 +277,9 @@ namespace RegistrationSystem
             Connection.GetValue(columnName, new SqlParameter[]
                 {
                     new SqlParameter("ID",EnterpriseID),
-                },Tables.Person);
+
+                }, Tables.Person);
+
         //do not touch these VVV go through the properties!
         string firstName, lastName, _password, streetAddress, state, email, city;
         long phoneNumber = -1;
@@ -272,5 +287,7 @@ namespace RegistrationSystem
         bool hasPaid,
             checkedIfHasPaid;
         Schedule userSchedule;
-    }
+
+    */}
 }
+
