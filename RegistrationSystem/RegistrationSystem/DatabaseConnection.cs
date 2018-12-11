@@ -10,7 +10,7 @@ using System.Data;
 
 namespace RegistrationSystem
 {
-  /*  enum Tables
+    enum Tables
     {
         Person = 0,
         Section,
@@ -318,6 +318,6 @@ namespace RegistrationSystem
             return combined;
         }
 
-    }*/
+    }
 
 }
