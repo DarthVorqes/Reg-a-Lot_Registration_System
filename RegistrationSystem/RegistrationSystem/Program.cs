@@ -16,7 +16,7 @@ namespace RegistrationSystem
         [STAThread]
         static void Main()
         {
-            DatabaseConnection db = new DatabaseConnection(1,"000"); 
+            /*DatabaseConnection db = new DatabaseConnection(1,"000"); 
             var collection = db.GetOccurrences(Tables.Person, new System.Data.SqlClient.SqlParameter[] { }, new string[] { "*" });
             System.Diagnostics.Debug.WriteLine("IsStudent = " + db.IsStudent);
             System.Diagnostics.Debug.WriteLine("IsProfessor = " + db.IsProfessor);
@@ -42,7 +42,7 @@ namespace RegistrationSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogIn());
+            Application.Run(new LogIn());*/
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Data;
 
 namespace RegistrationSystem
 {
-    enum Tables
+    /*enum Tables
     {
 
         People = 0,
@@ -49,7 +49,7 @@ namespace RegistrationSystem
          */
         //this value is just an example,
         //be sure to update it later with an accurate value
-        const string BASE_DATABASE_LOCATION = "db_owner.";
+        /*const string BASE_DATABASE_LOCATION = "db_owner.";
 
         static byte[] Key => new byte[]
         {
@@ -263,7 +263,7 @@ namespace RegistrationSystem
 
              */
         }
-        void Authenticate()
+        /*void Authenticate()
         {
             var permissions = GetFirstOccurrence(
                 Tables.People,
@@ -388,10 +388,10 @@ namespace RegistrationSystem
                     cmd.ExecuteNonQuery();
                 });
             return successful;
-        }
+        }*/
         //Delete
 
-        public bool DeleteAllOccurrences(Tables table, SqlParameter[] perams)
+        /*public bool DeleteAllOccurrences(Tables table, SqlParameter[] perams)
         {
 
 
@@ -413,10 +413,10 @@ namespace RegistrationSystem
                     cmd.ExecuteNonQuery();
                 });
             return successful;
-        }
+        }*/
         //helper methods
 
-        string BuildStringList(SqlParameter[] perams, string delimiter = "AND")
+        /*string BuildStringList(SqlParameter[] perams, string delimiter = "AND")
         {
             string combined = '@' + perams[0].ParameterName;
             for (int i = 1; i < perams.Length; i++)
@@ -466,3 +466,4 @@ namespace RegistrationSystem
 
     }
 }
+*/
