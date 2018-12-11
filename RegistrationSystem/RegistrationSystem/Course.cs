@@ -9,17 +9,17 @@ namespace RegistrationSystem
 {
     class Course
     {
-        public Course(SqlParameter[] perams, User usr)
+        public int ID { get; set; }
+        public string CourseNumber { get; set; }
+        public string CourseName { get; set; }
+        public string Description { get; set; }
+        public float Price { get; set; }
+        public byte Hours { get; set; }
+        public string Department { get; set; }
+        public string Prerequisite { get; set; }
+        public void PushChanges(User authority)
         {
-            
+
         }
-        public int ID { get; private set; }
-        public string CourseNumber { get; private set; }
-        public string CourseName { get; private set; }
-        public string Description { get; private set; }
-        public float Price { get; private set; }
-        public byte Hours { get; private set; }
-        public string Department { get; private set; }
-        public string Prerequisite { get; private set; }
     }
 }

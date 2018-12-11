@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Security.Cryptography;
 using System.Data;
+using System.Reflection;
 
 namespace RegistrationSystem
 {
@@ -97,7 +98,7 @@ namespace RegistrationSystem
         /// <param name="desiredFields">The actual fields/columns/variables desired.</param>
         /// <returns></returns>
 
-        public List<string[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) =>
+        public List<object[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) =>
 
             GetOccurrences(table.ToString(), perams, desiredFields);
         /// <summary>
@@ -107,9 +108,9 @@ namespace RegistrationSystem
         /// <param name="perams">A list of perameters which the results must satisfy.</param>
         /// <param name="desiredFields">The actual fields/columns/variables desired.</param>
         /// <returns></returns>
-        List<string[]> GetOccurrences(string table, SqlParameter[] perams, string[] desiredFields)
+        List<object[]> GetOccurrences(string table, SqlParameter[] perams, string[] desiredFields)
         {
-            List<string[]> query = new List<string[]>();
+            List<object[]> query = new List<object[]>();
 
             //constructing sql for query
             string sql = "SELECT " + EnumerateArray(desiredFields) + " FROM " + table;
@@ -126,17 +127,52 @@ namespace RegistrationSystem
                     {
                         while (reader.Read())
                         {
-                            var result = new string[reader.FieldCount];
+                            var result = new object[reader.FieldCount];
                             for (int i = 0; i < result.Length; i++)
                             {
                                 var n = reader.GetValue(i);
-                                result[i] = Convert.ToString(n);
+                                result[i] = n;
                             }
                             query.Add(result);
                         }
                     }
                 });
             return query;
+        }
+        /// <summary>
+        /// Constructs a list of objects of type 'T'.
+        /// </summary>
+        /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
+        /// <param name="perams">Filters for the list being created.</param>
+        /// <returns>Query results parsed into type T.</returns>
+        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table) where T : class
+        {
+            var type = typeof(T);
+            var names = new List<string>();
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+                names.Add(property.Name);
+
+            var values = GetOccurrences(
+                table, perams, names.ToArray());
+
+            var elements = new List<T>();
+            for (int i = 0; i < values.Count; i++)
+            {
+                //equal to one row
+                T element = Activator.CreateInstance<T>();
+                elements.Add(element);
+                for (int j = 0; j < properties.Length; j++)
+                {
+                     var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
+                    //System.Diagnostics.Debug.WriteLine("Value type = " + value.GetType().Name);
+                    properties[j].SetValue(element, value, null);
+
+                    //type.InvokeMember(properties[i].Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty, Type.DefaultBinder, element, new object[] { value });
+                }
+            }
+
+            return elements;
         }
         //Insert
         /// <summary>
