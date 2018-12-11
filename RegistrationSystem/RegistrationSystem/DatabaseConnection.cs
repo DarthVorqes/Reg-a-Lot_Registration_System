@@ -148,32 +148,20 @@ namespace RegistrationSystem
         public bool Insert(Tables table, SqlParameter[] elements)
         {
             string sql = "INSERT INTO " + table;
-
-            //this section might not be necessary ---------------------------------------------------
-            //comparing/finding headers used -->> this could also be found by looking at the 
-            //'PerameterName' property in each of the 'elements'
-            var headers = GetHeaders(table);
             string columns = null, values = null;
-            foreach (string header in headers)
+            foreach(var element in elements)
             {
-                foreach (var element in elements)
+                if (values == null)
                 {
-                    if (header == element.ParameterName)
-                    {
-                        if (values == null)
-                        {
-                            values = "@" + element.ParameterName;
-                            columns = element.ParameterName;
-                        }
-                        else
-                        {
-                            values += ", @" + element.ParameterName;
-                            columns += ", " + element.ParameterName;
-                        }
-                    }
+                    values = "@" + element.ParameterName;
+                    columns = element.ParameterName;
+                }
+                else
+                {
+                    values += ", @" + element.ParameterName;
+                    columns += ", " + element.ParameterName;
                 }
             }
-            //---------------------------------------------------------------------------------------
 
             sql += "(" + columns + ") VALUES (" + values + ");";
 
