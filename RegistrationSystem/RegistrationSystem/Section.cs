@@ -12,7 +12,5 @@ namespace RegistrationSystem
         public User Professor { get; set; }
         public User[] Students { get; set; }
 
-
-
     }
 }

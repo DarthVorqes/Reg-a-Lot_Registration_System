@@ -54,7 +54,6 @@
     <Compile Include="LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
     <Compile Include="PersonalInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +95,7 @@
       <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="UserFocus.cs" />
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,12 +120,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePersonalInformation.resx">
       <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateSectionInformation.resx">
       <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

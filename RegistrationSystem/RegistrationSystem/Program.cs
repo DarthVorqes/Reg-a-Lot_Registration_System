@@ -16,11 +16,13 @@ namespace RegistrationSystem
         [STAThread]
         static void Main()
         {
+
             // DatabaseConnection db = new DatabaseConnection(1,"000"); 
             //  var collection = db.GetOccurrences(Tables.Person, new System.Data.SqlClient.SqlParameter[] { }, new string[] { "*" });
             // System.Diagnostics.Debug.WriteLine("IsStudent = " + db.IsStudent);
             // System.Diagnostics.Debug.WriteLine("IsProfessor = " + db.IsProfessor);
             // System.Diagnostics.Debug.WriteLine("IsRegistrar = " + db.IsRegistrar);
+
 
             // db.Insert(Tables.Person,new System.Data.SqlClient.SqlParameter[] 
             /*  {

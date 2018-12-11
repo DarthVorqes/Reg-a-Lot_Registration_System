@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Security.Cryptography;
-
-
 using System.Data;
-
 
 namespace RegistrationSystem
 {
@@ -99,7 +96,9 @@ namespace RegistrationSystem
         /// <param name="perams">A list of perameters which the results must satisfy.</param>
         /// <param name="desiredFields">The actual fields/columns/variables desired.</param>
         /// <returns></returns>
+
         public List<string[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) =>
+
             GetOccurrences(table.ToString(), perams, desiredFields);
         /// <summary>
         /// Collects all of the occerences which satisfy the specified perameters.
@@ -229,8 +228,10 @@ namespace RegistrationSystem
             ExecuteQuery(
                 "UPDATE " + table + " SET " + set + " WHERE " + BuildEqualityList(searchPerams),
                 allPerams.ToArray(),
+
                 (SqlCommand cmd) =>
                 {
+
                     cmd.StatementCompleted += (object sender,
                         StatementCompletedEventArgs e) =>
                     {
@@ -316,5 +317,7 @@ namespace RegistrationSystem
                 combined += delimiter + elements[i];
             return combined;
         }
+
     }*/
+
 }
