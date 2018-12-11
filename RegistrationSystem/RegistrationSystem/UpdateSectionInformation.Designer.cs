@@ -44,11 +44,12 @@
             // SectionName
             // 
             this.SectionName.AutoSize = true;
-            this.SectionName.Location = new System.Drawing.Point(105, 59);
+            this.SectionName.Location = new System.Drawing.Point(123, 59);
             this.SectionName.Name = "SectionName";
             this.SectionName.Size = new System.Drawing.Size(74, 13);
             this.SectionName.TabIndex = 0;
             this.SectionName.Text = "SectionName:";
+            this.SectionName.Click += new System.EventHandler(this.SectionName_Click);
             // 
             // sectionNameTextBox
             // 
@@ -70,42 +71,43 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 82);
+            this.label1.Location = new System.Drawing.Point(140, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "SectionName:";
+            this.label1.Text = "SectionID:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 116);
+            this.label2.Location = new System.Drawing.Point(85, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "SectionName:";
+            this.label2.Text = "Start Time - End Time:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(105, 144);
+            this.label3.Location = new System.Drawing.Point(123, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "SectionName:";
+            this.label3.Text = "M,T,W,TH,F";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(105, 175);
+            this.label4.Location = new System.Drawing.Point(85, 166);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.Size = new System.Drawing.Size(112, 13);
             this.label4.TabIndex = 0;
-            this.label4.Text = "SectionName:";
+            this.label4.Text = "Start Date - End Date:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(233, 78);
+            this.textBox1.Location = new System.Drawing.Point(233, 83);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
@@ -126,7 +128,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(233, 172);
+            this.textBox4.Location = new System.Drawing.Point(233, 163);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 1;

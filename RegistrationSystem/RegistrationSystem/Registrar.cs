@@ -165,7 +165,7 @@ namespace RegistrationSystem
             MessageBoxButtons confirm = MessageBoxButtons.YesNo;
            
             DialogResult result;
-            result = MessageBox.Show("are you sure you want to delete", "Delete", confirm);
+            result = MessageBox.Show("Are you sure you want to delete?", "Delete", confirm);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
@@ -255,6 +255,11 @@ namespace RegistrationSystem
             {
                 MessageBox.Show("You do not have a section selected!");
             }
+        }
+
+        private void firstNameLookuplbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,8 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
             this.personalInfoPage = new System.Windows.Forms.TabPage();
+            this.email1 = new System.Windows.Forms.Label();
+            this.emailLbl1 = new System.Windows.Forms.Label();
             this.personalidlbl = new System.Windows.Forms.Label();
             this.idLbl = new System.Windows.Forms.Label();
             this.personalSexlbl = new System.Windows.Forms.Label();
@@ -38,7 +40,6 @@
             this.personalAgelbl = new System.Windows.Forms.Label();
             this.personalLastNamelbl = new System.Windows.Forms.Label();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.UpdateLbl = new System.Windows.Forms.Label();
             this.userPicture2 = new System.Windows.Forms.Panel();
             this.label83 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
@@ -56,6 +57,8 @@
             this.SectionLookupListBox = new System.Windows.Forms.ListBox();
             this.PersonLookupListBox = new System.Windows.Forms.ListBox();
             this.addressLookuplbl = new System.Windows.Forms.Label();
+            this.emailLookuplbl = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.addressLbl2 = new System.Windows.Forms.Label();
             this.sexLookuplbl = new System.Windows.Forms.Label();
             this.ageLookuplbl = new System.Windows.Forms.Label();
@@ -92,8 +95,6 @@
             this.courseSearchBox = new System.Windows.Forms.TextBox();
             this.searchCourseLbl = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.label8 = new System.Windows.Forms.Label();
-            this.emailLookuplbl = new System.Windows.Forms.Label();
             this.personalInfoPage.SuspendLayout();
             this.userPicture2.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -124,6 +125,9 @@
             // 
             // personalInfoPage
             // 
+            this.personalInfoPage.BackColor = System.Drawing.SystemColors.Menu;
+            this.personalInfoPage.Controls.Add(this.email1);
+            this.personalInfoPage.Controls.Add(this.emailLbl1);
             this.personalInfoPage.Controls.Add(this.personalidlbl);
             this.personalInfoPage.Controls.Add(this.idLbl);
             this.personalInfoPage.Controls.Add(this.personalSexlbl);
@@ -131,7 +135,6 @@
             this.personalInfoPage.Controls.Add(this.personalAgelbl);
             this.personalInfoPage.Controls.Add(this.personalLastNamelbl);
             this.personalInfoPage.Controls.Add(this.updateBtn);
-            this.personalInfoPage.Controls.Add(this.UpdateLbl);
             this.personalInfoPage.Controls.Add(this.userPicture2);
             this.personalInfoPage.Controls.Add(this.personalFirstNamelbl);
             this.personalInfoPage.Controls.Add(this.sexlbl);
@@ -144,7 +147,24 @@
             this.personalInfoPage.Size = new System.Drawing.Size(789, 447);
             this.personalInfoPage.TabIndex = 2;
             this.personalInfoPage.Text = "Personal Info";
-            this.personalInfoPage.UseVisualStyleBackColor = true;
+            // 
+            // email1
+            // 
+            this.email1.AutoSize = true;
+            this.email1.Location = new System.Drawing.Point(418, 123);
+            this.email1.Name = "email1";
+            this.email1.Size = new System.Drawing.Size(89, 13);
+            this.email1.TabIndex = 18;
+            this.email1.Text = "email@email.com";
+            // 
+            // emailLbl1
+            // 
+            this.emailLbl1.AutoSize = true;
+            this.emailLbl1.Location = new System.Drawing.Point(382, 121);
+            this.emailLbl1.Name = "emailLbl1";
+            this.emailLbl1.Size = new System.Drawing.Size(35, 13);
+            this.emailLbl1.TabIndex = 17;
+            this.emailLbl1.Text = "Email:";
             // 
             // personalidlbl
             // 
@@ -154,7 +174,6 @@
             this.personalidlbl.Size = new System.Drawing.Size(43, 13);
             this.personalidlbl.TabIndex = 16;
             this.personalidlbl.Text = "246810";
-    
             // 
             // idLbl
             // 
@@ -203,22 +222,13 @@
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(193, 396);
+            this.updateBtn.Location = new System.Drawing.Point(177, 361);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(112, 20);
             this.updateBtn.TabIndex = 8;
             this.updateBtn.Text = "Update Info";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
-            // 
-            // UpdateLbl
-            // 
-            this.UpdateLbl.AutoSize = true;
-            this.UpdateLbl.Location = new System.Drawing.Point(92, 268);
-            this.UpdateLbl.Name = "UpdateLbl";
-            this.UpdateLbl.Size = new System.Drawing.Size(63, 13);
-            this.UpdateLbl.TabIndex = 7;
-            this.UpdateLbl.Text = "Update Info";
             // 
             // userPicture2
             // 
@@ -260,7 +270,7 @@
             // sexlbl
             // 
             this.sexlbl.AutoSize = true;
-            this.sexlbl.Location = new System.Drawing.Point(383, 108);
+            this.sexlbl.Location = new System.Drawing.Point(389, 108);
             this.sexlbl.Name = "sexlbl";
             this.sexlbl.Size = new System.Drawing.Size(28, 13);
             this.sexlbl.TabIndex = 4;
@@ -269,7 +279,7 @@
             // addresslbl
             // 
             this.addresslbl.AutoSize = true;
-            this.addresslbl.Location = new System.Drawing.Point(364, 95);
+            this.addresslbl.Location = new System.Drawing.Point(369, 95);
             this.addresslbl.Name = "addresslbl";
             this.addresslbl.Size = new System.Drawing.Size(48, 13);
             this.addresslbl.TabIndex = 3;
@@ -278,7 +288,7 @@
             // agelbl
             // 
             this.agelbl.AutoSize = true;
-            this.agelbl.Location = new System.Drawing.Point(383, 82);
+            this.agelbl.Location = new System.Drawing.Point(388, 82);
             this.agelbl.Name = "agelbl";
             this.agelbl.Size = new System.Drawing.Size(29, 13);
             this.agelbl.TabIndex = 2;
@@ -400,16 +410,34 @@
             // addressLookuplbl
             // 
             this.addressLookuplbl.AutoSize = true;
-            this.addressLookuplbl.Location = new System.Drawing.Point(481, 95);
+            this.addressLookuplbl.Location = new System.Drawing.Point(468, 95);
             this.addressLookuplbl.Name = "addressLookuplbl";
             this.addressLookuplbl.Size = new System.Drawing.Size(96, 13);
             this.addressLookuplbl.TabIndex = 16;
             this.addressLookuplbl.Text = "8235 Westbury Dr.";
             // 
+            // emailLookuplbl
+            // 
+            this.emailLookuplbl.AutoSize = true;
+            this.emailLookuplbl.Location = new System.Drawing.Point(468, 108);
+            this.emailLookuplbl.Name = "emailLookuplbl";
+            this.emailLookuplbl.Size = new System.Drawing.Size(89, 13);
+            this.emailLookuplbl.TabIndex = 15;
+            this.emailLookuplbl.Text = "email@email.com";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(433, 108);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Email:";
+            // 
             // addressLbl2
             // 
             this.addressLbl2.AutoSize = true;
-            this.addressLbl2.Location = new System.Drawing.Point(418, 95);
+            this.addressLbl2.Location = new System.Drawing.Point(420, 95);
             this.addressLbl2.Name = "addressLbl2";
             this.addressLbl2.Size = new System.Drawing.Size(48, 13);
             this.addressLbl2.TabIndex = 15;
@@ -418,7 +446,7 @@
             // sexLookuplbl
             // 
             this.sexLookuplbl.AutoSize = true;
-            this.sexLookuplbl.Location = new System.Drawing.Point(481, 82);
+            this.sexLookuplbl.Location = new System.Drawing.Point(468, 82);
             this.sexLookuplbl.Name = "sexLookuplbl";
             this.sexLookuplbl.Size = new System.Drawing.Size(16, 13);
             this.sexLookuplbl.TabIndex = 14;
@@ -427,7 +455,7 @@
             // ageLookuplbl
             // 
             this.ageLookuplbl.AutoSize = true;
-            this.ageLookuplbl.Location = new System.Drawing.Point(481, 69);
+            this.ageLookuplbl.Location = new System.Drawing.Point(468, 69);
             this.ageLookuplbl.Name = "ageLookuplbl";
             this.ageLookuplbl.Size = new System.Drawing.Size(19, 13);
             this.ageLookuplbl.TabIndex = 13;
@@ -436,16 +464,17 @@
             // firstNameLookuplbl
             // 
             this.firstNameLookuplbl.AutoSize = true;
-            this.firstNameLookuplbl.Location = new System.Drawing.Point(481, 42);
+            this.firstNameLookuplbl.Location = new System.Drawing.Point(468, 42);
             this.firstNameLookuplbl.Name = "firstNameLookuplbl";
             this.firstNameLookuplbl.Size = new System.Drawing.Size(22, 13);
             this.firstNameLookuplbl.TabIndex = 11;
             this.firstNameLookuplbl.Text = "Jim";
+            this.firstNameLookuplbl.Click += new System.EventHandler(this.firstNameLookuplbl_Click);
             // 
             // lastNameLookuplbl
             // 
             this.lastNameLookuplbl.AutoSize = true;
-            this.lastNameLookuplbl.Location = new System.Drawing.Point(481, 56);
+            this.lastNameLookuplbl.Location = new System.Drawing.Point(468, 56);
             this.lastNameLookuplbl.Name = "lastNameLookuplbl";
             this.lastNameLookuplbl.Size = new System.Drawing.Size(26, 13);
             this.lastNameLookuplbl.TabIndex = 10;
@@ -454,7 +483,7 @@
             // IdLookuplbl
             // 
             this.IdLookuplbl.AutoSize = true;
-            this.IdLookuplbl.Location = new System.Drawing.Point(481, 29);
+            this.IdLookuplbl.Location = new System.Drawing.Point(468, 29);
             this.IdLookuplbl.Name = "IdLookuplbl";
             this.IdLookuplbl.Size = new System.Drawing.Size(43, 13);
             this.IdLookuplbl.TabIndex = 9;
@@ -490,7 +519,7 @@
             // idLbl2
             // 
             this.idLbl2.AutoSize = true;
-            this.idLbl2.Location = new System.Drawing.Point(445, 29);
+            this.idLbl2.Location = new System.Drawing.Point(447, 29);
             this.idLbl2.Name = "idLbl2";
             this.idLbl2.Size = new System.Drawing.Size(21, 13);
             this.idLbl2.TabIndex = 5;
@@ -499,7 +528,7 @@
             // sexLbl2
             // 
             this.sexLbl2.AutoSize = true;
-            this.sexLbl2.Location = new System.Drawing.Point(435, 82);
+            this.sexLbl2.Location = new System.Drawing.Point(440, 82);
             this.sexLbl2.Name = "sexLbl2";
             this.sexLbl2.Size = new System.Drawing.Size(31, 13);
             this.sexLbl2.TabIndex = 4;
@@ -508,7 +537,7 @@
             // ageLbl2
             // 
             this.ageLbl2.AutoSize = true;
-            this.ageLbl2.Location = new System.Drawing.Point(434, 69);
+            this.ageLbl2.Location = new System.Drawing.Point(439, 69);
             this.ageLbl2.Name = "ageLbl2";
             this.ageLbl2.Size = new System.Drawing.Size(32, 13);
             this.ageLbl2.TabIndex = 3;
@@ -517,7 +546,7 @@
             // lastNameLbl2
             // 
             this.lastNameLbl2.AutoSize = true;
-            this.lastNameLbl2.Location = new System.Drawing.Point(408, 56);
+            this.lastNameLbl2.Location = new System.Drawing.Point(407, 56);
             this.lastNameLbl2.Name = "lastNameLbl2";
             this.lastNameLbl2.Size = new System.Drawing.Size(61, 13);
             this.lastNameLbl2.TabIndex = 2;
@@ -548,7 +577,6 @@
             this.userSearchBox.Name = "userSearchBox";
             this.userSearchBox.Size = new System.Drawing.Size(170, 20);
             this.userSearchBox.TabIndex = 0;
-     
             // 
             // label7
             // 
@@ -615,6 +643,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Menu;
             this.tabPage1.Controls.Add(this.Deletebtn);
             this.tabPage1.Controls.Add(this.CourseListBox);
             this.tabPage1.Controls.Add(this.date1);
@@ -632,8 +661,6 @@
             this.tabPage1.Size = new System.Drawing.Size(789, 447);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Courses";
-            this.tabPage1.UseVisualStyleBackColor = true;
-   
             // 
             // Deletebtn
             // 
@@ -746,25 +773,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(816, 455);
             this.tabControl1.TabIndex = 17;
-   
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(418, 108);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Email:";
-            // 
-            // emailLookuplbl
-            // 
-            this.emailLookuplbl.AutoSize = true;
-            this.emailLookuplbl.Location = new System.Drawing.Point(481, 108);
-            this.emailLookuplbl.Name = "emailLookuplbl";
-            this.emailLookuplbl.Size = new System.Drawing.Size(89, 13);
-            this.emailLookuplbl.TabIndex = 15;
-            this.emailLookuplbl.Text = "email@email.com";
             // 
             // Registrar
             // 
@@ -777,7 +785,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Registrar";
             this.Text = "Registrar";
-     
             this.personalInfoPage.ResumeLayout(false);
             this.personalInfoPage.PerformLayout();
             this.userPicture2.ResumeLayout(false);
@@ -806,7 +813,6 @@
         private System.Windows.Forms.Label personalAgelbl;
         private System.Windows.Forms.Label personalLastNamelbl;
         private System.Windows.Forms.Button updateBtn;
-        private System.Windows.Forms.Label UpdateLbl;
         private System.Windows.Forms.Panel userPicture2;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label82;
@@ -862,5 +868,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label emailLookuplbl;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label email1;
+        private System.Windows.Forms.Label emailLbl1;
     }
 }
