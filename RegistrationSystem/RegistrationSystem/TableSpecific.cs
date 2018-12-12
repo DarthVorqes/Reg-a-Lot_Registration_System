@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RegistrationSystem
 {
-    class TableSpecific: System.Attribute
+    class TableSpecific: Attribute
     {
         public Tables Table { get; private set; }
         public TableSpecific(Tables table)
