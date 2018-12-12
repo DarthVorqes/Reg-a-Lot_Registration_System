@@ -251,7 +251,7 @@ namespace RegistrationSystem
             });
             if(isProfessor)
                 results.RemoveAll((Section s) => {
-                    return s.TeachID != EnterpriseID;
+                    return s.InstructorID != EnterpriseID;
                 });
             return results;
         }
