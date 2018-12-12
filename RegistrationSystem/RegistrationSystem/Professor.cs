@@ -103,17 +103,17 @@ namespace RegistrationSystem
 
         private void ScheduleSectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ScheduleStudentListBox_Load();
-        }
-        private void ScheduleStudentListBox_Load()
-        {
+            string[] selectedItem = ScheduleSectionsComboBox.SelectedItem.ToString().Split();
+            
+            List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
+                new System.Data.SqlClient.SqlParameter("SectionID", selectedItem[1]) });
             ScheduleStudentListBox.Items.Clear();
-
-         /*   foreach (string student in studentIndex)
+            foreach (SectionStudent student in students)
             {
-              ScheduleStudentListBox.Items.Add(student);
-            }*/
+                ScheduleStudentListBox.Items.Add(student);
+            }
         }
+
 
 //====================================================Add Drop Tab:
         private void AddDropSemesterComboBox_Load()
