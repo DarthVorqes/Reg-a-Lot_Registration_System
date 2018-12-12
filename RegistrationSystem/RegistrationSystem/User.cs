@@ -237,14 +237,20 @@ namespace RegistrationSystem
                     new SqlParameter("ID",yearData[i][1])}, Tables.Semester);
             return semesters;
         }
-        public List<Section> GetSections(string year, string semester, string courseID) => Connection.BuildClassArray<Section>(
+        public List<Section> GetSections(string year, string semester)
+        {
+            var results = Connection.BuildClassArray<Section>(
             new SqlParameter[] {
-                new SqlParameter("CourseID",courseID),
                 new SqlParameter("SectionNumber",(int)Connection.GetValue("ID",new SqlParameter[]
                     {
                         new SqlParameter("SemesterName",semester)
                     },Tables.Semester))
             }, Tables.Section);
+            results.RemoveAll((Section s) => {
+                return s.StartDate.Year.ToString() != year;
+            });
+            return results;
+        }
         bool Authenticate() =>
             Authenticate(EnterpriseID, _password);
 

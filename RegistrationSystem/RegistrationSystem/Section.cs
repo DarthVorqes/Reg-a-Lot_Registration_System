@@ -39,7 +39,7 @@ namespace RegistrationSystem
         public string Duration {get; private  set;}
 
         public int SemesterID {get; private set;}
-
+        [DoNotTouch]
         public int TeachID {get; private  set;}
 
         public int SectionCapacity {get; private  set;}
