@@ -34,7 +34,10 @@ namespace RegistrationSystem
                 //initialize Focus
             }
         }
-
+        public float GetBill()
+        {
+            throw new NotImplementedException("Andrew Has not implemented this method!");
+        }
         //place properties
         public int EnterpriseID { get; private set; } = -1;
         public string FirstName

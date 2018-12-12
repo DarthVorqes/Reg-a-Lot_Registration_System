@@ -139,35 +139,41 @@ namespace RegistrationSystem
                 });
             return query;
         }
+        public void Insert<T>(T[] objects, Tables table)
+        {
+            foreach (T obj in objects)
+                Insert<T>(obj, table);
+        }
+        public void Insert<T>(T obj,Tables table)
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            SqlParameter[] perams = new SqlParameter[properties.Length];
+            for (int i = 0; i < perams.Length; i++)
+                if(properties[i].GetCustomAttribute(typeof(DoNotTouch)) == null)
+                    perams[i] = new SqlParameter(properties[i].Name, properties[i].GetValue(obj));
+            Insert(table,perams);
+        }
         /// <summary>
         /// Constructs a list of objects of type 'T'.
         /// </summary>
         /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
         /// <param name="perams">Filters for the list being created.</param>
         /// <returns>Query results parsed into type T.</returns>
-        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table) where T : class =>
-            BuildClassArray<T>(perams, table, new string[0]);
-        /// <summary>
-        /// Constructs a list of objects of type 'T'.
-        /// </summary>
-        /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
-        /// <param name="perams">Filters for the list being created.</param>
-        /// <returns>Query results parsed into type T.</returns>
-        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table, string[] blackList) where T : class
+        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table) where T : class
         {
             var type = typeof(T);
             var names = new List<string>();
             var properties = new List<PropertyInfo>(type.GetProperties());
-            for(int i = 0; i < properties.Count; i++)
+            for (int i = 0; i < properties.Count; i++)
             {
-                if (blackList.Contains(properties[i].Name))
+                if(properties[i].GetCustomAttribute(typeof(DoNotTouch)) != null)
                 {
                     properties.RemoveAt(i--);
                     continue;
                 }
                 names.Add(properties[i].Name);
             }
-
             var values = GetOccurrences(
                 table, perams, names.ToArray());
 
@@ -179,7 +185,7 @@ namespace RegistrationSystem
                 elements.Add(element);
                 for (int j = 0; j < properties.Count; j++)
                 {
-                    if (values[i][j].GetType() == typeof(DBNull) || blackList.Contains(properties[j].Name))
+                    if (values[i][j].GetType() == typeof(DBNull))
                         continue;
                     var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
                     properties[j].SetValue(element, value, null);

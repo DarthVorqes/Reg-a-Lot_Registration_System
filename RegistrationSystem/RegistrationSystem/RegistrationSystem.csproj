@@ -49,6 +49,7 @@
     <Compile Include="Authentication.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DoNotTouch.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>

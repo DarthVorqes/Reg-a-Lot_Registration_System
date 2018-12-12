@@ -11,19 +11,17 @@ namespace RegistrationSystem
 {
     class Section
     {
-
+        [NonSerialized]
         public const byte Capacity = 10;
         //public User Professor { get; set; }
         //public User[] Students { get; set; }
         
         // Add BuildClassArray() here
 
-
-
         // Section Properties
 
         public int ID {get; private set;} = -1;
-
+        [DoNotTouch]
         public int SectionNumber{get; private set;}
 
         public string MeetingTimes {get; private set;}
