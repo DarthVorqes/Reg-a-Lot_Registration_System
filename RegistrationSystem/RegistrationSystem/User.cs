@@ -215,10 +215,15 @@ namespace RegistrationSystem
                 phoneNumber = value;
             }
         }
-
+        public Authentication Auth { get; set; }
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
+        bool Authenticate(Authentication auth)
+        {
+            Auth = auth;
+            return true;
+        }
         bool Authenticate() =>
             Authenticate(EnterpriseID, _password);
 
@@ -238,9 +243,9 @@ namespace RegistrationSystem
                 });
             if (permissions.Count == 0)
                 return false;
-            IsProfessor = permissions[0][0] == "True";
-            IsStudent = permissions[0][1] == "True";
-            IsRegistrar = permissions[0][2] == "True";
+            IsProfessor = (bool)permissions[0][0];
+            IsStudent = (bool)permissions[0][1];
+            IsRegistrar = (bool)permissions[0][2];
             EnterpriseID = userID;
             this._password = password;
             return true;

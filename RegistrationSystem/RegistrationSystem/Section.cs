@@ -47,8 +47,11 @@ namespace RegistrationSystem
         public int SectionCapacity {get; private  set;}
 
         public bool Status {get; private  set;}
+        public string GetCourseName(User usr) => usr.Connection.GetValue("CourseName",
+        new SqlParameter[]
+        {
+                    new SqlParameter("ID",CourseID)
+        }, Tables.Course) as string;
 
-
-       
     }
 }

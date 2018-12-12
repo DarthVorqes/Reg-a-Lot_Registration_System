@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace RegistrationSystem
 {
@@ -16,7 +17,6 @@ namespace RegistrationSystem
         [STAThread]
         static void Main()
         {
-
             // DatabaseConnection db = new DatabaseConnection(1,"000"); 
             //  var collection = db.GetOccurrences(Tables.Person, new System.Data.SqlClient.SqlParameter[] { }, new string[] { "*" });
             // System.Diagnostics.Debug.WriteLine("IsStudent = " + db.IsStudent);
@@ -48,6 +48,19 @@ namespace RegistrationSystem
               testAdmin.RemovePerson(18);
               */
 
+            User usr = new User();
+            usr.Authenticate(5, "test123");
+            var students = new DatabaseConnection().BuildClassArray<SectionStudent>(new System.Data.SqlClient.SqlParameter[] {
+                new System.Data.SqlClient.SqlParameter("SectionID",2)
+            }, Tables.Registration);
+            foreach(var student in students)
+            {
+                Debug.WriteLine("ID: " + student.PersonID);
+                Debug.WriteLine("Grade: " + student.Grade);
+                Debug.WriteLine("FirstName: " + student.GetFirstName(usr));
+                Debug.WriteLine("LastName: " + student.GetLastName(usr));
+                Debug.WriteLine("");
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogIn());

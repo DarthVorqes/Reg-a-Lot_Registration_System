@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="Schedule.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="SectionStudent.cs" />
     <Compile Include="studentView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,14 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePersonalInformation.resx">
       <DependentUpon>UpdatePersonalInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateSectionInformation.resx">
       <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
-
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

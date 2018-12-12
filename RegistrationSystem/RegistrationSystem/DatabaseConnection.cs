@@ -145,13 +145,28 @@ namespace RegistrationSystem
         /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
         /// <param name="perams">Filters for the list being created.</param>
         /// <returns>Query results parsed into type T.</returns>
-        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table) where T : class
+        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table) where T : class =>
+            BuildClassArray<T>(perams, table, new string[0]);
+        /// <summary>
+        /// Constructs a list of objects of type 'T'.
+        /// </summary>
+        /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
+        /// <param name="perams">Filters for the list being created.</param>
+        /// <returns>Query results parsed into type T.</returns>
+        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table, string[] blackList) where T : class
         {
             var type = typeof(T);
             var names = new List<string>();
-            var properties = type.GetProperties();
-            foreach (var property in properties)
-                names.Add(property.Name);
+            var properties = new List<PropertyInfo>(type.GetProperties());
+            for(int i = 0; i < properties.Count; i++)
+            {
+                if (blackList.Contains(properties[i].Name))
+                {
+                    properties.RemoveAt(i--);
+                    continue;
+                }
+                names.Add(properties[i].Name);
+            }
 
             var values = GetOccurrences(
                 table, perams, names.ToArray());
@@ -162,9 +177,9 @@ namespace RegistrationSystem
                 //equal to one row
                 T element = Activator.CreateInstance<T>();
                 elements.Add(element);
-                for (int j = 0; j < properties.Length; j++)
+                for (int j = 0; j < properties.Count; j++)
                 {
-                    if (values[i][j].GetType() == typeof(System.DBNull))
+                    if (values[i][j].GetType() == typeof(DBNull) || blackList.Contains(properties[j].Name))
                         continue;
                     var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
                     properties[j].SetValue(element, value, null);
