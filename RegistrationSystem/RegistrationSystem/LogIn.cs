@@ -25,60 +25,31 @@ namespace RegistrationSystem
             int ID = UserID;
             if (user.Authenticate(UserID, PasswordTextBox.Text))
             {
-                MessageBox.Show("Authenticated!");
                 if (user.IsRegistrar)
                 {
-                    Registrar RView = new Registrar(ID);
+                    Registrar RView = new Registrar();
                     RView.Show();
                     Hide();
                 }
                 else if (user.IsProfessor)
-                {
-                    MessageBox.Show("here in prof");
+                { 
                     ProfessorView PView = new ProfessorView();
                     PView.Show();
                     Hide();
                 }
                 else if (user.IsStudent)
                 {
-                    studentView SView = new studentView(ID);
+                    StudentView SView = new StudentView();
                     SView.Show();
                     Hide();
                 }
             }
+            else
+            {
+                MessageBox.Show("Invaild credentials!!");
+            }
 
-            try
-            {
-                //int.TryParse(UserNameTextBox.Text, out int UserID);
-                //int ID = UserID;
-                //if (user.Authenticate(UserID, PasswordTextBox.Text))
-                //{
-                //    MessageBox.Show("Authenticated!");
-                //    if (user.IsRegistrar)
-                //    {
-                //        Registrar RView = new Registrar(ID);
-                //        RView.Show();
-                //        Hide();
-                //    }
-                //    else if (user.IsProfessor)
-                //    {
-                //        MessageBox.Show("here in prof");
-                //        ProfessorView PView = new ProfessorView();                      
-                //        PView.Show();                      
-                //        Hide();
-                //    }
-                //    else if (user.IsStudent)
-                //    {
-                //        studentView SView = new studentView(ID);
-                //        SView.Show();
-                //        Hide();
-                //    }
-                //}
-            }
-            catch(Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
+
         }
 
     }

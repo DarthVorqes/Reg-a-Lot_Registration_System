@@ -1,6 +1,6 @@
 ﻿namespace RegistrationSystem
 {
-    partial class UpdatePersonalInformation
+    partial class UserPersonalInformation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.firstNameLabel = new System.Windows.Forms.Label();
-            this.updateInfoBtn = new System.Windows.Forms.Button();
+            this.FirstNameLbl = new System.Windows.Forms.Label();
+            this.UpdateInfoBtn = new System.Windows.Forms.Button();
             this.FirstNameComboBox = new System.Windows.Forms.TextBox();
-            this.lastNameLabel = new System.Windows.Forms.Label();
-            this.addressLabel = new System.Windows.Forms.Label();
-            this.phoneLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.FaxLabel = new System.Windows.Forms.Label();
+            this.LastNameLbl = new System.Windows.Forms.Label();
+            this.AddressLbl = new System.Windows.Forms.Label();
+            this.PhoneNumberLbl = new System.Windows.Forms.Label();
+            this.EmailLbl = new System.Windows.Forms.Label();
+            this.FaxLbl = new System.Windows.Forms.Label();
             this.addressComboBox = new System.Windows.Forms.TextBox();
             this.LastNameComboBox = new System.Windows.Forms.TextBox();
             this.PhoneComboBox = new System.Windows.Forms.TextBox();
             this.emailComboBox = new System.Windows.Forms.TextBox();
             this.FaxComboBox = new System.Windows.Forms.TextBox();
             this.IDComboBox = new System.Windows.Forms.TextBox();
-            this.iDLabel = new System.Windows.Forms.Label();
+            this.IDNumberLbl = new System.Windows.Forms.Label();
             this.ChangePass = new System.Windows.Forms.TextBox();
             this.ChangePassCheck = new System.Windows.Forms.TextBox();
-            this.ChangePassCheckLabel = new System.Windows.Forms.Label();
-            this.ChangePassLabel = new System.Windows.Forms.Label();
+            this.ChangePassCheckLbl = new System.Windows.Forms.Label();
+            this.ChangePassLbl = new System.Windows.Forms.Label();
             this.CanReglbl = new System.Windows.Forms.Label();
             this.CanDroplbl = new System.Windows.Forms.Label();
             this.CanAddlbl = new System.Windows.Forms.Label();
@@ -55,24 +55,24 @@
             this.canRegComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // firstNameLabel
+            // FirstNameLbl
             // 
-            this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(34, 40);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(63, 13);
-            this.firstNameLabel.TabIndex = 0;
-            this.firstNameLabel.Text = "First Name: ";
+            this.FirstNameLbl.AutoSize = true;
+            this.FirstNameLbl.Location = new System.Drawing.Point(34, 40);
+            this.FirstNameLbl.Name = "FirstNameLbl";
+            this.FirstNameLbl.Size = new System.Drawing.Size(63, 13);
+            this.FirstNameLbl.TabIndex = 0;
+            this.FirstNameLbl.Text = "First Name: ";
             // 
-            // updateInfoBtn
+            // UpdateInfoBtn
             // 
-            this.updateInfoBtn.Location = new System.Drawing.Point(201, 269);
-            this.updateInfoBtn.Name = "updateInfoBtn";
-            this.updateInfoBtn.Size = new System.Drawing.Size(75, 23);
-            this.updateInfoBtn.TabIndex = 1;
-            this.updateInfoBtn.Text = "Update";
-            this.updateInfoBtn.UseVisualStyleBackColor = true;
-            this.updateInfoBtn.Click += new System.EventHandler(this.updateInfoBtn_Click);
+            this.UpdateInfoBtn.Location = new System.Drawing.Point(196, 269);
+            this.UpdateInfoBtn.Name = "UpdateInfoBtn";
+            this.UpdateInfoBtn.Size = new System.Drawing.Size(75, 23);
+            this.UpdateInfoBtn.TabIndex = 1;
+            this.UpdateInfoBtn.Text = "Update";
+            this.UpdateInfoBtn.UseVisualStyleBackColor = true;
+            this.UpdateInfoBtn.Click += new System.EventHandler(this.updateInfoBtn_Click);
             // 
             // FirstNameComboBox
             // 
@@ -81,50 +81,50 @@
             this.FirstNameComboBox.Size = new System.Drawing.Size(100, 20);
             this.FirstNameComboBox.TabIndex = 2;
             // 
-            // lastNameLabel
+            // LastNameLbl
             // 
-            this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Location = new System.Drawing.Point(287, 37);
-            this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
-            this.lastNameLabel.TabIndex = 0;
-            this.lastNameLabel.Text = "Last Name:";
+            this.LastNameLbl.AutoSize = true;
+            this.LastNameLbl.Location = new System.Drawing.Point(287, 37);
+            this.LastNameLbl.Name = "LastNameLbl";
+            this.LastNameLbl.Size = new System.Drawing.Size(61, 13);
+            this.LastNameLbl.TabIndex = 0;
+            this.LastNameLbl.Text = "Last Name:";
             // 
-            // addressLabel
+            // AddressLbl
             // 
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(43, 84);
-            this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(48, 13);
-            this.addressLabel.TabIndex = 0;
-            this.addressLabel.Text = "Address:";
+            this.AddressLbl.AutoSize = true;
+            this.AddressLbl.Location = new System.Drawing.Point(43, 84);
+            this.AddressLbl.Name = "AddressLbl";
+            this.AddressLbl.Size = new System.Drawing.Size(48, 13);
+            this.AddressLbl.TabIndex = 0;
+            this.AddressLbl.Text = "Address:";
             // 
-            // phoneLabel
+            // PhoneNumberLbl
             // 
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(304, 67);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(44, 13);
-            this.phoneLabel.TabIndex = 0;
-            this.phoneLabel.Text = "Phone: ";
+            this.PhoneNumberLbl.AutoSize = true;
+            this.PhoneNumberLbl.Location = new System.Drawing.Point(304, 67);
+            this.PhoneNumberLbl.Name = "PhoneNumberLbl";
+            this.PhoneNumberLbl.Size = new System.Drawing.Size(44, 13);
+            this.PhoneNumberLbl.TabIndex = 0;
+            this.PhoneNumberLbl.Text = "Phone: ";
             // 
-            // emailLabel
+            // EmailLbl
             // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(53, 128);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(38, 13);
-            this.emailLabel.TabIndex = 0;
-            this.emailLabel.Text = "Email: ";
+            this.EmailLbl.AutoSize = true;
+            this.EmailLbl.Location = new System.Drawing.Point(53, 128);
+            this.EmailLbl.Name = "EmailLbl";
+            this.EmailLbl.Size = new System.Drawing.Size(38, 13);
+            this.EmailLbl.TabIndex = 0;
+            this.EmailLbl.Text = "Email: ";
             // 
-            // FaxLabel
+            // FaxLbl
             // 
-            this.FaxLabel.AutoSize = true;
-            this.FaxLabel.Location = new System.Drawing.Point(310, 132);
-            this.FaxLabel.Name = "FaxLabel";
-            this.FaxLabel.Size = new System.Drawing.Size(27, 13);
-            this.FaxLabel.TabIndex = 0;
-            this.FaxLabel.Text = "Fax:";
+            this.FaxLbl.AutoSize = true;
+            this.FaxLbl.Location = new System.Drawing.Point(310, 132);
+            this.FaxLbl.Name = "FaxLbl";
+            this.FaxLbl.Size = new System.Drawing.Size(27, 13);
+            this.FaxLbl.TabIndex = 0;
+            this.FaxLbl.Text = "Fax:";
             // 
             // addressComboBox
             // 
@@ -168,51 +168,51 @@
             this.IDComboBox.Size = new System.Drawing.Size(100, 20);
             this.IDComboBox.TabIndex = 2;
             // 
-            // iDLabel
+            // IDNumberLbl
             // 
-            this.iDLabel.AutoSize = true;
-            this.iDLabel.Location = new System.Drawing.Point(316, 104);
-            this.iDLabel.Name = "iDLabel";
-            this.iDLabel.Size = new System.Drawing.Size(21, 13);
-            this.iDLabel.TabIndex = 0;
-            this.iDLabel.Text = "ID:";
+            this.IDNumberLbl.AutoSize = true;
+            this.IDNumberLbl.Location = new System.Drawing.Point(316, 104);
+            this.IDNumberLbl.Name = "IDNumberLbl";
+            this.IDNumberLbl.Size = new System.Drawing.Size(21, 13);
+            this.IDNumberLbl.TabIndex = 0;
+            this.IDNumberLbl.Text = "ID:";
             // 
             // ChangePass
             // 
-            this.ChangePass.Location = new System.Drawing.Point(121, 230);
+            this.ChangePass.Location = new System.Drawing.Point(121, 166);
             this.ChangePass.Name = "ChangePass";
             this.ChangePass.Size = new System.Drawing.Size(100, 20);
             this.ChangePass.TabIndex = 2;
             // 
             // ChangePassCheck
             // 
-            this.ChangePassCheck.Location = new System.Drawing.Point(354, 230);
+            this.ChangePassCheck.Location = new System.Drawing.Point(354, 173);
             this.ChangePassCheck.Name = "ChangePassCheck";
             this.ChangePassCheck.Size = new System.Drawing.Size(100, 20);
             this.ChangePassCheck.TabIndex = 2;
             // 
-            // ChangePassCheckLabel
+            // ChangePassCheckLbl
             // 
-            this.ChangePassCheckLabel.AutoSize = true;
-            this.ChangePassCheckLabel.Location = new System.Drawing.Point(243, 233);
-            this.ChangePassCheckLabel.Name = "ChangePassCheckLabel";
-            this.ChangePassCheckLabel.Size = new System.Drawing.Size(94, 13);
-            this.ChangePassCheckLabel.TabIndex = 0;
-            this.ChangePassCheckLabel.Text = "Confirm Password:";
+            this.ChangePassCheckLbl.AutoSize = true;
+            this.ChangePassCheckLbl.Location = new System.Drawing.Point(243, 173);
+            this.ChangePassCheckLbl.Name = "ChangePassCheckLbl";
+            this.ChangePassCheckLbl.Size = new System.Drawing.Size(94, 13);
+            this.ChangePassCheckLbl.TabIndex = 0;
+            this.ChangePassCheckLbl.Text = "Confirm Password:";
             // 
-            // ChangePassLabel
+            // ChangePassLbl
             // 
-            this.ChangePassLabel.AutoSize = true;
-            this.ChangePassLabel.Location = new System.Drawing.Point(10, 233);
-            this.ChangePassLabel.Name = "ChangePassLabel";
-            this.ChangePassLabel.Size = new System.Drawing.Size(81, 13);
-            this.ChangePassLabel.TabIndex = 0;
-            this.ChangePassLabel.Text = "New Password:";
+            this.ChangePassLbl.AutoSize = true;
+            this.ChangePassLbl.Location = new System.Drawing.Point(16, 166);
+            this.ChangePassLbl.Name = "ChangePassLbl";
+            this.ChangePassLbl.Size = new System.Drawing.Size(81, 13);
+            this.ChangePassLbl.TabIndex = 0;
+            this.ChangePassLbl.Text = "New Password:";
             // 
             // CanReglbl
             // 
             this.CanReglbl.AutoSize = true;
-            this.CanReglbl.Location = new System.Drawing.Point(10, 185);
+            this.CanReglbl.Location = new System.Drawing.Point(16, 228);
             this.CanReglbl.Name = "CanReglbl";
             this.CanReglbl.Size = new System.Drawing.Size(68, 13);
             this.CanReglbl.TabIndex = 0;
@@ -221,7 +221,7 @@
             // CanDroplbl
             // 
             this.CanDroplbl.AutoSize = true;
-            this.CanDroplbl.Location = new System.Drawing.Point(162, 185);
+            this.CanDroplbl.Location = new System.Drawing.Point(179, 228);
             this.CanDroplbl.Name = "CanDroplbl";
             this.CanDroplbl.Size = new System.Drawing.Size(52, 13);
             this.CanDroplbl.TabIndex = 0;
@@ -230,7 +230,7 @@
             // CanAddlbl
             // 
             this.CanAddlbl.AutoSize = true;
-            this.CanAddlbl.Location = new System.Drawing.Point(304, 185);
+            this.CanAddlbl.Location = new System.Drawing.Point(316, 228);
             this.CanAddlbl.Name = "CanAddlbl";
             this.CanAddlbl.Size = new System.Drawing.Size(48, 13);
             this.CanAddlbl.TabIndex = 0;
@@ -239,7 +239,7 @@
             // CanAddComboBox
             // 
             this.CanAddComboBox.FormattingEnabled = true;
-            this.CanAddComboBox.Location = new System.Drawing.Point(354, 182);
+            this.CanAddComboBox.Location = new System.Drawing.Point(370, 225);
             this.CanAddComboBox.Name = "CanAddComboBox";
             this.CanAddComboBox.Size = new System.Drawing.Size(60, 21);
             this.CanAddComboBox.TabIndex = 3;
@@ -247,7 +247,7 @@
             // CanDropComboBox
             // 
             this.CanDropComboBox.FormattingEnabled = true;
-            this.CanDropComboBox.Location = new System.Drawing.Point(220, 182);
+            this.CanDropComboBox.Location = new System.Drawing.Point(237, 225);
             this.CanDropComboBox.Name = "CanDropComboBox";
             this.CanDropComboBox.Size = new System.Drawing.Size(60, 21);
             this.CanDropComboBox.TabIndex = 3;
@@ -255,7 +255,7 @@
             // canRegComboBox
             // 
             this.canRegComboBox.FormattingEnabled = true;
-            this.canRegComboBox.Location = new System.Drawing.Point(84, 182);
+            this.canRegComboBox.Location = new System.Drawing.Point(90, 225);
             this.canRegComboBox.Name = "canRegComboBox";
             this.canRegComboBox.Size = new System.Drawing.Size(60, 21);
             this.canRegComboBox.TabIndex = 3;
@@ -277,19 +277,19 @@
             this.Controls.Add(this.LastNameComboBox);
             this.Controls.Add(this.addressComboBox);
             this.Controls.Add(this.FirstNameComboBox);
-            this.Controls.Add(this.updateInfoBtn);
+            this.Controls.Add(this.UpdateInfoBtn);
             this.Controls.Add(this.CanAddlbl);
             this.Controls.Add(this.CanDroplbl);
             this.Controls.Add(this.CanReglbl);
-            this.Controls.Add(this.ChangePassLabel);
-            this.Controls.Add(this.ChangePassCheckLabel);
-            this.Controls.Add(this.iDLabel);
-            this.Controls.Add(this.FaxLabel);
-            this.Controls.Add(this.emailLabel);
-            this.Controls.Add(this.phoneLabel);
-            this.Controls.Add(this.addressLabel);
-            this.Controls.Add(this.lastNameLabel);
-            this.Controls.Add(this.firstNameLabel);
+            this.Controls.Add(this.ChangePassLbl);
+            this.Controls.Add(this.ChangePassCheckLbl);
+            this.Controls.Add(this.IDNumberLbl);
+            this.Controls.Add(this.FaxLbl);
+            this.Controls.Add(this.EmailLbl);
+            this.Controls.Add(this.PhoneNumberLbl);
+            this.Controls.Add(this.AddressLbl);
+            this.Controls.Add(this.LastNameLbl);
+            this.Controls.Add(this.FirstNameLbl);
             this.Name = "UpdatePersonalInformation";
             this.Text = "UpdatePersonalInformation";
             this.ResumeLayout(false);
@@ -299,25 +299,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Label firstNameLabel;
-        private System.Windows.Forms.Button updateInfoBtn;
+        private System.Windows.Forms.Label FirstNameLbl;
+        private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.TextBox FirstNameComboBox;
-        private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.Label addressLabel;
-        private System.Windows.Forms.Label phoneLabel;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.Label FaxLabel;
+        private System.Windows.Forms.Label LastNameLbl;
+        private System.Windows.Forms.Label AddressLbl;
+        private System.Windows.Forms.Label PhoneNumberLbl;
+        private System.Windows.Forms.Label EmailLbl;
+        private System.Windows.Forms.Label FaxLbl;
         private System.Windows.Forms.TextBox addressComboBox;
         private System.Windows.Forms.TextBox LastNameComboBox;
         private System.Windows.Forms.TextBox PhoneComboBox;
         private System.Windows.Forms.TextBox emailComboBox;
         private System.Windows.Forms.TextBox FaxComboBox;
         private System.Windows.Forms.TextBox IDComboBox;
-        private System.Windows.Forms.Label iDLabel;
+        private System.Windows.Forms.Label IDNumberLbl;
         private System.Windows.Forms.TextBox ChangePass;
         private System.Windows.Forms.TextBox ChangePassCheck;
-        private System.Windows.Forms.Label ChangePassCheckLabel;
-        private System.Windows.Forms.Label ChangePassLabel;
+        private System.Windows.Forms.Label ChangePassCheckLbl;
+        private System.Windows.Forms.Label ChangePassLbl;
         private System.Windows.Forms.Label CanReglbl;
         private System.Windows.Forms.Label CanDroplbl;
         private System.Windows.Forms.Label CanAddlbl;

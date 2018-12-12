@@ -10,18 +10,22 @@ using System.Windows.Forms;
 
 namespace RegistrationSystem
 {
-    public partial class UpdatePersonalInformation : Form
+    public partial class UserPersonalInformation : Form
     {
-        int userID;
-        public UpdatePersonalInformation(int ID)
+
+        public UserPersonalInformation(string use, int ID)
         {
-            userID = ID;
+            
             InitializeComponent();
-            CanComboBoxs_Load(ID);
+           // User person = new User();
+
+           
+            UpdateInfoBtn.Text = use;
+            CanComboBoxs_Load();
         }
-        private void CanComboBoxs_Load(int ID)
+        private void CanComboBoxs_Load()
         {
-            if (true)
+            if (LogIn.user.IsRegistrar)
             {
                 canRegComboBox.Items.Add("Yes");
                 canRegComboBox.Items.Add("No");
@@ -84,7 +88,7 @@ namespace RegistrationSystem
                 if (whatever != null)
                 {
                     //update database
-                    MessageBox.Show("You updated your info");
+                    MessageBox.Show("Edited info");
                 }
             }
             catch
