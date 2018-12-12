@@ -237,7 +237,7 @@ namespace RegistrationSystem
                     new SqlParameter("ID",yearData[i][1])}, Tables.Semester);
             return semesters;
         }
-        public List<Section> GetSections(string year, string semester)
+        public List<Section> GetSections(string year, string semester, bool isProfessor = false)
         {
             var results = Connection.BuildClassArray<Section>(
             new SqlParameter[] {
@@ -249,6 +249,10 @@ namespace RegistrationSystem
             results.RemoveAll((Section s) => {
                 return s.StartDate.Year.ToString() != year;
             });
+            if(isProfessor)
+                results.RemoveAll((Section s) => {
+                    return s.TeachID != EnterpriseID;
+                });
             return results;
         }
         bool Authenticate() =>

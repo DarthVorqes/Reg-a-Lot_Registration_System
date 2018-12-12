@@ -28,7 +28,7 @@ namespace RegistrationSystem
         /// </summary>
         public string Grade { get; set; }
         public int SectionID { get; set; }
-        [DoNotTouch]
+        [TableSpecific(Tables.Registration)]
         public int CourseID { get; set; }
         public string GetFirstName(User usr) => usr.Connection.GetValue("FirstName", new System.Data.SqlClient.SqlParameter[] {
                 new System.Data.SqlClient.SqlParameter("ID",PersonID),

@@ -37,7 +37,7 @@ namespace RegistrationSystem
         public string Duration {get; private  set;}
 
         public int SemesterID {get; private set;}
-        [DoNotTouch]
+        [TableSpecific(Tables.Section)]
         public int TeachID {get; private  set;}
 
         public int SectionCapacity {get; private  set;}

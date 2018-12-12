@@ -49,7 +49,6 @@
     <Compile Include="Authentication.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="DoNotTouch.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +84,7 @@
     <Compile Include="studentView.Designer.cs">
       <DependentUpon>studentView.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableSpecific.cs" />
     <Compile Include="UserPersonalInformation.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -93,7 +93,7 @@ namespace RegistrationSystem
         {
             
             string[] selectedItem = ScheduleSemesterComboBox.SelectedItem.ToString().Split();
-            List<Section>  sections = LogIn.user.GetSections(selectedItem[0], selectedItem[1]);
+            List<Section>  sections = LogIn.user.GetSections(selectedItem[0], selectedItem[1],true);
             ScheduleSectionsComboBox.Items.Clear();
             foreach (Section section in sections)
             {

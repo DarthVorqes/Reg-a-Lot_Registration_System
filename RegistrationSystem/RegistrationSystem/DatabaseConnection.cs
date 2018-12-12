@@ -151,8 +151,11 @@ namespace RegistrationSystem
             var properties = type.GetProperties();
             SqlParameter[] perams = new SqlParameter[properties.Length];
             for (int i = 0; i < perams.Length; i++)
-                if(properties[i].GetCustomAttribute(typeof(DoNotTouch)) == null)
+            {
+                var tableSpec = properties[i].GetCustomAttribute(typeof(TableSpecific));
+                if (tableSpec == null || (tableSpec as TableSpecific).Table == table)
                     perams[i] = new SqlParameter(properties[i].Name, properties[i].GetValue(obj));
+            }
             Insert(table,perams);
         }
         /// <summary>
@@ -168,7 +171,8 @@ namespace RegistrationSystem
             var properties = new List<PropertyInfo>(type.GetProperties());
             for (int i = 0; i < properties.Count; i++)
             {
-                if(properties[i].GetCustomAttribute(typeof(DoNotTouch)) != null)
+                var attribute = properties[i].GetCustomAttribute(typeof(TableSpecific));
+                if (attribute != null && (attribute as TableSpecific).Table != table)
                 {
                     properties.RemoveAt(i--);
                     continue;
