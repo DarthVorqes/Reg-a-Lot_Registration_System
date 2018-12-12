@@ -225,6 +225,18 @@ namespace RegistrationSystem
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
+        public string[] GetSemesters()
+        {
+            List<object[]> yearData = Connection.GetOccurrences(Tables.SemesterYear, new SqlParameter[0], new string[] {
+                "Year","SemesterID",
+            });
+            string[] semesters = new string[yearData.Count];
+            for(int i = 0; i < semesters.Length; i++)
+                semesters[i] = yearData[i][0].ToString() + ' '
+                    + Connection.GetValue("SemesterName", new SqlParameter[] {
+                    new SqlParameter("ID",yearData[i][1])}, Tables.Semester);
+            return semesters;
+        }
         bool Authenticate() =>
             Authenticate(EnterpriseID, _password);
 
