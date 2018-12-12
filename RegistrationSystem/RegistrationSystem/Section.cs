@@ -26,7 +26,7 @@ namespace RegistrationSystem
         public string MeetingTimes { get; private set; }
 
         public string MeetingDays { get; private set; }
-      
+        [TableSpecific (Tables.Section)]
         public int CourseID { get; private set; }
 
         public string Location { get; private set; }

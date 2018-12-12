@@ -171,7 +171,7 @@ namespace RegistrationSystem
             var properties = new List<PropertyInfo>(type.GetProperties());
             for (int i = 0; i < properties.Count; i++)
             {
-                var attribute = properties[i].GetCustomAttribute(typeof(TableSpecific));
+                var attribute = properties[i].GetCustomAttribute<TableSpecific>();
                 if (attribute != null && (attribute as TableSpecific).Table != table)
                 {
                     properties.RemoveAt(i--);
