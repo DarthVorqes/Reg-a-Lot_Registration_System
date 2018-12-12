@@ -237,6 +237,14 @@ namespace RegistrationSystem
                     new SqlParameter("ID",yearData[i][1])}, Tables.Semester);
             return semesters;
         }
+        /// <summary>
+        /// Runs a query and returns a list of 'SectionStudents' retreived from 'db.Registration'
+        /// </summary>
+        /// <param name="perams"></param>
+        /// <param name="usr"></param>
+        /// <returns></returns>
+        public List<SectionStudent> GetStudents(SqlParameter[] perams) =>
+            Connection.BuildClassArray<SectionStudent>(perams, Tables.Registration);
         public List<Section> GetSections(string year, string semester, bool isProfessor = false)
         {
             var results = Connection.BuildClassArray<Section>(

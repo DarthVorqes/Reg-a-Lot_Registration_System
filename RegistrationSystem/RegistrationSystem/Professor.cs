@@ -14,8 +14,7 @@ namespace RegistrationSystem
     {
         public char Grade { get; private set; }
     
-        List<Course> courseIndex = LogIn.user.Connection.BuildClassArray<Course>(new System.Data.SqlClient.SqlParameter[0], Tables.Course);
-        List<Section> sectionIndex = LogIn.user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[0], Tables.Section);
+   
         string[] semesterIndex = LogIn.user.GetSemesters();
   
         public ProfessorView()
@@ -101,26 +100,20 @@ namespace RegistrationSystem
             }
 
         }
-        private void ScheduleSectionComboBox_Load()
-        {
-            ScheduleSectionsComboBox.Items.Clear();
-            foreach (Section section in sectionIndex)
-            {
-                ScheduleSectionsComboBox.Items.Add(section.ToString());
-            }
-        }
+
         private void ScheduleSectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ScheduleStudentListBox_Load();
-        }
-        private void ScheduleStudentListBox_Load()
-        {
+            string[] selectedItem = ScheduleSectionsComboBox.SelectedItem.ToString().Split();
+            
+            List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
+                new System.Data.SqlClient.SqlParameter("SectionID", selectedItem[1]) });
             ScheduleStudentListBox.Items.Clear();
-            //foreach (string student in studentIndex)
-            //{
-            //  ScheduleStudentListBox.Items.Add(student);
-            //}
+            foreach (SectionStudent student in students)
+            {
+                ScheduleStudentListBox.Items.Add(student);
+            }
         }
+
 
 //====================================================Add Drop Tab:
         private void AddDropSemesterComboBox_Load()
@@ -134,19 +127,19 @@ namespace RegistrationSystem
         private void AddDropCoursesComboBox_Load()
         {
             AddDropCoursesComboBox.Items.Clear();
-            foreach (Course course in courseIndex)
+          /*  foreach (Course course in courseIndex)
             {
                 AddDropCoursesComboBox.Items.Add(course);
-            }
+            }*/
         }
 
         private void AddDropListBox_Load()
         {
             AddDropListBox.Items.Clear();
-            foreach (Section section in sectionIndex)
+            /*foreach (Section section in sectionIndex)
             {
                 AddDropListBox.Items.Add(section);
-            }
+            }*/
         }
         private void AddDropCoursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

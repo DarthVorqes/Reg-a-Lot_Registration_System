@@ -12,14 +12,6 @@ namespace RegistrationSystem
     class SectionStudent
     {
         /// <summary>
-        /// Runs a query and returns a list of 'SectionStudents' retreived from 'db.Registration'
-        /// </summary>
-        /// <param name="perams"></param>
-        /// <param name="usr"></param>
-        /// <returns></returns>
-        public List<SectionStudent> GetStudents(System.Data.SqlClient.SqlParameter[] perams, User usr) =>
-            usr.Connection.BuildClassArray<SectionStudent>(perams, Tables.Registration);
-        /// <summary>
         /// The Enterprise ID of this student
         /// </summary>
         public int PersonID { get; set; }
