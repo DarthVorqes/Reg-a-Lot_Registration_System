@@ -23,21 +23,54 @@ namespace RegistrationSystem
      
             InitializeComponent();
             UserViewComboBox_Load();
-            SetLabels();
+            SetLabels1();
             AddDropSemesterComboBox_Load();
         }
-//==============================================Labels:
-        private void SetLabels()
+        private void SetLabels1()
         {
-            StudentTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
-            UserFirstNameLbl.Text = LogIn.user.FirstName;
-            UserLastNameLbl.Text = LogIn.user.LastName;
-            UserIDNumberLbl.Text = LogIn.user.EnterpriseID.ToString();
-            UserAddressLbl.Text = LogIn.user.StreetAddress;
-            UserEmailLbl.Text = LogIn.user.Email;
-            UserPhoneNumberLbl.Text = LogIn.user.PhoneNumber.ToString();
-            HasPaidLbl.Text = LogIn.user.HasPaid.ToString();
+            DataGrid grid = new DataGrid();
+            string[] excludeFromDataGrid = new string[]
+            {
+                "Bill",
+                "HasPaid",
+                "IsProfessor",
+                "IsStudent",
+                "IsRegistrar",
+                "Password",
+                "UserSchedule",
+                "Connection"
+            };
+            foreach (var property in typeof(User).GetProperties())
+            {
+                if (property.PropertyType.Namespace == "RegistrationSystem")
+                    continue;
+                bool exclude = false;
+                foreach (var name in excludeFromDataGrid)
+                {
+                    if (name == property.Name)
+                    {
+                        exclude = true;
+                        break;
+                    }
+                }
+                if (exclude)
+                {
+                    continue;
+                }
+                var row = new DataGridViewRow();
+                row.CreateCells(InfoGrid, new string[]
+                {
+                        property.Name,
+                        property.GetValue(LogIn.user).ToString()
+                });
+                InfoGrid.Rows.Add(row);
+
+            }
+            
         }
+//==============================================Labels:
+
+
 
 //==============================================User view:
         private void UserViewComboBox_Load()
@@ -177,8 +210,10 @@ namespace RegistrationSystem
         }
         private void UpdateInfoBtn_Click(object sender, EventArgs e)
         {
-            UserPersonalInformation update = new UserPersonalInformation("Update", LogIn.user.EnterpriseID);
-            update.Show();
+            
+            //push datagrid to database
         }
+
+
     }
 }

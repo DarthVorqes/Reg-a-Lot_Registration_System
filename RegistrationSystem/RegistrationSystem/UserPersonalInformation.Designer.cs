@@ -260,7 +260,7 @@
             this.canRegComboBox.Size = new System.Drawing.Size(60, 21);
             this.canRegComboBox.TabIndex = 3;
             // 
-            // UpdatePersonalInformation
+            // UserPersonalInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -290,7 +290,9 @@
             this.Controls.Add(this.AddressLbl);
             this.Controls.Add(this.LastNameLbl);
             this.Controls.Add(this.FirstNameLbl);
-            this.Name = "UpdatePersonalInformation";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "UserPersonalInformation";
             this.Text = "UpdatePersonalInformation";
             this.ResumeLayout(false);
             this.PerformLayout();

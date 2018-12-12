@@ -40,31 +40,25 @@
             this.AddDropListBox = new System.Windows.Forms.ListBox();
             this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.persInfo1 = new System.Windows.Forms.TabPage();
+            this.InfoGrid = new System.Windows.Forms.DataGridView();
+            this.UpdateInfoBtn = new System.Windows.Forms.Button();
+            this.UserInfoDescriptionLbl = new System.Windows.Forms.Label();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.finance1 = new System.Windows.Forms.TabPage();
+            this.UserBillLbl = new System.Windows.Forms.Label();
+            this.BillLbl = new System.Windows.Forms.Label();
+            this.UserHasPaidLbl = new System.Windows.Forms.Label();
+            this.PaidLbl = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
-            this.UserInfoDescriptionLbl = new System.Windows.Forms.Label();
-            this.FirstNameLbl = new System.Windows.Forms.Label();
-            this.IDNumberLbl = new System.Windows.Forms.Label();
-            this.AddressLbl = new System.Windows.Forms.Label();
-            this.PhoneNumberLbl = new System.Windows.Forms.Label();
-            this.EmailLbl = new System.Windows.Forms.Label();
-            this.UserFirstNameLbl = new System.Windows.Forms.Label();
-            this.UserIDNumberLbl = new System.Windows.Forms.Label();
-            this.UserAddressLbl = new System.Windows.Forms.Label();
-            this.UserPhoneNumberLbl = new System.Windows.Forms.Label();
-            this.UserEmailLbl = new System.Windows.Forms.Label();
-            this.LastNameLbl = new System.Windows.Forms.Label();
-            this.UserLastNameLbl = new System.Windows.Forms.Label();
-            this.UpdateInfoBtn = new System.Windows.Forms.Button();
             this.StudentTitle = new System.Windows.Forms.Label();
-            this.PaidLbl = new System.Windows.Forms.Label();
-            this.HasPaidLbl = new System.Windows.Forms.Label();
+            this.InfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InfoValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
             this.addDrop1.SuspendLayout();
             this.persInfo1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InfoGrid)).BeginInit();
             this.finance1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,19 +187,8 @@
             // 
             // persInfo1
             // 
+            this.persInfo1.Controls.Add(this.InfoGrid);
             this.persInfo1.Controls.Add(this.UpdateInfoBtn);
-            this.persInfo1.Controls.Add(this.UserLastNameLbl);
-            this.persInfo1.Controls.Add(this.LastNameLbl);
-            this.persInfo1.Controls.Add(this.UserEmailLbl);
-            this.persInfo1.Controls.Add(this.UserPhoneNumberLbl);
-            this.persInfo1.Controls.Add(this.UserAddressLbl);
-            this.persInfo1.Controls.Add(this.UserIDNumberLbl);
-            this.persInfo1.Controls.Add(this.UserFirstNameLbl);
-            this.persInfo1.Controls.Add(this.EmailLbl);
-            this.persInfo1.Controls.Add(this.PhoneNumberLbl);
-            this.persInfo1.Controls.Add(this.AddressLbl);
-            this.persInfo1.Controls.Add(this.IDNumberLbl);
-            this.persInfo1.Controls.Add(this.FirstNameLbl);
             this.persInfo1.Controls.Add(this.UserInfoDescriptionLbl);
             this.persInfo1.Controls.Add(this.webBrowser2);
             this.persInfo1.Location = new System.Drawing.Point(23, 4);
@@ -214,6 +197,36 @@
             this.persInfo1.TabIndex = 2;
             this.persInfo1.Text = "Personal Info";
             this.persInfo1.UseVisualStyleBackColor = true;
+            // 
+            // InfoGrid
+            // 
+            this.InfoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InfoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.InfoType,
+            this.InfoValue});
+            this.InfoGrid.Location = new System.Drawing.Point(3, 47);
+            this.InfoGrid.Name = "InfoGrid";
+            this.InfoGrid.Size = new System.Drawing.Size(245, 325);
+            this.InfoGrid.TabIndex = 5;
+            // 
+            // UpdateInfoBtn
+            // 
+            this.UpdateInfoBtn.Location = new System.Drawing.Point(366, 47);
+            this.UpdateInfoBtn.Name = "UpdateInfoBtn";
+            this.UpdateInfoBtn.Size = new System.Drawing.Size(116, 23);
+            this.UpdateInfoBtn.TabIndex = 3;
+            this.UpdateInfoBtn.Text = "Update Info";
+            this.UpdateInfoBtn.UseVisualStyleBackColor = true;
+            this.UpdateInfoBtn.Click += new System.EventHandler(this.UpdateInfoBtn_Click);
+            // 
+            // UserInfoDescriptionLbl
+            // 
+            this.UserInfoDescriptionLbl.AutoSize = true;
+            this.UserInfoDescriptionLbl.Location = new System.Drawing.Point(15, 19);
+            this.UserInfoDescriptionLbl.Name = "UserInfoDescriptionLbl";
+            this.UserInfoDescriptionLbl.Size = new System.Drawing.Size(90, 13);
+            this.UserInfoDescriptionLbl.TabIndex = 2;
+            this.UserInfoDescriptionLbl.Text = "User Information: ";
             // 
             // webBrowser2
             // 
@@ -233,7 +246,9 @@
             // 
             // finance1
             // 
-            this.finance1.Controls.Add(this.HasPaidLbl);
+            this.finance1.Controls.Add(this.UserBillLbl);
+            this.finance1.Controls.Add(this.BillLbl);
+            this.finance1.Controls.Add(this.UserHasPaidLbl);
             this.finance1.Controls.Add(this.PaidLbl);
             this.finance1.Location = new System.Drawing.Point(23, 4);
             this.finance1.Name = "finance1";
@@ -241,6 +256,42 @@
             this.finance1.TabIndex = 3;
             this.finance1.Text = "Finances";
             this.finance1.UseVisualStyleBackColor = true;
+            // 
+            // UserBillLbl
+            // 
+            this.UserBillLbl.AutoSize = true;
+            this.UserBillLbl.Location = new System.Drawing.Point(180, 99);
+            this.UserBillLbl.Name = "UserBillLbl";
+            this.UserBillLbl.Size = new System.Drawing.Size(37, 13);
+            this.UserBillLbl.TabIndex = 1;
+            this.UserBillLbl.Text = "GetBill";
+            // 
+            // BillLbl
+            // 
+            this.BillLbl.AutoSize = true;
+            this.BillLbl.Location = new System.Drawing.Point(48, 99);
+            this.BillLbl.Name = "BillLbl";
+            this.BillLbl.Size = new System.Drawing.Size(23, 13);
+            this.BillLbl.TabIndex = 1;
+            this.BillLbl.Text = "Bill:";
+            // 
+            // UserHasPaidLbl
+            // 
+            this.UserHasPaidLbl.AutoSize = true;
+            this.UserHasPaidLbl.Location = new System.Drawing.Point(180, 65);
+            this.UserHasPaidLbl.Name = "UserHasPaidLbl";
+            this.UserHasPaidLbl.Size = new System.Drawing.Size(47, 13);
+            this.UserHasPaidLbl.TabIndex = 0;
+            this.UserHasPaidLbl.Text = "HasPaid";
+            // 
+            // PaidLbl
+            // 
+            this.PaidLbl.AutoSize = true;
+            this.PaidLbl.Location = new System.Drawing.Point(47, 65);
+            this.PaidLbl.Name = "PaidLbl";
+            this.PaidLbl.Size = new System.Drawing.Size(96, 13);
+            this.PaidLbl.TabIndex = 0;
+            this.PaidLbl.Text = "Status of Payment:";
             // 
             // LogoutBtn
             // 
@@ -262,133 +313,6 @@
             this.UserViewComboBox.Text = "View";
             this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.UserViewComboBox_SelectedIndexChanged);
             // 
-            // UserInfoDescriptionLbl
-            // 
-            this.UserInfoDescriptionLbl.AutoSize = true;
-            this.UserInfoDescriptionLbl.Location = new System.Drawing.Point(15, 19);
-            this.UserInfoDescriptionLbl.Name = "UserInfoDescriptionLbl";
-            this.UserInfoDescriptionLbl.Size = new System.Drawing.Size(90, 13);
-            this.UserInfoDescriptionLbl.TabIndex = 2;
-            this.UserInfoDescriptionLbl.Text = "User Information: ";
-            // 
-            // FirstNameLbl
-            // 
-            this.FirstNameLbl.AutoSize = true;
-            this.FirstNameLbl.Location = new System.Drawing.Point(38, 68);
-            this.FirstNameLbl.Name = "FirstNameLbl";
-            this.FirstNameLbl.Size = new System.Drawing.Size(60, 13);
-            this.FirstNameLbl.TabIndex = 2;
-            this.FirstNameLbl.Text = "First Name:";
-            // 
-            // IDNumberLbl
-            // 
-            this.IDNumberLbl.AutoSize = true;
-            this.IDNumberLbl.Location = new System.Drawing.Point(38, 111);
-            this.IDNumberLbl.Name = "IDNumberLbl";
-            this.IDNumberLbl.Size = new System.Drawing.Size(64, 13);
-            this.IDNumberLbl.TabIndex = 2;
-            this.IDNumberLbl.Text = "ID Number: ";
-            // 
-            // AddressLbl
-            // 
-            this.AddressLbl.AutoSize = true;
-            this.AddressLbl.Location = new System.Drawing.Point(38, 150);
-            this.AddressLbl.Name = "AddressLbl";
-            this.AddressLbl.Size = new System.Drawing.Size(48, 13);
-            this.AddressLbl.TabIndex = 2;
-            this.AddressLbl.Text = "Address:";
-            // 
-            // PhoneNumberLbl
-            // 
-            this.PhoneNumberLbl.AutoSize = true;
-            this.PhoneNumberLbl.Location = new System.Drawing.Point(38, 186);
-            this.PhoneNumberLbl.Name = "PhoneNumberLbl";
-            this.PhoneNumberLbl.Size = new System.Drawing.Size(81, 13);
-            this.PhoneNumberLbl.TabIndex = 2;
-            this.PhoneNumberLbl.Text = "Phone Number:";
-            // 
-            // EmailLbl
-            // 
-            this.EmailLbl.AutoSize = true;
-            this.EmailLbl.Location = new System.Drawing.Point(38, 218);
-            this.EmailLbl.Name = "EmailLbl";
-            this.EmailLbl.Size = new System.Drawing.Size(35, 13);
-            this.EmailLbl.TabIndex = 2;
-            this.EmailLbl.Text = "Email:";
-            // 
-            // UserFirstNameLbl
-            // 
-            this.UserFirstNameLbl.AutoSize = true;
-            this.UserFirstNameLbl.Location = new System.Drawing.Point(134, 68);
-            this.UserFirstNameLbl.Name = "UserFirstNameLbl";
-            this.UserFirstNameLbl.Size = new System.Drawing.Size(57, 13);
-            this.UserFirstNameLbl.TabIndex = 2;
-            this.UserFirstNameLbl.Text = "First Name";
-            // 
-            // UserIDNumberLbl
-            // 
-            this.UserIDNumberLbl.AutoSize = true;
-            this.UserIDNumberLbl.Location = new System.Drawing.Point(134, 111);
-            this.UserIDNumberLbl.Name = "UserIDNumberLbl";
-            this.UserIDNumberLbl.Size = new System.Drawing.Size(58, 13);
-            this.UserIDNumberLbl.TabIndex = 2;
-            this.UserIDNumberLbl.Text = "ID Number";
-            // 
-            // UserAddressLbl
-            // 
-            this.UserAddressLbl.AutoSize = true;
-            this.UserAddressLbl.Location = new System.Drawing.Point(134, 150);
-            this.UserAddressLbl.Name = "UserAddressLbl";
-            this.UserAddressLbl.Size = new System.Drawing.Size(45, 13);
-            this.UserAddressLbl.TabIndex = 2;
-            this.UserAddressLbl.Text = "Address";
-            // 
-            // UserPhoneNumberLbl
-            // 
-            this.UserPhoneNumberLbl.AutoSize = true;
-            this.UserPhoneNumberLbl.Location = new System.Drawing.Point(134, 186);
-            this.UserPhoneNumberLbl.Name = "UserPhoneNumberLbl";
-            this.UserPhoneNumberLbl.Size = new System.Drawing.Size(78, 13);
-            this.UserPhoneNumberLbl.TabIndex = 2;
-            this.UserPhoneNumberLbl.Text = "Phone Number";
-            // 
-            // UserEmailLbl
-            // 
-            this.UserEmailLbl.AutoSize = true;
-            this.UserEmailLbl.Location = new System.Drawing.Point(134, 218);
-            this.UserEmailLbl.Name = "UserEmailLbl";
-            this.UserEmailLbl.Size = new System.Drawing.Size(32, 13);
-            this.UserEmailLbl.TabIndex = 2;
-            this.UserEmailLbl.Text = "Email";
-            // 
-            // LastNameLbl
-            // 
-            this.LastNameLbl.AutoSize = true;
-            this.LastNameLbl.Location = new System.Drawing.Point(250, 68);
-            this.LastNameLbl.Name = "LastNameLbl";
-            this.LastNameLbl.Size = new System.Drawing.Size(61, 13);
-            this.LastNameLbl.TabIndex = 2;
-            this.LastNameLbl.Text = "Last Name:";
-            // 
-            // UserLastNameLbl
-            // 
-            this.UserLastNameLbl.AutoSize = true;
-            this.UserLastNameLbl.Location = new System.Drawing.Point(331, 68);
-            this.UserLastNameLbl.Name = "UserLastNameLbl";
-            this.UserLastNameLbl.Size = new System.Drawing.Size(58, 13);
-            this.UserLastNameLbl.TabIndex = 2;
-            this.UserLastNameLbl.Text = "Last Name";
-            // 
-            // UpdateInfoBtn
-            // 
-            this.UpdateInfoBtn.Location = new System.Drawing.Point(36, 375);
-            this.UpdateInfoBtn.Name = "UpdateInfoBtn";
-            this.UpdateInfoBtn.Size = new System.Drawing.Size(116, 23);
-            this.UpdateInfoBtn.TabIndex = 3;
-            this.UpdateInfoBtn.Text = "Update Info";
-            this.UpdateInfoBtn.UseVisualStyleBackColor = true;
-            this.UpdateInfoBtn.Click += new System.EventHandler(this.UpdateInfoBtn_Click);
-            // 
             // StudentTitle
             // 
             this.StudentTitle.AutoSize = true;
@@ -399,25 +323,18 @@
             this.StudentTitle.TabIndex = 3;
             this.StudentTitle.Text = "Student Name";
             // 
-            // PaidLbl
+            // InfoType
             // 
-            this.PaidLbl.AutoSize = true;
-            this.PaidLbl.Location = new System.Drawing.Point(47, 65);
-            this.PaidLbl.Name = "PaidLbl";
-            this.PaidLbl.Size = new System.Drawing.Size(96, 13);
-            this.PaidLbl.TabIndex = 0;
-            this.PaidLbl.Text = "Status of Payment:";
+            this.InfoType.HeaderText = "Info Type";
+            this.InfoType.Name = "InfoType";
+            this.InfoType.ReadOnly = true;
             // 
-            // HasPaidLbl
+            // InfoValue
             // 
-            this.HasPaidLbl.AutoSize = true;
-            this.HasPaidLbl.Location = new System.Drawing.Point(180, 65);
-            this.HasPaidLbl.Name = "HasPaidLbl";
-            this.HasPaidLbl.Size = new System.Drawing.Size(47, 13);
-            this.HasPaidLbl.TabIndex = 0;
-            this.HasPaidLbl.Text = "HasPaid";
+            this.InfoValue.HeaderText = "Value";
+            this.InfoValue.Name = "InfoValue";
             // 
-            // studentView
+            // StudentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,7 +345,7 @@
             this.Controls.Add(this.UserViewComboBox);
             this.Controls.Add(this.LogoutBtn);
             this.Controls.Add(this.tabControl1);
-            this.Name = "studentView";
+            this.Name = "StudentView";
             this.Text = "Student View";
             this.tabControl1.ResumeLayout(false);
             this.sched1.ResumeLayout(false);
@@ -436,6 +353,7 @@
             this.addDrop1.PerformLayout();
             this.persInfo1.ResumeLayout(false);
             this.persInfo1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InfoGrid)).EndInit();
             this.finance1.ResumeLayout(false);
             this.finance1.PerformLayout();
             this.ResumeLayout(false);
@@ -461,21 +379,14 @@
         private System.Windows.Forms.Label AddDropSemesterLbl;
         private System.Windows.Forms.Label AddDropCourseLbl;
         private System.Windows.Forms.Label UserInfoDescriptionLbl;
-        private System.Windows.Forms.Label UserLastNameLbl;
-        private System.Windows.Forms.Label LastNameLbl;
-        private System.Windows.Forms.Label UserEmailLbl;
-        private System.Windows.Forms.Label UserPhoneNumberLbl;
-        private System.Windows.Forms.Label UserAddressLbl;
-        private System.Windows.Forms.Label UserIDNumberLbl;
-        private System.Windows.Forms.Label UserFirstNameLbl;
-        private System.Windows.Forms.Label EmailLbl;
-        private System.Windows.Forms.Label PhoneNumberLbl;
-        private System.Windows.Forms.Label AddressLbl;
-        private System.Windows.Forms.Label IDNumberLbl;
-        private System.Windows.Forms.Label FirstNameLbl;
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Label StudentTitle;
-        private System.Windows.Forms.Label HasPaidLbl;
+        private System.Windows.Forms.Label UserHasPaidLbl;
         private System.Windows.Forms.Label PaidLbl;
+        private System.Windows.Forms.Label UserBillLbl;
+        private System.Windows.Forms.Label BillLbl;
+        private System.Windows.Forms.DataGridView InfoGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InfoType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InfoValue;
     }
 }

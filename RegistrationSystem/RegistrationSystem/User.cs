@@ -63,6 +63,10 @@ namespace RegistrationSystem
                 lastName = value;
             }
         }
+        public float GetBill()
+        {
+            return -1;
+        }
         public bool HasPaid
         {
             get

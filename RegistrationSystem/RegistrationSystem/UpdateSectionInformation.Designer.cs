@@ -147,6 +147,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SectionName);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UpdateSectionInformation";
             this.Text = "UpdateSectionInformation";
             this.ResumeLayout(false);
