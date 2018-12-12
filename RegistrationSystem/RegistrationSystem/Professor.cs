@@ -15,8 +15,8 @@ namespace RegistrationSystem
         public char Grade { get; private set; }
     
         List<Course> courseIndex = LogIn.user.Connection.BuildClassArray<Course>(new System.Data.SqlClient.SqlParameter[0], Tables.Course);
-        List<Section> sectionIndex = LogIn.user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[0], Tables.Section);    
-        List<string> semesterIndex    = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
+        List<Section> sectionIndex = LogIn.user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[0], Tables.Section);
+        string[] semesterIndex = LogIn.user.GetSemesters();
   
         public ProfessorView()
         {
@@ -92,18 +92,9 @@ namespace RegistrationSystem
         private void ScheduleSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ScheduleStudentListBox.Items.Clear();
-            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Spring2019")
-            {
-                ScheduleSectionComboBox_Load();
-            }
-            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Summer2019")
-            {
-                ScheduleSectionsComboBox.Items.Clear();
-            }
-            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Fall2019")
-            {
-                ScheduleSectionsComboBox.Items.Clear();
-            }
+            string[] selectedItem = ScheduleSemesterComboBox.SelectedItem.ToString().Split();
+            
+  
         }
         private void ScheduleSectionComboBox_Load()
         {
