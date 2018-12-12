@@ -41,6 +41,8 @@
             this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.persInfo1 = new System.Windows.Forms.TabPage();
             this.InfoGrid = new System.Windows.Forms.DataGridView();
+            this.InfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InfoValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateInfoBtn = new System.Windows.Forms.Button();
             this.UserInfoDescriptionLbl = new System.Windows.Forms.Label();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
@@ -52,8 +54,6 @@
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
             this.StudentTitle = new System.Windows.Forms.Label();
-            this.InfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InfoValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.sched1.SuspendLayout();
             this.addDrop1.SuspendLayout();
@@ -97,12 +97,11 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(783, 415);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
-        "m\\RegistrationSystem\\schedule.html", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // addDrop1
             // 
@@ -208,6 +207,17 @@
             this.InfoGrid.Name = "InfoGrid";
             this.InfoGrid.Size = new System.Drawing.Size(245, 325);
             this.InfoGrid.TabIndex = 5;
+            // 
+            // InfoType
+            // 
+            this.InfoType.HeaderText = "Info Type";
+            this.InfoType.Name = "InfoType";
+            this.InfoType.ReadOnly = true;
+            // 
+            // InfoValue
+            // 
+            this.InfoValue.HeaderText = "Value";
+            this.InfoValue.Name = "InfoValue";
             // 
             // UpdateInfoBtn
             // 
@@ -323,17 +333,6 @@
             this.StudentTitle.TabIndex = 3;
             this.StudentTitle.Text = "Student Name";
             // 
-            // InfoType
-            // 
-            this.InfoType.HeaderText = "Info Type";
-            this.InfoType.Name = "InfoType";
-            this.InfoType.ReadOnly = true;
-            // 
-            // InfoValue
-            // 
-            this.InfoValue.HeaderText = "Value";
-            this.InfoValue.Name = "InfoValue";
-            // 
             // StudentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,6 +346,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "StudentView";
             this.Text = "Student View";
+            this.Load += new System.EventHandler(this.StudentView_Load);
             this.tabControl1.ResumeLayout(false);
             this.sched1.ResumeLayout(false);
             this.addDrop1.ResumeLayout(false);
