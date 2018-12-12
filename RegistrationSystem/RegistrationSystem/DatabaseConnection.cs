@@ -97,7 +97,7 @@ namespace RegistrationSystem
         /// <param name="desiredFields">The actual fields/columns/variables desired.</param>
         /// <returns></returns>
 
-        public List<string[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) =>
+        public List<object[]> GetOccurrences(Tables table, SqlParameter[] perams, string[] desiredFields) =>
 
             GetOccurrences(table.ToString(), perams, desiredFields);
         /// <summary>
@@ -107,9 +107,9 @@ namespace RegistrationSystem
         /// <param name="perams">A list of perameters which the results must satisfy.</param>
         /// <param name="desiredFields">The actual fields/columns/variables desired.</param>
         /// <returns></returns>
-        List<string[]> GetOccurrences(string table, SqlParameter[] perams, string[] desiredFields)
+        List<object[]> GetOccurrences(string table, SqlParameter[] perams, string[] desiredFields)
         {
-            List<string[]> query = new List<string[]>();
+            List<object[]> query = new List<object[]>();
 
             //constructing sql for query
             string sql = "SELECT " + EnumerateArray(desiredFields) + " FROM " + table;
@@ -126,17 +126,51 @@ namespace RegistrationSystem
                     {
                         while (reader.Read())
                         {
-                            var result = new string[reader.FieldCount];
+                            var result = new object[reader.FieldCount];
                             for (int i = 0; i < result.Length; i++)
                             {
                                 var n = reader.GetValue(i);
-                                result[i] = Convert.ToString(n);
+                                result[i] = n;
                             }
                             query.Add(result);
                         }
                     }
                 });
             return query;
+        }
+        /// <summary>
+        /// Constructs a list of objects of type 'T'.
+        /// </summary>
+        /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
+        /// <param name="perams">Filters for the list being created.</param>
+        /// <returns>Query results parsed into type T.</returns>
+        public List<T> BuildClassArray<T>(SqlParameter[] perams, Tables table) where T : class
+        {
+            var type = typeof(T);
+            var names = new List<string>();
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+                names.Add(property.Name);
+
+            var values = GetOccurrences(
+                table, perams, names.ToArray());
+
+            var elements = new List<T>();
+            for (int i = 0; i < values.Count; i++)
+            {
+                //equal to one row
+                T element = Activator.CreateInstance<T>();
+                elements.Add(element);
+                for (int j = 0; j < properties.Length; j++)
+                {
+                    if (values[i][j].GetType() == typeof(System.DBNull))
+                        continue;
+                    var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
+                    properties[j].SetValue(element, value, null);
+                }
+            }
+
+            return elements;
         }
         //Insert
         /// <summary>
@@ -148,32 +182,20 @@ namespace RegistrationSystem
         public bool Insert(Tables table, SqlParameter[] elements)
         {
             string sql = "INSERT INTO " + table;
-
-            //this section might not be necessary ---------------------------------------------------
-            //comparing/finding headers used -->> this could also be found by looking at the 
-            //'PerameterName' property in each of the 'elements'
-            var headers = GetHeaders(table);
             string columns = null, values = null;
-            foreach (string header in headers)
+            foreach (var element in elements)
             {
-                foreach (var element in elements)
+                if (values == null)
                 {
-                    if (header == element.ParameterName)
-                    {
-                        if (values == null)
-                        {
-                            values = "@" + element.ParameterName;
-                            columns = element.ParameterName;
-                        }
-                        else
-                        {
-                            values += ", @" + element.ParameterName;
-                            columns += ", " + element.ParameterName;
-                        }
-                    }
+                    values = "@" + element.ParameterName;
+                    columns = element.ParameterName;
+                }
+                else
+                {
+                    values += ", @" + element.ParameterName;
+                    columns += ", " + element.ParameterName;
                 }
             }
-            //---------------------------------------------------------------------------------------
 
             sql += "(" + columns + ") VALUES (" + values + ");";
 

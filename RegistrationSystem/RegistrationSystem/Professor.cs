@@ -14,26 +14,22 @@ namespace RegistrationSystem
     {
         public char Grade { get; private set; }
     
-        private List<string> studentIndex     = new List<string>() { "Jim", "gary", "mary" };
-        private List<string> sectionIndex     = new List<string>() { "section1", "section2", "section3" };
-        private List<string> courseIndex      = new List<string>() { "course1", "course2", "course3" };
-        private List<string> semesterIndex    = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
-        private int userID;
-        int ID;
-        /// <summary>
-        /// Opens Professor View form
-        /// </summary>
-        /// <param name="ID">the ID used to log in, this will be used to populate lists/comboboxs etc.</param>
+        List<Course> courseIndex = LogIn.user.Connection.BuildClassArray<Course>(new System.Data.SqlClient.SqlParameter[0], Tables.Course);
+        List<Section> sectionIndex = LogIn.user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[0], Tables.Section);
+    
+        List<string> semesterIndex    = new List<string>() { "Fall2019", "Spring2019", "Summer2019" };
+      
+      
+      
         public ProfessorView()
         {
-            userID = 1;
-            ID = 1;
+         
             InitializeComponent();
             SetLabels();
             UserViewComboBox_Load();
-            ScheduleSemesterComboBox_Load(ID);
-            AddDropSemesterComboBox_Load(ID);
-            //AddDropCoursesComboBox_Load(ID);
+            SemesterComboBox_Load();
+           //AddDropSemesterComboBox_Load(ID);
+          //AddDropCoursesComboBox_Load(ID);
            
 
         }
@@ -43,8 +39,9 @@ namespace RegistrationSystem
             FirstNameLabel.Text = LogIn.user.FirstName;
             LastNameLabel.Text = LogIn.user.LastName; 
             IDNumberLabel.Text = LogIn.user.EnterpriseID.ToString(); 
-            //AddressLabel.Text = LogIn.user.StreetAddress; 
-            //EmailLabel.Text = LogIn.user.Email; 
+            AddressLabel.Text = LogIn.user.StreetAddress; 
+            EmailLabel.Text = LogIn.user.Email;
+            PhoneNumberLabel.Text = LogIn.user.PhoneNumber.ToString();
         }
         /// <summary>
         /// loads values into the UserView combo box
@@ -73,19 +70,19 @@ namespace RegistrationSystem
         private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProfessorView Professor = new ProfessorView();
-            studentView Student = new studentView(userID);
-            Registrar Registar = new Registrar(userID);
-            if ((string)UserViewComboBox.SelectedItem == "Student")
+            studentView Student = new studentView(1);
+            Registrar Registar = new Registrar(1);
+            if (UserViewComboBox.SelectedText == "Student")
             {
                 Student.Show();
                 Close();
             }
-            if ((string)UserViewComboBox.SelectedItem == "Professor")
+            if (UserViewComboBox.SelectedText == "Professor")
             {
                 Professor.Show();
                 Close();
             }
-            if ((string)UserViewComboBox.SelectedItem == "Registar")
+            if (UserViewComboBox.SelectedText == "Registar")
             {
                 Registar.Show();
                 Close();
@@ -101,26 +98,65 @@ namespace RegistrationSystem
            
             Environment.Exit(1);
         }
-        /// <summary>
-        /// sets the values for the Schedule tab's combo box with sections.
-        /// </summary>
-        private void ScheduleCoursesComboBox_Load(int ID)
-        {
-            ScheduleCoursesComboBox.Items.Clear();
-            foreach (string section in sectionIndex)
-            {
-                ScheduleCoursesComboBox.Items.Add(section);
-            }
-        }
-        private void ScheduleSemesterComboBox_Load(int ID)
+        private void SemesterComboBox_Load()
         {
             ScheduleSemesterComboBox.Items.Clear();
             foreach (string semester in semesterIndex)
             {
-                ScheduleSemesterComboBox.Items.Add(semester);
+                ScheduleSemesterComboBox.Items.Add(semester.ToString());
+            }
+      
+        }
+        private void ScheduleSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ScheduleStudentListBox.Items.Clear();
+            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Spring2019")
+            {
+                ScheduleSectionComboBox_Load();
+            }
+            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Summer2019")
+            {
+                ScheduleSectionsComboBox.Items.Clear();
+            }
+            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Fall2019")
+            {
+                ScheduleSectionsComboBox.Items.Clear();
             }
         }
-        private void AddDropSemesterComboBox_Load(int ID)
+        /// <summary>
+        /// sets the values for the Schedule tab's combo box with sections.
+        /// </summary>
+        private void ScheduleSectionComboBox_Load()
+        {
+            ScheduleSectionsComboBox.Items.Clear();
+            foreach (Section section in sectionIndex)
+            {
+                ScheduleSectionsComboBox.Items.Add(section.ToString());
+            }
+        }
+        private void ScheduleSectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ScheduleStudentListBox_Load();
+        }
+
+
+
+
+        private void ScheduleStudentListBox_Load()
+        {
+            ScheduleStudentListBox.Items.Clear();
+            //foreach (string student in studentIndex)
+            //{
+            //  ScheduleStudentListBox.Items.Add(student);
+            //}
+        }
+
+
+
+
+
+/*
+        private void AddDropSemesterComboBox_Load()
         {
             AddDropSemesterComboBox.Items.Clear();
             foreach (string semester in semesterIndex)
@@ -131,42 +167,27 @@ namespace RegistrationSystem
         /// <summary>
         /// sets valuse for the Add/Drop tab's combo box with courses
         /// </summary>
-        private void AddDropCoursesComboBox_Load(int ID)
+        private void AddDropCoursesComboBox_Load()
         {
             AddDropCoursesComboBox.Items.Clear();
-            foreach (string course in courseIndex)
+            foreach (Course course in courseIndex)
             {
                 AddDropCoursesComboBox.Items.Add(course);
             }
         }
-        /// <summary>
-        /// sets the values for the Schedule tab's list box with students.
-        /// </summary>
-        private void ScheduleStudentListBox_Load()
-        {
-            ScheduleStudentListBox.Items.Clear();
-            foreach (string student in studentIndex)
-            {
-                ScheduleStudentListBox.Items.Add(student);
-            }
-        }
+
         private void AddDropListBox_Load()
         {
             AddDropListBox.Items.Clear();
-            foreach (string section in sectionIndex)
+            foreach (Section section in sectionIndex)
             {
                 AddDropListBox.Items.Add(section);
             }
         }
-        /// <summary>
-        /// Loads in the list box values to the Schedule tab's Schedule List box, depending on what section you choose.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ScheduleCoursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {         
-            ScheduleStudentListBox_Load();
-        }
+
+
+
+ 
 
         /// <summary>
         /// Loads in the list box values in Add/Drop tab depeding on the course selected
@@ -244,7 +265,7 @@ namespace RegistrationSystem
             {
                 string selectedItem = ScheduleStudentListBox.SelectedItem.ToString();
                 //query database for student id using selected item
-                PersonalInfoView PersonalV = new PersonalInfoView(userID);
+                PersonalInfoView PersonalV = new PersonalInfoView(1);
                 PersonalV.Show();
             }
             catch
@@ -255,33 +276,30 @@ namespace RegistrationSystem
 
         private void updateInfoBtn_Click(object sender, EventArgs e)
         {
-            UpdatePersonalInformation update = new UpdatePersonalInformation(userID);
+            UpdatePersonalInformation update = new UpdatePersonalInformation(1);
             update.Show();
         }
 
-        private void ScheduleSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ScheduleStudentListBox.Items.Clear();
-            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Spring2019")
-            {
-                ScheduleCoursesComboBox_Load(userID);
-            }
-            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Summer2019")
-            {
-                ScheduleCoursesComboBox.Items.Clear();
-            }
-            if (ScheduleSemesterComboBox.SelectedItem.ToString() == "Fall2019")
-            {
-                ScheduleCoursesComboBox.Items.Clear();
-            }
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void AddDropSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             AddDropListBox.Items.Clear();
             if (AddDropSemesterComboBox.SelectedItem.ToString() == "Spring2019")
             {
-                AddDropCoursesComboBox_Load(userID);
+                AddDropCoursesComboBox_Load();
             }
             if (AddDropSemesterComboBox.SelectedItem.ToString() == "Summer2019")
             {
@@ -291,6 +309,6 @@ namespace RegistrationSystem
             {
                 AddDropCoursesComboBox.Items.Clear();
             }
-        }
+        }*/
     }
 }

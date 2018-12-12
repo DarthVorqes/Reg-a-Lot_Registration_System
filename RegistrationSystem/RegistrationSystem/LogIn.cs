@@ -21,39 +21,63 @@ namespace RegistrationSystem
         }
         public void LogInButton_Click(object sender, EventArgs e)
         {
-            
-            
-            try
+            int.TryParse(UserNameTextBox.Text, out int UserID);
+            int ID = UserID;
+            if (user.Authenticate(UserID, PasswordTextBox.Text))
             {
-                int.TryParse(UserNameTextBox.Text, out int UserID);
-                int ID = UserID;
-                if (user.Authenticate(UserID, PasswordTextBox.Text))
+                MessageBox.Show("Authenticated!");
+                if (user.IsRegistrar)
                 {
-                    MessageBox.Show("Authenticated!");
-                    if (user.IsRegistrar)
-                    {
-                        Registrar RView = new Registrar(ID);
-                        RView.Show();
-                        Hide();
-                    }
-                    else if (user.IsProfessor)
-                    {
-                        MessageBox.Show("here in prof");
-                        ProfessorView PView = new ProfessorView();                      
-                        PView.Show();                      
-                        Hide();
-                    }
-                    else if (user.IsStudent)
-                    {
-                        studentView SView = new studentView(ID);
-                        SView.Show();
-                        Hide();
-                    }
+                    Registrar RView = new Registrar(ID);
+                    RView.Show();
+                    Hide();
+                }
+                else if (user.IsProfessor)
+                {
+                    MessageBox.Show("here in prof");
+                    ProfessorView PView = new ProfessorView();
+                    PView.Show();
+                    Hide();
+                }
+                else if (user.IsStudent)
+                {
+                    studentView SView = new studentView(ID);
+                    SView.Show();
+                    Hide();
                 }
             }
-            catch
+
+            try
             {
-                MessageBox.Show("Not a vaild Username or Password!");
+                //int.TryParse(UserNameTextBox.Text, out int UserID);
+                //int ID = UserID;
+                //if (user.Authenticate(UserID, PasswordTextBox.Text))
+                //{
+                //    MessageBox.Show("Authenticated!");
+                //    if (user.IsRegistrar)
+                //    {
+                //        Registrar RView = new Registrar(ID);
+                //        RView.Show();
+                //        Hide();
+                //    }
+                //    else if (user.IsProfessor)
+                //    {
+                //        MessageBox.Show("here in prof");
+                //        ProfessorView PView = new ProfessorView();                      
+                //        PView.Show();                      
+                //        Hide();
+                //    }
+                //    else if (user.IsStudent)
+                //    {
+                //        studentView SView = new studentView(ID);
+                //        SView.Show();
+                //        Hide();
+                //    }
+                //}
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
             }
         }
 

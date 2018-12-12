@@ -9,15 +9,16 @@ using System.Data.Sql;
 
 namespace RegistrationSystem
 {
+    [Serializable]
     class User
     {
 
         //place constructors here
-
         public User()
         {
             Connection = new DatabaseConnection();
         }
+
         //place methods here
         public void SetFocus(int id)
         {
@@ -33,6 +34,7 @@ namespace RegistrationSystem
                 //initialize Focus
             }
         }
+
         //place properties
         public int EnterpriseID { get; private set; } = -1;
         public string FirstName
@@ -101,7 +103,15 @@ namespace RegistrationSystem
         }
         public int Social
         {
+            get
+            {
+                if (social == -1)
+                {
+                    //get from DB
 
+                }
+                return social;
+            }
             set
             {
                 social = value;
@@ -111,7 +121,13 @@ namespace RegistrationSystem
         {
             get
             {
-                throw new NotImplementedException();
+                if (streetAddress == null)
+                {
+                    //get from DB
+                    streetAddress = GetPersonInfo("StreetAddress") as string;
+
+                }
+                return streetAddress;
             }
             set
             {
@@ -122,7 +138,12 @@ namespace RegistrationSystem
         {
             get
             {
-                throw new NotImplementedException();
+                if (city == null)
+                {
+                    //get from DB
+                    city = GetPersonInfo("City") as string;
+                }
+                return city;
             }
             set
             {
@@ -133,7 +154,12 @@ namespace RegistrationSystem
         {
             get
             {
-                throw new NotImplementedException();
+                if (state == null)
+                {
+                    // get from DB
+                    state = GetPersonInfo("State") as string;
+                }
+                return state;
             }
             set
             {
@@ -144,7 +170,12 @@ namespace RegistrationSystem
         {
             get
             {
-                throw new NotImplementedException();
+                if (zipCode == -1)
+                {
+                    // get from DB
+                    zipCode = (int)GetPersonInfo("ZipCode");
+                }
+                return zipCode;
             }
             set
             {
@@ -156,7 +187,12 @@ namespace RegistrationSystem
         {
             get
             {
-                throw new NotImplementedException();
+                if (email == null)
+                {
+                    // get from DB
+                    email = GetPersonInfo("Email") as string;
+                }
+                return email;
             }
             set
             {
@@ -167,15 +203,20 @@ namespace RegistrationSystem
         {
             get
             {
-                throw new NotImplementedException();
+                if (phoneNumber == -1)
+                {
+                    // get from DB
+                    var obj = GetPersonInfo("PhoneNumber");
+                    System.Diagnostics.Debug.WriteLine("Type = " + obj.GetType());
+                    phoneNumber = long.Parse(obj.ToString());
+                }
+                return phoneNumber;
             }
             set
             {
                 phoneNumber = value;
             }
         }
-
-
 
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
@@ -199,9 +240,9 @@ namespace RegistrationSystem
                 });
             if (permissions.Count == 0)
                 return false;
-            IsProfessor = permissions[0][0] == "True";
-            IsStudent = permissions[0][1] == "True";
-            IsRegistrar = permissions[0][2] == "True";
+            IsProfessor = (bool)permissions[0][0];
+            IsStudent = (bool)permissions[0][1];
+            IsRegistrar = (bool)permissions[0][2];
             EnterpriseID = userID;
             this._password = password;
             return true;
