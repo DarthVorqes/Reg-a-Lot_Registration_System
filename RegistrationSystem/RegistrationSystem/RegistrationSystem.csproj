@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DoNotTouch.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +78,7 @@
     </Compile>
     <Compile Include="Schedule.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="SectionStudent.cs" />
     <Compile Include="studentView.cs">
       <SubType>Form</SubType>
     </Compile>

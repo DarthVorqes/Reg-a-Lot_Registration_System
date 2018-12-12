@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Security.Cryptography;
 using System.Data;
+using System.Reflection;
 
 namespace RegistrationSystem
 {
@@ -138,6 +139,21 @@ namespace RegistrationSystem
                 });
             return query;
         }
+        public void Insert<T>(T[] objects, Tables table)
+        {
+            foreach (T obj in objects)
+                Insert<T>(obj, table);
+        }
+        public void Insert<T>(T obj,Tables table)
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            SqlParameter[] perams = new SqlParameter[properties.Length];
+            for (int i = 0; i < perams.Length; i++)
+                if(properties[i].GetCustomAttribute(typeof(DoNotTouch)) == null)
+                    perams[i] = new SqlParameter(properties[i].Name, properties[i].GetValue(obj));
+            Insert(table,perams);
+        }
         /// <summary>
         /// Constructs a list of objects of type 'T'.
         /// </summary>
@@ -148,10 +164,16 @@ namespace RegistrationSystem
         {
             var type = typeof(T);
             var names = new List<string>();
-            var properties = type.GetProperties();
-            foreach (var property in properties)
-                names.Add(property.Name);
-
+            var properties = new List<PropertyInfo>(type.GetProperties());
+            for (int i = 0; i < properties.Count; i++)
+            {
+                if(properties[i].GetCustomAttribute(typeof(DoNotTouch)) != null)
+                {
+                    properties.RemoveAt(i--);
+                    continue;
+                }
+                names.Add(properties[i].Name);
+            }
             var values = GetOccurrences(
                 table, perams, names.ToArray());
 
@@ -161,9 +183,9 @@ namespace RegistrationSystem
                 //equal to one row
                 T element = Activator.CreateInstance<T>();
                 elements.Add(element);
-                for (int j = 0; j < properties.Length; j++)
+                for (int j = 0; j < properties.Count; j++)
                 {
-                    if (values[i][j].GetType() == typeof(System.DBNull))
+                    if (values[i][j].GetType() == typeof(DBNull))
                         continue;
                     var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
                     properties[j].SetValue(element, value, null);
@@ -183,7 +205,7 @@ namespace RegistrationSystem
         {
             string sql = "INSERT INTO " + table;
             string columns = null, values = null;
-            foreach (var element in elements)
+            foreach(var element in elements)
             {
                 if (values == null)
                 {
