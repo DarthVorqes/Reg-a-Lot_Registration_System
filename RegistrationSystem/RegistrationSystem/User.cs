@@ -350,7 +350,7 @@ namespace RegistrationSystem
                 new SqlParameter("PersonID",id),
             }) && success;
             success = Connection.Delete(Tables.Section, new SqlParameter[] {
-                new SqlParameter("TeachID",id),
+                new SqlParameter("InstructorID",id),
             }) && success;
             success = Connection.Delete(Tables.Greenlight, new SqlParameter[] {
                 new SqlParameter("PersonID",id),
