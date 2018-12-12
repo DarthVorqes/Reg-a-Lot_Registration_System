@@ -9,11 +9,11 @@ using System.Data.Sql;
 
 namespace RegistrationSystem
 {
+    [Serializable]
     class User
     {
 
         //place constructors here
-
         public User()
         {
             Connection = new DatabaseConnection();
@@ -105,13 +105,12 @@ namespace RegistrationSystem
         {
             get
             {
-                if (!social)
+                if (social == -1)
                 {
                     //get from DB
-                    social = true;
 
                 }
-            return social;
+                return social;
             }
             set
             {
@@ -122,13 +121,13 @@ namespace RegistrationSystem
         {
             get
             {
-                if (!streetAddress)
+                if (streetAddress == null)
                 {
                     //get from DB
-                    streetAddress = true;
+                    streetAddress = GetPersonInfo("StreetAddress") as string;
 
                 }
-            return streetAddress;
+                return streetAddress;
             }
             set
             {
@@ -137,15 +136,15 @@ namespace RegistrationSystem
         }
         public string City
         {
-             get
-             {
-                if (!city)
+            get
+            {
+                if (city == null)
                 {
                     //get from DB
-                    city = true;
+                    city = GetPersonInfo("City") as string;
                 }
-             return city;
-             }
+                return city;
+            }
             set
             {
                 city = value;
@@ -155,12 +154,12 @@ namespace RegistrationSystem
         {
             get
             {
-                if (!state)
+                if (state == null)
                 {
                     // get from DB
-                    state = true;
+                    state = GetPersonInfo("State") as string;
                 }
-            return state;
+                return state;
             }
             set
             {
@@ -171,12 +170,12 @@ namespace RegistrationSystem
         {
             get
             {
-                if (!zipCode)
+                if (zipCode == -1)
                 {
                     // get from DB
-                    zipCode = true;
+                    zipCode = (int)GetPersonInfo("ZipCode");
                 }
-            return zipCode;
+                return zipCode;
             }
             set
             {
@@ -188,12 +187,12 @@ namespace RegistrationSystem
         {
             get
             {
-                if (!email)
+                if (email == null)
                 {
                     // get from DB
-                    email = true;
-                }
-            return email;
+                    email = GetPersonInfo("Email") as string;
+                } 
+                return email;
             }
             set
             {
@@ -204,12 +203,12 @@ namespace RegistrationSystem
         {
             get
             {
-                if (!phoneNumber)
+                if (phoneNumber == -1)
                 {
                     // get from DB
-                    phoneNumber = true;
+                    phoneNumber = (long)GetPersonInfo("PhoneNumber");
                 }
-            return phoneNumber;
+                return phoneNumber;
             }
             set
             {

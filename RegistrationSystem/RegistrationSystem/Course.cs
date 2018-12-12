@@ -13,13 +13,9 @@ namespace RegistrationSystem
         public string CourseNumber { get; set; }
         public string CourseName { get; set; }
         public string Description { get; set; }
-        public float Price { get; set; }
+        public decimal Price { get; set; }
         public byte Hours { get; set; }
         public string Department { get; set; }
         public string Prerequisite { get; set; }
-        public void PushChanges(User authority)
-        {
-
-        }
     }
 }

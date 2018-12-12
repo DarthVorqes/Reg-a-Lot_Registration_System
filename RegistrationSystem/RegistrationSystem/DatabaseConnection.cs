@@ -164,11 +164,10 @@ namespace RegistrationSystem
                 elements.Add(element);
                 for (int j = 0; j < properties.Length; j++)
                 {
-                     var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
-                    //System.Diagnostics.Debug.WriteLine("Value type = " + value.GetType().Name);
+                    if (values[i][j].GetType() == typeof(System.DBNull))
+                        continue;
+                    var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
                     properties[j].SetValue(element, value, null);
-
-                    //type.InvokeMember(properties[i].Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty, Type.DefaultBinder, element, new object[] { value });
                 }
             }
 

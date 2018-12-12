@@ -12,9 +12,9 @@ namespace RegistrationSystem
     class Section
     {
 
-        public static byte Capacity => 10;
-        public User Professor { get; set; }
-        public User[] Students { get; set; }
+        public const byte Capacity = 10;
+        //public User Professor { get; set; }
+        //public User[] Students { get; set; }
         
         // Add BuildClassArray() here
 
