@@ -241,7 +241,7 @@ namespace RegistrationSystem
         {
             var results = Connection.BuildClassArray<Section>(
             new SqlParameter[] {
-                new SqlParameter("SectionNumber",(int)Connection.GetValue("ID",new SqlParameter[]
+                new SqlParameter("ID",(int)Connection.GetValue("ID",new SqlParameter[]
                     {
                         new SqlParameter("SemesterName",semester)
                     },Tables.Semester))

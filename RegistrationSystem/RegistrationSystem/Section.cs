@@ -21,13 +21,11 @@ namespace RegistrationSystem
         // Section Properties
 
         public int ID {get; private set;} = -1;
-        [DoNotTouch]
         public int SectionNumber{get; private set;}
 
         public string MeetingTimes {get; private set;}
 
         public string MeetingDays {get; private  set;}
-        [DoNotTouch]
         public int CourseID {get; private set;}
 
         public string Location {get; private set;}

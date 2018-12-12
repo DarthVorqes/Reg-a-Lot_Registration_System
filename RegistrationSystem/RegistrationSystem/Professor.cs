@@ -91,10 +91,15 @@ namespace RegistrationSystem
         }
         private void ScheduleSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ScheduleStudentListBox.Items.Clear();
-            string[] selectedItem = ScheduleSemesterComboBox.SelectedItem.ToString().Split();
             
-  
+            string[] selectedItem = ScheduleSemesterComboBox.SelectedItem.ToString().Split();
+            List<Section>  sections = LogIn.user.GetSections(selectedItem[0], selectedItem[1]);
+            ScheduleSectionsComboBox.Items.Clear();
+            foreach (Section section in sections)
+            {
+                ScheduleSectionsComboBox.Items.Add(section.GetCourseName(LogIn.user)  + '-' + section.SectionNumber);
+            }
+
         }
         private void ScheduleSectionComboBox_Load()
         {

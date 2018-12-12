@@ -67,7 +67,7 @@ namespace RegistrationSystem
         /// <param name="name">The column name (or variables name) to be collected.</param>
         /// <param name="perams">Any search perameters (NOTE: the first result to satisfy these will be selected).</param>
         /// <param name="table">The table for the query to be perfored in.</param>
-        /// <returns>The value collected as a generic 'object'.</returns>
+        /// <returns>The value collected as a generic 'object'. Returns null if no data is found.</returns>
         public object GetValue(string name, SqlParameter[] perams, Tables table)
         {
             //constructed the sql command
@@ -83,7 +83,8 @@ namespace RegistrationSystem
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        reader.Read();
+                        if (!reader.Read())
+                            return;
                         var n = reader.GetValue(0);
                         result = n;
                     }
