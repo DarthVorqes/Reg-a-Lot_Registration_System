@@ -14,7 +14,8 @@ namespace RegistrationSystem
     {
 
 
-
+        List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
+                new System.Data.SqlClient.SqlParameter("SectionID", section.ID) });
         string[] semesterIndex = LogIn.user.GetSemesters();
 
         public ProfessorView()
@@ -107,19 +108,12 @@ namespace RegistrationSystem
 
             string[] selectedItem = ScheduleSectionsComboBox.SelectedItem.ToString().Split('-');
             var section = loadedSections.Find((Section s) => { return s.SectionNumber.ToString() == selectedItem[1] && s.GetCourseName(LogIn.user) == selectedItem[0]; });
-            List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
-                new System.Data.SqlClient.SqlParameter("SectionID", section.ID) });
-            ScheduleStudentListBox.Items.Clear();
-            DataGridView Grid = new DataGridView();
-
-            string[] excludeFromDataGrid = new string[]
-            {
-                "CourseID"
-            };
+    
             foreach (var student in students)
             {
                 var row = new DataGridViewRow();
-                
+          
+
                 row.CreateCells(StudentGridView,new string[] {
                     student.PersonID.ToString(),
                     student.GetFirstName(LogIn.user),
@@ -178,6 +172,9 @@ namespace RegistrationSystem
             update.Show();
         }
 
+        private void UpdateStudentButton_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

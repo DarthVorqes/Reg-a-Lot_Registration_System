@@ -39,7 +39,6 @@
             this.SemesterComboBoxlbl = new System.Windows.Forms.Label();
             this.UpdateStudentButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.ScheduleStudentListBox = new System.Windows.Forms.ListBox();
             this.ScheduleSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.ScheduleSectionsComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorAddDropTab = new System.Windows.Forms.TabPage();
@@ -96,7 +95,6 @@
             this.ProfessorScheduleTab.Controls.Add(this.SemesterComboBoxlbl);
             this.ProfessorScheduleTab.Controls.Add(this.UpdateStudentButton);
             this.ProfessorScheduleTab.Controls.Add(this.webBrowser1);
-            this.ProfessorScheduleTab.Controls.Add(this.ScheduleStudentListBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSemesterComboBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSectionsComboBox);
             this.ProfessorScheduleTab.Location = new System.Drawing.Point(23, 4);
@@ -115,7 +113,7 @@
             this.FirstName,
             this.LastName,
             this.Grade});
-            this.StudentGridView.Location = new System.Drawing.Point(58, 214);
+            this.StudentGridView.Location = new System.Drawing.Point(161, 220);
             this.StudentGridView.Name = "StudentGridView";
             this.StudentGridView.Size = new System.Drawing.Size(441, 150);
             this.StudentGridView.TabIndex = 6;
@@ -143,7 +141,7 @@
             // ScheduleSectionComboBoxlbl
             // 
             this.ScheduleSectionComboBoxlbl.AutoSize = true;
-            this.ScheduleSectionComboBoxlbl.Location = new System.Drawing.Point(282, 160);
+            this.ScheduleSectionComboBoxlbl.Location = new System.Drawing.Point(477, 160);
             this.ScheduleSectionComboBoxlbl.Name = "ScheduleSectionComboBoxlbl";
             this.ScheduleSectionComboBoxlbl.Size = new System.Drawing.Size(46, 13);
             this.ScheduleSectionComboBoxlbl.TabIndex = 5;
@@ -152,7 +150,7 @@
             // SemesterComboBoxlbl
             // 
             this.SemesterComboBoxlbl.AutoSize = true;
-            this.SemesterComboBoxlbl.Location = new System.Drawing.Point(27, 157);
+            this.SemesterComboBoxlbl.Location = new System.Drawing.Point(72, 160);
             this.SemesterComboBoxlbl.Name = "SemesterComboBoxlbl";
             this.SemesterComboBoxlbl.Size = new System.Drawing.Size(54, 13);
             this.SemesterComboBoxlbl.TabIndex = 5;
@@ -160,12 +158,13 @@
             // 
             // UpdateStudentButton
             // 
-            this.UpdateStudentButton.Location = new System.Drawing.Point(664, 174);
+            this.UpdateStudentButton.Location = new System.Drawing.Point(327, 376);
             this.UpdateStudentButton.Name = "UpdateStudentButton";
             this.UpdateStudentButton.Size = new System.Drawing.Size(109, 23);
             this.UpdateStudentButton.TabIndex = 4;
             this.UpdateStudentButton.Text = "Update Student";
             this.UpdateStudentButton.UseVisualStyleBackColor = true;
+            this.UpdateStudentButton.Click += new System.EventHandler(this.UpdateStudentButton_Click);
             // 
             // webBrowser1
             // 
@@ -175,18 +174,10 @@
             this.webBrowser1.Size = new System.Drawing.Size(768, 145);
             this.webBrowser1.TabIndex = 3;
             // 
-            // ScheduleStudentListBox
-            // 
-            this.ScheduleStudentListBox.FormattingEnabled = true;
-            this.ScheduleStudentListBox.Location = new System.Drawing.Point(529, 214);
-            this.ScheduleStudentListBox.Name = "ScheduleStudentListBox";
-            this.ScheduleStudentListBox.Size = new System.Drawing.Size(84, 134);
-            this.ScheduleStudentListBox.TabIndex = 2;
-            // 
             // ScheduleSemesterComboBox
             // 
             this.ScheduleSemesterComboBox.FormattingEnabled = true;
-            this.ScheduleSemesterComboBox.Location = new System.Drawing.Point(27, 176);
+            this.ScheduleSemesterComboBox.Location = new System.Drawing.Point(75, 176);
             this.ScheduleSemesterComboBox.Name = "ScheduleSemesterComboBox";
             this.ScheduleSemesterComboBox.Size = new System.Drawing.Size(220, 21);
             this.ScheduleSemesterComboBox.TabIndex = 1;
@@ -195,7 +186,7 @@
             // ScheduleSectionsComboBox
             // 
             this.ScheduleSectionsComboBox.FormattingEnabled = true;
-            this.ScheduleSectionsComboBox.Location = new System.Drawing.Point(294, 174);
+            this.ScheduleSectionsComboBox.Location = new System.Drawing.Point(480, 176);
             this.ScheduleSectionsComboBox.Name = "ScheduleSectionsComboBox";
             this.ScheduleSectionsComboBox.Size = new System.Drawing.Size(220, 21);
             this.ScheduleSectionsComboBox.TabIndex = 1;
@@ -490,7 +481,6 @@
         private System.Windows.Forms.TabPage ProfessorScheduleTab;
         private System.Windows.Forms.TabPage ProfessorAddDropTab;
         private System.Windows.Forms.Label ProfessorTitle;
-        private System.Windows.Forms.ListBox ScheduleStudentListBox;
         private System.Windows.Forms.ComboBox ScheduleSectionsComboBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ListBox AddDropListBox;
