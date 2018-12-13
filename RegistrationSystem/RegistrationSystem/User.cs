@@ -221,7 +221,21 @@ namespace RegistrationSystem
                 phoneNumber = value;
             }
         }
-
+        public List<Registration> Registrations
+        {
+            get
+            {
+                if(enrolledSections == null)
+                {
+                    enrolledSections = Connection.BuildClassArray<Registration>(new SqlParameter[]
+                    {
+                        new SqlParameter("PersonID",EnterpriseID)
+                    }, Tables.Registration);
+                }
+                return enrolledSections;
+            }
+        }
+        List<Registration> enrolledSections;
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
@@ -237,6 +251,7 @@ namespace RegistrationSystem
                     new SqlParameter("ID",yearData[i][1])}, Tables.Semester);
             return semesters;
         }
+        
         /// <summary>
         /// Runs a query and returns a list of 'SectionStudents' retreived from 'db.Registration'
         /// </summary>
