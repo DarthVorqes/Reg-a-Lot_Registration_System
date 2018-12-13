@@ -164,7 +164,6 @@
             this.UpdateStudentButton.TabIndex = 4;
             this.UpdateStudentButton.Text = "Update Student";
             this.UpdateStudentButton.UseVisualStyleBackColor = true;
-            this.UpdateStudentButton.Click += new System.EventHandler(this.UpdateStudentButton_Click);
             // 
             // webBrowser1
             // 
