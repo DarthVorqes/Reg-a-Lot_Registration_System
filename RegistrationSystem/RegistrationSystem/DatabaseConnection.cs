@@ -192,8 +192,18 @@ namespace RegistrationSystem
                 {
                     if (values[i][j].GetType() == typeof(DBNull))
                         continue;
-                    if(properties[j].PropertyType.IsClass)
-                        properties[j].SetValue(element, values[i][j], null);
+                    if (properties[j].PropertyType == typeof(DateTimeOffset))
+                    {
+                        long seconds = 0;
+                        var array = values[i][j] as byte[];
+                        foreach(var digit in array)
+                        {
+                            seconds *= 256;
+                            seconds += digit;
+                        }
+
+                        properties[j].SetValue(element, DateTimeOffset.FromUnixTimeSeconds(seconds), null);
+                    }
                     else
                     {
                         var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);

@@ -20,7 +20,6 @@ namespace RegistrationSystem
             User usr = new User();
             usr.Authenticate(5, "test123");
             //var values = usr.GetSemesters();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogIn());
