@@ -196,7 +196,6 @@ namespace RegistrationSystem
                     properties[j].SetValue(element, value, null);
                 }
             }
-
             return elements;
         }
         //Insert
