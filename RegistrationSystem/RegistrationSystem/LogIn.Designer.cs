@@ -72,6 +72,7 @@
             // 
             // LogInButton
             // 
+            this.LogInButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.LogInButton.Location = new System.Drawing.Point(89, 112);
             this.LogInButton.Name = "LogInButton";
             this.LogInButton.Size = new System.Drawing.Size(110, 23);
@@ -82,6 +83,7 @@
             // 
             // LogIn
             // 
+            this.AcceptButton = this.LogInButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(293, 147);
@@ -90,7 +92,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.UserNameTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LogIn";
             this.Text = "Reg-a-Lot System";
             this.ResumeLayout(false);

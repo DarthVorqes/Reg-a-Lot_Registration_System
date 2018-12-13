@@ -9,9 +9,20 @@ using System.Data.Sql;
 
 namespace RegistrationSystem
 {
+    /// <summary>
+    /// A class that represents the sections created from Course that students can register for
+    /// </summary>
     class Section
     {
-        [NonSerialized]
+        /// <summary>
+        /// Runs a query and returns a list of 'Section' retreived from 'db.Section
+        /// </summary>
+        /// <param name="perams"></param>
+        /// <param name="usr"></param>
+        /// <returns></returns>
+        public List<Section> GetSections(System.Data.SqlClient.SqlParameter[] perams, User usr) =>
+            usr.Connection.BuildClassArray<Section>(perams, Tables.Section);
+
         public const byte Capacity = 10;
         //public User Professor { get; set; }
         //public User[] Students { get; set; }
@@ -26,7 +37,7 @@ namespace RegistrationSystem
         public string MeetingTimes { get; private set; }
 
         public string MeetingDays { get; private set; }
-      
+        [TableSpecific (Tables.Section)]
         public int CourseID { get; private set; }
 
         public string Location { get; private set; }
