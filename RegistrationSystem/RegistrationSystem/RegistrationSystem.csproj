@@ -81,6 +81,7 @@
     <Compile Include="Registrar.Designer.cs">
       <DependentUpon>Registrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registration.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="SectionStudent.cs" />

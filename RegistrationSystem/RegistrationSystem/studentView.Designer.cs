@@ -44,8 +44,6 @@
             this.InfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InfoValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateInfoBtn = new System.Windows.Forms.Button();
-            this.UserInfoDescriptionLbl = new System.Windows.Forms.Label();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.finance1 = new System.Windows.Forms.TabPage();
             this.UserBillLbl = new System.Windows.Forms.Label();
             this.BillLbl = new System.Windows.Forms.Label();
@@ -188,8 +186,6 @@
             // 
             this.persInfo1.Controls.Add(this.InfoGrid);
             this.persInfo1.Controls.Add(this.UpdateInfoBtn);
-            this.persInfo1.Controls.Add(this.UserInfoDescriptionLbl);
-            this.persInfo1.Controls.Add(this.webBrowser2);
             this.persInfo1.Location = new System.Drawing.Point(23, 4);
             this.persInfo1.Name = "persInfo1";
             this.persInfo1.Size = new System.Drawing.Size(789, 421);
@@ -203,7 +199,7 @@
             this.InfoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InfoType,
             this.InfoValue});
-            this.InfoGrid.Location = new System.Drawing.Point(3, 47);
+            this.InfoGrid.Location = new System.Drawing.Point(424, 76);
             this.InfoGrid.Name = "InfoGrid";
             this.InfoGrid.Size = new System.Drawing.Size(245, 325);
             this.InfoGrid.TabIndex = 5;
@@ -228,31 +224,6 @@
             this.UpdateInfoBtn.Text = "Update Info";
             this.UpdateInfoBtn.UseVisualStyleBackColor = true;
             this.UpdateInfoBtn.Click += new System.EventHandler(this.UpdateInfoBtn_Click);
-            // 
-            // UserInfoDescriptionLbl
-            // 
-            this.UserInfoDescriptionLbl.AutoSize = true;
-            this.UserInfoDescriptionLbl.Location = new System.Drawing.Point(15, 19);
-            this.UserInfoDescriptionLbl.Name = "UserInfoDescriptionLbl";
-            this.UserInfoDescriptionLbl.Size = new System.Drawing.Size(90, 13);
-            this.UserInfoDescriptionLbl.TabIndex = 2;
-            this.UserInfoDescriptionLbl.Text = "User Information: ";
-            // 
-            // webBrowser2
-            // 
-            this.webBrowser2.AllowNavigation = false;
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.ScriptErrorsSuppressed = true;
-            this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(789, 421);
-            this.webBrowser2.TabIndex = 1;
-            this.webBrowser2.Url = new System.Uri("C:\\Users\\programmer\\Source\\Repos\\Reg-a-Lot_Registration_System2\\RegistrationSyste" +
-        "m\\RegistrationSystem\\info.html", System.UriKind.Absolute);
-            this.webBrowser2.WebBrowserShortcutsEnabled = false;
             // 
             // finance1
             // 
@@ -279,6 +250,7 @@
             // BillLbl
             // 
             this.BillLbl.AutoSize = true;
+            this.BillLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BillLbl.Location = new System.Drawing.Point(48, 99);
             this.BillLbl.Name = "BillLbl";
             this.BillLbl.Size = new System.Drawing.Size(23, 13);
@@ -352,7 +324,6 @@
             this.addDrop1.ResumeLayout(false);
             this.addDrop1.PerformLayout();
             this.persInfo1.ResumeLayout(false);
-            this.persInfo1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InfoGrid)).EndInit();
             this.finance1.ResumeLayout(false);
             this.finance1.PerformLayout();
@@ -369,7 +340,6 @@
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.TabPage finance1;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.ListBox AddDropListBox;
         private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
@@ -378,7 +348,6 @@
         private System.Windows.Forms.ComboBox AddDropSemesterComboBox;
         private System.Windows.Forms.Label AddDropSemesterLbl;
         private System.Windows.Forms.Label AddDropCourseLbl;
-        private System.Windows.Forms.Label UserInfoDescriptionLbl;
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Label StudentTitle;
         private System.Windows.Forms.Label UserHasPaidLbl;
