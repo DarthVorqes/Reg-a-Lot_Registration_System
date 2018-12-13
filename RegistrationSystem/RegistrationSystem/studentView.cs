@@ -218,10 +218,22 @@ namespace RegistrationSystem
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             // pull users where the user is in them
-            
-            try
-            {
 
+            var sectionNumber = LogIn.user.Connection.GetValue("SectionNumber", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[0].SectionID)
+                }, Tables.Section);
+
+            var courseNumber = LogIn.user.Connection.GetValue("CourseNumber", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[0].SectionID)
+                }, Tables.Course);
+
+            var courseTime = LogIn.user.Connection.GetValue("MeetingTimes", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[0].SectionID)
+                }, Tables.Section);
+
+            var courseDays = LogIn.user.Connection.GetValue("MeetingDays", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[0].SectionID)
+                }, Tables.Section);
 
                 object[] firstCourseNameHTMLEdit = { "document.getElementById(\"firstCourseName\").innerHTML = $firstCourseName" };
                 object[] firstCourseSectionHTMLEdit = { "document.getElementById(\"firstCourseSection\").innerHTML = $firstCourseSection" };
@@ -231,20 +243,16 @@ namespace RegistrationSystem
                 object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0].GetCourseName(LogIn.user).ToString() + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameHTMLEdit);
-                object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" + LogIn.user.Registrations[0].SectionID + "\"" };
+                object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" +courseNumber +" - " + sectionNumber + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseSectionJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseSectionHTMLEdit);
-                object[] firstCourseHoursJScript = { "var $firstCourseHours = \"" + LogIn.user.Registrations[0].Timestamp.ToString() + "\"" };
+                object[] firstCourseHoursJScript = { "var $firstCourseHours = \"" + courseTime + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseHoursJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseHoursHTMLEdit);
-                object[] firstCourseDaysJScript = { "var $firstCourseDays = \"" + LogIn.user.Registrations[0].Grade.ToString() + "\"" };
+                object[] firstCourseDaysJScript = { "var $firstCourseDays = \"" + courseDays + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseDaysJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseDaysHTMLEdit);
-            }
-            catch
-            {
-                MessageBox.Show("It Broken printing the first time");
-            }
+
             bool scheduleLooping = true;
             //keeps the thing looping when it grabs and puts in the data
             int timesScheduleLooped = 0;
@@ -277,6 +285,23 @@ namespace RegistrationSystem
 
                 try 
                 {
+                    sectionNumber = LogIn.user.Connection.GetValue("SectionNumber", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[timesScheduleLooped +1].SectionID)
+                }, Tables.Section);
+
+                    courseNumber = LogIn.user.Connection.GetValue("CourseNumber", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[timesScheduleLooped +1].SectionID)
+                }, Tables.Course);
+
+                    courseTime = LogIn.user.Connection.GetValue("MeetingTimes", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[timesScheduleLooped +1].SectionID)
+                }, Tables.Section);
+
+                    courseDays = LogIn.user.Connection.GetValue("MeetingDays", new System.Data.SqlClient.SqlParameter[] {
+                    new System.Data.SqlClient.SqlParameter("ID",LogIn.user.Registrations[timesScheduleLooped+1].SectionID)
+                }, Tables.Section);
+
+
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtOne);
                     object[] courseNameHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped + 1].GetCourseName(LogIn.user) + "\")" };
                     //make the node on the fly
@@ -285,9 +310,11 @@ namespace RegistrationSystem
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtFour);
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtFive);
 
+
+
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtOne);
                     //make the node on the fly
-                    object[] courseSectionHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped +1].SectionID.ToString() + "\")" };
+                    object[] courseSectionHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + courseNumber + " - " + sectionNumber + "\")" };
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtThree);
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtFour);
@@ -295,7 +322,7 @@ namespace RegistrationSystem
 
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtOne);
                     //make the node on the fly
-                    object[] courseHoursHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped +1].Timestamp.ToString() + "\")" };
+                    object[] courseHoursHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + courseTime + "\")" };
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtThree);
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtFour);
@@ -303,13 +330,12 @@ namespace RegistrationSystem
 
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtOne);
                     //make the node on the fly
-                    object[] courseDaysHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped +1].Grade.ToString() + "\")" };
+                    object[] courseDaysHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + courseDays + "\")" };
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtThree);
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtFour);
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtFive);
                     timesScheduleLooped++;
-                    MessageBox.Show("It worked");
                 }
 
                 catch
