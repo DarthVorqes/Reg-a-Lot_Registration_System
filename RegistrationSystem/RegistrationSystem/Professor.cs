@@ -24,48 +24,24 @@ namespace RegistrationSystem
             SemesterComboBox_Load();
             AddDropSemesterComboBox_Load();
             AddDropCoursesComboBox_Load();
-
+            ProfessorTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
             StudentGridView.CellEndEdit += StudentGridView_CellEndEdit;
-
-            var loadedDepartments = new List<string>(LogIn.user.GetDepartments()).Distinct().ToArray();
-            AddDropCoursesComboBox.Items.AddRange(loadedDepartments);
-            AddDropCoursesComboBox.SelectedIndexChanged += AddDropCoursesComboBox_SelectedIndexChanged1;
+            InfoGrid.CellEndEdit += InfoGrid_CellEndEdit;
         }
-        List<Section> addDropLoadedSections;
-        private void AddDropCoursesComboBox_SelectedIndexChanged1(object sender, EventArgs e)
+
+        private void InfoGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if(AddDropSemesterComboBox.SelectedItem != null)
-            {
-                addDropLoadedSections = LogIn.user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[] {
-                    new System.Data.SqlClient.SqlParameter("SemesterID",LogIn.user.Connection.GetValue("ID",new System.Data.SqlClient.SqlParameter[]{
-                        new System.Data.SqlClient.SqlParameter("SemesterName",AddDropSemesterComboBox.SelectedItem.ToString().Split()[1])
-                    },Tables.Semester))
-                }, Tables.Section);
-                addDropLoadedSections.RemoveAll((Section s) => {
-                    return s.GetDepartment(LogIn.user) != AddDropCoursesComboBox.SelectedItem.ToString();
-                });
-                addDropDataGrid.Rows.Clear();
-                foreach(Section section in addDropLoadedSections)
-                {
-                    var row = new DataGridViewRow();
-                    var course = section.GetCourse(LogIn.user);
-                    row.CreateCells(addDropDataGrid, new string[]
-                    {
-                        course.CourseName,
-                        section.CourseID.ToString(),
-                        section.SectionNumber.ToString(),
-                        section.GetInstructorName(LogIn.user),
-                        LogIn.user.Connection.GetValue("timestamp",new System.Data.SqlClient.SqlParameter[]{
-                            new System.Data.SqlClient.SqlParameter("PersonID",LogIn.user.EnterpriseID)
-                        },Tables.Registration) == null? "Add" : "Drop",
-                        course.Description,
-                    });
-                    addDropDataGrid.Rows.Add(row);
-                }
-            }
-        }
+            var row = InfoGrid.Rows[e.RowIndex];
 
-        //string[] loadedDepartments;
+            var password = row.Cells[1].Value;
+
+            if (password == null)
+                return;
+            row.Cells[1].Value = password;
+            LogIn.user.Password = password.ToString();
+            LogIn.user.PushChanges(LogIn.user);
+
+        }
 
         private void StudentGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -83,16 +59,49 @@ namespace RegistrationSystem
         //=========================Set user specific labels:
         private void SetLabels()
         {
-            ProfessorTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
-            UserFirstNameLbl.Text = LogIn.user.FirstName;
-            UserLastNameLbl.Text = LogIn.user.LastName;
-            UserIDNumberLbl.Text = LogIn.user.EnterpriseID.ToString();
-            UserAddressLbl.Text = LogIn.user.StreetAddress;
-            UserEmailLbl.Text = LogIn.user.Email;
-            UserPhoneNumberLbl.Text = LogIn.user.PhoneNumber.ToString();
+            DataGrid grid = new DataGrid();
+            string[] excludeFromDataGrid = new string[]
+            {
+                "Bill",
+                "HasPaid",
+                "IsProfessor",
+                "IsStudent",
+                "IsRegistrar",
+                "Password",
+                "UserSchedule",
+                "Connection",
+                "Registrations"
+            };
+            foreach (var property in typeof(User).GetProperties())
+            {
+                if (property.PropertyType.Namespace == "RegistrationSystem")
+                    continue;
+                bool exclude = false;
+                foreach (var name in excludeFromDataGrid)
+                {
+                    if (name == property.Name)
+                    {
+                        exclude = true;
+                        break;
+                    }
+                }
+                if (exclude)
+                {
+                    continue;
+                }
+                var row = new DataGridViewRow();
+                row.CreateCells(InfoGrid, new string[]
+                {
+                        property.Name,
+                        property.GetValue(LogIn.user).ToString()
+                });
+                InfoGrid.Rows.Add(row);
+            }
+            InfoGrid.Rows[10].Cells[1].Value = "";
+            InfoGrid.Rows.Add("Password");
         }
-        //======================================================User View:
-        public void UserViewComboBox_Load()
+            //======================================================User View:
+            public void UserViewComboBox_Load()
         {
             if (LogIn.user.IsStudent)
             {
@@ -161,8 +170,8 @@ namespace RegistrationSystem
             List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
                 new System.Data.SqlClient.SqlParameter("SectionID", selectedSection.ID) });
             updateGrade = students;
-
-            StudentGridView.Rows.Clear();
+           
+    
             foreach (var student in students)
             {
                 var row = new DataGridViewRow();
@@ -194,15 +203,15 @@ namespace RegistrationSystem
         }
         private void AddDropCoursesComboBox_Load()
         {
-            //string[] selectedItem = AddDropSemesterComboBox.SelectedItem.ToString().Split();
-            //loadedSections = LogIn.user.GetSections(selectedItem[0], selectedItem[1], true);
-            //ScheduleSectionsComboBox.Items.Clear();
-            //foreach (Section section in loadedSections)
-            //{
-            //    AddDropCoursesComboBox.Items.Add(section.GetCourseName(LogIn.user) + '-' + section.SectionNumber);
-            //}
+            AddDropDepartmentComboBox.Items.Clear();
+            foreach (string department in LogIn.user.GetDepartments())
+            {
+                AddDropDepartmentComboBox.Items.Add(department);
+            }
 
         }
+
+
 //===========================================================Buttons:
         private void Logout_Click(object sender, EventArgs e)
         {
@@ -213,12 +222,9 @@ namespace RegistrationSystem
         private void UpdateInfoBtn_Click_1(object sender, EventArgs e)
         {
             UserPersonalInformation update = new UserPersonalInformation("Update", LogIn.user.EnterpriseID);
-            update.Show();
+           update.Show();
         }
 
-        private void AddDropCoursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

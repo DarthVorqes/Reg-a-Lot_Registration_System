@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="LogIn.cs">
