@@ -30,13 +30,7 @@ namespace RegistrationSystem
  //======================================Labels: 
         private void LoadPersonalLabels()
         {
-            RegistrarTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
-            UserIDNumberLbl.Text = LogIn.user.EnterpriseID.ToString();
-            UserFirstNameLbl.Text = LogIn.user.FirstName;
-            UserLastNameLbl.Text = LogIn.user.LastName;
-            UserAddressLbl.Text = LogIn.user.StreetAddress;
-            UserPhoneNumberLbl.Text = LogIn.user.PhoneNumber.ToString();         
-            UserEmailLbl.Text = LogIn.user.Email;
+           
         }
         private void CoursesLabels_Load()
         {
