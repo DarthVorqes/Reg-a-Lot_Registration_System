@@ -213,6 +213,56 @@ namespace RegistrationSystem
             }
             return elements;
         }
+        /// <summary>
+        /// Constructs a list of objects of type 'T'.
+        /// </summary>
+        /// <typeparam name="T">The type desired to be in the list being returned.</typeparam>
+        /// <param name="perams">Filters for the list being created.</param>
+        /// <returns>Query results parsed into type T.</returns>
+        public T BuildClass<T>(SqlParameter[] perams, Tables table) where T : class
+        {
+            var type = typeof(T);
+            var names = new List<string>();
+            var properties = new List<PropertyInfo>(type.GetProperties());
+            for (int i = 0; i < properties.Count; i++)
+            {
+                var attribute = properties[i].GetCustomAttribute<TableSpecific>();
+                if (attribute != null && (attribute as TableSpecific).Table != table)
+                {
+                    properties.RemoveAt(i--);
+                    continue;
+                }
+                names.Add(properties[i].Name);
+            }
+            var record = GetOccurrences(
+                table, perams, names.ToArray())[0];
+
+            //equal to one row
+            T element = Activator.CreateInstance<T>();
+            for (int i = 0; i < properties.Count; i++)
+            {
+                if (record[i].GetType() == typeof(DBNull))
+                    continue;
+                if (properties[i].PropertyType == typeof(DateTimeOffset))
+                {
+                    long seconds = 0;
+                    var array = record[i] as byte[];
+                    foreach (var digit in array)
+                    {
+                        seconds *= 256;
+                        seconds += digit;
+                    }
+
+                    properties[i].SetValue(element, DateTimeOffset.FromUnixTimeSeconds(seconds), null);
+                }
+                else
+                {
+                    var value = Convert.ChangeType(record[i].ToString(), properties[i].PropertyType);
+                    properties[i].SetValue(element, value, null);
+                }
+            }
+            return element;
+        }
         //Insert
         /// <summary>
         /// Adds a records to the specified table.

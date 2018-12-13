@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,9 @@ namespace RegistrationSystem
             ChangeTabVisibility(SystemActors.LoggedOut);
             loginBtnSubmit.Click += loginBtnOnSubmit_OnClick;
             activeAs.SelectedIndexChanged += ActiveAs_SelectedIndexChanged;
+            scheduleYearComboBox.SelectedIndexChanged += scheduleQueryChanged;
+            scheduleSemesterComboBox.SelectedIndexChanged += scheduleQueryChanged;
+            scheduleQueryChanged(null, null);
         }
 
         private void ActiveAs_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,25 +140,65 @@ namespace RegistrationSystem
 
         }
         List<Section> fullSectionList;
-        private void scheduleQueryChanged(object sender, DataGridViewCellEventArgs e)
+        List<Registration> registrations;
+        private void scheduleQueryChanged(object sender, EventArgs e)
         {
             if(fullSectionList == null)
             {
                 if(activeActor == SystemActors.Professor)
                 {
-                    fullSectionList = user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[]
-                    {
-                        new System.Data.SqlClient.SqlParameter("InstructorID",user.EnterpriseID)
-                    }, Tables.Section);
+                    fullSectionList = user.Connection.BuildClassArray<Section>(new SqlParameter[]
+                        {
+                            new System.Data.SqlClient.SqlParameter("InstructorID",user.EnterpriseID)
+                        }, Tables.Section);
                 }
                 else if(activeActor == SystemActors.Student)
                 {
-                    fullSectionList = user.Connection.BuildClassArray<Section>(new System.Data.SqlClient.SqlParameter[]
+                    if(registrations == null)
                     {
-                        new System.Data.SqlClient.SqlParameter("InstructorID",user.EnterpriseID)
-                    }, Tables.Section);
+
+                        RefreshRegistrations();
+                    }
+                    fullSectionList = new List<Section>();
+                    foreach(var registration in registrations)
+                    {
+                        fullSectionList.Add(user.Connection.BuildClass<Section>(new SqlParameter[]
+                        {
+                            new SqlParameter("ID",registration.SectionID)
+                        }, Tables.Section));
+                    }
+                    string filter = scheduleYearComboBox.SelectedValue.ToString();
+                    if (filter != "All")
+                        fullSectionList.RemoveAll((Section s) => {
+                            return s.StartDate.Year.ToString() != filter; });
+                    filter = scheduleSemesterComboBox.SelectedValue.ToString();
+                    filter = user.Connection.GetValue("ID", new SqlParameter[]
+                    {
+                        new SqlParameter("SemesterName",filter)
+                    },Tables.Semester).ToString();
+                    if (filter != "All")
+                        fullSectionList.RemoveAll((Section s) => {
+                            return s.SemesterID.ToString() != filter;
+                        });
                 }
             }
+            List<Section> query = //to remove object references
+                new List<Section>(fullSectionList.ToArray());
+
+            
+        }
+        //registration page
+        private void RefreshRegistrations()
+        {
+            registrations = user.Connection.BuildClassArray<Registration>(new SqlParameter[]
+            {
+                new SqlParameter("PersonID",user.EnterpriseID)
+            }, Tables.Registration);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
