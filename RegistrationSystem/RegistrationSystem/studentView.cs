@@ -231,7 +231,7 @@ namespace RegistrationSystem
                 object[] firstCourseHoursHTMLEdit = { "document.getElementById(\"firstCourseHours\").innerHTML = $firstCourseHours" };
                 object[] firstCourseDaysHTMLEdit = { "document.getElementById(\"firstCourseDays\").innerHTML = $firstCourseDays" };
 
-                object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0] + "\"" };
+                object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0].ToString() + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameHTMLEdit);
                 object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" + LogIn.user.Registrations[0].ToString() + "\"" };
