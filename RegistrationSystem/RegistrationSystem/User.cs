@@ -235,12 +235,12 @@ namespace RegistrationSystem
                 return enrolledSections;
             }
         }
-        public void SetGrades(List<SectionStudent> students)
+        public void SetGrade(int studentID, string grade, int sectionID)
         {
-            foreach (var student in students)
-                Connection.Update(Tables.Registration, new SqlParameter[] {
-                    new SqlParameter("PersonID",student.PersonID)
-                }, new SqlParameter[] { new SqlParameter("Grade", student.Grade) });
+            Connection.Update(Tables.Registration, new SqlParameter[] {
+                new SqlParameter("PersonID",studentID),
+                new SqlParameter("SectionID", sectionID),
+            }, new SqlParameter[] { new SqlParameter("Grade", grade) });
         }
         List<Registration> enrolledSections;
         public DatabaseConnection Connection { get; }

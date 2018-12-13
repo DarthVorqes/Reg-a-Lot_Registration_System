@@ -12,10 +12,7 @@ namespace RegistrationSystem
 {
     public partial class ProfessorView : Form
     {
-
-
-        List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
-                new System.Data.SqlClient.SqlParameter("SectionID", section.ID) });
+        List<SectionStudent> updateGrade = new List<SectionStudent>();
         string[] semesterIndex = LogIn.user.GetSemesters();
 
         public ProfessorView()
@@ -28,8 +25,22 @@ namespace RegistrationSystem
             AddDropSemesterComboBox_Load();
             AddDropCoursesComboBox_Load();
 
-
+            StudentGridView.CellEndEdit += StudentGridView_CellEndEdit;
         }
+
+        private void StudentGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = StudentGridView.Rows[e.RowIndex];
+            var id = Convert.ToInt32(row.Cells[0].Value);
+            var grade = row.Cells[3].Value as string;
+            if (grade == null)
+                grade = "";
+            if (grade.Length > 10)
+                grade = grade.Substring(0, 10).ToUpper();
+            row.Cells[3].Value = grade;
+            LogIn.user.SetGrade(id, grade,selectedSection.SectionNumber);
+        }
+
         //=========================Set user specific labels:
         private void SetLabels()
         {
@@ -90,6 +101,7 @@ namespace RegistrationSystem
 
         }
         List<Section> loadedSections = new List<Section>();
+        Section selectedSection;
         private void ScheduleSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -105,9 +117,12 @@ namespace RegistrationSystem
 
         private void ScheduleSectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             string[] selectedItem = ScheduleSectionsComboBox.SelectedItem.ToString().Split('-');
-            var section = loadedSections.Find((Section s) => { return s.SectionNumber.ToString() == selectedItem[1] && s.GetCourseName(LogIn.user) == selectedItem[0]; });
+            selectedSection = loadedSections.Find((Section s) => { return s.SectionNumber.ToString() == selectedItem[1] && s.GetCourseName(LogIn.user) == selectedItem[0]; });
+            List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
+                new System.Data.SqlClient.SqlParameter("SectionID", selectedSection.ID) });
+            updateGrade = students;
+           
     
             foreach (var student in students)
             {
@@ -170,11 +185,6 @@ namespace RegistrationSystem
         {
             UserPersonalInformation update = new UserPersonalInformation("Update", LogIn.user.EnterpriseID);
             update.Show();
-        }
-
-        private void UpdateStudentButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

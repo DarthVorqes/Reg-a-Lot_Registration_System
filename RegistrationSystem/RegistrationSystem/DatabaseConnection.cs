@@ -270,7 +270,7 @@ namespace RegistrationSystem
             bool successful = false;
             //constructing sql command
             string set = updatePerams[0].ParameterName + " = @" + updatePerams[0].ParameterName;
-            for (int i = 1; i < set.Length; i++)
+            for (int i = 1; i < updatePerams.Length; i++)
                 set += ", " + updatePerams[i].ParameterName + " = @" + updatePerams[i].ParameterName;
             //combining perameters, NOTE: it is possible to have multiple perameters with the same 'PerameterName'
             //whether or not this causes problems (which it most probabily does) and solving them.
