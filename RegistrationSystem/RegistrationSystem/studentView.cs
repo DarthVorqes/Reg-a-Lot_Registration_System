@@ -26,6 +26,9 @@ namespace RegistrationSystem
             UserViewComboBox_Load();
             SetLabels1();
             AddDropSemesterComboBox_Load();
+            StudentTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
+            UserHasPaidLbl.Text = LogIn.user.HasPaid.ToString();
+            UserBillLbl.Text = LogIn.user.GetBill().ToString();
         }
         private void SetLabels1()
         {

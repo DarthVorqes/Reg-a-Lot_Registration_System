@@ -27,6 +27,7 @@ namespace RegistrationSystem
             ProfessorTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
             StudentGridView.CellEndEdit += StudentGridView_CellEndEdit;
             InfoGrid.CellEndEdit += InfoGrid_CellEndEdit;
+
         }
 
         private void InfoGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)

@@ -26,6 +26,7 @@ namespace RegistrationSystem
             InitializeComponent();
             UserViewComboBox_Load();
             LoadPersonalLabels();
+            RegistrarTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
         }
  //======================================Labels: 
         private void LoadPersonalLabels()
