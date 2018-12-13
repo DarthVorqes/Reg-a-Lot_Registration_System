@@ -19,7 +19,7 @@ namespace RegistrationSystem
         public string GetCourseName(User usr) => usr.Connection.GetValue("CourseName",
         new SqlParameter[]
         {
-                new SqlParameter("ID",ID)
+                new SqlParameter("ID",usr.Connection.GetValue("CourseID",new SqlParameter[]{ new SqlParameter("ID",ID) },Tables.Section))
         }, Tables.Course) as string;
     }
 }

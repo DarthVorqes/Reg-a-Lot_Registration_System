@@ -235,6 +235,14 @@ namespace RegistrationSystem
                 return enrolledSections;
             }
         }
+        public string[] GetDepartments()
+        {
+            var departments = Connection.GetOccurrences(Tables.Section, new SqlParameter[0], new string[] { "Department" });
+            string[] array = new string[departments.Count];
+            for (int i = 0; i < array.Length; i++)
+                array[i] = departments[i][0] as string;
+            return array;
+        }
         public void SetGrade(int studentID, string grade, int sectionID)
         {
             Connection.Update(Tables.Registration, new SqlParameter[] {
