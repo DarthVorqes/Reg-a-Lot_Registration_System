@@ -26,7 +26,6 @@ namespace RegistrationSystem
             SemesterComboBox_Load();
             AddDropSemesterComboBox_Load();
             AddDropCoursesComboBox_Load();
-           
 
         }
 //=========================Set user specific labels:

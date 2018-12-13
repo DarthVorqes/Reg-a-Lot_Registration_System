@@ -17,13 +17,13 @@ namespace RegistrationSystem
         [STAThread]
         static void Main()
         {
-            User usr = new User();
-            usr.Authenticate(5, "test123");
+            //User usr = new User();
+            //usr.Authenticate(5, "test123");
             //var values = usr.GetSemesters();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogIn());
+            Application.Run(new Home());
         }
     }
 }
