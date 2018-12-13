@@ -41,43 +41,26 @@
             this.ScheduleSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.ScheduleSectionsComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorAddDropTab = new System.Windows.Forms.TabPage();
-            this.addDropDataGrid = new System.Windows.Forms.DataGridView();
-            this.addDropCourseNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addDropCourseNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addDropSectionNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addDropInstructorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addDropAddDropButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.addDropDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddDropSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.DropButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
+            this.AddDropListBox = new System.Windows.Forms.ListBox();
+            this.AddDropDepartmentComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorPersonalInfoTab = new System.Windows.Forms.TabPage();
-            this.LastNamelbl = new System.Windows.Forms.Label();
-            this.EmailLbl = new System.Windows.Forms.Label();
-            this.PhoneNumberLbl = new System.Windows.Forms.Label();
-            this.AddressLbl = new System.Windows.Forms.Label();
-            this.IDNumberlbl = new System.Windows.Forms.Label();
-            this.FirstNameLbl = new System.Windows.Forms.Label();
-            this.UpdateInfoBtn = new System.Windows.Forms.Button();
-            this.UserPhoneNumberLbl = new System.Windows.Forms.Label();
-            this.UserEmailLbl = new System.Windows.Forms.Label();
-            this.UserAddressLbl = new System.Windows.Forms.Label();
-            this.UserIDNumberLbl = new System.Windows.Forms.Label();
-            this.UserLastNameLbl = new System.Windows.Forms.Label();
-            this.UserInfoDescriptionLbl = new System.Windows.Forms.Label();
-            this.UserFirstNameLbl = new System.Windows.Forms.Label();
             this.ProfessorTitle = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
+            this.InfoGrid = new System.Windows.Forms.DataGridView();
+            this.InfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProfessorTabControl.SuspendLayout();
             this.ProfessorScheduleTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).BeginInit();
             this.ProfessorAddDropTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.addDropDataGrid)).BeginInit();
             this.ProfessorPersonalInfoTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InfoGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // ProfessorTabControl
@@ -189,13 +172,13 @@
             // 
             // ProfessorAddDropTab
             // 
-            this.ProfessorAddDropTab.Controls.Add(this.addDropDataGrid);
             this.ProfessorAddDropTab.Controls.Add(this.AddDropSemesterComboBox);
             this.ProfessorAddDropTab.Controls.Add(this.label1);
             this.ProfessorAddDropTab.Controls.Add(this.label10);
             this.ProfessorAddDropTab.Controls.Add(this.DropButton);
             this.ProfessorAddDropTab.Controls.Add(this.AddButton);
-            this.ProfessorAddDropTab.Controls.Add(this.AddDropCoursesComboBox);
+            this.ProfessorAddDropTab.Controls.Add(this.AddDropListBox);
+            this.ProfessorAddDropTab.Controls.Add(this.AddDropDepartmentComboBox);
             this.ProfessorAddDropTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorAddDropTab.Name = "ProfessorAddDropTab";
             this.ProfessorAddDropTab.Padding = new System.Windows.Forms.Padding(3);
@@ -203,57 +186,6 @@
             this.ProfessorAddDropTab.TabIndex = 1;
             this.ProfessorAddDropTab.Text = "Add/Drop";
             this.ProfessorAddDropTab.UseVisualStyleBackColor = true;
-            // 
-            // addDropDataGrid
-            // 
-            this.addDropDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.addDropDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.addDropCourseNameColumn,
-            this.addDropCourseNumberColumn,
-            this.addDropSectionNumberColumn,
-            this.addDropInstructorColumn,
-            this.addDropAddDropButtonColumn,
-            this.addDropDescriptionColumn});
-            this.addDropDataGrid.Location = new System.Drawing.Point(9, 81);
-            this.addDropDataGrid.Name = "addDropDataGrid";
-            this.addDropDataGrid.Size = new System.Drawing.Size(777, 292);
-            this.addDropDataGrid.TabIndex = 10;
-            // 
-            // addDropCourseNameColumn
-            // 
-            this.addDropCourseNameColumn.HeaderText = "Course Name";
-            this.addDropCourseNameColumn.Name = "addDropCourseNameColumn";
-            this.addDropCourseNameColumn.ReadOnly = true;
-            // 
-            // addDropCourseNumberColumn
-            // 
-            this.addDropCourseNumberColumn.HeaderText = "Course Number";
-            this.addDropCourseNumberColumn.Name = "addDropCourseNumberColumn";
-            this.addDropCourseNumberColumn.ReadOnly = true;
-            // 
-            // addDropSectionNumberColumn
-            // 
-            this.addDropSectionNumberColumn.HeaderText = "Section Number";
-            this.addDropSectionNumberColumn.Name = "addDropSectionNumberColumn";
-            this.addDropSectionNumberColumn.ReadOnly = true;
-            // 
-            // addDropInstructorColumn
-            // 
-            this.addDropInstructorColumn.HeaderText = "Instructor";
-            this.addDropInstructorColumn.Name = "addDropInstructorColumn";
-            this.addDropInstructorColumn.ReadOnly = true;
-            // 
-            // addDropAddDropButtonColumn
-            // 
-            this.addDropAddDropButtonColumn.HeaderText = "Add/Drop";
-            this.addDropAddDropButtonColumn.Name = "addDropAddDropButtonColumn";
-            this.addDropAddDropButtonColumn.ReadOnly = true;
-            // 
-            // addDropDescriptionColumn
-            // 
-            this.addDropDescriptionColumn.HeaderText = "Description";
-            this.addDropDescriptionColumn.Name = "addDropDescriptionColumn";
-            this.addDropDescriptionColumn.ReadOnly = true;
             // 
             // AddDropSemesterComboBox
             // 
@@ -299,164 +231,31 @@
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
             // 
-            // AddDropCoursesComboBox
+            // AddDropListBox
             // 
-            this.AddDropCoursesComboBox.FormattingEnabled = true;
-            this.AddDropCoursesComboBox.Location = new System.Drawing.Point(302, 54);
-            this.AddDropCoursesComboBox.Name = "AddDropCoursesComboBox";
-            this.AddDropCoursesComboBox.Size = new System.Drawing.Size(315, 21);
-            this.AddDropCoursesComboBox.TabIndex = 0;
-            this.AddDropCoursesComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropCoursesComboBox_SelectedIndexChanged);
+            this.AddDropListBox.FormattingEnabled = true;
+            this.AddDropListBox.Location = new System.Drawing.Point(6, 81);
+            this.AddDropListBox.Name = "AddDropListBox";
+            this.AddDropListBox.Size = new System.Drawing.Size(777, 264);
+            this.AddDropListBox.TabIndex = 3;
+            // 
+            // AddDropDepartmentComboBox
+            // 
+            this.AddDropDepartmentComboBox.FormattingEnabled = true;
+            this.AddDropDepartmentComboBox.Location = new System.Drawing.Point(302, 54);
+            this.AddDropDepartmentComboBox.Name = "AddDropDepartmentComboBox";
+            this.AddDropDepartmentComboBox.Size = new System.Drawing.Size(315, 21);
+            this.AddDropDepartmentComboBox.TabIndex = 0;
             // 
             // ProfessorPersonalInfoTab
             // 
-            this.ProfessorPersonalInfoTab.Controls.Add(this.LastNamelbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.EmailLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.PhoneNumberLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.AddressLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.IDNumberlbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.FirstNameLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UpdateInfoBtn);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserPhoneNumberLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserEmailLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserAddressLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserIDNumberLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserLastNameLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserInfoDescriptionLbl);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.UserFirstNameLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.InfoGrid);
             this.ProfessorPersonalInfoTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorPersonalInfoTab.Name = "ProfessorPersonalInfoTab";
             this.ProfessorPersonalInfoTab.Size = new System.Drawing.Size(789, 421);
             this.ProfessorPersonalInfoTab.TabIndex = 2;
             this.ProfessorPersonalInfoTab.Text = "Personal Info";
             this.ProfessorPersonalInfoTab.UseVisualStyleBackColor = true;
-            // 
-            // LastNamelbl
-            // 
-            this.LastNamelbl.AutoSize = true;
-            this.LastNamelbl.Location = new System.Drawing.Point(250, 68);
-            this.LastNamelbl.Name = "LastNamelbl";
-            this.LastNamelbl.Size = new System.Drawing.Size(61, 13);
-            this.LastNamelbl.TabIndex = 12;
-            this.LastNamelbl.Text = "Last Name:";
-            // 
-            // EmailLbl
-            // 
-            this.EmailLbl.AutoSize = true;
-            this.EmailLbl.Location = new System.Drawing.Point(38, 218);
-            this.EmailLbl.Name = "EmailLbl";
-            this.EmailLbl.Size = new System.Drawing.Size(35, 13);
-            this.EmailLbl.TabIndex = 12;
-            this.EmailLbl.Text = "Email:";
-            // 
-            // PhoneNumberLbl
-            // 
-            this.PhoneNumberLbl.AutoSize = true;
-            this.PhoneNumberLbl.Location = new System.Drawing.Point(38, 186);
-            this.PhoneNumberLbl.Name = "PhoneNumberLbl";
-            this.PhoneNumberLbl.Size = new System.Drawing.Size(81, 13);
-            this.PhoneNumberLbl.TabIndex = 12;
-            this.PhoneNumberLbl.Text = "Phone Number:";
-            // 
-            // AddressLbl
-            // 
-            this.AddressLbl.AutoSize = true;
-            this.AddressLbl.Location = new System.Drawing.Point(38, 150);
-            this.AddressLbl.Name = "AddressLbl";
-            this.AddressLbl.Size = new System.Drawing.Size(48, 13);
-            this.AddressLbl.TabIndex = 12;
-            this.AddressLbl.Text = "Address:";
-            // 
-            // IDNumberlbl
-            // 
-            this.IDNumberlbl.AutoSize = true;
-            this.IDNumberlbl.Location = new System.Drawing.Point(38, 111);
-            this.IDNumberlbl.Name = "IDNumberlbl";
-            this.IDNumberlbl.Size = new System.Drawing.Size(61, 13);
-            this.IDNumberlbl.TabIndex = 12;
-            this.IDNumberlbl.Text = "ID Number:";
-            // 
-            // FirstNameLbl
-            // 
-            this.FirstNameLbl.AutoSize = true;
-            this.FirstNameLbl.Location = new System.Drawing.Point(38, 68);
-            this.FirstNameLbl.Name = "FirstNameLbl";
-            this.FirstNameLbl.Size = new System.Drawing.Size(60, 13);
-            this.FirstNameLbl.TabIndex = 12;
-            this.FirstNameLbl.Text = "First Name:";
-            // 
-            // UpdateInfoBtn
-            // 
-            this.UpdateInfoBtn.Location = new System.Drawing.Point(36, 375);
-            this.UpdateInfoBtn.Name = "UpdateInfoBtn";
-            this.UpdateInfoBtn.Size = new System.Drawing.Size(116, 23);
-            this.UpdateInfoBtn.TabIndex = 11;
-            this.UpdateInfoBtn.Text = "Update Info";
-            this.UpdateInfoBtn.UseVisualStyleBackColor = true;
-            this.UpdateInfoBtn.Click += new System.EventHandler(this.UpdateInfoBtn_Click_1);
-            // 
-            // UserPhoneNumberLbl
-            // 
-            this.UserPhoneNumberLbl.AutoSize = true;
-            this.UserPhoneNumberLbl.Location = new System.Drawing.Point(134, 186);
-            this.UserPhoneNumberLbl.Name = "UserPhoneNumberLbl";
-            this.UserPhoneNumberLbl.Size = new System.Drawing.Size(78, 13);
-            this.UserPhoneNumberLbl.TabIndex = 6;
-            this.UserPhoneNumberLbl.Text = "Phone Number";
-            // 
-            // UserEmailLbl
-            // 
-            this.UserEmailLbl.AutoSize = true;
-            this.UserEmailLbl.Location = new System.Drawing.Point(134, 218);
-            this.UserEmailLbl.Name = "UserEmailLbl";
-            this.UserEmailLbl.Size = new System.Drawing.Size(32, 13);
-            this.UserEmailLbl.TabIndex = 5;
-            this.UserEmailLbl.Text = "Email";
-            // 
-            // UserAddressLbl
-            // 
-            this.UserAddressLbl.AutoSize = true;
-            this.UserAddressLbl.Location = new System.Drawing.Point(134, 150);
-            this.UserAddressLbl.Name = "UserAddressLbl";
-            this.UserAddressLbl.Size = new System.Drawing.Size(45, 13);
-            this.UserAddressLbl.TabIndex = 4;
-            this.UserAddressLbl.Text = "Address";
-            // 
-            // UserIDNumberLbl
-            // 
-            this.UserIDNumberLbl.AutoSize = true;
-            this.UserIDNumberLbl.Location = new System.Drawing.Point(134, 111);
-            this.UserIDNumberLbl.Name = "UserIDNumberLbl";
-            this.UserIDNumberLbl.Size = new System.Drawing.Size(58, 13);
-            this.UserIDNumberLbl.TabIndex = 3;
-            this.UserIDNumberLbl.Text = "ID Number";
-            // 
-            // UserLastNameLbl
-            // 
-            this.UserLastNameLbl.AutoSize = true;
-            this.UserLastNameLbl.Location = new System.Drawing.Point(331, 68);
-            this.UserLastNameLbl.Name = "UserLastNameLbl";
-            this.UserLastNameLbl.Size = new System.Drawing.Size(58, 13);
-            this.UserLastNameLbl.TabIndex = 2;
-            this.UserLastNameLbl.Text = "Last Name";
-            // 
-            // UserInfoDescriptionLbl
-            // 
-            this.UserInfoDescriptionLbl.AutoSize = true;
-            this.UserInfoDescriptionLbl.Location = new System.Drawing.Point(15, 19);
-            this.UserInfoDescriptionLbl.Name = "UserInfoDescriptionLbl";
-            this.UserInfoDescriptionLbl.Size = new System.Drawing.Size(87, 13);
-            this.UserInfoDescriptionLbl.TabIndex = 1;
-            this.UserInfoDescriptionLbl.Text = "User Information:";
-            // 
-            // UserFirstNameLbl
-            // 
-            this.UserFirstNameLbl.AutoSize = true;
-            this.UserFirstNameLbl.Location = new System.Drawing.Point(134, 68);
-            this.UserFirstNameLbl.Name = "UserFirstNameLbl";
-            this.UserFirstNameLbl.Size = new System.Drawing.Size(57, 13);
-            this.UserFirstNameLbl.TabIndex = 0;
-            this.UserFirstNameLbl.Text = "First Name";
             // 
             // ProfessorTitle
             // 
@@ -489,6 +288,27 @@
             this.UserViewComboBox.Text = "View";
             this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.UserViewComboBox_SelectedIndexChanged);
             // 
+            // InfoGrid
+            // 
+            this.InfoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InfoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.InfoType,
+            this.Value});
+            this.InfoGrid.Location = new System.Drawing.Point(3, 3);
+            this.InfoGrid.Name = "InfoGrid";
+            this.InfoGrid.Size = new System.Drawing.Size(240, 415);
+            this.InfoGrid.TabIndex = 0;
+            // 
+            // InfoType
+            // 
+            this.InfoType.HeaderText = "Info Type:";
+            this.InfoType.Name = "InfoType";
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            // 
             // ProfessorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,9 +327,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).EndInit();
             this.ProfessorAddDropTab.ResumeLayout(false);
             this.ProfessorAddDropTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.addDropDataGrid)).EndInit();
             this.ProfessorPersonalInfoTab.ResumeLayout(false);
-            this.ProfessorPersonalInfoTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InfoGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,43 +342,26 @@
         private System.Windows.Forms.Label ProfessorTitle;
         private System.Windows.Forms.ComboBox ScheduleSectionsComboBox;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
+        private System.Windows.Forms.ListBox AddDropListBox;
+        private System.Windows.Forms.ComboBox AddDropDepartmentComboBox;
         private System.Windows.Forms.TabPage ProfessorPersonalInfoTab;
-        private System.Windows.Forms.Label UserPhoneNumberLbl;
-        private System.Windows.Forms.Label UserEmailLbl;
-        private System.Windows.Forms.Label UserAddressLbl;
-        private System.Windows.Forms.Label UserIDNumberLbl;
-        private System.Windows.Forms.Label UserLastNameLbl;
-        private System.Windows.Forms.Label UserInfoDescriptionLbl;
-        private System.Windows.Forms.Label UserFirstNameLbl;
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button DropButton;
         private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Label ScheduleSectionComboBoxlbl;
         private System.Windows.Forms.Label SemesterComboBoxlbl;
         private System.Windows.Forms.ComboBox ScheduleSemesterComboBox;
         private System.Windows.Forms.ComboBox AddDropSemesterComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label FirstNameLbl;
-        private System.Windows.Forms.Label LastNamelbl;
-        private System.Windows.Forms.Label IDNumberlbl;
-        private System.Windows.Forms.Label EmailLbl;
-        private System.Windows.Forms.Label PhoneNumberLbl;
-        private System.Windows.Forms.Label AddressLbl;
         private System.Windows.Forms.DataGridView StudentGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Grade;
-        private System.Windows.Forms.DataGridView addDropDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addDropCourseNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addDropCourseNumberColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addDropSectionNumberColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addDropInstructorColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn addDropAddDropButtonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addDropDescriptionColumn;
+        private System.Windows.Forms.DataGridView InfoGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InfoType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
     }
 }

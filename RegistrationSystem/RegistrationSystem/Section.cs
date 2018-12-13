@@ -73,7 +73,7 @@ namespace RegistrationSystem
                 new SqlParameter[]
                 {
                             new SqlParameter("ID",CourseID)
-                }, Tables.Course)) };
+                }, Tables.Section)) };
 
             return usr.Connection.GetValue("FirstName", perameters, Tables.Person).ToString() + ' ' +
                 usr.Connection.GetValue("LastName", perameters, Tables.Person).ToString();

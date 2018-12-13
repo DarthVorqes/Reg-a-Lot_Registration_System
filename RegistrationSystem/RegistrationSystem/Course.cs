@@ -18,7 +18,7 @@ namespace RegistrationSystem
         /// <param name="perams"></param>
         /// <param name="usr"></param>
         /// <returns></returns>
-        public List<Course> GetCourses(System.Data.SqlClient.SqlParameter[] perams, User usr) =>
+        public List<Course> GetCourse(System.Data.SqlClient.SqlParameter[] perams, User usr) =>
             usr.Connection.BuildClassArray<Course>(perams, Tables.Course);
         /// <summary>
         /// Primary key in db.Course

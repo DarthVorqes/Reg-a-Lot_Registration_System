@@ -343,7 +343,7 @@ namespace RegistrationSystem
                     changes.Add(new SqlParameter("Social", social));
             }
             if (_password != null)
-                changes.Add(new SqlParameter("Password", Hash(_password)));
+                changes.Add(new SqlParameter("Password", _password));
             if (streetAddress != null)
                 changes.Add(new SqlParameter("StreetAddress", streetAddress));
 
