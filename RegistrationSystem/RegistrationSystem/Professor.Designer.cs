@@ -32,7 +32,7 @@
             this.ProfessorScheduleTab = new System.Windows.Forms.TabPage();
             this.ScheduleSectionComboBoxlbl = new System.Windows.Forms.Label();
             this.SemesterComboBoxlbl = new System.Windows.Forms.Label();
-            this.ViewStudentButton = new System.Windows.Forms.Button();
+            this.UpdateStudentButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.ScheduleStudentListBox = new System.Windows.Forms.ListBox();
             this.ScheduleSemesterComboBox = new System.Windows.Forms.ComboBox();
@@ -63,10 +63,16 @@
             this.ProfessorTitle = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
+            this.StudentGridView = new System.Windows.Forms.DataGridView();
+            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProfessorTabControl.SuspendLayout();
             this.ProfessorScheduleTab.SuspendLayout();
             this.ProfessorAddDropTab.SuspendLayout();
             this.ProfessorPersonalInfoTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ProfessorTabControl
@@ -85,9 +91,10 @@
             // 
             // ProfessorScheduleTab
             // 
+            this.ProfessorScheduleTab.Controls.Add(this.StudentGridView);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSectionComboBoxlbl);
             this.ProfessorScheduleTab.Controls.Add(this.SemesterComboBoxlbl);
-            this.ProfessorScheduleTab.Controls.Add(this.ViewStudentButton);
+            this.ProfessorScheduleTab.Controls.Add(this.UpdateStudentButton);
             this.ProfessorScheduleTab.Controls.Add(this.webBrowser1);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleStudentListBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSemesterComboBox);
@@ -118,18 +125,18 @@
             this.SemesterComboBoxlbl.TabIndex = 5;
             this.SemesterComboBoxlbl.Text = "Semester:";
             // 
-            // ViewStudentButton
+            // UpdateStudentButton
             // 
-            this.ViewStudentButton.Location = new System.Drawing.Point(664, 174);
-            this.ViewStudentButton.Name = "ViewStudentButton";
-            this.ViewStudentButton.Size = new System.Drawing.Size(109, 23);
-            this.ViewStudentButton.TabIndex = 4;
-            this.ViewStudentButton.Text = "View Student";
-            this.ViewStudentButton.UseVisualStyleBackColor = true;
+            this.UpdateStudentButton.Location = new System.Drawing.Point(664, 174);
+            this.UpdateStudentButton.Name = "UpdateStudentButton";
+            this.UpdateStudentButton.Size = new System.Drawing.Size(109, 23);
+            this.UpdateStudentButton.TabIndex = 4;
+            this.UpdateStudentButton.Text = "Update Student";
+            this.UpdateStudentButton.UseVisualStyleBackColor = true;
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(15, 5);
+            this.webBrowser1.Location = new System.Drawing.Point(15, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(768, 145);
@@ -138,9 +145,9 @@
             // ScheduleStudentListBox
             // 
             this.ScheduleStudentListBox.FormattingEnabled = true;
-            this.ScheduleStudentListBox.Location = new System.Drawing.Point(27, 203);
+            this.ScheduleStudentListBox.Location = new System.Drawing.Point(655, 230);
             this.ScheduleStudentListBox.Name = "ScheduleStudentListBox";
-            this.ScheduleStudentListBox.Size = new System.Drawing.Size(746, 212);
+            this.ScheduleStudentListBox.Size = new System.Drawing.Size(84, 134);
             this.ScheduleStudentListBox.TabIndex = 2;
             // 
             // ScheduleSemesterComboBox
@@ -155,7 +162,7 @@
             // ScheduleSectionsComboBox
             // 
             this.ScheduleSectionsComboBox.FormattingEnabled = true;
-            this.ScheduleSectionsComboBox.Location = new System.Drawing.Point(285, 176);
+            this.ScheduleSectionsComboBox.Location = new System.Drawing.Point(294, 174);
             this.ScheduleSectionsComboBox.Name = "ScheduleSectionsComboBox";
             this.ScheduleSectionsComboBox.Size = new System.Drawing.Size(220, 21);
             this.ScheduleSectionsComboBox.TabIndex = 1;
@@ -419,6 +426,39 @@
             this.UserViewComboBox.Text = "View";
             this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.UserViewComboBox_SelectedIndexChanged);
             // 
+            // StudentGridView
+            // 
+            this.StudentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentID,
+            this.FirstName,
+            this.LastName,
+            this.Grade});
+            this.StudentGridView.Location = new System.Drawing.Point(58, 214);
+            this.StudentGridView.Name = "StudentGridView";
+            this.StudentGridView.Size = new System.Drawing.Size(441, 150);
+            this.StudentGridView.TabIndex = 6;
+            // 
+            // StudentID
+            // 
+            this.StudentID.HeaderText = "Student ID";
+            this.StudentID.Name = "StudentID";
+            // 
+            // FirstName
+            // 
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            // 
+            // Grade
+            // 
+            this.Grade.HeaderText = "Grade";
+            this.Grade.Name = "Grade";
+            // 
             // ProfessorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +478,7 @@
             this.ProfessorAddDropTab.PerformLayout();
             this.ProfessorPersonalInfoTab.ResumeLayout(false);
             this.ProfessorPersonalInfoTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,7 +508,7 @@
         private System.Windows.Forms.Button DropButton;
         private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Button ViewStudentButton;
+        private System.Windows.Forms.Button UpdateStudentButton;
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Label ScheduleSectionComboBoxlbl;
         private System.Windows.Forms.Label SemesterComboBoxlbl;
@@ -480,5 +521,10 @@
         private System.Windows.Forms.Label EmailLbl;
         private System.Windows.Forms.Label PhoneNumberLbl;
         private System.Windows.Forms.Label AddressLbl;
+        private System.Windows.Forms.DataGridView StudentGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grade;
     }
 }
