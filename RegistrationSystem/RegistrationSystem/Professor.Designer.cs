@@ -41,12 +41,18 @@
             this.ScheduleSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.ScheduleSectionsComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorAddDropTab = new System.Windows.Forms.TabPage();
+            this.addDropDataGrid = new System.Windows.Forms.DataGridView();
+            this.addDropCourseNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addDropCourseNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addDropSectionNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addDropInstructorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addDropAddDropButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addDropDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddDropSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.DropButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.AddDropListBox = new System.Windows.Forms.ListBox();
             this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorPersonalInfoTab = new System.Windows.Forms.TabPage();
             this.LastNamelbl = new System.Windows.Forms.Label();
@@ -70,6 +76,7 @@
             this.ProfessorScheduleTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).BeginInit();
             this.ProfessorAddDropTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addDropDataGrid)).BeginInit();
             this.ProfessorPersonalInfoTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,12 +189,12 @@
             // 
             // ProfessorAddDropTab
             // 
+            this.ProfessorAddDropTab.Controls.Add(this.addDropDataGrid);
             this.ProfessorAddDropTab.Controls.Add(this.AddDropSemesterComboBox);
             this.ProfessorAddDropTab.Controls.Add(this.label1);
             this.ProfessorAddDropTab.Controls.Add(this.label10);
             this.ProfessorAddDropTab.Controls.Add(this.DropButton);
             this.ProfessorAddDropTab.Controls.Add(this.AddButton);
-            this.ProfessorAddDropTab.Controls.Add(this.AddDropListBox);
             this.ProfessorAddDropTab.Controls.Add(this.AddDropCoursesComboBox);
             this.ProfessorAddDropTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorAddDropTab.Name = "ProfessorAddDropTab";
@@ -196,6 +203,57 @@
             this.ProfessorAddDropTab.TabIndex = 1;
             this.ProfessorAddDropTab.Text = "Add/Drop";
             this.ProfessorAddDropTab.UseVisualStyleBackColor = true;
+            // 
+            // addDropDataGrid
+            // 
+            this.addDropDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.addDropDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.addDropCourseNameColumn,
+            this.addDropCourseNumberColumn,
+            this.addDropSectionNumberColumn,
+            this.addDropInstructorColumn,
+            this.addDropAddDropButtonColumn,
+            this.addDropDescriptionColumn});
+            this.addDropDataGrid.Location = new System.Drawing.Point(9, 81);
+            this.addDropDataGrid.Name = "addDropDataGrid";
+            this.addDropDataGrid.Size = new System.Drawing.Size(777, 292);
+            this.addDropDataGrid.TabIndex = 10;
+            // 
+            // addDropCourseNameColumn
+            // 
+            this.addDropCourseNameColumn.HeaderText = "Course Name";
+            this.addDropCourseNameColumn.Name = "addDropCourseNameColumn";
+            this.addDropCourseNameColumn.ReadOnly = true;
+            // 
+            // addDropCourseNumberColumn
+            // 
+            this.addDropCourseNumberColumn.HeaderText = "Course Number";
+            this.addDropCourseNumberColumn.Name = "addDropCourseNumberColumn";
+            this.addDropCourseNumberColumn.ReadOnly = true;
+            // 
+            // addDropSectionNumberColumn
+            // 
+            this.addDropSectionNumberColumn.HeaderText = "Section Number";
+            this.addDropSectionNumberColumn.Name = "addDropSectionNumberColumn";
+            this.addDropSectionNumberColumn.ReadOnly = true;
+            // 
+            // addDropInstructorColumn
+            // 
+            this.addDropInstructorColumn.HeaderText = "Instructor";
+            this.addDropInstructorColumn.Name = "addDropInstructorColumn";
+            this.addDropInstructorColumn.ReadOnly = true;
+            // 
+            // addDropAddDropButtonColumn
+            // 
+            this.addDropAddDropButtonColumn.HeaderText = "Add/Drop";
+            this.addDropAddDropButtonColumn.Name = "addDropAddDropButtonColumn";
+            this.addDropAddDropButtonColumn.ReadOnly = true;
+            // 
+            // addDropDescriptionColumn
+            // 
+            this.addDropDescriptionColumn.HeaderText = "Description";
+            this.addDropDescriptionColumn.Name = "addDropDescriptionColumn";
+            this.addDropDescriptionColumn.ReadOnly = true;
             // 
             // AddDropSemesterComboBox
             // 
@@ -241,14 +299,6 @@
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
             // 
-            // AddDropListBox
-            // 
-            this.AddDropListBox.FormattingEnabled = true;
-            this.AddDropListBox.Location = new System.Drawing.Point(6, 81);
-            this.AddDropListBox.Name = "AddDropListBox";
-            this.AddDropListBox.Size = new System.Drawing.Size(777, 264);
-            this.AddDropListBox.TabIndex = 3;
-            // 
             // AddDropCoursesComboBox
             // 
             this.AddDropCoursesComboBox.FormattingEnabled = true;
@@ -256,6 +306,7 @@
             this.AddDropCoursesComboBox.Name = "AddDropCoursesComboBox";
             this.AddDropCoursesComboBox.Size = new System.Drawing.Size(315, 21);
             this.AddDropCoursesComboBox.TabIndex = 0;
+            this.AddDropCoursesComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropCoursesComboBox_SelectedIndexChanged);
             // 
             // ProfessorPersonalInfoTab
             // 
@@ -456,6 +507,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).EndInit();
             this.ProfessorAddDropTab.ResumeLayout(false);
             this.ProfessorAddDropTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addDropDataGrid)).EndInit();
             this.ProfessorPersonalInfoTab.ResumeLayout(false);
             this.ProfessorPersonalInfoTab.PerformLayout();
             this.ResumeLayout(false);
@@ -471,7 +523,6 @@
         private System.Windows.Forms.Label ProfessorTitle;
         private System.Windows.Forms.ComboBox ScheduleSectionsComboBox;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.ListBox AddDropListBox;
         private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
         private System.Windows.Forms.TabPage ProfessorPersonalInfoTab;
         private System.Windows.Forms.Label UserPhoneNumberLbl;
@@ -503,5 +554,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Grade;
+        private System.Windows.Forms.DataGridView addDropDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addDropCourseNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addDropCourseNumberColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addDropSectionNumberColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addDropInstructorColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn addDropAddDropButtonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addDropDescriptionColumn;
     }
 }
