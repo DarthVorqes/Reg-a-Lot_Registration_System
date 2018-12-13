@@ -194,6 +194,7 @@ namespace RegistrationSystem
                         continue;
                     if(properties[j].PropertyType.IsClass)
                         properties[j].SetValue(element, values[i][j], null);
+                    else
                     {
                         var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
                         properties[j].SetValue(element, value, null);
