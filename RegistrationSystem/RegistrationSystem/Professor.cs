@@ -155,12 +155,10 @@ namespace RegistrationSystem
         }
         private void AddDropCoursesComboBox_Load()
         {
-            string[] selectedItem = AddDropSemesterComboBox.SelectedItem.ToString().Split();
-            loadedSections = LogIn.user.GetSections(selectedItem[0], selectedItem[1], true);
-            ScheduleSectionsComboBox.Items.Clear();
-            foreach (Section section in loadedSections)
+            AddDropDepartmentComboBox.Items.Clear();
+            foreach (string department in LogIn.user.GetDepartments())
             {
-                AddDropCoursesComboBox.Items.Add(section.GetCourseName(LogIn.user) + '-' + section.SectionNumber);
+                AddDropDepartmentComboBox.Items.Add(department);
             }
 
         }

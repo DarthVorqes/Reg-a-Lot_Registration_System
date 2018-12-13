@@ -47,7 +47,7 @@
             this.DropButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.AddDropListBox = new System.Windows.Forms.ListBox();
-            this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
+            this.AddDropDepartmentComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorPersonalInfoTab = new System.Windows.Forms.TabPage();
             this.LastNamelbl = new System.Windows.Forms.Label();
             this.EmailLbl = new System.Windows.Forms.Label();
@@ -188,7 +188,7 @@
             this.ProfessorAddDropTab.Controls.Add(this.DropButton);
             this.ProfessorAddDropTab.Controls.Add(this.AddButton);
             this.ProfessorAddDropTab.Controls.Add(this.AddDropListBox);
-            this.ProfessorAddDropTab.Controls.Add(this.AddDropCoursesComboBox);
+            this.ProfessorAddDropTab.Controls.Add(this.AddDropDepartmentComboBox);
             this.ProfessorAddDropTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorAddDropTab.Name = "ProfessorAddDropTab";
             this.ProfessorAddDropTab.Padding = new System.Windows.Forms.Padding(3);
@@ -249,13 +249,13 @@
             this.AddDropListBox.Size = new System.Drawing.Size(777, 264);
             this.AddDropListBox.TabIndex = 3;
             // 
-            // AddDropCoursesComboBox
+            // AddDropDepartmentComboBox
             // 
-            this.AddDropCoursesComboBox.FormattingEnabled = true;
-            this.AddDropCoursesComboBox.Location = new System.Drawing.Point(302, 54);
-            this.AddDropCoursesComboBox.Name = "AddDropCoursesComboBox";
-            this.AddDropCoursesComboBox.Size = new System.Drawing.Size(315, 21);
-            this.AddDropCoursesComboBox.TabIndex = 0;
+            this.AddDropDepartmentComboBox.FormattingEnabled = true;
+            this.AddDropDepartmentComboBox.Location = new System.Drawing.Point(302, 54);
+            this.AddDropDepartmentComboBox.Name = "AddDropDepartmentComboBox";
+            this.AddDropDepartmentComboBox.Size = new System.Drawing.Size(315, 21);
+            this.AddDropDepartmentComboBox.TabIndex = 0;
             // 
             // ProfessorPersonalInfoTab
             // 
@@ -472,7 +472,7 @@
         private System.Windows.Forms.ComboBox ScheduleSectionsComboBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ListBox AddDropListBox;
-        private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
+        private System.Windows.Forms.ComboBox AddDropDepartmentComboBox;
         private System.Windows.Forms.TabPage ProfessorPersonalInfoTab;
         private System.Windows.Forms.Label UserPhoneNumberLbl;
         private System.Windows.Forms.Label UserEmailLbl;
