@@ -37,7 +37,6 @@
             this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScheduleSectionComboBoxlbl = new System.Windows.Forms.Label();
             this.SemesterComboBoxlbl = new System.Windows.Forms.Label();
-            this.UpdateStudentButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.ScheduleSemesterComboBox = new System.Windows.Forms.ComboBox();
             this.ScheduleSectionsComboBox = new System.Windows.Forms.ComboBox();
@@ -93,7 +92,6 @@
             this.ProfessorScheduleTab.Controls.Add(this.StudentGridView);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSectionComboBoxlbl);
             this.ProfessorScheduleTab.Controls.Add(this.SemesterComboBoxlbl);
-            this.ProfessorScheduleTab.Controls.Add(this.UpdateStudentButton);
             this.ProfessorScheduleTab.Controls.Add(this.webBrowser1);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSemesterComboBox);
             this.ProfessorScheduleTab.Controls.Add(this.ScheduleSectionsComboBox);
@@ -155,15 +153,6 @@
             this.SemesterComboBoxlbl.Size = new System.Drawing.Size(54, 13);
             this.SemesterComboBoxlbl.TabIndex = 5;
             this.SemesterComboBoxlbl.Text = "Semester:";
-            // 
-            // UpdateStudentButton
-            // 
-            this.UpdateStudentButton.Location = new System.Drawing.Point(327, 376);
-            this.UpdateStudentButton.Name = "UpdateStudentButton";
-            this.UpdateStudentButton.Size = new System.Drawing.Size(109, 23);
-            this.UpdateStudentButton.TabIndex = 4;
-            this.UpdateStudentButton.Text = "Update Student";
-            this.UpdateStudentButton.UseVisualStyleBackColor = true;
             // 
             // webBrowser1
             // 
@@ -230,9 +219,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(299, 38);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 7;
-            this.label10.Text = "Courses:";
+            this.label10.Text = "Department";
             // 
             // DropButton
             // 
@@ -497,7 +486,6 @@
         private System.Windows.Forms.Button DropButton;
         private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Button UpdateStudentButton;
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Label ScheduleSectionComboBoxlbl;
         private System.Windows.Forms.Label SemesterComboBoxlbl;

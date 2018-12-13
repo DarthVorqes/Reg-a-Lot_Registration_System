@@ -35,10 +35,10 @@ namespace RegistrationSystem
             var grade = row.Cells[3].Value as string;
             if (grade == null)
                 grade = "";
-            if (grade.Length > 10)
-                grade = grade.Substring(0, 10).ToUpper();
+            if (grade.Length < 10)
+                grade = grade.Substring(0, 1).ToUpper();
             row.Cells[3].Value = grade;
-            LogIn.user.SetGrade(id, grade,selectedSection.SectionNumber);
+            LogIn.user.SetGrade(id, grade,selectedSection.ID);
         }
 
         //=========================Set user specific labels:
@@ -150,25 +150,25 @@ namespace RegistrationSystem
             AddDropSemesterComboBox.Items.Clear();
             foreach (string semester in semesterIndex)
             {
-                AddDropSemesterComboBox.Items.Add(semester);
+                AddDropSemesterComboBox.Items.Add(semester.ToString());
             }
         }
         private void AddDropCoursesComboBox_Load()
         {
-            AddDropCoursesComboBox.Items.Clear();
-          /*  foreach (Course course in courseIndex)
+            string[] selectedItem = AddDropSemesterComboBox.SelectedItem.ToString().Split();
+            loadedSections = LogIn.user.GetSections(selectedItem[0], selectedItem[1], true);
+            ScheduleSectionsComboBox.Items.Clear();
+            foreach (Section section in loadedSections)
             {
-                AddDropCoursesComboBox.Items.Add(course);
-            }*/
+                AddDropCoursesComboBox.Items.Add(section.GetCourseName(LogIn.user) + '-' + section.SectionNumber);
+            }
+
         }
 
         private void AddDropListBox_Load()
         {
             AddDropListBox.Items.Clear();
-            /*foreach (Section section in sectionIndex)
-            {
-                AddDropListBox.Items.Add(section);
-            }*/
+    
         }
         private void AddDropCoursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
