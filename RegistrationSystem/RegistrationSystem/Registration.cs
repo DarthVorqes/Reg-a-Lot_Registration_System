@@ -11,7 +11,7 @@ namespace RegistrationSystem
         public int ID { get; set; }
         public int PersonID { get; set; }
         public int SectionID { get; set; }
-        public DateTime Timestamp { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
         public string Grade { get; set; }
         public bool AddDrop { get; set; }
         public bool HasPaid { get; set; }
