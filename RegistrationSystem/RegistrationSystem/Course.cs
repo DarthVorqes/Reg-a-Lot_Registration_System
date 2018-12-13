@@ -30,6 +30,7 @@ namespace RegistrationSystem
         public string Description { get; set; }
         public decimal Price { get; set; }
         public byte Hours { get; set; }
+        [TableSpecific(Tables.Course)]
         public string Department { get; set; }
         public string Prerequisite { get; set; }
     }
