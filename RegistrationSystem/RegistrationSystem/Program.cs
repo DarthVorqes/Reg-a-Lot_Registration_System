@@ -18,7 +18,9 @@ namespace RegistrationSystem
         static void Main()
         {
             User usr = new User();
-            usr.Authenticate(5, "test123");
+            usr.Authenticate(3, "test123");
+            var registrations = usr.Registrations;
+            var name = registrations[0].GetCourseName(usr);
             //var values = usr.GetSemesters();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
