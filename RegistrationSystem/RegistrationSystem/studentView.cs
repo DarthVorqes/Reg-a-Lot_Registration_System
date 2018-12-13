@@ -231,7 +231,7 @@ namespace RegistrationSystem
                 object[] firstCourseHoursHTMLEdit = { "document.getElementById(\"firstCourseHours\").innerHTML = $firstCourseHours" };
                 object[] firstCourseDaysHTMLEdit = { "document.getElementById(\"firstCourseDays\").innerHTML = $firstCourseDays" };
 
-                object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0] + "\"" };
+                object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0].ToString() + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameHTMLEdit);
                 object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" + LogIn.user.Registrations[0].ToString() + "\"" };
@@ -281,7 +281,7 @@ namespace RegistrationSystem
                 try 
                 {
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtOne);
-                    object[] courseNameHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped+1].ToString()+ "\")" };
+                    object[] courseNameHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped].ToString() + timesScheduleLooped + "\")" };
                     //make the node on the fly
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtThree);
@@ -290,7 +290,7 @@ namespace RegistrationSystem
 
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtOne);
                     //make the node on the fly
-                    object[] courseSectionHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped+1].ToString() + "\")" };
+                    object[] courseSectionHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped].ToString() + timesScheduleLooped + "\")" };
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtThree);
                     webBrowser1.Document.InvokeScript("eval", courseSectionHTMLCreationPtFour);
@@ -298,7 +298,7 @@ namespace RegistrationSystem
 
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtOne);
                     //make the node on the fly
-                    object[] courseHoursHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped+1].ToString() + "\")" };
+                    object[] courseHoursHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped].ToString() + timesScheduleLooped + "\")" };
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtThree);
                     webBrowser1.Document.InvokeScript("eval", courseHoursHTMLCreationPtFour);
@@ -306,13 +306,18 @@ namespace RegistrationSystem
 
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtOne);
                     //make the node on the fly
-                    object[] courseDaysHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped+1].ToString() + "\")" };
+                    object[] courseDaysHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped].ToString() + timesScheduleLooped + "\")" };
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtThree);
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtFour);
                     webBrowser1.Document.InvokeScript("eval", courseDaysHTMLCreationPtFive);
                     timesScheduleLooped++;
                     MessageBox.Show("It worked");
+
+                    if (timesScheduleLooped == 7)
+                    {
+                        scheduleLooping = false;
+                    }
                 }
 
                 catch
