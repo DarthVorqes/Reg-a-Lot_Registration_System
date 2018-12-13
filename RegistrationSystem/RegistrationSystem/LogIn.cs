@@ -10,86 +10,47 @@ using System.Windows.Forms;
 
 namespace RegistrationSystem
 {
-    public partial class LogIn : Form
+    partial class LogIn : Form
     {
-        public string ID { get; private set; }
+
+         public static  User user = new User();
 
         public LogIn()
         {
             InitializeComponent();
         }
-
-        private void LogInButton_Click(object sender, EventArgs e)
+        public void LogInButton_Click(object sender, EventArgs e)
         {
-
-         /*   if (check to see if registar)
+            int.TryParse(UserNameTextBox.Text, out int UserID);
+            int ID = UserID;
+            if (user.Authenticate(UserID, PasswordTextBox.Text))
             {
-                RegistarView RView = new RegistarView(ID);
-                RView.Show();
-                Hide();
-            }*/
-
-            //check to see if professor:
-            if (UserNameTextBox.Text == "Max" || UserNameTextBox.Text == "Al")
-            {
-                //if personID as username this will be fine if not then just search data base for the id linked to the username
-                ID = UserNameTextBox.Text;
-                ProfessorView PView = new ProfessorView(ID);
-                PView.Show();
-                Hide();
-            }
-            //
-          if(UserNameTextBox.Text == "Trey")
-            {
-                ID = UserNameTextBox.Text;
-                studentView SView = new studentView();
-                SView.Show();
-                Hide();
-            }
-            else
-            {
-                MessageBox.Show("Invaild Credentials!!");
-            }
-
-
-            bool login = false;
-                /*   if (check to see if registar)
-                   {
-                       //if personID as username this will be fine if not then just search data base for the id linked to the username
-                       ID = UserNameTextBox.Text;
-                       login = true;
-                       RegistarView RView = new RegistarView(ID);
-                       RView.Show();
-                       Hide();
-                   }*/
-                //check to see if professor:
-                if (UserNameTextBox.Text == "Max")
+                if (user.IsRegistrar)
                 {
-                    //if personID as username this will be fine if not then just search data base for the id linked to the username
-                    ID = UserNameTextBox.Text;
-                    login = true;
-                    ProfessorView PView = new ProfessorView(ID);
+                    Registrar RView = new Registrar();
+                    RView.Show();
+                    Hide();
+                }
+                else if (user.IsProfessor)
+                { 
+                    ProfessorView PView = new ProfessorView();
                     PView.Show();
                     Hide();
                 }
-                if (UserNameTextBox.Text == "Trey")
+                else if (user.IsStudent)
                 {
-                    //if personID as username this will be fine if not then just search data base for the id linked to the username
-                    ID = UserNameTextBox.Text;
-                    login = true;
-                    studentView SView = new studentView();
+                    StudentView SView = new StudentView();
                     SView.Show();
                     Hide();
                 }
-                if (login == false)
-                {
-                    MessageBox.Show("Invaild Credintials!!");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Invaild credentials!!");
+            }
+
 
         }
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(1);
-        }
+
     }
 }

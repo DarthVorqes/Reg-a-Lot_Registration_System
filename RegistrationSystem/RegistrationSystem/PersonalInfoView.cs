@@ -12,19 +12,19 @@ namespace RegistrationSystem
 {
     public partial class PersonalInfoView : Form
     {
-        public PersonalInfoView(string ID)
+        public PersonalInfoView(int ID)
         {
             InitializeComponent();
             SetLabels(ID);
         }
 
-        private void SetLabels(string ID)
+        private void SetLabels(int ID)
         {
-            PVStudentNameLabel.Text = ID; // or query database to find name
-            PVSectionLabel.Text = ID; //query for section
+            PVStudentNameLabel.Text = "name"; // or query database to find name
+            PVSectionLabel.Text = "section"; //query for section
             PVFirstNameLabel.Text = "max"; //query for firstname in database
             PVLastNameLabel.Text = "clem"; //query for lastname in database
-            PVIDNumberLabel.Text = ID; //should have the ID
+            PVIDNumberLabel.Text = ID.ToString(); //should have the ID
             PVAddressLabel.Text = "55 wastingon st"; //query for address in database
             PVPhoneLabel.Text = "555-555-5555";//query for phone number
             PVEmailLabel.Text = "bleh@gmail.com"; //queery for email

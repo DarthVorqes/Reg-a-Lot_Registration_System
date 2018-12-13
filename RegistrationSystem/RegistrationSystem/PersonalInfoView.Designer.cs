@@ -145,6 +145,8 @@
             this.Controls.Add(this.PVFirstNameLabel);
             this.Controls.Add(this.PVStudentNameLabel);
             this.Controls.Add(this.UpdateGradeButton);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PersonalInfoView";
             this.Text = "PersonalInfoView";
             this.ResumeLayout(false);

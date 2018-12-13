@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="LogIn.cs">
@@ -54,7 +55,6 @@
     <Compile Include="LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
     <Compile Include="PersonalInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,13 +77,28 @@
     </Compile>
     <Compile Include="Schedule.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="SectionStudent.cs" />
     <Compile Include="studentView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="studentView.Designer.cs">
       <DependentUpon>studentView.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableSpecific.cs" />
+    <Compile Include="UserPersonalInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserPersonalInformation.Designer.cs">
+      <DependentUpon>UserPersonalInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSectionInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSectionInformation.Designer.cs">
+      <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="UserFocus.cs" />
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,13 +118,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-
     <EmbeddedResource Include="studentView.resx">
       <DependentUpon>studentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPersonalInformation.resx">
+      <DependentUpon>UserPersonalInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSectionInformation.resx">
+      <DependentUpon>UpdateSectionInformation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,12 +144,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="schedule.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="info.html" />
+    <None Include="schedule.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

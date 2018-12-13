@@ -30,31 +30,38 @@
         {
             this.ProfessorTabControl = new System.Windows.Forms.TabControl();
             this.ProfessorScheduleTab = new System.Windows.Forms.TabPage();
+            this.ScheduleSectionComboBoxlbl = new System.Windows.Forms.Label();
+            this.SemesterComboBoxlbl = new System.Windows.Forms.Label();
             this.ViewStudentButton = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.ScheduleListBox = new System.Windows.Forms.ListBox();
-            this.ScheduleComboBox = new System.Windows.Forms.ComboBox();
+            this.ScheduleStudentListBox = new System.Windows.Forms.ListBox();
+            this.ScheduleSemesterComboBox = new System.Windows.Forms.ComboBox();
+            this.ScheduleSectionsComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorAddDropTab = new System.Windows.Forms.TabPage();
+            this.AddDropSemesterComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.DropButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.AddDropListBox = new System.Windows.Forms.ListBox();
             this.AddDropCoursesComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorPersonalInfoTab = new System.Windows.Forms.TabPage();
-            this.NewPass = new System.Windows.Forms.Label();
-            this.ChangePassCheck = new System.Windows.Forms.TextBox();
-            this.ChangePass = new System.Windows.Forms.TextBox();
-            this.ChangePassButton = new System.Windows.Forms.Button();
-            this.PasswordLabel = new System.Windows.Forms.Label();
-            this.PhoneNumberLabel = new System.Windows.Forms.Label();
-            this.EmailLabel = new System.Windows.Forms.Label();
-            this.AddressLabel = new System.Windows.Forms.Label();
-            this.IDNumberLabel = new System.Windows.Forms.Label();
-            this.LastNameLabel = new System.Windows.Forms.Label();
-            this.PersonalInforDescriptionLabel = new System.Windows.Forms.Label();
-            this.FirstNameLabel = new System.Windows.Forms.Label();
+            this.LastNamelbl = new System.Windows.Forms.Label();
+            this.EmailLbl = new System.Windows.Forms.Label();
+            this.PhoneNumberLbl = new System.Windows.Forms.Label();
+            this.AddressLbl = new System.Windows.Forms.Label();
+            this.IDNumberlbl = new System.Windows.Forms.Label();
+            this.FirstNameLbl = new System.Windows.Forms.Label();
+            this.UpdateInfoBtn = new System.Windows.Forms.Button();
+            this.UserPhoneNumberLbl = new System.Windows.Forms.Label();
+            this.UserEmailLbl = new System.Windows.Forms.Label();
+            this.UserAddressLbl = new System.Windows.Forms.Label();
+            this.UserIDNumberLbl = new System.Windows.Forms.Label();
+            this.UserLastNameLbl = new System.Windows.Forms.Label();
+            this.UserInfoDescriptionLbl = new System.Windows.Forms.Label();
+            this.UserFirstNameLbl = new System.Windows.Forms.Label();
             this.ProfessorTitle = new System.Windows.Forms.Label();
-            this.Logout = new System.Windows.Forms.Button();
+            this.LogoutBtn = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
             this.ProfessorTabControl.SuspendLayout();
             this.ProfessorScheduleTab.SuspendLayout();
@@ -73,60 +80,91 @@
             this.ProfessorTabControl.Multiline = true;
             this.ProfessorTabControl.Name = "ProfessorTabControl";
             this.ProfessorTabControl.SelectedIndex = 0;
-            this.ProfessorTabControl.Size = new System.Drawing.Size(758, 475);
+            this.ProfessorTabControl.Size = new System.Drawing.Size(816, 429);
             this.ProfessorTabControl.TabIndex = 0;
             // 
             // ProfessorScheduleTab
             // 
+            this.ProfessorScheduleTab.Controls.Add(this.ScheduleSectionComboBoxlbl);
+            this.ProfessorScheduleTab.Controls.Add(this.SemesterComboBoxlbl);
             this.ProfessorScheduleTab.Controls.Add(this.ViewStudentButton);
             this.ProfessorScheduleTab.Controls.Add(this.webBrowser1);
-            this.ProfessorScheduleTab.Controls.Add(this.ScheduleListBox);
-            this.ProfessorScheduleTab.Controls.Add(this.ScheduleComboBox);
+            this.ProfessorScheduleTab.Controls.Add(this.ScheduleStudentListBox);
+            this.ProfessorScheduleTab.Controls.Add(this.ScheduleSemesterComboBox);
+            this.ProfessorScheduleTab.Controls.Add(this.ScheduleSectionsComboBox);
             this.ProfessorScheduleTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorScheduleTab.Name = "ProfessorScheduleTab";
             this.ProfessorScheduleTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ProfessorScheduleTab.Size = new System.Drawing.Size(731, 467);
+            this.ProfessorScheduleTab.Size = new System.Drawing.Size(789, 421);
             this.ProfessorScheduleTab.TabIndex = 0;
             this.ProfessorScheduleTab.Text = "Schedule";
             this.ProfessorScheduleTab.UseVisualStyleBackColor = true;
             // 
+            // ScheduleSectionComboBoxlbl
+            // 
+            this.ScheduleSectionComboBoxlbl.AutoSize = true;
+            this.ScheduleSectionComboBoxlbl.Location = new System.Drawing.Point(282, 160);
+            this.ScheduleSectionComboBoxlbl.Name = "ScheduleSectionComboBoxlbl";
+            this.ScheduleSectionComboBoxlbl.Size = new System.Drawing.Size(46, 13);
+            this.ScheduleSectionComboBoxlbl.TabIndex = 5;
+            this.ScheduleSectionComboBoxlbl.Text = "Section:";
+            // 
+            // SemesterComboBoxlbl
+            // 
+            this.SemesterComboBoxlbl.AutoSize = true;
+            this.SemesterComboBoxlbl.Location = new System.Drawing.Point(27, 157);
+            this.SemesterComboBoxlbl.Name = "SemesterComboBoxlbl";
+            this.SemesterComboBoxlbl.Size = new System.Drawing.Size(54, 13);
+            this.SemesterComboBoxlbl.TabIndex = 5;
+            this.SemesterComboBoxlbl.Text = "Semester:";
+            // 
             // ViewStudentButton
             // 
-            this.ViewStudentButton.Location = new System.Drawing.Point(584, 428);
+            this.ViewStudentButton.Location = new System.Drawing.Point(664, 174);
             this.ViewStudentButton.Name = "ViewStudentButton";
             this.ViewStudentButton.Size = new System.Drawing.Size(109, 23);
             this.ViewStudentButton.TabIndex = 4;
             this.ViewStudentButton.Text = "View Student";
             this.ViewStudentButton.UseVisualStyleBackColor = true;
-            this.ViewStudentButton.Click += new System.EventHandler(this.ViewStudentButton_Click);
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(15, 3);
+            this.webBrowser1.Location = new System.Drawing.Point(15, 5);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(710, 174);
+            this.webBrowser1.Size = new System.Drawing.Size(768, 145);
             this.webBrowser1.TabIndex = 3;
             // 
-            // ScheduleListBox
+            // ScheduleStudentListBox
             // 
-            this.ScheduleListBox.FormattingEnabled = true;
-            this.ScheduleListBox.Location = new System.Drawing.Point(27, 210);
-            this.ScheduleListBox.Name = "ScheduleListBox";
-            this.ScheduleListBox.Size = new System.Drawing.Size(666, 212);
-            this.ScheduleListBox.TabIndex = 2;
+            this.ScheduleStudentListBox.FormattingEnabled = true;
+            this.ScheduleStudentListBox.Location = new System.Drawing.Point(27, 203);
+            this.ScheduleStudentListBox.Name = "ScheduleStudentListBox";
+            this.ScheduleStudentListBox.Size = new System.Drawing.Size(746, 212);
+            this.ScheduleStudentListBox.TabIndex = 2;
             // 
-            // ScheduleComboBox
+            // ScheduleSemesterComboBox
             // 
-            this.ScheduleComboBox.FormattingEnabled = true;
-            this.ScheduleComboBox.Location = new System.Drawing.Point(27, 183);
-            this.ScheduleComboBox.Name = "ScheduleComboBox";
-            this.ScheduleComboBox.Size = new System.Drawing.Size(347, 21);
-            this.ScheduleComboBox.TabIndex = 1;
-            this.ScheduleComboBox.SelectedIndexChanged += new System.EventHandler(this.ScheduleComboBox_SelectedIndexChanged);
+            this.ScheduleSemesterComboBox.FormattingEnabled = true;
+            this.ScheduleSemesterComboBox.Location = new System.Drawing.Point(27, 176);
+            this.ScheduleSemesterComboBox.Name = "ScheduleSemesterComboBox";
+            this.ScheduleSemesterComboBox.Size = new System.Drawing.Size(220, 21);
+            this.ScheduleSemesterComboBox.TabIndex = 1;
+            this.ScheduleSemesterComboBox.SelectedIndexChanged += new System.EventHandler(this.ScheduleSemesterComboBox_SelectedIndexChanged);
+            // 
+            // ScheduleSectionsComboBox
+            // 
+            this.ScheduleSectionsComboBox.FormattingEnabled = true;
+            this.ScheduleSectionsComboBox.Location = new System.Drawing.Point(285, 176);
+            this.ScheduleSectionsComboBox.Name = "ScheduleSectionsComboBox";
+            this.ScheduleSectionsComboBox.Size = new System.Drawing.Size(220, 21);
+            this.ScheduleSectionsComboBox.TabIndex = 1;
+            this.ScheduleSectionsComboBox.SelectedIndexChanged += new System.EventHandler(this.ScheduleSectionComboBox_SelectedIndexChanged);
             // 
             // ProfessorAddDropTab
             // 
+            this.ProfessorAddDropTab.Controls.Add(this.AddDropSemesterComboBox);
+            this.ProfessorAddDropTab.Controls.Add(this.label1);
             this.ProfessorAddDropTab.Controls.Add(this.label10);
             this.ProfessorAddDropTab.Controls.Add(this.DropButton);
             this.ProfessorAddDropTab.Controls.Add(this.AddButton);
@@ -135,184 +173,220 @@
             this.ProfessorAddDropTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorAddDropTab.Name = "ProfessorAddDropTab";
             this.ProfessorAddDropTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ProfessorAddDropTab.Size = new System.Drawing.Size(731, 467);
+            this.ProfessorAddDropTab.Size = new System.Drawing.Size(789, 421);
             this.ProfessorAddDropTab.TabIndex = 1;
             this.ProfessorAddDropTab.Text = "Add/Drop";
             this.ProfessorAddDropTab.UseVisualStyleBackColor = true;
             // 
+            // AddDropSemesterComboBox
+            // 
+            this.AddDropSemesterComboBox.FormattingEnabled = true;
+            this.AddDropSemesterComboBox.Location = new System.Drawing.Point(6, 54);
+            this.AddDropSemesterComboBox.Name = "AddDropSemesterComboBox";
+            this.AddDropSemesterComboBox.Size = new System.Drawing.Size(208, 21);
+            this.AddDropSemesterComboBox.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Semester:";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 38);
+            this.label10.Location = new System.Drawing.Point(299, 38);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 7;
-            this.label10.Text = "Courses";
+            this.label10.Text = "Courses:";
             // 
             // DropButton
             // 
-            this.DropButton.Location = new System.Drawing.Point(431, 402);
+            this.DropButton.Location = new System.Drawing.Point(510, 379);
             this.DropButton.Name = "DropButton";
             this.DropButton.Size = new System.Drawing.Size(130, 23);
             this.DropButton.TabIndex = 4;
             this.DropButton.Text = "Drop";
             this.DropButton.UseVisualStyleBackColor = true;
-            this.DropButton.Click += new System.EventHandler(this.DropButton_Click);
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(169, 402);
+            this.AddButton.Location = new System.Drawing.Point(191, 379);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(130, 23);
             this.AddButton.TabIndex = 4;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // AddDropListBox
             // 
             this.AddDropListBox.FormattingEnabled = true;
             this.AddDropListBox.Location = new System.Drawing.Point(6, 81);
             this.AddDropListBox.Name = "AddDropListBox";
-            this.AddDropListBox.Size = new System.Drawing.Size(719, 303);
+            this.AddDropListBox.Size = new System.Drawing.Size(777, 264);
             this.AddDropListBox.TabIndex = 3;
             // 
             // AddDropCoursesComboBox
             // 
             this.AddDropCoursesComboBox.FormattingEnabled = true;
-            this.AddDropCoursesComboBox.Location = new System.Drawing.Point(6, 54);
+            this.AddDropCoursesComboBox.Location = new System.Drawing.Point(302, 54);
             this.AddDropCoursesComboBox.Name = "AddDropCoursesComboBox";
             this.AddDropCoursesComboBox.Size = new System.Drawing.Size(315, 21);
             this.AddDropCoursesComboBox.TabIndex = 0;
-            this.AddDropCoursesComboBox.SelectedIndexChanged += new System.EventHandler(this.AddDropCoursesComboBox_SelectedIndexChanged);
             // 
             // ProfessorPersonalInfoTab
             // 
-            this.ProfessorPersonalInfoTab.Controls.Add(this.NewPass);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.ChangePassCheck);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.ChangePass);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.ChangePassButton);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.PasswordLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.PhoneNumberLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.EmailLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.AddressLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.IDNumberLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.LastNameLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.PersonalInforDescriptionLabel);
-            this.ProfessorPersonalInfoTab.Controls.Add(this.FirstNameLabel);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.LastNamelbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.EmailLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.PhoneNumberLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.AddressLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.IDNumberlbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.FirstNameLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UpdateInfoBtn);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserPhoneNumberLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserEmailLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserAddressLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserIDNumberLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserLastNameLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserInfoDescriptionLbl);
+            this.ProfessorPersonalInfoTab.Controls.Add(this.UserFirstNameLbl);
             this.ProfessorPersonalInfoTab.Location = new System.Drawing.Point(23, 4);
             this.ProfessorPersonalInfoTab.Name = "ProfessorPersonalInfoTab";
-            this.ProfessorPersonalInfoTab.Size = new System.Drawing.Size(731, 467);
+            this.ProfessorPersonalInfoTab.Size = new System.Drawing.Size(789, 421);
             this.ProfessorPersonalInfoTab.TabIndex = 2;
             this.ProfessorPersonalInfoTab.Text = "Personal Info";
             this.ProfessorPersonalInfoTab.UseVisualStyleBackColor = true;
             // 
-            // NewPass
+            // LastNamelbl
             // 
-            this.NewPass.AutoSize = true;
-            this.NewPass.Location = new System.Drawing.Point(34, 376);
-            this.NewPass.Name = "NewPass";
-            this.NewPass.Size = new System.Drawing.Size(78, 13);
-            this.NewPass.TabIndex = 10;
-            this.NewPass.Text = "New Password";
+            this.LastNamelbl.AutoSize = true;
+            this.LastNamelbl.Location = new System.Drawing.Point(250, 68);
+            this.LastNamelbl.Name = "LastNamelbl";
+            this.LastNamelbl.Size = new System.Drawing.Size(61, 13);
+            this.LastNamelbl.TabIndex = 12;
+            this.LastNamelbl.Text = "Last Name:";
             // 
-            // ChangePassCheck
+            // EmailLbl
             // 
-            this.ChangePassCheck.Location = new System.Drawing.Point(314, 374);
-            this.ChangePassCheck.Name = "ChangePassCheck";
-            this.ChangePassCheck.Size = new System.Drawing.Size(152, 20);
-            this.ChangePassCheck.TabIndex = 9;
-            this.ChangePassCheck.UseSystemPasswordChar = true;
+            this.EmailLbl.AutoSize = true;
+            this.EmailLbl.Location = new System.Drawing.Point(38, 218);
+            this.EmailLbl.Name = "EmailLbl";
+            this.EmailLbl.Size = new System.Drawing.Size(35, 13);
+            this.EmailLbl.TabIndex = 12;
+            this.EmailLbl.Text = "Email:";
             // 
-            // ChangePass
+            // PhoneNumberLbl
             // 
-            this.ChangePass.Location = new System.Drawing.Point(123, 373);
-            this.ChangePass.Name = "ChangePass";
-            this.ChangePass.Size = new System.Drawing.Size(152, 20);
-            this.ChangePass.TabIndex = 9;
-            this.ChangePass.UseSystemPasswordChar = true;
+            this.PhoneNumberLbl.AutoSize = true;
+            this.PhoneNumberLbl.Location = new System.Drawing.Point(38, 186);
+            this.PhoneNumberLbl.Name = "PhoneNumberLbl";
+            this.PhoneNumberLbl.Size = new System.Drawing.Size(81, 13);
+            this.PhoneNumberLbl.TabIndex = 12;
+            this.PhoneNumberLbl.Text = "Phone Number:";
             // 
-            // ChangePassButton
+            // AddressLbl
             // 
-            this.ChangePassButton.Location = new System.Drawing.Point(472, 371);
-            this.ChangePassButton.Name = "ChangePassButton";
-            this.ChangePassButton.Size = new System.Drawing.Size(75, 23);
-            this.ChangePassButton.TabIndex = 8;
-            this.ChangePassButton.Text = "Change";
-            this.ChangePassButton.UseVisualStyleBackColor = true;
-            this.ChangePassButton.Click += new System.EventHandler(this.ChangePassButton_Click);
+            this.AddressLbl.AutoSize = true;
+            this.AddressLbl.Location = new System.Drawing.Point(38, 150);
+            this.AddressLbl.Name = "AddressLbl";
+            this.AddressLbl.Size = new System.Drawing.Size(48, 13);
+            this.AddressLbl.TabIndex = 12;
+            this.AddressLbl.Text = "Address:";
             // 
-            // PasswordLabel
+            // IDNumberlbl
             // 
-            this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(37, 326);
-            this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(99, 13);
-            this.PasswordLabel.TabIndex = 7;
-            this.PasswordLabel.Text = "Password Change?";
+            this.IDNumberlbl.AutoSize = true;
+            this.IDNumberlbl.Location = new System.Drawing.Point(38, 111);
+            this.IDNumberlbl.Name = "IDNumberlbl";
+            this.IDNumberlbl.Size = new System.Drawing.Size(61, 13);
+            this.IDNumberlbl.TabIndex = 12;
+            this.IDNumberlbl.Text = "ID Number:";
             // 
-            // PhoneNumberLabel
+            // FirstNameLbl
             // 
-            this.PhoneNumberLabel.AutoSize = true;
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(58, 186);
-            this.PhoneNumberLabel.Name = "PhoneNumberLabel";
-            this.PhoneNumberLabel.Size = new System.Drawing.Size(78, 13);
-            this.PhoneNumberLabel.TabIndex = 6;
-            this.PhoneNumberLabel.Text = "Phone Number";
+            this.FirstNameLbl.AutoSize = true;
+            this.FirstNameLbl.Location = new System.Drawing.Point(38, 68);
+            this.FirstNameLbl.Name = "FirstNameLbl";
+            this.FirstNameLbl.Size = new System.Drawing.Size(60, 13);
+            this.FirstNameLbl.TabIndex = 12;
+            this.FirstNameLbl.Text = "First Name:";
             // 
-            // EmailLabel
+            // UpdateInfoBtn
             // 
-            this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(58, 222);
-            this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
-            this.EmailLabel.TabIndex = 5;
-            this.EmailLabel.Text = "Email";
+            this.UpdateInfoBtn.Location = new System.Drawing.Point(36, 375);
+            this.UpdateInfoBtn.Name = "UpdateInfoBtn";
+            this.UpdateInfoBtn.Size = new System.Drawing.Size(116, 23);
+            this.UpdateInfoBtn.TabIndex = 11;
+            this.UpdateInfoBtn.Text = "Update Info";
+            this.UpdateInfoBtn.UseVisualStyleBackColor = true;
+            this.UpdateInfoBtn.Click += new System.EventHandler(this.UpdateInfoBtn_Click_1);
             // 
-            // AddressLabel
+            // UserPhoneNumberLbl
             // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(58, 150);
-            this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(45, 13);
-            this.AddressLabel.TabIndex = 4;
-            this.AddressLabel.Text = "Address";
+            this.UserPhoneNumberLbl.AutoSize = true;
+            this.UserPhoneNumberLbl.Location = new System.Drawing.Point(134, 186);
+            this.UserPhoneNumberLbl.Name = "UserPhoneNumberLbl";
+            this.UserPhoneNumberLbl.Size = new System.Drawing.Size(78, 13);
+            this.UserPhoneNumberLbl.TabIndex = 6;
+            this.UserPhoneNumberLbl.Text = "Phone Number";
             // 
-            // IDNumberLabel
+            // UserEmailLbl
             // 
-            this.IDNumberLabel.AutoSize = true;
-            this.IDNumberLabel.Location = new System.Drawing.Point(58, 110);
-            this.IDNumberLabel.Name = "IDNumberLabel";
-            this.IDNumberLabel.Size = new System.Drawing.Size(54, 13);
-            this.IDNumberLabel.TabIndex = 3;
-            this.IDNumberLabel.Text = "Id number";
+            this.UserEmailLbl.AutoSize = true;
+            this.UserEmailLbl.Location = new System.Drawing.Point(134, 218);
+            this.UserEmailLbl.Name = "UserEmailLbl";
+            this.UserEmailLbl.Size = new System.Drawing.Size(32, 13);
+            this.UserEmailLbl.TabIndex = 5;
+            this.UserEmailLbl.Text = "Email";
             // 
-            // LastNameLabel
+            // UserAddressLbl
             // 
-            this.LastNameLabel.AutoSize = true;
-            this.LastNameLabel.Location = new System.Drawing.Point(217, 68);
-            this.LastNameLabel.Name = "LastNameLabel";
-            this.LastNameLabel.Size = new System.Drawing.Size(58, 13);
-            this.LastNameLabel.TabIndex = 2;
-            this.LastNameLabel.Text = "Last Name";
+            this.UserAddressLbl.AutoSize = true;
+            this.UserAddressLbl.Location = new System.Drawing.Point(134, 150);
+            this.UserAddressLbl.Name = "UserAddressLbl";
+            this.UserAddressLbl.Size = new System.Drawing.Size(45, 13);
+            this.UserAddressLbl.TabIndex = 4;
+            this.UserAddressLbl.Text = "Address";
             // 
-            // PersonalInforDescriptionLabel
+            // UserIDNumberLbl
             // 
-            this.PersonalInforDescriptionLabel.AutoSize = true;
-            this.PersonalInforDescriptionLabel.Location = new System.Drawing.Point(15, 19);
-            this.PersonalInforDescriptionLabel.Name = "PersonalInforDescriptionLabel";
-            this.PersonalInforDescriptionLabel.Size = new System.Drawing.Size(84, 13);
-            this.PersonalInforDescriptionLabel.TabIndex = 1;
-            this.PersonalInforDescriptionLabel.Text = "User Information";
+            this.UserIDNumberLbl.AutoSize = true;
+            this.UserIDNumberLbl.Location = new System.Drawing.Point(134, 111);
+            this.UserIDNumberLbl.Name = "UserIDNumberLbl";
+            this.UserIDNumberLbl.Size = new System.Drawing.Size(58, 13);
+            this.UserIDNumberLbl.TabIndex = 3;
+            this.UserIDNumberLbl.Text = "ID Number";
             // 
-            // FirstNameLabel
+            // UserLastNameLbl
             // 
-            this.FirstNameLabel.AutoSize = true;
-            this.FirstNameLabel.Location = new System.Drawing.Point(58, 68);
-            this.FirstNameLabel.Name = "FirstNameLabel";
-            this.FirstNameLabel.Size = new System.Drawing.Size(57, 13);
-            this.FirstNameLabel.TabIndex = 0;
-            this.FirstNameLabel.Text = "First Name";
+            this.UserLastNameLbl.AutoSize = true;
+            this.UserLastNameLbl.Location = new System.Drawing.Point(331, 68);
+            this.UserLastNameLbl.Name = "UserLastNameLbl";
+            this.UserLastNameLbl.Size = new System.Drawing.Size(58, 13);
+            this.UserLastNameLbl.TabIndex = 2;
+            this.UserLastNameLbl.Text = "Last Name";
+            // 
+            // UserInfoDescriptionLbl
+            // 
+            this.UserInfoDescriptionLbl.AutoSize = true;
+            this.UserInfoDescriptionLbl.Location = new System.Drawing.Point(15, 19);
+            this.UserInfoDescriptionLbl.Name = "UserInfoDescriptionLbl";
+            this.UserInfoDescriptionLbl.Size = new System.Drawing.Size(87, 13);
+            this.UserInfoDescriptionLbl.TabIndex = 1;
+            this.UserInfoDescriptionLbl.Text = "User Information:";
+            // 
+            // UserFirstNameLbl
+            // 
+            this.UserFirstNameLbl.AutoSize = true;
+            this.UserFirstNameLbl.Location = new System.Drawing.Point(134, 68);
+            this.UserFirstNameLbl.Name = "UserFirstNameLbl";
+            this.UserFirstNameLbl.Size = new System.Drawing.Size(57, 13);
+            this.UserFirstNameLbl.TabIndex = 0;
+            this.UserFirstNameLbl.Text = "First Name";
             // 
             // ProfessorTitle
             // 
@@ -320,20 +394,20 @@
             this.ProfessorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfessorTitle.Location = new System.Drawing.Point(187, 6);
             this.ProfessorTitle.Name = "ProfessorTitle";
-            this.ProfessorTitle.Size = new System.Drawing.Size(395, 54);
+            this.ProfessorTitle.Size = new System.Drawing.Size(362, 54);
             this.ProfessorTitle.TabIndex = 1;
-            this.ProfessorTitle.Text = "Professor\'s Name";
+            this.ProfessorTitle.Text = "Professor Name";
             this.ProfessorTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // Logout
+            // LogoutBtn
             // 
-            this.Logout.Location = new System.Drawing.Point(632, 540);
-            this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(138, 23);
-            this.Logout.TabIndex = 2;
-            this.Logout.Text = "Logout";
-            this.Logout.UseVisualStyleBackColor = true;
-            this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            this.LogoutBtn.Location = new System.Drawing.Point(690, 498);
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(138, 23);
+            this.LogoutBtn.TabIndex = 2;
+            this.LogoutBtn.Text = "Logout";
+            this.LogoutBtn.UseVisualStyleBackColor = true;
+            this.LogoutBtn.Click += new System.EventHandler(this.Logout_Click);
             // 
             // UserViewComboBox
             // 
@@ -342,21 +416,24 @@
             this.UserViewComboBox.Name = "UserViewComboBox";
             this.UserViewComboBox.Size = new System.Drawing.Size(106, 21);
             this.UserViewComboBox.TabIndex = 3;
+            this.UserViewComboBox.Text = "View";
             this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.UserViewComboBox_SelectedIndexChanged);
             // 
             // ProfessorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 565);
+            this.ClientSize = new System.Drawing.Size(840, 533);
+            this.ControlBox = false;
             this.Controls.Add(this.UserViewComboBox);
-            this.Controls.Add(this.Logout);
+            this.Controls.Add(this.LogoutBtn);
             this.Controls.Add(this.ProfessorTitle);
             this.Controls.Add(this.ProfessorTabControl);
             this.Name = "ProfessorView";
             this.Text = "Professor";
             this.ProfessorTabControl.ResumeLayout(false);
             this.ProfessorScheduleTab.ResumeLayout(false);
+            this.ProfessorScheduleTab.PerformLayout();
             this.ProfessorAddDropTab.ResumeLayout(false);
             this.ProfessorAddDropTab.PerformLayout();
             this.ProfessorPersonalInfoTab.ResumeLayout(false);
@@ -372,29 +449,36 @@
         private System.Windows.Forms.TabPage ProfessorScheduleTab;
         private System.Windows.Forms.TabPage ProfessorAddDropTab;
         private System.Windows.Forms.Label ProfessorTitle;
-        private System.Windows.Forms.ListBox ScheduleListBox;
-        private System.Windows.Forms.ComboBox ScheduleComboBox;
+        private System.Windows.Forms.ListBox ScheduleStudentListBox;
+        private System.Windows.Forms.ComboBox ScheduleSectionsComboBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ListBox AddDropListBox;
         private System.Windows.Forms.ComboBox AddDropCoursesComboBox;
         private System.Windows.Forms.TabPage ProfessorPersonalInfoTab;
-        private System.Windows.Forms.Button ChangePassButton;
-        private System.Windows.Forms.Label PasswordLabel;
-        private System.Windows.Forms.Label PhoneNumberLabel;
-        private System.Windows.Forms.Label EmailLabel;
-        private System.Windows.Forms.Label AddressLabel;
-        private System.Windows.Forms.Label IDNumberLabel;
-        private System.Windows.Forms.Label LastNameLabel;
-        private System.Windows.Forms.Label PersonalInforDescriptionLabel;
-        private System.Windows.Forms.Label FirstNameLabel;
-        private System.Windows.Forms.Button Logout;
+        private System.Windows.Forms.Label UserPhoneNumberLbl;
+        private System.Windows.Forms.Label UserEmailLbl;
+        private System.Windows.Forms.Label UserAddressLbl;
+        private System.Windows.Forms.Label UserIDNumberLbl;
+        private System.Windows.Forms.Label UserLastNameLbl;
+        private System.Windows.Forms.Label UserInfoDescriptionLbl;
+        private System.Windows.Forms.Label UserFirstNameLbl;
+        private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button DropButton;
         private System.Windows.Forms.ComboBox UserViewComboBox;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.TextBox ChangePass;
-        private System.Windows.Forms.Label NewPass;
-        private System.Windows.Forms.TextBox ChangePassCheck;
         private System.Windows.Forms.Button ViewStudentButton;
+        private System.Windows.Forms.Button UpdateInfoBtn;
+        private System.Windows.Forms.Label ScheduleSectionComboBoxlbl;
+        private System.Windows.Forms.Label SemesterComboBoxlbl;
+        private System.Windows.Forms.ComboBox ScheduleSemesterComboBox;
+        private System.Windows.Forms.ComboBox AddDropSemesterComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label FirstNameLbl;
+        private System.Windows.Forms.Label LastNamelbl;
+        private System.Windows.Forms.Label IDNumberlbl;
+        private System.Windows.Forms.Label EmailLbl;
+        private System.Windows.Forms.Label PhoneNumberLbl;
+        private System.Windows.Forms.Label AddressLbl;
     }
 }

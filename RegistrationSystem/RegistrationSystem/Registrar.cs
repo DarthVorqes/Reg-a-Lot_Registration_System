@@ -12,99 +12,244 @@ namespace RegistrationSystem
 {
     public partial class Registrar : Form
     {
-        public char grade { get; private set; }
+     
 
         private List<string> sectionIndex = new List<string>() { "section1", "section2", "section3" };
         private List<string> courseIndex = new List<string>() { "course1", "course2", "course3" };
-        private string userID;
+        private List <string> people = new List<string> { "jim", "karren", "david"};
+   
+
         
         public Registrar()
         {
+  
             InitializeComponent();
+            UserViewComboBox_Load();
+            LoadPersonalLabels();
         }
-
-        private void tabPage1_Click(object sender, EventArgs e)
+ //======================================Labels: 
+        private void LoadPersonalLabels()
         {
-
+            RegistrarTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
+            UserIDNumberLbl.Text = LogIn.user.EnterpriseID.ToString();
+            UserFirstNameLbl.Text = LogIn.user.FirstName;
+            UserLastNameLbl.Text = LogIn.user.LastName;
+            UserAddressLbl.Text = LogIn.user.StreetAddress;
+            UserPhoneNumberLbl.Text = LogIn.user.PhoneNumber.ToString();         
+            UserEmailLbl.Text = LogIn.user.Email;
         }
-
-        private void button7_Click(object sender, EventArgs e)
+        private void CoursesLabels_Load()
         {
-            LogIn logout = new LogIn();
-            logout.Show();
-            Close();
+            //andrews method.
+            //CourseNameLbl = 
+            //SectionNameLbl =
+            //ProfessorNameLbl =
+            //TimeLbl =
+            //DayLbl =
+            //DateLbl =
         }
-
-        private void Registrar_Load(object sender, EventArgs e)
+        private void LookupLabels_Load()
         {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ProfessorView Professor = new ProfessorView(userID);
-            //StudentView Student = new StudentView();
-            //RegistarView Registar = new RegistarView();
-            if ((string)UserViewComboBox.SelectedItem == "Student")
+            if ("jim" == PersonLookupListBox.SelectedItem.ToString())
             {
-                //Student.show();
-                //Close();
+                SearchIDNumberLbl.Text = "id";
+                SearchFirstNameLbl.Text = "firstname";
+                SearchLastNameLbl.Text = "lastname";
+                SearchEmailLbl.Text = "age";
+                SearchPhoneNumberLbl.Text = "gender";
+                SearchAddressLbl.Text = "address";
             }
-            if ((string)UserViewComboBox.SelectedItem == "Professor")
+        }
+//=========================================User view:
+        public void UserViewComboBox_Load()
+        {
+            if (LogIn.user.IsStudent)
+            {
+                UserViewComboBox.Items.Add("Student");
+            }
+            if (LogIn.user.IsProfessor)
+            {
+                UserViewComboBox.Items.Add("Professor");
+            }
+            if (LogIn.user.IsRegistrar)
+            {
+                UserViewComboBox.Items.Add("Registar");
+            }
+
+        }
+        private void UserViewComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProfessorView Professor = new ProfessorView();
+            StudentView Student = new StudentView();
+            Registrar Registar = new Registrar();
+            if (UserViewComboBox.SelectedItem.ToString() == "Student")
+            {
+                Student.Show();
+                Close();
+            }
+            if (UserViewComboBox.SelectedItem.ToString() == "Professor")
             {
                 Professor.Show();
                 Close();
             }
-            if ((string)UserViewComboBox.SelectedItem == "Registar")
+            if (UserViewComboBox.SelectedItem.ToString() == "Registar")
             {
-                //Registar.Show();
-                //Close();
+                Registar.Show();
+                Close();
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+//========================================= Course tab:
+
+        private void CourseListBox_Load()
         {
+            CourseListBox.Items.Clear();
+            foreach (string course in courseIndex)
+            {
+                CourseListBox.Items.Add(course);
+            }
+        }
+
+
+    
+        private void CourseListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //query the name from courseSearchBox.text
+            //query for the ID and other shit
+            //
+            try
+            {
+                if ("course1" == CourseListBox.SelectedItem.ToString())
+                {
+                    CourseNameLbl.Text = "name";
+                    SectionNameLbl.Text = "ID";
+                    ProfessorNameLbl.Text = "prof";
+                    TimeLbl.Text = "time";
+                    DayLbl.Text = "day";
+                    DateLbl.Text = "date";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Item does not exist");
+            }
+        }
+//============================================LookUp tab:
+        private void PersonLookupListBox_Load()
+        {
+            //query database for value in list box
+            PersonLookupListBox.Items.Clear();
+            foreach (string person in people)
+            {
+
+                if (person == UserSearchBox.Text)
+                {
+                    PersonLookupListBox.Items.Add(person);
+                }
+            }
+          
+        }
+        private void SectionLookupListBox_Load()
+        {
+            SectionLookupListBox.Items.Clear();
+            foreach (string section in sectionIndex)
+            {
+                SectionLookupListBox.Items.Add(section);
+            }
+        }
+
+        private void PersonListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SectionLookupListBox_Load();
+            LookupLabels_Load();
+        }
+
+
+
+//==============================================================buttons:
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+        }
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            UserPersonalInformation update = new UserPersonalInformation("Update", LogIn.user.EnterpriseID);
+            update.Show();
+        }
+        private void UpdatePersonalInfoBtn_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    string selectedItem = PersonLookupListBox.SelectedItem.ToString();
+                                                                                            //but new user::
+                    UserPersonalInformation PersonalV = new UserPersonalInformation("Update", LogIn.user.EnterpriseID);
+                    PersonalV.Show();
+                }
+                catch
+                {
+                    MessageBox.Show("You do not have a person selected!");
+                }
+            }
+        }
+
+        private void UpdateSectionInfoBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedItem = SectionLookupListBox.SelectedItem.ToString();
+                //query database for student id using selected item
+                //userId = found userid
+                UpdateSectionInformation SectionV = new UpdateSectionInformation();
+                SectionV.Show();
+            }
+            catch
+            {
+                MessageBox.Show("You do not have a section selected!");
+            }
+        }
+        private void CourseSearchBtn_Click(object sender, EventArgs e)
+        {
+
+            if (CourseSearchBox.Text == "Math")
+            {
+                CourseListBox_Load();
+            }
+            //query database
+
+        }
+        private void UserSearchBtn_Click(object sender, EventArgs e)
+        {
+            if (UserSearchBox.Text == "jim")
+            {
+                PersonLookupListBox_Load();
+            }
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+
+            MessageBoxButtons confirm = MessageBoxButtons.YesNo;
+
+            DialogResult result;
+            result = MessageBox.Show("are you sure you want to delete", "Delete", confirm);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                //delete shit from database
+                string selectedItem = CourseListBox.SelectedItem.ToString();
+                CourseListBox.Items.Remove(selectedItem);
+            }
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddUserBtn_Click(object sender, EventArgs e)
         {
-
+                                                                                 //But new user;;
+            UserPersonalInformation addUser = new UserPersonalInformation("Add", LogIn.user.EnterpriseID);
+            addUser.Show();
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label81_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
