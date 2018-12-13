@@ -192,8 +192,12 @@ namespace RegistrationSystem
                 {
                     if (values[i][j].GetType() == typeof(DBNull))
                         continue;
-                    var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
-                    properties[j].SetValue(element, value, null);
+                    if(properties[j].PropertyType.IsClass)
+                        properties[j].SetValue(element, values[i][j], null);
+                    {
+                        var value = Convert.ChangeType(values[i][j].ToString(), properties[j].PropertyType);
+                        properties[j].SetValue(element, value, null);
+                    }
                 }
             }
             return elements;
