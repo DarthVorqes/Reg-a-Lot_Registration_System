@@ -43,7 +43,6 @@
             this.InfoGrid = new System.Windows.Forms.DataGridView();
             this.InfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InfoValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UpdateInfoBtn = new System.Windows.Forms.Button();
             this.finance1 = new System.Windows.Forms.TabPage();
             this.UserBillLbl = new System.Windows.Forms.Label();
             this.BillLbl = new System.Windows.Forms.Label();
@@ -185,7 +184,6 @@
             // persInfo1
             // 
             this.persInfo1.Controls.Add(this.InfoGrid);
-            this.persInfo1.Controls.Add(this.UpdateInfoBtn);
             this.persInfo1.Location = new System.Drawing.Point(23, 4);
             this.persInfo1.Name = "persInfo1";
             this.persInfo1.Size = new System.Drawing.Size(789, 421);
@@ -199,7 +197,7 @@
             this.InfoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InfoType,
             this.InfoValue});
-            this.InfoGrid.Location = new System.Drawing.Point(424, 76);
+            this.InfoGrid.Location = new System.Drawing.Point(33, 47);
             this.InfoGrid.Name = "InfoGrid";
             this.InfoGrid.Size = new System.Drawing.Size(245, 325);
             this.InfoGrid.TabIndex = 5;
@@ -214,16 +212,6 @@
             // 
             this.InfoValue.HeaderText = "Value";
             this.InfoValue.Name = "InfoValue";
-            // 
-            // UpdateInfoBtn
-            // 
-            this.UpdateInfoBtn.Location = new System.Drawing.Point(366, 47);
-            this.UpdateInfoBtn.Name = "UpdateInfoBtn";
-            this.UpdateInfoBtn.Size = new System.Drawing.Size(116, 23);
-            this.UpdateInfoBtn.TabIndex = 3;
-            this.UpdateInfoBtn.Text = "Update Info";
-            this.UpdateInfoBtn.UseVisualStyleBackColor = true;
-            this.UpdateInfoBtn.Click += new System.EventHandler(this.UpdateInfoBtn_Click);
             // 
             // finance1
             // 
@@ -348,7 +336,6 @@
         private System.Windows.Forms.ComboBox AddDropSemesterComboBox;
         private System.Windows.Forms.Label AddDropSemesterLbl;
         private System.Windows.Forms.Label AddDropCourseLbl;
-        private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Label StudentTitle;
         private System.Windows.Forms.Label UserHasPaidLbl;
         private System.Windows.Forms.Label PaidLbl;

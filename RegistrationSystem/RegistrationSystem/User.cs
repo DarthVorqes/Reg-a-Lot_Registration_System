@@ -91,6 +91,7 @@ namespace RegistrationSystem
         {
             set
             {
+
                 _password = Hash(value);
             }
         }
@@ -211,7 +212,7 @@ namespace RegistrationSystem
                 {
                     // get from DB
                     var obj = GetPersonInfo("PhoneNumber");
-                    System.Diagnostics.Debug.WriteLine("Type = " + obj.GetType());
+                  
                     phoneNumber = long.Parse(obj.ToString());
                 }
                 return phoneNumber;
@@ -341,23 +342,23 @@ namespace RegistrationSystem
                 });
                 if (social != -1)
                     changes.Add(new SqlParameter("Social", social));
+                if (streetAddress != null)
+                    changes.Add(new SqlParameter("StreetAddress", streetAddress));
+
+                if (city != null)
+
+                    changes.Add(new SqlParameter("City", city));
+                if (state != null)
+                    changes.Add(new SqlParameter("State", state));
+                if (zipCode != -1)
+                    changes.Add(new SqlParameter("ZipCode", zipCode));
+                if (email != null)
+                    changes.Add(new SqlParameter("Email", email));
+                if (phoneNumber != -1)
+                    changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
             }
             if (_password != null)
                 changes.Add(new SqlParameter("Password", _password));
-            if (streetAddress != null)
-                changes.Add(new SqlParameter("StreetAddress", streetAddress));
-
-            if (city != null)
-
-                changes.Add(new SqlParameter("City", city));
-            if (state != null)
-                changes.Add(new SqlParameter("State", state));
-            if (zipCode != -1)
-                changes.Add(new SqlParameter("ZipCode", zipCode));
-            if (email != null)
-                changes.Add(new SqlParameter("Email", email));
-            if (phoneNumber != -1)
-                changes.Add(new SqlParameter("PhoneNumber", phoneNumber));
 
             // 
 
@@ -398,9 +399,11 @@ namespace RegistrationSystem
         //private methods
 
         // Hashes passwords to length of 25 characters
-        private string Hash(string raw) => Convert.ToBase64String(
-        new System.Security.Cryptography.Rfc2898DeriveBytes(raw, new byte[]
+        private string Hash(string raw)
         {
+            var hash = Convert.ToBase64String(
+                new System.Security.Cryptography.Rfc2898DeriveBytes(raw, new byte[]
+                {
                     63, 23, 42, 68, 60, 172, 127, 64, 173, 61, 20, 98, 143, 92, 153, 145,
                     237, 138, 239, 113, 176, 220, 251, 152, 168, 95, 227, 27, 166, 109, 53, 203,
                     135, 66, 239, 100, 235, 181, 72, 101, 195, 114, 82, 118, 221, 253, 7, 42,
@@ -409,7 +412,10 @@ namespace RegistrationSystem
                     251, 129, 242, 149, 138, 156, 214, 162, 108, 145, 250, 43, 67, 194, 129, 177,
                     135, 72, 125, 56, 227, 174, 239, 246, 77, 192, 18, 146, 32, 48, 237, 20,
                     234, 191, 96, 95, 230, 83, 122, 66, 163, 118, 199, 20, 113, 240, 119, 100
-        }, 101).GetBytes(25));
+                }, 101).GetBytes(25));
+    
+            return hash;
+        }
 
         private object GetPersonInfo(string columnName) =>
             Connection.GetValue(columnName, new SqlParameter[]
