@@ -231,7 +231,7 @@ namespace RegistrationSystem
                 object[] firstCourseHoursHTMLEdit = { "document.getElementById(\"firstCourseHours\").innerHTML = $firstCourseHours" };
                 object[] firstCourseDaysHTMLEdit = { "document.getElementById(\"firstCourseDays\").innerHTML = $firstCourseDays" };
 
-                object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0].ToString() + "\"" };
+                object[] firstCourseNameJScript = { "$firstCourseName = \"" + LogIn.user.Registrations[0].GetCourseName(LogIn.user).ToString() + "\"" };
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameJScript);
                 webBrowser1.Document.InvokeScript("eval", firstCourseNameHTMLEdit);
                 object[] firstCourseSectionJScript = { "var $firstCourseSection = \"" + LogIn.user.Registrations[0].ToString() + "\"" };
@@ -281,7 +281,7 @@ namespace RegistrationSystem
                 try 
                 {
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtOne);
-                    object[] courseNameHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped].ToString() + timesScheduleLooped + "\")" };
+                    object[] courseNameHTMLCreationPtTwo = { "var node = document.createTextNode(\"" + LogIn.user.Registrations[timesScheduleLooped + 1].GetCourseName(LogIn.user) + "\")" };
                     //make the node on the fly
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtTwo);
                     webBrowser1.Document.InvokeScript("eval", courseNameHTMLCreationPtThree);
