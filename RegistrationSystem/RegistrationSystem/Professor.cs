@@ -119,33 +119,13 @@ namespace RegistrationSystem
             foreach (var student in students)
             {
                 var row = new DataGridViewRow();
-                var properties = typeof(SectionStudent).GetProperties();
-                string[] values = new string[properties.Length];
-                for (int i = 0; i < properties.Length; i++)
-                {
-                    if (properties[i].PropertyType.Namespace == "RegistrationSystem")
-                        continue;
-                    bool exclude = false;
-                    foreach (var name in excludeFromDataGrid)
-                    {
-                        if (name == properties[i].Name)
-                        {
-                            exclude = true;
-                            break;
-                        }
-                    }
-                    if (exclude)
-                    {
-                        continue;
-                    }
-                    var value = properties[i].GetValue(student);
-                    if (value == null)
-                    {
-                        value = "";
-                    }
-                    values[i] = value as string;
-                }
-                row.CreateCells(StudentGridView,values);
+                
+                row.CreateCells(StudentGridView,new string[] {
+                    student.PersonID.ToString(),
+                    student.GetFirstName(LogIn.user),
+                    student.GetLastName(LogIn.user),
+                    student.Grade,
+                });
                 StudentGridView.Rows.Add(row);
             }
         }
