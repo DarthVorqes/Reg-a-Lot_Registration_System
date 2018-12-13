@@ -12,35 +12,35 @@ namespace RegistrationSystem
 {
     public partial class ProfessorView : Form
     {
-       
-    
-   
+
+
+
         string[] semesterIndex = LogIn.user.GetSemesters();
-  
+
         public ProfessorView()
         {
-         
+
             InitializeComponent();
             SetLabels();
             UserViewComboBox_Load();
             SemesterComboBox_Load();
             AddDropSemesterComboBox_Load();
             AddDropCoursesComboBox_Load();
-           
+
 
         }
-//=========================Set user specific labels:
+        //=========================Set user specific labels:
         private void SetLabels()
         {
-            ProfessorTitle.Text = LogIn.user.FirstName + " " +LogIn.user.LastName; 
+            ProfessorTitle.Text = LogIn.user.FirstName + " " + LogIn.user.LastName;
             UserFirstNameLbl.Text = LogIn.user.FirstName;
-            UserLastNameLbl.Text = LogIn.user.LastName; 
-            UserIDNumberLbl.Text = LogIn.user.EnterpriseID.ToString(); 
-            UserAddressLbl.Text = LogIn.user.StreetAddress; 
+            UserLastNameLbl.Text = LogIn.user.LastName;
+            UserIDNumberLbl.Text = LogIn.user.EnterpriseID.ToString();
+            UserAddressLbl.Text = LogIn.user.StreetAddress;
             UserEmailLbl.Text = LogIn.user.Email;
             UserPhoneNumberLbl.Text = LogIn.user.PhoneNumber.ToString();
         }
-//======================================================User View:
+        //======================================================User View:
         public void UserViewComboBox_Load()
         {
             if (LogIn.user.IsStudent)
@@ -78,7 +78,7 @@ namespace RegistrationSystem
                 Close();
             }
         }
-//=====================================================Schedule tab:
+        //=====================================================Schedule tab:
         private void SemesterComboBox_Load()
         {
             ScheduleSemesterComboBox.Items.Clear();
@@ -86,66 +86,74 @@ namespace RegistrationSystem
             {
                 ScheduleSemesterComboBox.Items.Add(semester.ToString());
             }
-      
+
         }
         List<Section> loadedSections = new List<Section>();
         private void ScheduleSemesterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             string[] selectedItem = ScheduleSemesterComboBox.SelectedItem.ToString().Split();
-            loadedSections = LogIn.user.GetSections(selectedItem[0], selectedItem[1],true);
+            loadedSections = LogIn.user.GetSections(selectedItem[0], selectedItem[1], true);
             ScheduleSectionsComboBox.Items.Clear();
             foreach (Section section in loadedSections)
             {
-                ScheduleSectionsComboBox.Items.Add(section.GetCourseName(LogIn.user)  + '-' + section.SectionNumber);
+                ScheduleSectionsComboBox.Items.Add(section.GetCourseName(LogIn.user) + '-' + section.SectionNumber);
             }
 
         }
 
         private void ScheduleSectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
             string[] selectedItem = ScheduleSectionsComboBox.SelectedItem.ToString().Split('-');
             var section = loadedSections.Find((Section s) => { return s.SectionNumber.ToString() == selectedItem[1] && s.GetCourseName(LogIn.user) == selectedItem[0]; });
             List<SectionStudent> students = LogIn.user.GetStudents(new System.Data.SqlClient.SqlParameter[] {
                 new System.Data.SqlClient.SqlParameter("SectionID", section.ID) });
             ScheduleStudentListBox.Items.Clear();
             DataGridView Grid = new DataGridView();
-            var row = new DataGridViewRow();
+
             string[] excludeFromDataGrid = new string[]
             {
                 "CourseID"
             };
-            foreach (var property in typeof(SectionStudent).GetProperties())
+            foreach (var student in students)
             {
-                if (property.PropertyType.Namespace == "RegistrationSystem")
-                    continue;
-                bool exclude = false;
-                foreach (var name in excludeFromDataGrid)
+                var row = new DataGridViewRow();
+                var properties = typeof(SectionStudent).GetProperties();
+                string[] values = new string[properties.Length];
+                for (int i = 0; i < properties.Length; i++)
                 {
-                    if (name == property.Name)
+                    if (properties[i].PropertyType.Namespace == "RegistrationSystem")
+                        continue;
+                    bool exclude = false;
+                    foreach (var name in excludeFromDataGrid)
                     {
-                        exclude = true;
-                        break;
+                        if (name == properties[i].Name)
+                        {
+                            exclude = true;
+                            break;
+                        }
                     }
+                    if (exclude)
+                    {
+                        continue;
+                    }
+                    var value = properties[i].GetValue(student);
+                    if (value == null)
+                    {
+                        value = "";
+                    }
+                    values[i] = value as string;
                 }
-                if (exclude)
-                {
-                    continue;
-                }
-                row.CreateCells(StudentGridView, new string[]
-            {
-                        property.Name,
-                        property.GetValue().ToString()
-            });
+                row.CreateCells(StudentGridView,values);
                 StudentGridView.Rows.Add(row);
-
-               /* foreach (SectionStudent student in students)
-                {
-                    ScheduleStudentListBox.Items.Add(student);
-                }*/
             }
         }
+           
+            
+    
+             
+          
 
 //====================================================Add Drop Tab:
         private void AddDropSemesterComboBox_Load()

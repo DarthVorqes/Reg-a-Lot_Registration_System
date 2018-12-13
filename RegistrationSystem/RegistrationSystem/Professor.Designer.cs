@@ -30,6 +30,11 @@
         {
             this.ProfessorTabControl = new System.Windows.Forms.TabControl();
             this.ProfessorScheduleTab = new System.Windows.Forms.TabPage();
+            this.StudentGridView = new System.Windows.Forms.DataGridView();
+            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScheduleSectionComboBoxlbl = new System.Windows.Forms.Label();
             this.SemesterComboBoxlbl = new System.Windows.Forms.Label();
             this.UpdateStudentButton = new System.Windows.Forms.Button();
@@ -63,16 +68,11 @@
             this.ProfessorTitle = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.UserViewComboBox = new System.Windows.Forms.ComboBox();
-            this.StudentGridView = new System.Windows.Forms.DataGridView();
-            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProfessorTabControl.SuspendLayout();
             this.ProfessorScheduleTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).BeginInit();
             this.ProfessorAddDropTab.SuspendLayout();
             this.ProfessorPersonalInfoTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ProfessorTabControl
@@ -106,6 +106,39 @@
             this.ProfessorScheduleTab.TabIndex = 0;
             this.ProfessorScheduleTab.Text = "Schedule";
             this.ProfessorScheduleTab.UseVisualStyleBackColor = true;
+            // 
+            // StudentGridView
+            // 
+            this.StudentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentID,
+            this.FirstName,
+            this.LastName,
+            this.Grade});
+            this.StudentGridView.Location = new System.Drawing.Point(58, 214);
+            this.StudentGridView.Name = "StudentGridView";
+            this.StudentGridView.Size = new System.Drawing.Size(441, 150);
+            this.StudentGridView.TabIndex = 6;
+            // 
+            // StudentID
+            // 
+            this.StudentID.HeaderText = "Student ID";
+            this.StudentID.Name = "StudentID";
+            // 
+            // FirstName
+            // 
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            // 
+            // Grade
+            // 
+            this.Grade.HeaderText = "Grade";
+            this.Grade.Name = "Grade";
             // 
             // ScheduleSectionComboBoxlbl
             // 
@@ -145,7 +178,7 @@
             // ScheduleStudentListBox
             // 
             this.ScheduleStudentListBox.FormattingEnabled = true;
-            this.ScheduleStudentListBox.Location = new System.Drawing.Point(655, 230);
+            this.ScheduleStudentListBox.Location = new System.Drawing.Point(529, 214);
             this.ScheduleStudentListBox.Name = "ScheduleStudentListBox";
             this.ScheduleStudentListBox.Size = new System.Drawing.Size(84, 134);
             this.ScheduleStudentListBox.TabIndex = 2;
@@ -426,39 +459,6 @@
             this.UserViewComboBox.Text = "View";
             this.UserViewComboBox.SelectedIndexChanged += new System.EventHandler(this.UserViewComboBox_SelectedIndexChanged);
             // 
-            // StudentGridView
-            // 
-            this.StudentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StudentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.StudentID,
-            this.FirstName,
-            this.LastName,
-            this.Grade});
-            this.StudentGridView.Location = new System.Drawing.Point(58, 214);
-            this.StudentGridView.Name = "StudentGridView";
-            this.StudentGridView.Size = new System.Drawing.Size(441, 150);
-            this.StudentGridView.TabIndex = 6;
-            // 
-            // StudentID
-            // 
-            this.StudentID.HeaderText = "Student ID";
-            this.StudentID.Name = "StudentID";
-            // 
-            // FirstName
-            // 
-            this.FirstName.HeaderText = "First Name";
-            this.FirstName.Name = "FirstName";
-            // 
-            // LastName
-            // 
-            this.LastName.HeaderText = "Last Name";
-            this.LastName.Name = "LastName";
-            // 
-            // Grade
-            // 
-            this.Grade.HeaderText = "Grade";
-            this.Grade.Name = "Grade";
-            // 
             // ProfessorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,11 +474,11 @@
             this.ProfessorTabControl.ResumeLayout(false);
             this.ProfessorScheduleTab.ResumeLayout(false);
             this.ProfessorScheduleTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).EndInit();
             this.ProfessorAddDropTab.ResumeLayout(false);
             this.ProfessorAddDropTab.PerformLayout();
             this.ProfessorPersonalInfoTab.ResumeLayout(false);
             this.ProfessorPersonalInfoTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StudentGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
