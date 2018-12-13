@@ -221,7 +221,36 @@ namespace RegistrationSystem
                 phoneNumber = value;
             }
         }
-
+        public List<Registration> Registrations
+        {
+            get
+            {
+                if(enrolledSections == null)
+                {
+                    enrolledSections = Connection.BuildClassArray<Registration>(new SqlParameter[]
+                    {
+                        new SqlParameter("PersonID",EnterpriseID)
+                    }, Tables.Registration);
+                }
+                return enrolledSections;
+            }
+        }
+        public string[] GetDepartments()
+        {
+            var departments = Connection.GetOccurrences(Tables.Course, new SqlParameter[0], new string[] { "Department" });
+            string[] array = new string[departments.Count];
+            for (int i = 0; i < array.Length; i++)
+                array[i] = departments[i][0] as string;
+            return array;
+        }
+        public void SetGrade(int studentID, string grade, int sectionID)
+        {
+            Connection.Update(Tables.Registration, new SqlParameter[] {
+                new SqlParameter("PersonID",studentID),
+                new SqlParameter("SectionID", sectionID),
+            }, new SqlParameter[] { new SqlParameter("Grade", grade) });
+        }
+        List<Registration> enrolledSections;
         public DatabaseConnection Connection { get; }
         public User Focus { get; private set; }
         //public methods
@@ -237,6 +266,7 @@ namespace RegistrationSystem
                     new SqlParameter("ID",yearData[i][1])}, Tables.Semester);
             return semesters;
         }
+        
         /// <summary>
         /// Runs a query and returns a list of 'SectionStudents' retreived from 'db.Registration'
         /// </summary>

@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="LogIn.cs">
@@ -75,6 +74,7 @@
     <Compile Include="Registrar.Designer.cs">
       <DependentUpon>Registrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registration.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="SectionStudent.cs" />

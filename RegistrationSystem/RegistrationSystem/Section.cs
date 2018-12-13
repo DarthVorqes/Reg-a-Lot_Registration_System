@@ -60,6 +60,27 @@ namespace RegistrationSystem
         {
                     new SqlParameter("ID",CourseID)
         }, Tables.Course) as string;
+        public string GetDepartment(User usr) => usr.Connection.GetValue("Department",
+        new SqlParameter[]
+        {
+                    new SqlParameter("ID",CourseID)
+        }, Tables.Course) as string;
+        public string GetInstructorName(User usr)
+        {
+            var perameters =
+                new SqlParameter[] {
+                new SqlParameter("ID", (int)usr.Connection.GetValue("InstructorID",
+                new SqlParameter[]
+                {
+                            new SqlParameter("ID",CourseID)
+                }, Tables.Section)) };
+
+            return usr.Connection.GetValue("FirstName", perameters, Tables.Person).ToString() + ' ' +
+                usr.Connection.GetValue("LastName", perameters, Tables.Person).ToString();
+        }
+        public Course GetCourse(User usr) => usr.Connection.BuildClassArray<Course>(new SqlParameter[] {
+            new SqlParameter("ID",CourseID)
+        },Tables.Course)[0];
 
     }
 }
