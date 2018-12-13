@@ -237,7 +237,7 @@ namespace RegistrationSystem
         }
         public string[] GetDepartments()
         {
-            var departments = Connection.GetOccurrences(Tables.Section, new SqlParameter[0], new string[] { "Department" });
+            var departments = Connection.GetOccurrences(Tables.Course, new SqlParameter[0], new string[] { "Department" });
             string[] array = new string[departments.Count];
             for (int i = 0; i < array.Length; i++)
                 array[i] = departments[i][0] as string;
