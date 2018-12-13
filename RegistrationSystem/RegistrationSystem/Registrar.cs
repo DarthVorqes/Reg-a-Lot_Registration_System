@@ -211,7 +211,11 @@ namespace RegistrationSystem
         }
         private void CourseSearchBtn_Click(object sender, EventArgs e)
         {
-
+            var id = Convert.ToInt32(UserSearchBox.Text);
+            List<SectionStudent> results = LogIn.user.Connection.BuildClassArray<SectionStudent>(new System.Data.SqlClient.SqlParameter[]
+            {
+                new System.Data.SqlClient.SqlParameter("ID",id)
+            },Tables.Person);
             if (CourseSearchBox.Text == "Math")
             {
                 CourseListBox_Load();
@@ -221,10 +225,11 @@ namespace RegistrationSystem
         }
         private void UserSearchBtn_Click(object sender, EventArgs e)
         {
-            if (UserSearchBox.Text == "jim")
+            var id = Convert.ToInt32("");
+            List<SectionStudent> results = LogIn.user.Connection.BuildClassArray<SectionStudent>(new System.Data.SqlClient.SqlParameter[]
             {
-                PersonLookupListBox_Load();
-            }
+                new System.Data.SqlClient.SqlParameter("ID",id)
+            }, Tables.Person);
         }
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
